@@ -1,0 +1,197 @@
+---
+title: Preflight
+description: The nine assertion classes that run before any launch
+---
+
+Every runner calls `scripts/lib/preflight.sh` before it touches a GPU. It reads the
+config only — no cluster calls, no side effects — and **exits non-zero on the first
+class of fatal misconfiguration**, so a wrong knob costs you five seconds instead of
+five hours.
+
+The switches below make the runner resolve the config, run the checks, print the
+report, and exit instead of launching. Each is a flag on `train.sh`, or the
+equivalent environment variable prefixed to the normal launch command:
+
+```bash
+# validate only, then stop
+bash scripts/train/train.sh --preflight-only train/configs/my_run.env
+PREFLIGHT_ONLY=1 bash scripts/train/train.sh train/configs/my_run.env
+
+# validate + print the fully expanded launch command, then stop
+bash scripts/train/train.sh --dry-run train/configs/my_run.env
+DRY_RUN=1 bash scripts/train/train.sh train/configs/my_run.env
+
+# validate the config alone, without needing the data on this machine
+bash scripts/train/train.sh --structure-only train/configs/my_run.env
+PF_STRUCTURE_ONLY=1 bash scripts/train/train.sh train/configs/my_run.env
+```
+
+Output is one line per check: `✓` pass, `⚠ WARN` (proceeds), `✗ FATAL` (refuses),
+`⊘ SKIP` (structure-only).
+
+<Callout title="Never launch past a FATAL" type="warn">
+Preflight has no `--force`. A multi-hour, multi-GPU run that starts with a fatal
+config does not fail fast — it fails *expensively*, usually as an all-zero reward or
+a hang several steps in. Fix the `✗` items, re-run preflight, then launch.
+</Callout>
+
+## Structure-only
+
+`--structure-only` runs every check that reads config values alone and skips the
+ones that need something on this disk — the checkpoint's `config.json`, the task
+index parquets, `NEW_VERL_DIR`, the kubeconfig. Use it to prove a fresh clone is
+wired up correctly before the model and the task set are in place, or to check a
+config on a machine that will never hold either. It implies `--preflight-only`:
+nothing launches.
+
+Everything else still runs, including the four highest-risk classes below —
+`tool_parser`, topology, device mesh and R3 consistency are all config arithmetic.
+What structure-only cannot tell you is whether `ENABLE_R3` matches the checkpoint,
+since that verdict is read off the model's `config.json`.
+
+## Assertion classes
+
+Ordered as preflight runs them; the first four are the most consequential in
+practice.
+
+### 1. `tool_parser` × (model × scaffold)
+
+The highest-risk check. The parser must match the model's *chat template output
+format*, which also depends on the scaffold: Qwen3.5/3.6 emit XML (`qwen3_coder`);
+the 30B is `qwen3_coder` under `cc` but `hermes` under `ohsdk`/`oh`. A mismatch means
+every tool call fails to parse, no assistant tokens are produced, and step 0 dies
+with `response_mask must contain at least one valid token`. See
+[Tool-call parser mismatch](/docs/troubleshooting/training-startup#tool-call-parser-mismatch).
+
+### 2. Topology consistency
+
+Normally, `NNODES` must equal `N_NODES_TRAIN + N_NODES_ROLLOUT`. For the explicitly
+supported single-node split, the default `ALLOW_SINGLE_NODE_ASYNC_SPLIT=1` permits
+`NNODES=1`, `N_NODES_TRAIN=1`, and `N_NODES_ROLLOUT=1` when the trainer and rollout
+GPU requests fit within `NGPUS_PER_NODE`. Set `ALLOW_SINGLE_NODE_ASYNC_SPLIT=0` to
+restore strict node accounting. Other mismatches remain fatal because the Ray
+cluster's node count would not match the logical placement.
+
+### 3. `SP_SIZE` × device mesh × VRAM
+
+`SP_SIZE` must evenly divide the training world (`N_NODES_TRAIN × GPUs per node`) and
+must not exceed it, or veomni raises a device-mesh `AssertionError`. The same check
+sanity-tests the resulting per-GPU memory budget.
+
+### 4. VeOmni engine constraints
+
+With `ENGINE=veomni`, both `FUSED_KERNELS` and `ACTIVATION_OFFLOAD` must be `False`.
+Either one on makes the backward pass after an FSDP2 reshard crash with
+`setStorage ... storage of size 0` (an FSDP1-era monkey patch).
+
+### 5. R3 × model family × engine × verl tree
+
+First, `ENABLE_R3` is checked against the checkpoint itself — `MODEL_PATH/config.json`
+is read and the model is classified MoE or dense (`model_type` ending in `_moe`, or an
+expert-count key). R3 replays *expert routing*, so on a dense model:
+
+- **veomni** raises `router replay is not wired for model_type=...` from inside engine
+  init — which happens after vLLM has loaded weights and captured cuda graphs, so you
+  lose 10–20 minutes before seeing it. This is a **FATAL**.
+- **FSDP** patches zero router gates and trains without replay while the rollout still
+  asks vLLM for routed experts — no error at all.
+
+You normally never hit this, because the default is derived from the same detection
+(`verl/common.env`); the check exists for configs that set `ENABLE_R3` by hand. The
+reverse — a MoE model with R3 off — is a **WARN**: it runs, but routing coverage drops
+from 100% back to ~24%.
+
+Then, if `ENABLE_R3` is on:
+
+- the installed verl must actually carry routing replay (the runner probes the
+  imported tree for `verl/utils/veomni/router_replay.py`);
+- on **FSDP**, R3 only supports `SP_SIZE=1` (the FSDP path does not handle SP
+  resharding of `routed_experts`). Either disable R3 or set `SP_SIZE=1`.
+
+Getting this wrong is a *silent* failure mode: rollout↔train routing drifts apart and
+logprob pearson sags to ~0.75 without any error.
+
+### 6. `AGENT_NAME` × scaffold
+
+For `ohsdk`/`oh`, `AGENT_NAME` must be null so harbor dispatches to the
+mounted-runtime-aware `import_path` class. A non-null name selects the registry
+default, which installs the SDK into an in-pod venv — that fails on no-egress task
+pods and shows up as an `env_setup_failed` avalanche across the whole batch.
+
+### 7. Image source and kubeconfig (k8s backend)
+
+- `HARBOR_OPENSWE_IMAGE_REGISTRY` and `INLINE_BUILD` are **mutually exclusive**: both
+  set means every trial rebuilds an image it could have pulled, saturating node I/O.
+- Both empty is fatal — there is no image source, pods never start, and every trial
+  reports `env_setup_failed`.
+- `K8S_KUBECONFIG` must point at an existing file (the cluster path belongs in
+  `lib/site.env`, not the run config).
+
+Skipped for `BACKEND=docker`, where images are built on demand on the remote daemon.
+
+### 8. Silent-pitfall warnings (train only)
+
+These three warn rather than fail, but each has caused a real incident:
+
+| Check | Why |
+| --- | --- |
+| `LR_SCHEDULER=constant` | under fully-async with `total_training_steps=-1`, a cosine schedule collapses to `lr=0` and the model silently stops learning |
+| `HARBOR_VAL_AGENT_MAX_TIMEOUT_SEC` set | without a val-specific timeout, long val tasks are cut off by the 2400 s train timeout and only ~170/500 get scored — see [Low val scores](/docs/troubleshooting/val-false-zero) |
+| `ROLLOUT_IS` ≠ `sequence` | on ~54k-token responses, sequence-level TIS drives ESS to ~0.06 (gradient starvation). Use `null`/token-level unless you are certain |
+
+### 9. Critical path existence
+
+Every path the runner needs must exist. Which paths those are depends on the kind:
+
+| Kind | Checked |
+| --- | --- |
+| train | `MODEL_PATH` `TRAIN_INDEX` `VAL_INDEX` |
+| eval | `MODEL_PATH` `DATASET_PATH` |
+| infer | `MODEL_PATH` `TRAIN_INDEX` `INSTANCES_FILE` |
+
+An unset value is only a warning where it is legitimately optional (an empty
+`INSTANCES_FILE` means "the whole index"); a value that *is* set but doesn't resolve
+on disk is always fatal.
+
+### 10. SAO / critic (train only)
+
+Value-based runs (`verl/sao.env`, or any `CRITIC_ENABLE=True`) add rules for the ways a
+run can *look* like SAO and not be one — the config layer is first-assignment-wins and
+the actor's loss config is frozen at construction, so nothing downstream would notice:
+
+| Check | Why |
+| --- | --- |
+| `ADV_ESTIMATOR=gae` ⇔ `CRITIC_ENABLE=True` (fatal) | GAE with no critic has no values; a critic under GRPO burns a training pool for nothing |
+| `verl/sao.env` listed **before** `verl/common.env` (fatal) | after `common.env` every SAO default is a no-op and the run is GRPO wearing an SAO name |
+| `ROLLOUT_CORRECTION_BYPASS=True` ⇒ `POLICY_LOSS_MODE=bypass_mode` (fatal) | otherwise the actor runs GSPO and the DIS weights never reach the loss |
+| imported verl has `sao_dis` / `lam_critic` (fatal) | `patches/verl_sao_7aed6b23.patch` not applied — re-run `setup_env.sh` |
+| critic token budget × `SP_SIZE` ≥ `MAX_PROMPT + MAX_RESP` (fatal; equal is a warning) | one rank asserting in `rearrange_micro_batches` leaves the others deadlocked in `_compute_values` until `NCCL_TIMEOUT` |
+| `CRITIC_FREEZE_PARAM_PATTERNS` vs the checkpoint's attention layout (fatal) | verl raises on a pattern that matches nothing; `linear_attn.` / `visual.` exist only on Qwen3.5-style hybrids. Freezing only `self_attn.` on a hybrid warns |
+| freeze patterns with FSDP1 and `use_orig_params=False` (fatal) | FSDP1 cannot flatten a unit with mixed `requires_grad`; use `fsdp2` |
+| `CRITIC_GRAD_CLIP ≤ 1`, `GAE_WHITEN_ADVANTAGES=False` with a cold critic, `N_RESP > 1` (warn) | the settings that starved and then collapsed run r6 — see [SAO](/docs/run-training/sao#what-went-wrong-on-r6) |
+
+## Manual checks
+
+Preflight reads the config, not the cluster. Confirm these by hand before a long run:
+
+- **GPUs** — `nvidia-smi` shows what `NGPUS_PER_NODE` claims.
+- **Backend reachability** — `kubectl --kubeconfig $K8S_KUBECONFIG get nodes`, or the
+  docker daemon responding.
+- **Ray ports** (`:6379`, `:8265`) free, or run `scripts/cleanup_before_run.sh`.
+- **Disk** — room under `checkpoints/` for FSDP shards.
+- **wandb** — `WANDB_API_KEY` exported, or `WANDB_MODE=disabled`.
+- **KV-head divisibility** — `gen_tp` must divide the model's `num_key_value_heads`,
+  or training crashes with a CUDA illegal memory access at the first forward pass:
+
+```bash
+.venv/bin/python - <<'PY'
+import json, os
+cfg = json.load(open(os.path.join(os.environ["MODEL_PATH"], "config.json")))
+kv = cfg.get("num_key_value_heads") or cfg.get("num_attention_heads")
+gen_tp = int(os.environ.get("gen_tp", 4))
+print(f"num_key_value_heads={kv}  gen_tp={gen_tp}  ->", "OK" if kv % gen_tp == 0 else "WILL CRASH")
+PY
+```
+
+Then prefer a short smoke run (`TRAIN_BSZ=8 N_RESP=4`) on any new model or cluster
+before committing to the full profile.

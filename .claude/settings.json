@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "lego-rl": {
+      "source": { "source": "directory", "path": ".claude/plugins" }
+    }
+  },
+  "enabledPlugins": {
+    "rl@lego-rl": true
+  }
+}

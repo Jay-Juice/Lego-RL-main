@@ -1,0 +1,177 @@
+---
+title: Core Concepts
+description: The terms used in configs, logs, and the dashboard
+---
+
+What the words in a config, a log line, and a dashboard panel refer to. Components are
+described in [Block Design](/docs/architecture), variables in
+[Configuration](/docs/reference/configuration).
+
+## Trial and rollout
+
+The same attempt has two names, kept distinct throughout:
+
+- **Trial** — one sandboxed execution of a task. The agent reasons, edits files, and
+  runs commands in a fresh sandbox until it submits or hits the turn or timeout limit.
+- **Rollout** — the token sequence captured from that trial: prompt context, sampled
+  assistant tokens, behavior-policy log-probabilities, loss mask.
+
+One trial produces one rollout. A step runs `TRAIN_BSZ × N_RESP` trials — by default
+`64 × 8 = 512`, that is 64 tasks with 8 attempts each.
+
+A **task** is an instruction, a repository snapshot, and a hidden test suite. The
+trainer never authors the prompt: the agent runs for as many turns as it needs and
+rebuilds the context each turn from its own template. Turn count and response length
+are therefore properties of the agent, measured per run, not settings in the config.
+
+## Reward
+
+Each task carries an executable verifier — its own test script, in the SWE-bench sense
+([Jimenez et al., 2024](https://arxiv.org/abs/2310.06770)). It runs in the sandbox
+after the trial and returns **1** if every fail-to-pass test now passes and every
+pass-to-pass test still passes, **0** otherwise.
+
+The reward is binary and produced by execution, not by a learned reward model, which
+removes reward-model drift as a failure mode. What remains is protecting the verifier
+itself — see the anti-hacking defenses in
+[Environment](/docs/architecture/environment). Logged as `critic/score/mean`.
+
+## Advantage
+
+GRPO ([Shao et al., 2024](https://arxiv.org/abs/2402.03300)) scores each rollout
+against the other attempts at the same task, so no critic is needed: the advantage of
+rollout $i$ in a group of $G$ is its reward minus the group mean, over the group
+standard deviation.
+
+$$
+\hat{A}_i=\frac{r_i-\operatorname{mean}(r_1,\dots,r_G)}{\operatorname{std}(r_1,\dots,r_G)}
+$$
+
+With a binary reward the consequence is concrete: a task solved in every attempt, or in
+none, has zero standard deviation and produces **zero gradient** — however many GPU
+hours its trials cost. A group carries signal only when it lands between the two
+extremes. Pool composition, not batch size, decides how much of a step trains
+anything; this is what the [task filter](/docs/data-preparation#task-filter) selects
+for.
+
+## Policy loss
+
+Set by `adv_estimator` (advantage) and `policy_loss_mode` (loss). The default profile
+is `adv_estimator=grpo`, `policy_loss_mode=gspo`.
+
+**GSPO** ([Qwen Team, 2025](https://arxiv.org/abs/2507.18071)) clips on a
+sequence-level importance ratio, normalized by response length:
+
+$$
+s_i=\left(\frac{\pi_\theta(y_i\mid x)}{\pi_{\theta_{\text{old}}}(y_i\mid x)}\right)^{1/\lvert y_i\rvert}
+$$
+
+The $1/\lvert y_i \rvert$ exponent puts the clip bounds in units of *average per-token*
+log-ratio. That is why `clip_ratio_low` / `clip_ratio_high` are of order $10^{-4}$
+here, and why they need no retuning as responses grow from 43k to 90k tokens.
+
+**PPO** ([Schulman et al., 2017](https://arxiv.org/abs/1707.06347)) uses the same
+clipped form on a per-token ratio instead, with a critic supplying the advantage.
+
+**SAO** ([Single-rollout Asynchronous Optimization](https://arxiv.org/abs/2607.07508))
+keeps the critic and drops the group entirely: one rollout per task, per-token GAE
+advantages from a value model (with a length-adaptive policy λ and `lam_critic = 1`, so
+the critic regresses the Monte-Carlo return), and a REINFORCE loss whose per-token
+importance weight $r_t = \pi_\theta(a_t)/\pi_{\text{rollout}}(a_t)$ is *zeroed* outside a trust
+region $[0.2, 4.0]$ rather than clipped. Because a trajectory enters training the moment
+it finishes, it suits fully-async runs with long, uneven agent episodes. See
+[SAO](/docs/run-training/sao).
+
+Both optimize over full multi-turn rollouts, not single completions.
+
+## Rollout fidelity
+
+The loss is computed on a rollout the trainer did not generate. It is only valid if,
+for every token that carries gradient, the log-probability the trainer recomputes
+equals the one the serving engine emitted at generation time.
+
+Meeting that requires the same token ids, the same mask, the same weights, and — for a
+sparse model — the same expert routing. Retokenizing a transcript, reconstructing a
+prompt, or resampling routing each break it **silently**: the loss still looks
+reasonable, and the gradient refers to a policy that never ran. The
+[in-process proxy](/docs/architecture/in-process-proxy) records log-probabilities at
+generation time for this reason.
+
+The check is the correlation between the two sets of log-probabilities over a batch.
+Healthy is ≥ 0.99, and a drop is the first symptom of a broken path — see
+[Training Startup](/docs/troubleshooting/training-startup).
+
+**R3 (routing replay)** covers the sparse-model case: the experts the router picked at
+generation are recorded and replayed during the training forward pass, so both sides
+route each token identically. `ENABLE_R3` defaults to whether `MODEL_PATH` is a MoE
+checkpoint, so a dense model turns it off on its own; set it explicitly only to
+override that. cf. [Ma et al., 2025](https://arxiv.org/abs/2510.11370).
+
+## Importance correction
+
+When rollout and training log-probabilities differ by construction — a different
+engine, or stale weights under async — `ROLLOUT_IS` corrects the mismatch instead of
+assuming it away, at token or sequence level. A sequence weight is the product of its
+per-token ratios, so its variance grows with response length.
+
+The diagnostic is the **effective sample size**: how many of the batch's rollouts the
+weights actually leave in play. On the long rollouts this stack produces,
+`ROLLOUT_IS=sequence` has been measured at ESS ≈ 0.06 — the batch collapses onto a
+handful of samples and the gradient starves. Token-level correction is the default for
+that reason.
+
+## Training step
+
+[verl](https://github.com/verl-project/verl) — the open-source implementation of
+HybridFlow ([Sheng et al., 2025](https://arxiv.org/abs/2409.19256)) — drives one step:
+sample tasks → run the trials in Harbor sandboxes, serving the policy from vLLM
+([Kwon et al., 2023](https://arxiv.org/abs/2309.06180)) → collect rewards → compute
+advantages → update the actor → sync weights.
+
+| `TRAIN_MODE` | Placement | Use |
+| --- | --- | --- |
+| `sync` | Trainer and rollout engine share one GPU pool | Default; lowest cost |
+| `async` | Disjoint trainer and rollout pools, running concurrently | Multi-node — see [Scaling Up](/docs/run-training/scaling) |
+
+Rollouts whose trial ended in an infrastructure failure are dropped by the trajectory
+filter before the loss, so the batch reaching the optimizer is smaller than the batch
+that was launched.
+
+## Metrics
+
+verl writes one `step:N - key:value - …` line per step to the launch log and to wandb.
+
+| Metric | Definition |
+| --- | --- |
+| `critic/score/mean` | Mean reward over the step's rollouts — the task success signal |
+| `actor/entropy` | Mean per-token policy entropy — exploration, or collapse |
+| `actor/ppo_kl` | Mean per-token log-ratio between the old and the new policy |
+| `actor/pg_clipfrac` | Fraction of terms where the clip branch is active |
+| `actor/grad_norm` | Gradient norm before clipping |
+| `perf/mfu/actor` | Model FLOPs utilization — achieved FLOPs over peak |
+| `response_length/mean` | Mean rollout length in tokens |
+| `rollout_corr/kl` | Rollout-vs-training distribution shift |
+
+The [dashboard](/docs/dashboard) renders these as live charts.
+
+## Defined elsewhere
+
+| Term | Page |
+| --- | --- |
+| Scaffold / agent harness | [Environment](/docs/architecture/environment#scaffolds) |
+| Inference chain, trajectory capture | [In-Process Proxy](/docs/architecture/in-process-proxy) |
+| Trainer backend (FSDP, VeOmni, Megatron) | [Trainer](/docs/architecture/trainer#backends) |
+| Sandbox backend (Kubernetes, Docker) | [Backends](/docs/run-training/backends) |
+| Task index, task filter | [Data Preparation](/docs/data-preparation) |
+| Checkpoints, trajectories, logs | [Results & Artifacts](/docs/run-training/results-and-artifacts) |
+
+## References
+
+- Schulman et al., *Proximal Policy Optimization Algorithms*, 2017. [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
+- Shao et al., *DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models*, 2024. [arXiv:2402.03300](https://arxiv.org/abs/2402.03300)
+- Qwen Team, *Group Sequence Policy Optimization*, 2025. [arXiv:2507.18071](https://arxiv.org/abs/2507.18071)
+- Jimenez et al., *SWE-bench: Can Language Models Resolve Real-World GitHub Issues?*, ICLR 2024. [arXiv:2310.06770](https://arxiv.org/abs/2310.06770)
+- Sheng et al., *HybridFlow: A Flexible and Efficient RLHF Framework*, EuroSys 2025. [arXiv:2409.19256](https://arxiv.org/abs/2409.19256)
+- Kwon et al., *Efficient Memory Management for Large Language Model Serving with PagedAttention*, SOSP 2023. [arXiv:2309.06180](https://arxiv.org/abs/2309.06180)
+- Shoeybi et al., *Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism*, 2019. [arXiv:1909.08053](https://arxiv.org/abs/1909.08053)
+- Ma et al., *Stabilizing MoE Reinforcement Learning by Aligning Training and Inference Routers*, 2025. [arXiv:2510.11370](https://arxiv.org/abs/2510.11370)
