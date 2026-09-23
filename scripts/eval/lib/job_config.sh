@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 write_job_config() {
-    export EXP_NAME N_CONCURRENT MAX_RETRIES SERVED_MODEL_NAME LLM_BASE_URL LLM_API_KEY
+    export BACKEND EXP_NAME N_CONCURRENT MAX_RETRIES SERVED_MODEL_NAME LLM_BASE_URL LLM_API_KEY
     export DATASET_PATH DATASET_NAME N_TASKS EVAL_AGENT_NAME
     # Harness-specific endpoint/model/env declarations come from the scaffold
     # module.  The generated JobConfig is consumed by a separate `harbor run`
@@ -13,6 +13,8 @@ write_job_config() {
     export HARBOR_ENVIRONMENT_IMPORT_PATH HARBOR_ENVIRONMENT_FORCE_BUILD HARBOR_ENVIRONMENT_DELETE
     export HARBOR_ENVIRONMENT_OVERRIDE_CPUS HARBOR_ENVIRONMENT_OVERRIDE_MEMORY_MB HARBOR_HOSTPATH_MOUNTS
     export HARBOR_AGENT_IMPORT_PATH HARBOR_AGENT_RUNTIME_IMAGE HARBOR_AGENT_RUNTIME_MOUNT_PATH HARBOR_AGENT_RUNTIME_IMAGE_SUBPATH
+    export HARBOR_VERIFIER_RUNTIME_IMAGE HARBOR_VERIFIER_RUNTIME_MOUNT_PATH
+    export HARBOR_VERIFIER_RUNTIME_IMAGE_SUBPATH HARBOR_VERIFIER_RUNTIME_REQUIRED
     export K8S_KUBECONFIG K8S_NAMESPACE K8S_POD_STARTUP_TIMEOUT K8S_POD_ACTIVE_DEADLINE_SECONDS
     export HARBOR_EXCLUDE_NODES HARBOR_ENVIRONMENT_TYPE
     export HARBOR_AGENT_TIMEOUT_MULTIPLIER HARBOR_AGENT_SETUP_TIMEOUT_MULTIPLIER
@@ -81,23 +83,37 @@ env_kwargs = {
     "agent_runtime_image": os.environ.get("HARBOR_AGENT_RUNTIME_IMAGE"),
     "agent_runtime_mount_path": os.environ.get("HARBOR_AGENT_RUNTIME_MOUNT_PATH"),
     "agent_runtime_image_subpath": os.environ.get("HARBOR_AGENT_RUNTIME_IMAGE_SUBPATH"),
-    "agent_runtime_image_pull_policy": os.environ.get("HARBOR_AGENT_RUNTIME_IMAGE_PULL_POLICY", "IfNotPresent"),
-    "pod_active_deadline_seconds": int(os.environ.get("K8S_POD_ACTIVE_DEADLINE_SECONDS", "6000")),
 }
-if optional_raw("K8S_KUBECONFIG") is not None:
-    env_kwargs["kubeconfig_path"] = os.environ["K8S_KUBECONFIG"]
-if optional_raw("K8S_NAMESPACE") is not None:
-    env_kwargs["namespace"] = os.environ["K8S_NAMESPACE"]
-startup_timeout = optional_number("K8S_POD_STARTUP_TIMEOUT")
-if startup_timeout is not None:
-    env_kwargs["pod_startup_timeout_sec"] = startup_timeout
-if host_path_mounts is not None:
-    env_kwargs["host_path_mounts"] = host_path_mounts
-# Same knob as the training agent loop (agent_loop_config_*.yaml -> kubernetes.py:exclude_nodes):
-# keep sandbox pods off nodes that cannot reach the vLLM host, where every LLM call times out
-# and the trial is lost. Comma-separated; empty = no node affinity at all.
-if os.environ.get("HARBOR_EXCLUDE_NODES", "").strip():
-    env_kwargs["exclude_nodes"] = os.environ["HARBOR_EXCLUDE_NODES"].strip()
+if os.environ.get("BACKEND", "k8s").lower() == "docker":
+    env_kwargs.update({
+        "verifier_runtime_image": os.environ.get("HARBOR_VERIFIER_RUNTIME_IMAGE"),
+        "verifier_runtime_mount_path": os.environ.get("HARBOR_VERIFIER_RUNTIME_MOUNT_PATH"),
+        "verifier_runtime_image_subpath": os.environ.get("HARBOR_VERIFIER_RUNTIME_IMAGE_SUBPATH"),
+        "verifier_runtime_required": truthy(
+            os.environ.get("HARBOR_VERIFIER_RUNTIME_REQUIRED", "True")
+        ),
+    })
+else:
+    env_kwargs.update({
+        "agent_runtime_image_pull_policy": os.environ.get(
+            "HARBOR_AGENT_RUNTIME_IMAGE_PULL_POLICY", "IfNotPresent"
+        ),
+        "pod_active_deadline_seconds": int(
+            os.environ.get("K8S_POD_ACTIVE_DEADLINE_SECONDS", "6000")
+        ),
+    })
+    if optional_raw("K8S_KUBECONFIG") is not None:
+        env_kwargs["kubeconfig_path"] = os.environ["K8S_KUBECONFIG"]
+    if optional_raw("K8S_NAMESPACE") is not None:
+        env_kwargs["namespace"] = os.environ["K8S_NAMESPACE"]
+    startup_timeout = optional_number("K8S_POD_STARTUP_TIMEOUT")
+    if startup_timeout is not None:
+        env_kwargs["pod_startup_timeout_sec"] = startup_timeout
+    if host_path_mounts is not None:
+        env_kwargs["host_path_mounts"] = host_path_mounts
+    # Keep sandbox pods off nodes that cannot reach the vLLM host.
+    if os.environ.get("HARBOR_EXCLUDE_NODES", "").strip():
+        env_kwargs["exclude_nodes"] = os.environ["HARBOR_EXCLUDE_NODES"].strip()
 
 agent_env = {
     "LLM_BASE_URL": os.environ["LLM_BASE_URL"],

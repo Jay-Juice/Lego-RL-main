@@ -2,13 +2,17 @@
 
 build_vllm_command() {
     local extra_args=()
+    local internal_port_env=()
     if [ -n "${EVAL_VLLM_EXTRA_ARGS:-}" ]; then
         # shellcheck disable=SC2206
         extra_args=($EVAL_VLLM_EXTRA_ARGS)
     fi
+    if [ -n "${VLLM_INTERNAL_PORT_START:-}" ]; then
+        internal_port_env=("VLLM_PORT=$VLLM_INTERNAL_PORT_START")
+    fi
 
     vllm_cmd=(
-        env -u MODELING_BACKEND vllm serve "$MODEL_PATH"
+        env -u MODELING_BACKEND "${internal_port_env[@]}" vllm serve "$MODEL_PATH"
         --served-model-name "$SERVED_MODEL_NAME"
         --tensor-parallel-size "$GEN_TP"
         --port "$VLLM_PORT"

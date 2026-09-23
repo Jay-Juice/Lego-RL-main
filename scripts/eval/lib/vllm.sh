@@ -33,15 +33,25 @@ kill_tree() {
 }
 
 kill_vllm_and_wait() {
-    local max
+    local max gpu
     [ -n "${VLLM_PID:-}" ] && kill_tree "$VLLM_PID"
-    pkill -9 -f "vllm serve" 2>/dev/null || true
+    if is_true "${EVAL_SCOPED_VLLM_CLEANUP:-False}"; then
+        gpu="${CUDA_VISIBLE_DEVICES%%,*}"
+        [ -n "$gpu" ] || { echo "[FATAL] scoped vLLM cleanup requires CUDA_VISIBLE_DEVICES" >&2; exit 1; }
+    else
+        pkill -9 -f "vllm serve" 2>/dev/null || true
+        gpu=""
+    fi
     for _ in $(seq 1 60); do
-        max=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits 2>/dev/null | sort -rn | head -1)
+        if [ -n "$gpu" ]; then
+            max=$(nvidia-smi --id="$gpu" --query-gpu=memory.used --format=csv,noheader,nounits 2>/dev/null | head -1)
+        else
+            max=$(nvidia-smi --query-gpu=memory.used --format=csv,noheader,nounits 2>/dev/null | sort -rn | head -1)
+        fi
         [ "${max:-9999}" -lt 2000 ] && break
         sleep 2
     done
-    echo "[vLLM] GPUs drained (max used ${max:-?} MiB)"
+    echo "[vLLM] GPU${gpu:+ $gpu} drained (max used ${max:-?} MiB)"
 }
 
 cleanup_vllm() {

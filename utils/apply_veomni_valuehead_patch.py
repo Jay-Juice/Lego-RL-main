@@ -47,11 +47,11 @@ WHAT IT PATCHES:
 Ordering follows veomni's own seed_oss/__init__.py, the one family upstream got right:
 specific For* branches before the generic "Model" branch.
 
-Qwen3.5-MoE has no generated ForTokenClassification class. This script copies
-src/verl_patch/models/qwen3_5_moe_token_classification.py next to the family and
-dispatches to it. It also patches VeOmniEngineWithValueHead so a missing
-AutoModel mapping falls back to rewriting ForConditionalGeneration, rather than
-raising (or, worse, building a language model).
+Qwen3.5 dense and MoE have no generated ForTokenClassification classes. This
+script copies their sidecars from src/verl_patch/models/ next to each VeOmni
+family and dispatches to them. It also patches VeOmniEngineWithValueHead so a
+missing AutoModel mapping falls back to rewriting ForConditionalGeneration,
+rather than raising (or, worse, building a language model).
 
 Idempotent: skipped if the family already dispatches ForTokenClassification.
 Run with `--check` to report status without writing.
@@ -82,6 +82,10 @@ def _veomni_dir() -> str:
 
 QWEN3_MOE = "models/transformers/qwen3_moe/__init__.py"
 QWEN3 = "models/transformers/qwen3/__init__.py"
+QWEN3_5 = "models/transformers/qwen3_5/__init__.py"
+QWEN3_5_SIDECAR = "models/transformers/qwen3_5/token_classification.py"
+QWEN3_5_GPU_MODELING = "models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py"
+QWEN3_5_NPU_MODELING = "models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_npu.py"
 QWEN3_5_MOE = "models/transformers/qwen3_5_moe/__init__.py"
 QWEN3_5_MOE_SIDECAR = "models/transformers/qwen3_5_moe/token_classification.py"
 
@@ -194,6 +198,34 @@ _DENSE_REPLACE = '''    if IS_NPU_AVAILABLE:
     else:
         return Qwen3ForCausalLM'''
 
+_Q35_DENSE_FIND = '''    if IS_NPU_AVAILABLE:
+        from .generated.patched_modeling_qwen3_5_npu import Qwen3_5ForConditionalGeneration, Qwen3_5Model
+    else:
+        from .generated.patched_modeling_qwen3_5_gpu import Qwen3_5ForConditionalGeneration, Qwen3_5Model
+
+    if "ForConditionalGeneration" in architecture:
+        return Qwen3_5ForConditionalGeneration
+    elif "Model" in architecture:
+        return Qwen3_5Model
+    else:
+        return Qwen3_5ForConditionalGeneration'''
+
+_Q35_DENSE_REPLACE = '''    if IS_NPU_AVAILABLE:
+        from .generated.patched_modeling_qwen3_5_npu import Qwen3_5ForConditionalGeneration, Qwen3_5Model
+    else:
+        from .generated.patched_modeling_qwen3_5_gpu import Qwen3_5ForConditionalGeneration, Qwen3_5Model
+
+    from .token_classification import Qwen3_5ForTokenClassification
+
+    if "ForTokenClassification" in architecture:
+        return Qwen3_5ForTokenClassification
+    elif "ForConditionalGeneration" in architecture:
+        return Qwen3_5ForConditionalGeneration
+    elif "Model" in architecture:
+        return Qwen3_5Model
+    else:
+        return Qwen3_5ForConditionalGeneration'''
+
 _Q35_MOE_FIND = '''    if IS_NPU_AVAILABLE:
         from .generated.patched_modeling_qwen3_5_moe_npu import (
             Qwen3_5MoeForCausalLM,
@@ -291,6 +323,78 @@ _VERL_REPLACE = '''        token_cls = AutoModelForTokenClassification._model_ma
         config.architectures = [token_cls.__name__]
         return config'''
 
+_VERL_NESTED_FIND = '''            elif isinstance(tensor, torch.Tensor) and tensor.is_nested:
+                tensor_lst = tensor.unbind()  # for performance
+                selected_tensors = [tensor_lst[idx] for idx in indices]
+                data_dict[key] = nested_tensor_from_tensor_list(
+                    selected_tensors, ragged_idx=getattr(tensor, "_ragged_idx", tensor.dim() - 1)
+                )'''
+
+_VERL_NESTED_REPLACE = '''            elif isinstance(tensor, torch.Tensor) and tensor.is_nested:
+                # PyTorch unbind is broken for 3D+ jagged tensors whose ragged
+                # dimension is not the first sample dimension (for example
+                # Qwen3.5 mRoPE position_ids with per-sample shape [4, seq]).
+                # Select rows directly from the packed values using offsets.
+                # This works for both ordinary 2D NJTs and mRoPE NJTs and avoids
+                # the split_with_sizes-on-the-wrong-dimension failure.
+                ragged_idx = getattr(tensor, "_ragged_idx", tensor.dim() - 1)
+                offsets = tensor.offsets()
+                values = tensor.values()
+                selected_tensors = []
+                for idx in indices.tolist():
+                    start = int(offsets[idx].item())
+                    length = int((offsets[idx + 1] - offsets[idx]).item())
+                    selected_tensors.append(values.narrow(ragged_idx - 1, start, length))
+                data_dict[key] = nested_tensor_from_tensor_list(selected_tensors, ragged_idx=ragged_idx)'''
+
+_Q35_VISION_DUMMY_FIND = "elif get_parallel_state().fsdp_enabled:"
+_Q35_VISION_DUMMY_REPLACE_V1 = '''elif (
+            get_parallel_state().fsdp_enabled
+            and not getattr(self, "_skip_vision_dummy_forward", False)
+        ):'''
+_Q35_VISION_DUMMY_REPLACE_V2 = '''elif (
+            get_parallel_state().fsdp_enabled
+            and any(parameter.requires_grad for parameter in self.visual.parameters())
+            and not getattr(self, "_skip_vision_dummy_forward", False)
+        ):'''
+_Q35_VISION_DUMMY_REPLACE = '''elif (
+            get_parallel_state().fsdp_enabled
+            and any(parameter.requires_grad for parameter in self.visual.parameters())
+            and not getattr(self, "_skip_vision_dummy_forward", False)
+            and __import__("os").environ.get("VEOMNI_QWEN35_TEXT_ONLY", "0").lower()
+            not in ("1", "true", "yes", "on")
+        ):'''
+
+_VERL_NESTED_REPLACE_V1 = _VERL_NESTED_REPLACE
+_VERL_NESTED_REPLACE = '''            elif isinstance(tensor, torch.Tensor) and tensor.is_nested:
+                # PyTorch unbind is broken for 3D+ jagged tensors. Qwen3.5
+                # mRoPE position_ids can also arrive in two valid packed layouts:
+                # offsets may describe sequence lengths (values [4, sum_seq]) or,
+                # for a single sample, the four coordinate channels themselves
+                # (values [4, seq], offsets [0, 4]). Infer the packed storage
+                # dimension from offsets instead of trusting the logical NJT dim.
+                offsets = tensor.offsets()
+                values = tensor.values()
+                packed_size = int(offsets[-1].item())
+                ragged_idx = getattr(tensor, "_ragged_idx", tensor.dim() - 1)
+                storage_dim = ragged_idx - 1
+                if storage_dim >= values.dim() or values.shape[storage_dim] != packed_size:
+                    matching_dims = [dim for dim, size in enumerate(values.shape) if size == packed_size]
+                    if len(matching_dims) != 1:
+                        raise RuntimeError(
+                            f"Cannot identify packed jagged dimension for key {key!r}: "
+                            f"values_shape={tuple(values.shape)}, offsets_last={packed_size}, "
+                            f"ragged_idx={ragged_idx}, matching_dims={matching_dims}"
+                        )
+                    storage_dim = matching_dims[0]
+                    ragged_idx = storage_dim + 1
+                selected_tensors = []
+                for idx in indices.tolist():
+                    start = int(offsets[idx].item())
+                    length = int((offsets[idx + 1] - offsets[idx]).item())
+                    selected_tensors.append(values.narrow(storage_dim, start, length))
+                data_dict[key] = nested_tensor_from_tensor_list(selected_tensors, ragged_idx=ragged_idx)'''
+
 # (name, marker, find, replace). marker -> already-applied detection.
 # "ForTokenClassification" appears nowhere in either unpatched qwen3 file, so it is
 # an unambiguous marker there. Qwen3.5 uses more specific markers because both
@@ -310,6 +414,14 @@ PATCHES: dict[str, list[tuple[str, str, str, str]]] = {
             "ForTokenClassification",
             _DENSE_FIND,
             _DENSE_REPLACE,
+        ),
+    ],
+    QWEN3_5: [
+        (
+            "qwen3_5 dense ForTokenClassification dispatch",
+            "return Qwen3_5ForTokenClassification",
+            _Q35_DENSE_FIND,
+            _Q35_DENSE_REPLACE,
         ),
     ],
     QWEN3_5_MOE: [
@@ -352,10 +464,99 @@ def _patch_q35_text_family(veomni_root: str, check_only: bool) -> int:
     return 0
 
 
+def _patch_q35_text_only_vision_dummy(veomni_root: str, check_only: bool) -> int:
+    """Let explicit text-only Qwen3.5 jobs skip VeOmni's ViT dummy forwards.
+
+    Qwen3.5's multimodal wrapper contains one no-media FSDP dummy branch for
+    images and another for videos.  The dense value-head sidecar keeps the full
+    wrapper for checkpoint compatibility, but its SWE-bench inputs are text-only
+    and its vision tower is frozen. Actor training uses the same wrapper, so the
+    explicit VEOMNI_QWEN35_TEXT_ONLY switch covers both models. Both no-media
+    branches therefore need the opt-out.
+    """
+    bad = 0
+    marker = '_skip_vision_dummy_forward'
+    for rel in (QWEN3_5_GPU_MODELING, QWEN3_5_NPU_MODELING):
+        path = os.path.join(veomni_root, rel)
+        if not os.path.isfile(path):
+            print(f"  [MISSING FILE] {rel}")
+            bad += 1
+            continue
+        with open(path, encoding="utf-8") as f:
+            content = f.read()
+        current_count = content.count(_Q35_VISION_DUMMY_REPLACE)
+        if current_count == 2:
+            print(f"  [already]  {rel} :: text-only Qwen3.5 skips ViT dummy forwards")
+            continue
+        old = None
+        for candidate in (_Q35_VISION_DUMMY_REPLACE_V2, _Q35_VISION_DUMMY_REPLACE_V1):
+            if content.count(candidate) == 2:
+                old = candidate
+                break
+        if old is not None:
+            print(f"  [{'WOULD UPGRADE' if check_only else 'UPGRADE'}]  {rel} :: explicit text-only ViT dummy guard")
+            if check_only:
+                bad += 1
+                continue
+            content = content.replace(old, _Q35_VISION_DUMMY_REPLACE)
+            tmp = f"{path}.vhtmp.{os.getpid()}"
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write(content)
+            os.replace(tmp, path)
+            continue
+        marker_count = content.count(marker)
+        if marker_count:
+            print(f"  [!! PARTIAL] {rel} :: expected 2 ViT dummy guards, found {marker_count}")
+            bad += 1
+            continue
+        find_count = content.count(_Q35_VISION_DUMMY_FIND)
+        if find_count != 2:
+            print(f"  [!! NOT FOUND] {rel} :: expected 2 unguarded ViT dummy branches, found {find_count}")
+            bad += 1
+            continue
+        print(f"  [{'WOULD' if check_only else 'APPLY'}]  {rel} :: explicit text-only ViT dummy guard")
+        if check_only:
+            bad += 1
+            continue
+        content = content.replace(_Q35_VISION_DUMMY_FIND, _Q35_VISION_DUMMY_REPLACE)
+        tmp = f"{path}.vhtmp.{os.getpid()}"
+        with open(tmp, "w", encoding="utf-8") as f:
+            f.write(content)
+        os.replace(tmp, path)
+    return bad
+
+
 def _repo_sidecar_path() -> str:
     # utils/apply_veomni_valuehead_patch.py -> repo root
     here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(here, "src/verl_patch/models/qwen3_5_moe_token_classification.py")
+
+
+def _repo_dense_sidecar_path() -> str:
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(here, "src/verl_patch/models/qwen3_5_token_classification.py")
+
+
+def _install_q35_dense_sidecar(veomni_root: str, check_only: bool) -> int:
+    src = _repo_dense_sidecar_path()
+    dst = os.path.join(veomni_root, QWEN3_5_SIDECAR)
+    if not os.path.isfile(src):
+        print(f"  [!! NOT FOUND] sidecar source {src}")
+        return 1
+    if os.path.isfile(dst) and open(dst, encoding="utf-8").read() == open(src, encoding="utf-8").read():
+        print(f"  [already]  {QWEN3_5_SIDECAR}")
+        return 0
+    print(f"  [{'WOULD' if check_only else 'APPLY'}]  {QWEN3_5_SIDECAR}")
+    if check_only:
+        return 1
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    tmp = f"{dst}.vhtmp.{os.getpid()}"
+    with open(src, encoding="utf-8") as f:
+        content = f.read()
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(content)
+    os.replace(tmp, dst)
+    return 0
 
 
 def _install_q35_sidecar(veomni_root: str, check_only: bool) -> int:
@@ -438,6 +639,51 @@ def _patch_verl_valuehead(check_only: bool) -> int:
     return 1
 
 
+def _verl_tensordict_utils_path() -> str | None:
+    try:
+        import verl.utils.tensordict_utils as utils  # noqa: PLC0415
+
+        return os.path.abspath(utils.__file__)
+    except Exception:
+        pass
+    verl_dir = os.environ.get("VERL_DIR", "")
+    if verl_dir:
+        candidate = os.path.join(verl_dir, "verl/utils/tensordict_utils.py")
+        if os.path.isfile(candidate):
+            return candidate
+    return None
+
+
+def _patch_verl_nested_index_select(check_only: bool) -> int:
+    """Avoid PyTorch's broken unbind for Qwen3.5 mRoPE jagged tensors."""
+    path = _verl_tensordict_utils_path()
+    if path is None:
+        print("  [skip] verl not importable -- not patching nested-tensor row selection")
+        return 0
+    with open(path, encoding="utf-8") as f:
+        content = f.read()
+    marker = "packed_size = int(offsets[-1].item())"
+    if marker in content:
+        print(f"  [already]  {path} :: mRoPE jagged index_select")
+        return 0
+    if _VERL_NESTED_REPLACE_V1 in content:
+        find = _VERL_NESTED_REPLACE_V1
+    elif _VERL_NESTED_FIND in content:
+        find = _VERL_NESTED_FIND
+    else:
+        print(f"  [!! NOT FOUND] {path} :: nested index_select (verl version mismatch?)")
+        return 1
+    print(f"  [{'WOULD' if check_only else 'APPLY'}]  {path} :: mRoPE jagged index_select")
+    if check_only:
+        return 1
+    content = content.replace(find, _VERL_NESTED_REPLACE, 1)
+    tmp = f"{path}.vhtmp.{os.getpid()}"
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(content)
+    os.replace(tmp, path)
+    return 0
+
+
 def _verify(root: str) -> int:
     """Import the registry and assert every architecture resolves to its own class.
 
@@ -459,6 +705,9 @@ def _verify(root: str) -> int:
         ("qwen3", "Qwen3ForCausalLM"),
         ("qwen3", "Qwen3ForSequenceClassification"),
         ("qwen3", "Qwen3Model"),
+        ("qwen3_5", "Qwen3_5ForTokenClassification"),
+        ("qwen3_5", "Qwen3_5ForConditionalGeneration"),
+        ("qwen3_5", "Qwen3_5Model"),
         ("qwen3_5_moe", "Qwen3_5MoeForTokenClassification"),
         ("qwen3_5_moe", "Qwen3_5MoeForCausalLM"),
         ("qwen3_5_moe", "Qwen3_5MoeForConditionalGeneration"),
@@ -497,6 +746,34 @@ def _verify(root: str) -> int:
     except Exception as e:
         print(f"  [ERROR] converter check: {e!r}")
         bad += 1
+
+    try:
+        import torch  # noqa: PLC0415
+        from tensordict import TensorDict  # noqa: PLC0415
+        from verl.utils.tensordict_utils import index_select_tensor_dict  # noqa: PLC0415
+
+        rows = [torch.arange(12).reshape(4, 3), torch.arange(20).reshape(4, 5)]
+        nt = torch.nested.nested_tensor_from_jagged(
+            values=torch.cat(rows, dim=1), offsets=torch.tensor([0, 3, 8])
+        )
+        nt._ragged_idx = 2
+        selected = index_select_tensor_dict(TensorDict({"position_ids": nt}, batch_size=[2]), [1, 0])
+        got = selected["position_ids"]
+        ok = tuple(got.values().shape) == (4, 8) and got.offsets().tolist() == [0, 5, 8]
+        bad += not ok
+        print(f"  [{'ok' if ok else 'FAIL'}] verl mRoPE jagged index_select")
+
+        single_row = torch.arange(24).reshape(4, 6)
+        channel_ragged = torch.nested.as_nested_tensor([single_row], layout=torch.jagged)
+        selected = index_select_tensor_dict(
+            TensorDict({"position_ids": channel_ragged}, batch_size=[1]), [0]
+        )["position_ids"]
+        ok = tuple(selected.values().shape) == (4, 6) and selected.offsets().tolist() == [0, 4]
+        bad += not ok
+        print(f"  [{'ok' if ok else 'FAIL'}] verl single-row mRoPE jagged index_select")
+    except Exception as e:
+        print(f"  [ERROR] verl mRoPE jagged index_select -> {e!r}")
+        bad += 1
     return bad
 
 
@@ -508,10 +785,15 @@ def main() -> int:
         return 3 if _verify(root) else 0
     print(f"[veomni-valuehead] veomni at: {root}")
     total_applied = total_skipped = total_missing = 0
+    total_missing += _install_q35_dense_sidecar(root, check_only)
     total_missing += _install_q35_sidecar(root, check_only)
+    total_missing += _patch_q35_text_only_vision_dummy(root, check_only)
     verl_status = _patch_verl_valuehead(check_only)
     if verl_status:
         total_missing += verl_status
+    nested_status = _patch_verl_nested_index_select(check_only)
+    if nested_status:
+        total_missing += nested_status
 
     for rel, patches in PATCHES.items():
         path = os.path.join(root, rel)

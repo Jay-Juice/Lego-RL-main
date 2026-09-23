@@ -1,5 +1,10 @@
 services:
   main:
+    # Compose otherwise invents `<project>-main` for build-mode tasks. Harbor
+    # project names may contain separator combinations that are valid for
+    # Compose but invalid as Docker repository names. DockerEnvironment already
+    # provides a separately sanitized MAIN_IMAGE_NAME; use it explicitly.
+    image: ${MAIN_IMAGE_NAME}
     deploy:
       resources:
         limits:

@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
 cleanup_ray_and_shm() {
+    if [ "${RAY_SCOPED_CLEANUP:-0}" = 1 ]; then
+        # A colocated single-node run must not disturb unrelated Ray jobs.
+        exec 9>/tmp/lego-ray-start.lock
+        if ! flock -n 9; then
+            echo "[FATAL] another scoped Lego-RL Ray run holds the launch lock." >&2
+            return 1
+        fi
+        if pgrep -x raylet >/dev/null || pgrep -x gcs_server >/dev/null; then
+            echo "[FATAL] Ray is already running; refusing to start a second GPU job." >&2
+            return 1
+        fi
+        RAY_ISO_DIR=$(mktemp -d /tmp/lego-ray.XXXXXXXX)
+        export RAY_ISO_DIR
+        echo "[ray] isolated session root: $RAY_ISO_DIR"
+        return 0
+    fi
     ray stop --force --grace-period=60 || true
     rm -rf /tmp/ray/* 2>/dev/null || true
     sleep 5
@@ -51,7 +67,11 @@ stop_ray_head_on_exit() {
     # status after stopping the head runtime.
     trap - EXIT
     echo "[HEAD] runner exiting; stopping Ray so worker launchers can finish."
-    ray stop --force --grace-period=5 || true
+    if [ "${RAY_SCOPED_CLEANUP:-0}" = 1 ]; then
+        "$PYTHON_BIN" "$REPO_ROOT/scripts/train/lib/stop_scoped_ray.py" "$RAY_ISO_DIR" || true
+    else
+        ray stop --force --grace-period=5 || true
+    fi
     exit "$exit_status"
 }
 
@@ -76,7 +96,11 @@ cleanup_worker_on_exit() {
     if [ -n "${GPU_WANDB_PID_FILE:-}" ]; then
         rm -f "$GPU_WANDB_PID_FILE"
     fi
-    ray stop --force --grace-period=5 || true
+    if [ "${RAY_SCOPED_CLEANUP:-0}" = 1 ]; then
+        "$PYTHON_BIN" "$REPO_ROOT/scripts/train/lib/stop_scoped_ray.py" "$RAY_ISO_DIR" || true
+    else
+        ray stop --force --grace-period=5 || true
+    fi
     exit "$exit_status"
 }
 
@@ -100,11 +124,22 @@ wait_for_ray_head_shutdown() {
 start_ray_node() {
     if [ "$RAY_NODE_ROLE" = head ]; then
         echo "[HEAD] starting ray head"
+        local -a ray_temp_args=()
+        if [ "${RAY_SCOPED_CLEANUP:-0}" = 1 ]; then
+            ray_temp_args=(--temp-dir="$RAY_ISO_DIR")
+        fi
+        # Clean a partial Ray startup too: ray start can leave daemons behind
+        # when its CLI exits with an error before the normal trainer begins.
+        trap 'stop_ray_head_on_exit "$?"' EXIT
         ray start --head --node-ip-address="$IP_LOCAL" --port="$RAY_PORT" \
             --object-store-memory="$RAY_OBJECT_STORE_MEMORY" \
-            --num-gpus="$NGPUS_PER_NODE" --disable-usage-stats --dashboard-host=0.0.0.0
-        trap 'stop_ray_head_on_exit "$?"' EXIT
+            --num-gpus="$NGPUS_PER_NODE" --disable-usage-stats --dashboard-host=0.0.0.0 \
+            "${ray_temp_args[@]}"
     else
+        if [ "${RAY_SCOPED_CLEANUP:-0}" = 1 ]; then
+            echo "[FATAL] scoped Ray cleanup currently supports a single-node head only." >&2
+            return 1
+        fi
         echo "[WORKER] waiting for head $IP_HEAD:$RAY_PORT"
         for _ in $(seq 1 30); do
             "$PYTHON_BIN" -c "import socket;s=socket.socket();s.settimeout(2);s.connect(('$IP_HEAD',$RAY_PORT))" \
