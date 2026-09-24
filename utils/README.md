@@ -59,9 +59,19 @@ that mesh name and handles the veomni fused-MoE → HF per-expert layout convers
 
 Usage: `python merge_veomni_fsdp_to_hf.py --local_dir <step>/actor --target_dir <out>`
 
-> ⚠️ **Qwen3-MoE / dense only. On Qwen3.5-MoE it silently corrupts the weights** — exit code 0,
-> plausible file sizes, but 1811 keys become 31666 and the experts end up in the per-expert
-> layout. For Qwen3.5 use `merge_qwen35_fsdp_to_hf.py` below.
+> ⚠️ **Do not use this for Qwen3.5 models.** On Qwen3.5-MoE it silently rewrites fused
+> experts into per-expert keys. On Qwen3.5-9B dense, its `save_pretrained()` path adds
+> extra `language_model` nesting to 759 keys. Both outputs look plausible but fail
+> `verify_merged_hf_keys.py`. Use the Qwen3.5-specific mergers below.
+
+### `merge_qwen35_dense_fsdp_to_hf.py`
+
+For Qwen3.5 dense actors such as Qwen3.5-9B. Their FSDP shards already use HF key names;
+this merger checks their keys and shapes against the base model, backfills the untrained
+`mtp.*` head, and writes safetensors directly without HF's key-rewriting save path.
+It refuses an existing output directory and rejects MoE checkpoints.
+
+Usage: `python merge_qwen35_dense_fsdp_to_hf.py --local_dir <step>/actor --target_dir <new_out> --base_dir <base_hf>`
 
 ### `merge_qwen35_fsdp_to_hf.py`
 
