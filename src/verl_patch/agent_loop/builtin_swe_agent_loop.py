@@ -263,6 +263,40 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         self.val_agent_max_timeout = (
             int(_val_agent_timeout) if _val_agent_timeout else None
         )
+        _val_max_iterations = os.environ.get("HARBOR_VAL_AGENT_MAX_ITERATIONS")
+        self.val_agent_max_iterations = (
+            int(_val_max_iterations) if _val_max_iterations else None
+        )
+        _val_override_timeout = os.environ.get("HARBOR_VAL_AGENT_OVERRIDE_TIMEOUT_SEC")
+        self.val_override_timeout = (
+            int(_val_override_timeout) if _val_override_timeout else None
+        )
+        _val_verifier_timeout = os.environ.get("HARBOR_VAL_VERIFIER_TIMEOUT_MULTIPLIER")
+        self.val_verifier_timeout_multiplier = (
+            float(_val_verifier_timeout) if _val_verifier_timeout else None
+        )
+        _val_environment_delete = os.environ.get("HARBOR_VAL_ENVIRONMENT_DELETE")
+        self.val_environment_delete = (
+            _val_environment_delete.lower() in {"1", "true", "yes", "on"}
+            if _val_environment_delete is not None
+            else None
+        )
+        _val_environment_force_build = os.environ.get("HARBOR_VAL_ENVIRONMENT_FORCE_BUILD")
+        self.val_environment_force_build = (
+            _val_environment_force_build.lower() in {"1", "true", "yes", "on"}
+            if _val_environment_force_build is not None
+            else None
+        )
+        _val_environment_cpus = os.environ.get("HARBOR_VAL_ENVIRONMENT_OVERRIDE_CPUS")
+        self.val_environment_cpus = (
+            int(_val_environment_cpus) if _val_environment_cpus else None
+        )
+        self.val_high_cpu_task_ids = frozenset(
+            task_id.strip()
+            for task_id in os.environ.get("HARBOR_VAL_HIGH_CPU_TASK_IDS", "").split(",")
+            if task_id.strip()
+        )
+        self.val_high_cpu_count = int(os.environ.get("HARBOR_VAL_HIGH_CPU_COUNT", "8"))
         _val_pod_deadline = os.environ.get("K8S_VAL_POD_ACTIVE_DEADLINE_SECONDS")
         self.val_pod_active_deadline = (
             int(_val_pod_deadline) if _val_pod_deadline else None
@@ -501,8 +535,13 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         # Priority: context overflow (upstream) > max_turns_reached > response-window overlong.
         num_turns = len([m for m in messages_snapshot if m.get("role") == "assistant"])
         termination_reason = trial_reason
+        turn_limit = (
+            self.val_agent_max_iterations
+            if is_val and self.val_agent_max_iterations is not None
+            else self._max_turns
+        )
         if termination_reason == TerminationReason.AGENT_COMPLETED:
-            if self._max_turns and num_turns >= self._max_turns:
+            if turn_limit and num_turns >= turn_limit:
                 termination_reason = TerminationReason.MAX_TURNS_REACHED
             elif len(response_ids) > self.response_length:
                 termination_reason = TerminationReason.OVERLONG
@@ -524,6 +563,11 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
             extra_fields={
                 "turn_scores": [],
                 "tool_rewards": [],
+                "reward_extra_info": {
+                    "verifier_timeout": int(metrics.get("verifier_timeout", 0)),
+                    "agent_timeout": int(metrics.get("agent_timeout", 0)),
+                    "environment_failure": 0,
+                },
                 "termination_reason": termination_reason,
                 **_termination_reason_flags(termination_reason),
                 "raw_prompt": raw_prompt,
@@ -672,6 +716,32 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                 cfg.setdefault("agent", {})["max_timeout_sec"] = (
                     self.val_agent_max_timeout
                 )
+            if self.val_agent_max_iterations is not None:
+                cfg.setdefault("agent", {}).setdefault("kwargs", {})[
+                    "max_iterations"
+                ] = self.val_agent_max_iterations
+            if self.val_override_timeout is not None:
+                cfg.setdefault("agent", {})[
+                    "override_timeout_sec"
+                ] = self.val_override_timeout
+            if self.val_verifier_timeout_multiplier is not None:
+                cfg["verifier_timeout_multiplier"] = (
+                    self.val_verifier_timeout_multiplier
+                )
+            if self.val_environment_delete is not None:
+                cfg.setdefault("environment", {})["delete"] = self.val_environment_delete
+            if self.val_environment_force_build is not None:
+                cfg.setdefault("environment", {})[
+                    "force_build"
+                ] = self.val_environment_force_build
+            if self.val_environment_cpus is not None:
+                cfg.setdefault("environment", {})[
+                    "override_cpus"
+                ] = self.val_environment_cpus
+            if Path(task_path).name in self.val_high_cpu_task_ids:
+                cfg.setdefault("environment", {})[
+                    "override_cpus"
+                ] = self.val_high_cpu_count
 
         reward = 0.0
         trial_reason = TerminationReason.AGENT_COMPLETED
@@ -768,6 +838,10 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                     or exc_type == "VerifierTimeoutError"
                     or "Verifier execution timed out" in exc_msg
                 )
+                if exc_type == "VerifierTimeoutError" or "Verifier execution timed out" in exc_msg:
+                    metrics["verifier_timeout"] = 1.0
+                elif exc_type == "AgentTimeoutError":
+                    metrics["agent_timeout"] = 1.0
                 agent_exited_nonzero = (
                     exc_type == "NonZeroAgentExitCodeError"
                     or "Command failed (exit" in exc_msg
@@ -1000,6 +1074,11 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
             extra_fields={
                 "turn_scores": [],
                 "tool_rewards": [],
+                "reward_extra_info": {
+                    "verifier_timeout": int(base_metrics.get("verifier_timeout", 0)),
+                    "agent_timeout": int(base_metrics.get("agent_timeout", 0)),
+                    "environment_failure": 1,
+                },
                 # Env-setup failure: the trial never produced a usable trajectory. The dummy
                 # sample only keeps the batch alive; algorithm.trajectory_filter drops it (it
                 # is in the default drop_reasons) from the loss and GRPO group statistics.

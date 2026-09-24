@@ -117,6 +117,14 @@ def make_loop(tmp_path):
     loop.val_pod_startup_timeout = None
     loop.val_pod_active_deadline = None
     loop.val_agent_max_timeout = None
+    loop.val_agent_max_iterations = None
+    loop.val_override_timeout = None
+    loop.val_verifier_timeout_multiplier = None
+    loop.val_environment_delete = None
+    loop.val_environment_force_build = None
+    loop.val_environment_cpus = None
+    loop.val_high_cpu_task_ids = frozenset()
+    loop.val_high_cpu_count = 8
     return loop
 
 
@@ -288,3 +296,95 @@ async def test_openai_trial_uses_chat_completions_base(tmp_path, monkeypatch):
     assert cfg["agent"]["extra_allowed_hosts"] == ["proxy"]
     assert "ANTHROPIC_BASE_URL" not in cfg["agent"]["env"]
     assert cfg["trial_name"].startswith("ohsdk-")
+
+
+@pytest.mark.asyncio
+async def test_verified_validation_overrides_do_not_change_training_trials(tmp_path, monkeypatch):
+    from verl_patch.agent_loop import builtin_swe_agent_loop as module
+
+    FakeTrial.configs = []
+    FakeTrial.results = [result(), result(), result()]
+    monkeypatch.setattr(module, "Trial", FakeTrial)
+    monkeypatch.setattr(module, "TrialConfig", FakeTrialConfig)
+    loop = make_loop(tmp_path)
+    loop.val_max_retries = 1
+    loop.val_agent_max_timeout = 7200
+    loop.val_agent_max_iterations = 200
+    loop.val_override_timeout = 7200
+    loop.val_verifier_timeout_multiplier = 2.0
+    loop.val_environment_delete = True
+    loop.val_environment_force_build = False
+    loop.val_environment_cpus = 2
+    loop.val_high_cpu_task_ids = frozenset({"scikit-learn__scikit-learn-14710"})
+    definition = loop.harnesses["openhands_sdk"]
+    definition.harbor_cfg["agent"]["kwargs"]["max_iterations"] = 128
+    definition.harbor_cfg["environment"].update(
+        {"delete": False, "force_build": True, "override_cpus": 4}
+    )
+    selection = SimpleNamespace(definition=definition, source="default")
+
+    for is_val, task_path in (
+        (True, "/tasks/ordinary"),
+        (True, "/tasks/scikit-learn__scikit-learn-14710"),
+        (False, "/tasks/scikit-learn__scikit-learn-14710"),
+    ):
+        await loop._run_harbor_trial(
+            task_path=task_path,
+            global_steps=30,
+            sampling_params={},
+            proxy=FakeProxy(),
+            metrics={},
+            is_val=is_val,
+            harness_selection=selection,
+        )
+
+    validation, high_cpu_validation, training = FakeTrial.configs
+    assert validation["agent"]["kwargs"]["max_iterations"] == 200
+    assert validation["agent"]["max_timeout_sec"] == 7200
+    assert validation["agent"]["override_timeout_sec"] == 7200
+    assert validation["verifier_timeout_multiplier"] == 2.0
+    assert validation["environment"]["delete"] is True
+    assert validation["environment"]["force_build"] is False
+    assert validation["environment"]["override_cpus"] == 2
+    assert high_cpu_validation["environment"]["override_cpus"] == 8
+    assert high_cpu_validation["environment"]["delete"] is True
+    assert training["agent"]["kwargs"]["max_iterations"] == 128
+    assert training["environment"]["delete"] is False
+    assert training["environment"]["force_build"] is True
+    assert training["environment"]["override_cpus"] == 4
+    assert "override_timeout_sec" not in training["agent"]
+
+
+@pytest.mark.asyncio
+async def test_verifier_timeout_is_auditable_in_validation(tmp_path, monkeypatch):
+    from verl_patch.agent_loop import builtin_swe_agent_loop as module
+
+    FakeTrial.configs = []
+    timeout = result(verifier=False)
+    timeout.exception_info = SimpleNamespace(
+        exception_type="VerifierTimeoutError",
+        exception_message="Verifier execution timed out",
+    )
+    FakeTrial.results = [timeout]
+    monkeypatch.setattr(module, "Trial", FakeTrial)
+    monkeypatch.setattr(module, "TrialConfig", FakeTrialConfig)
+    loop = make_loop(tmp_path)
+    loop.val_max_retries = 1
+    selection = SimpleNamespace(
+        definition=loop.harnesses["openhands_sdk"], source="default"
+    )
+    metrics = {}
+
+    reward, reason, _ = await loop._run_harbor_trial(
+        task_path="/tasks/scikit-learn__scikit-learn-14710",
+        global_steps=30,
+        sampling_params={},
+        proxy=FakeProxy(),
+        metrics=metrics,
+        is_val=True,
+        harness_selection=selection,
+    )
+
+    assert reward == 0.0
+    assert reason == "timeout"
+    assert metrics["verifier_timeout"] == 1.0

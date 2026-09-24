@@ -156,6 +156,7 @@ append_common_hydra_args() {
     add data.truncation "$DATA_TRUNCATION"
     add data.val_files "$VAL_FILES"
     add_if_set data.val_batch_size VAL_BSZ
+    if var_is_set VAL_SHUFFLE; then add_force data.validation_shuffle "$VAL_SHUFFLE"; fi
 
     if [ "$TRAINING_MODE" = async ]; then
         add rollout.n_gpus_per_node "$ROLLOUT_N_GPUS_PER_NODE"
@@ -172,6 +173,9 @@ append_common_hydra_args() {
     add trainer.max_actor_ckpt_to_keep "$MAX_ACTOR_CKPT_TO_KEEP"
     add trainer.max_critic_ckpt_to_keep "$MAX_CRITIC_CKPT_TO_KEEP"
     add trainer.test_freq "$TRAINER_TEST_FREQ"
+    if var_is_set TRAINER_VALIDATION_DATA_DIR; then
+        add_force trainer.validation_data_dir "$TRAINER_VALIDATION_DATA_DIR"
+    fi
     add trainer.total_epochs "$TRAINER_TOTAL_EPOCHS"
     add trainer.val_before_train "$TRAINER_VAL_BEFORE_TRAIN"
 }
