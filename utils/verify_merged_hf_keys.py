@@ -1,68 +1,71 @@
-"""Verify the merged HF checkpoint against the base model's key set.
-
-Catches the fused/per-expert mismatch deterministically, on CPU, before any GPU
-time is spent. Expected outcome: no unexpected keys, and the only missing keys
-are the untrained mtp.* speculative head that veomni does not save.
-"""
-import json, os, sys, glob
-
-if len(sys.argv) < 3:
-    sys.exit("usage: verify_merged_hf_keys.py <merged_hf_dir> <base_hf_dir>")
-MERGED, BASE = sys.argv[1], sys.argv[2]
+"""Validate HF structure; optionally scan for NaN/Inf. Not source equivalence."""
+import argparse
+import json
+from pathlib import Path
 
 
-def keys_and_shapes(d):
-    """Read key -> shape from a safetensors dir without loading tensor data."""
+def keys_and_shapes(directory, *, check_finite=False):
+    directory = Path(directory)
+    files = sorted(directory.glob('*.safetensors'))
+    if not directory.is_dir() or not files:
+        raise ValueError(f'No safetensors weights found in {directory}')
     from safetensors import safe_open
-    out = {}
-    for f in sorted(glob.glob(os.path.join(d, "*.safetensors"))):
-        with safe_open(f, framework="pt") as fh:
-            for k in fh.keys():
-                out[k] = tuple(fh.get_slice(k).get_shape())
-    return out
+    shapes, weight_map = {}, {}
+    for file in files:
+        with safe_open(str(file), framework='pt') as handle:
+            for key in handle.keys():
+                if key in shapes:
+                    raise ValueError(f'Duplicate tensor key: {key}')
+                shapes[key] = tuple(handle.get_slice(key).get_shape())
+                weight_map[key] = file.name
+                if check_finite:
+                    import torch
+                    tensor = handle.get_tensor(key)
+                    if tensor.is_floating_point() and not torch.isfinite(tensor).all().item():
+                        raise ValueError(f'Non-finite tensor: {key}')
+                    del tensor
+    if not shapes:
+        raise ValueError(f'Empty checkpoint in {directory}')
+    index = directory / 'model.safetensors.index.json'
+    if index.exists():
+        declared = json.loads(index.read_text(encoding='utf-8')).get('weight_map')
+        if declared != weight_map:
+            raise ValueError(f'Weight index does not match actual tensor files: {index}')
+    elif len(files) > 1:
+        raise ValueError(f'Missing weight index for sharded checkpoint: {directory}')
+    return shapes
 
 
-b = keys_and_shapes(BASE)
-m = keys_and_shapes(MERGED)
-print(f"base   keys: {len(b)}")
-print(f"merged keys: {len(m)}")
+def compare_shapes(base, merged, *, allow_missing_mtp=False):
+    missing = sorted(base.keys() - merged.keys())
+    unexpected = sorted(merged.keys() - base.keys())
+    mismatch = sorted(k for k in base.keys() & merged.keys() if base[k] != merged[k])
+    allowed = allow_missing_mtp and all(k.startswith('mtp.') for k in missing)
+    ok = bool(base) and bool(merged) and not unexpected and not mismatch and (not missing or allowed)
+    return ok, missing, unexpected, mismatch
 
-missing = sorted(set(b) - set(m))
-unexpected = sorted(set(m) - set(b))
-mismatch = sorted(k for k in (set(b) & set(m)) if b[k] != m[k])
 
-def bucket(ks):
-    out = {}
-    for k in ks:
-        tag = ("mtp" if ".mtp" in k or k.startswith("mtp") else
-               "experts" if ".experts." in k else
-               "visual" if ".visual." in k else "other")
-        out.setdefault(tag, []).append(k)
-    return out
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('merged')
+    parser.add_argument('base')
+    parser.add_argument('--allow-missing-mtp', action='store_true')
+    parser.add_argument('--check-finite', action='store_true', help='CPU scan; may be slow for large models')
+    args = parser.parse_args(argv)
+    try:
+        base = keys_and_shapes(args.base)
+        merged = keys_and_shapes(args.merged, check_finite=args.check_finite)
+        ok, missing, unexpected, mismatch = compare_shapes(base, merged, allow_missing_mtp=args.allow_missing_mtp)
+        print(f'base keys: {len(base)}; merged keys: {len(merged)}')
+        print(f'MISSING {len(missing)}: {missing[:8]}')
+        print(f'UNEXPECTED {len(unexpected)}: {unexpected[:8]}')
+        print(f'SHAPE MISMATCH {len(mismatch)}: {mismatch[:8]}')
+        print('PASS - key/shape/index checks only; source weight equivalence not checked' if ok else 'FAIL - checkpoint mismatch')
+        return 0 if ok else 1
+    except (ValueError, OSError, ImportError) as exc:
+        print(f'FAIL - {exc}')
+        return 1
 
-print(f"\nMISSING    {len(missing)}")
-for t, ks in bucket(missing).items():
-    print(f"  [{t}] {len(ks)}  e.g. {ks[:2]}")
-print(f"UNEXPECTED {len(unexpected)}")
-for t, ks in bucket(unexpected).items():
-    print(f"  [{t}] {len(ks)}  e.g. {ks[:2]}")
-print(f"SHAPE MISMATCH {len(mismatch)}")
-for k in mismatch[:8]:
-    print(f"  {k}: base {b[k]} vs merged {m[k]}")
 
-exp = [k for k in b if ".experts." in k]
-gotexp = [k for k in m if ".experts." in k]
-print(f"\nexpert keys: base {len(exp)}  merged {len(gotexp)}")
-fused_base = sum(1 for k in b if k.endswith(("experts.gate_up_proj", "experts.down_proj")))
-fused_m = sum(1 for k in m if k.endswith(("experts.gate_up_proj", "experts.down_proj")))
-perexp_m = sum(1 for k in m if ".experts." in k and k.endswith(
-    ("gate_proj.weight", "up_proj.weight", "down_proj.weight")))
-print(f"fused-layout keys: base {fused_base}  merged {fused_m}")
-print(f"per-expert-layout keys in merged: {perexp_m}  "
-      f"(Qwen3.5: expected 768, the mtp.* head, which the base also stores per-expert)")
-
-ok = (not unexpected) and (not mismatch) and all(
-    ".mtp" in k or k.startswith("mtp") for k in missing)
-print("\n" + ("PASS - safe to serve" if ok else
-              "FAIL - do not serve; investigate above"))
-sys.exit(0 if ok else 1)
+if __name__ == '__main__':
+    raise SystemExit(main())

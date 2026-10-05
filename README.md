@@ -32,6 +32,15 @@ updates the policy from the captured trajectory.
 
 ## News
 
+### A800 SWE / SAO research fork — 2026-10-05
+
+The local SWE-Smith adaptation, batch64 SAO baseline, and Verified-500 evaluations
+are documented in the [research status](research/STATUS_2026-10-05.md).
+The [PI implementation handoff](research/handoffs/LEGO_RL_PI_IMPLEMENTATION_HANDOFF_2026-10-05.md)
+contains the current checkpoints, experimental limits, and Privileged Critic design boundaries.
+Training and evaluation are stopped; PI has **not** been implemented by this update.
+Historical launch scripts and machine-specific configs are not instructions to restart jobs.
+
 - [2026/09/17] **Public training dashboards.** We are opening the live dashboards of six real
   Lego-RL runs, all on Qwen3.5-35B-A3B: GSPO on OpenSWE with each harness natively —
   [OpenHands SDK](https://rl-dashboard-openhands.legox.net),

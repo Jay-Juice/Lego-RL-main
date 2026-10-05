@@ -1,0 +1,65 @@
+{
+  "files": [
+    {
+      "path": "utils/prepare_swesmith_harbor.py",
+      "sha256": "6a1709115f04df64efe0504521f9f6f99e0c6594b1600958442d9d94bef16bbf"
+    },
+    {
+      "path": "utils/swesmith_embedded.py",
+      "sha256": "61c37e918070be13cadce998407c4522e3b0aaeb6de3dabd9b837a473c7ddc75"
+    },
+    {
+      "path": "tests/test_swesmith_embedded.py",
+      "sha256": "c7c2607c471237bd5932ffe8d02bec089acd6c5e2e91ff25c7d10dcbc5246584"
+    },
+    {
+      "path": "utils/repair_swesmith_embedded_assets.py",
+      "sha256": "9a79a9ebdf35b43d373733de4e80fd87d1968a6fa23c52b08f296d9845e473a2"
+    },
+    {
+      "path": "utils/recover_pandas_excluded_tasks.py",
+      "sha256": "ca95dc8c104d149321e14c1830582d955032caa77612eaba9ef5a17059f8526b"
+    },
+    {
+      "path": "utils/repair_furl_compat_assets.py",
+      "sha256": "98ddc1e1866abd7b9d61e041bdc446911c954a48a5507d72cba7bd270e522fe6"
+    },
+    {
+      "path": "utils/vendor/cpython310/parse.py",
+      "sha256": "f14ec821fe7ded126d2202eef195f66bd63f74975c9ae88322d0500f13eba8db"
+    },
+    {
+      "path": "utils/swesmith_pytest_report_guard.py",
+      "sha256": "151a9a9a864c087a2b7172fa387e4de5b6393f22d8fa7cb3d5b2281c33122fcd"
+    },
+    {
+      "path": "utils/recheck_patsy_report_guard.py",
+      "sha256": "e5283c63dd820c63b06f610588a290f86bd0ff4d8f93406a0a47516c2d26dfd5"
+    },
+    {
+      "path": "utils/validate_embedded_harbor.py",
+      "sha256": "407299e7caab01a843e7bead889f4810c0a6f88c40142f1569ab726b18be3d4e"
+    },
+    {
+      "path": "utils/assemble_swesmith_v4_candidate.py",
+      "sha256": "3fe6f8e0dd383a64c5c4544a09ee8d4f1141f3b341c4e786b9d4a48b0334a6d6"
+    },
+    {
+      "path": "utils/diagnose_dvc_verifier_timeout.py",
+      "sha256": "5bb9bb2d269b07b9522d012d85ac132d974447dd32e9fa9301f1ff5cf18f3f5d"
+    },
+    {
+      "path": "utils/recover_dvc_serial_verifier.py",
+      "sha256": "8f982ea142b0f22e55bb7cf867d664c610e4273c58a0f25f6571831e397d0e3b"
+    },
+    {
+      "path": "utils/swesmith_http_fixture.py",
+      "sha256": "c4bb14242bd3acc7309fc79cd10e9024b176cdd52556b1fbcd2b230ef445b586"
+    },
+    {
+      "path": "utils/recover_pyquery_http_assets.py",
+      "sha256": "82fe813aa2836710a86d20c2a278c05802ad5fa4b173b5468a2745b301e68353"
+    }
+  ],
+  "scope": "Isolated v4 candidate. Old training assets unchanged; no training launch."
+}

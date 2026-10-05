@@ -1,0 +1,25 @@
+{
+  "files": [
+    {
+      "path": "utils/swesmith_collection_verdict.py",
+      "sha256": "95ee94fd8ab2d9b8a83c2472133ea8f9030de9690711026391605a332f65609a"
+    },
+    {
+      "path": "utils/recover_final_four_swesmith.py",
+      "sha256": "41d5cf1954342476ce8f2f91aa2e1f41a302c9996751fc54b1a83a71551bea25"
+    },
+    {
+      "path": "tests/test_swesmith_collection_verdict.py",
+      "sha256": "bf053446dc354d8dc527ca16a40b86e15c69eea7d589364895ec0bc3bab1ca9d"
+    },
+    {
+      "path": "utils/validate_final_four_harbor.py",
+      "sha256": "c0cda884586957074a361e9fb5520df5ae226d25196c8f3e0fdc32325e98eeec"
+    },
+    {
+      "path": "utils/assemble_swesmith_v5_candidate.py",
+      "sha256": "65503f29e7861b84ff09012c1d0021af3a407a95e4393d4bc6ea67ea7bd827d9"
+    }
+  ],
+  "scope": "Four task-local repairs. No shared environment or training launch."
+}

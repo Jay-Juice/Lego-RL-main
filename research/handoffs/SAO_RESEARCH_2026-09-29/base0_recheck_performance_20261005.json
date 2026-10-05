@@ -1,0 +1,180 @@
+{
+  "base0-recheck-20261005-v1-n32-threads": {
+    "n": 500,
+    "exceptions": {
+      "null": 469,
+      "AgentTimeoutError": 29,
+      "NonZeroAgentExitCodeError": 2
+    },
+    "wall_minutes": 168.25451586643854,
+    "completion_minutes": {
+      "250": 67.19071470101674,
+      "450": 135.20636406739553,
+      "490": 153.4870671669642,
+      "500": 168.25451586643854
+    },
+    "environment_setup": {
+      "n": 500,
+      "mean_s": 30.85267174863815,
+      "median_s": 4.571998119354248,
+      "max_s": 124.56127500534058
+    },
+    "agent_setup": {
+      "n": 500,
+      "mean_s": 10.11139967393875,
+      "median_s": 7.456511974334717,
+      "max_s": 22.38540506362915
+    },
+    "agent_execution": {
+      "n": 500,
+      "mean_s": 2737.130032476902,
+      "median_s": 2170.6400130987167,
+      "max_s": 7218.308369874954
+    },
+    "verifier": {
+      "n": 500,
+      "mean_s": 16.73762771129608,
+      "median_s": 12.455722451210022,
+      "max_s": 332.52421402931213
+    },
+    "n_input_tokens": {
+      "n": 469,
+      "mean": 3594768.4136460554
+    },
+    "n_output_tokens": {
+      "n": 469,
+      "mean": 19342.006396588487
+    },
+    "active_ge16_samples": 4526,
+    "active_means": {
+      "prefill": 4660.803137428193,
+      "decode": 206.17101193106495,
+      "running": 28.389969067609368,
+      "waiting": 0.776623950508175,
+      "KV": 67.49622182942996,
+      "prefix": 61.83208130799823
+    },
+    "errors": {},
+    "runtime": [
+      "(APIServer pid=1286301) INFO 10-05 18:41:04 [utils.py:233] non-default args: {'model_tag': '/media/ubuntu/D1/zsj/Lego-RL-main/Qwen3.5-9B', 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'host': '0.0.0.0', 'port': 18000, 'model': '/media/ubuntu/D1/zsj/Lego-RL-main/Qwen3.5-9B', 'dtype': 'bfloat16', 'max_model_len': 262144, 'enforce_eager': True, 'served_model_name': ['vllm_model'], 'gpu_memory_utilization': 0.95, 'enable_prefix_caching': True, 'language_model_only': True, 'enable_chunked_prefill': True}"
+    ]
+  },
+  "b64-v6d-step20-20261004-v2-n32-threads": {
+    "n": 500,
+    "exceptions": {
+      "null": 464,
+      "NonZeroAgentExitCodeError": 1,
+      "AgentTimeoutError": 35
+    },
+    "wall_minutes": 159.37987216711045,
+    "completion_minutes": {
+      "250": 70.01489763259887,
+      "450": 134.74477843443552,
+      "490": 148.1375569343567,
+      "500": 159.37987216711045
+    },
+    "environment_setup": {
+      "n": 500,
+      "mean_s": 29.421397518634794,
+      "median_s": 4.279416918754578,
+      "max_s": 101.37896084785461
+    },
+    "agent_setup": {
+      "n": 500,
+      "mean_s": 11.314407649993896,
+      "median_s": 7.493786931037903,
+      "max_s": 31.714123010635376
+    },
+    "agent_execution": {
+      "n": 500,
+      "mean_s": 2869.01259236145,
+      "median_s": 2443.1025346517563,
+      "max_s": 7220.9085330963135
+    },
+    "verifier": {
+      "n": 500,
+      "mean_s": 18.045666338920594,
+      "median_s": 12.558056354522705,
+      "max_s": 615.2589340209961
+    },
+    "n_input_tokens": {
+      "n": 464,
+      "mean": 3433509.5689655175
+    },
+    "n_output_tokens": {
+      "n": 464,
+      "mean": 18706.308189655174
+    },
+    "active_ge16_samples": 4852,
+    "active_means": {
+      "prefill": 4887.089550700742,
+      "decode": 191.97050700741963,
+      "running": 28.39406430338005,
+      "waiting": 0.8101813685078318,
+      "KV": 68.05717230008244,
+      "prefix": 59.932769991755976
+    },
+    "errors": {},
+    "runtime": [
+      "(APIServer pid=3670095) INFO 10-05 16:00:16 [utils.py:233] non-default args: {'model_tag': '/media/ubuntu/D1/zsj/Lego-RL-main/merged_models/b64-v6d-step20-20261004', 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'host': '0.0.0.0', 'port': 18000, 'model': '/media/ubuntu/D1/zsj/Lego-RL-main/merged_models/b64-v6d-step20-20261004', 'dtype': 'bfloat16', 'max_model_len': 262144, 'enforce_eager': True, 'served_model_name': ['vllm_model'], 'gpu_memory_utilization': 0.95, 'enable_prefix_caching': True, 'language_model_only': True, 'enable_chunked_prefill': True}"
+    ]
+  },
+  "sao-step80-20260929-v1-n32-threads": {
+    "n": 500,
+    "exceptions": {
+      "null": 500
+    },
+    "wall_minutes": 51.57878298362096,
+    "completion_minutes": {
+      "250": 23.84188110033671,
+      "450": 36.76200774908066,
+      "490": 41.816852116584776,
+      "500": 51.57878298362096
+    },
+    "environment_setup": {
+      "n": 500,
+      "mean_s": 26.134794132232667,
+      "median_s": 15.953048467636108,
+      "max_s": 100.09087419509888
+    },
+    "agent_setup": {
+      "n": 500,
+      "mean_s": 12.026132247924805,
+      "median_s": 8.91820740699768,
+      "max_s": 29.44023299217224
+    },
+    "agent_execution": {
+      "n": 500,
+      "mean_s": 894.6724480915069,
+      "median_s": 839.7647514343262,
+      "max_s": 2771.949282884598
+    },
+    "verifier": {
+      "n": 500,
+      "mean_s": 17.230021428108216,
+      "median_s": 12.756399989128113,
+      "max_s": 329.26465606689453
+    },
+    "n_input_tokens": {
+      "n": 500,
+      "mean": 1854862.462
+    },
+    "n_output_tokens": {
+      "n": 500,
+      "mean": 13991.66
+    },
+    "active_ge16_samples": 1357,
+    "active_means": {
+      "prefill": 1482.6579218865143,
+      "decode": 450.9001473839352,
+      "running": 27.6617538688283,
+      "waiting": 0.0036845983787767134,
+      "KV": 41.144141488577745,
+      "prefix": 96.27693441414885
+    },
+    "errors": {},
+    "runtime": [
+      "(APIServer pid=1191635) INFO 09-29 19:33:06 [utils.py:233] non-default args: {'model_tag': '/media/ubuntu/D1/zsj/Lego-RL-main/merged_models/sao-qwen35-9b-swesmith-sp8-step80-direct-20260929', 'enable_auto_tool_choice': True, 'tool_call_parser': 'qwen3_coder', 'host': '0.0.0.0', 'port': 18000, 'model': '/media/ubuntu/D1/zsj/Lego-RL-main/merged_models/sao-qwen35-9b-swesmith-sp8-step80-direct-20260929', 'dtype': 'bfloat16', 'max_model_len': 262144, 'enforce_eager': True, 'served_model_name': ['vllm_model'], 'gpu_memory_utilization': 0.95, 'enable_prefix_caching': True, 'language_model_only': True, 'enable_chunked_prefill': True}"
+    ]
+  }
+}

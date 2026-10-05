@@ -1,0 +1,5 @@
+{
+  "utils/validate_redbot_baseline_tag.py": "aa171f616e5e8a5a4f89c915ae11bdac4eaff5485d2c70fbf5f542524926f1ed",
+  "src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml": "2aa73dd5ef0a04f2e1b05631d4e2043a1a1afd250943d3774b1e595e392780f0",
+  "scripts/train/configs/sao_sync_1node_qwen35_9b_swesmith_b64_w32_v6c_20260930.env": "2946bc6bb71438cbfdaeb171956fa2ef5d6931495dee15d44aaf883040ca4e21"
+}

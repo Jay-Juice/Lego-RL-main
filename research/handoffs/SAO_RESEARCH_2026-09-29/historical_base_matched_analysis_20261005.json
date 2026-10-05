@@ -1,0 +1,96 @@
+{
+  "paired_n": 469,
+  "historical_source_runs": [
+    "20260923-123439-missing362",
+    "20260923-015414-retry2"
+  ],
+  "runs": {
+    "historical_base": {
+      "means": {
+        "steps": 78.74413646055437,
+        "input": 3627893.420042644,
+        "output": 20230.02985074627,
+        "observation_chars": 134445.73134328358
+      },
+      "script_sha": {
+        "8cac001a02313237e2aeb70427e515488af65906354ea61e8a7b5410e0d6d117": 469
+      },
+      "tools": {
+        "terminal": {
+          "calls_per_task": 61.501066098081026,
+          "obs_chars_per_task": 93752.63539445629
+        },
+        "think": {
+          "calls_per_task": 4.791044776119403,
+          "obs_chars_per_task": 465.7441364605544
+        },
+        "file_editor": {
+          "calls_per_task": 10.901918976545842,
+          "obs_chars_per_task": 38874.88912579957
+        },
+        "finish": {
+          "calls_per_task": 0.9509594882729211,
+          "obs_chars_per_task": 1314.0746268656717
+        }
+      }
+    },
+    "current_base": {
+      "means": {
+        "steps": 79.45842217484008,
+        "input": 3594768.4136460554,
+        "output": 19342.006396588487,
+        "observation_chars": 132412.73560767592
+      },
+      "script_sha": {
+        "8cac001a02313237e2aeb70427e515488af65906354ea61e8a7b5410e0d6d117": 469
+      },
+      "tools": {
+        "terminal": {
+          "calls_per_task": 62.88059701492537,
+          "obs_chars_per_task": 93469.22814498933
+        },
+        "think": {
+          "calls_per_task": 4.49680170575693,
+          "obs_chars_per_task": 425.93603411513857
+        },
+        "file_editor": {
+          "calls_per_task": 10.550106609808102,
+          "obs_chars_per_task": 37191.24946695096
+        },
+        "finish": {
+          "calls_per_task": 0.9275053304904051,
+          "obs_chars_per_task": 1285.6929637526653
+        }
+      }
+    },
+    "old_step80": {
+      "means": {
+        "steps": 59.639658848614076,
+        "input": 1802847.8102345415,
+        "output": 13709.590618336886,
+        "observation_chars": 80918.64179104478
+      },
+      "script_sha": {
+        "8cac001a02313237e2aeb70427e515488af65906354ea61e8a7b5410e0d6d117": 469
+      },
+      "tools": {
+        "terminal": {
+          "calls_per_task": 25.88272921108742,
+          "obs_chars_per_task": 28381.616204690832
+        },
+        "think": {
+          "calls_per_task": 15.068230277185501,
+          "obs_chars_per_task": 1550.09381663113
+        },
+        "file_editor": {
+          "calls_per_task": 17.19829424307036,
+          "obs_chars_per_task": 48866.11727078891
+        },
+        "finish": {
+          "calls_per_task": 1.0,
+          "obs_chars_per_task": 2074.6609808102344
+        }
+      }
+    }
+  }
+}

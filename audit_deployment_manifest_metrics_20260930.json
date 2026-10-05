@@ -1,0 +1,5 @@
+{
+  "src/verl_patch/agent_loop/builtin_swe_agent_loop.py": "e8d81f5a1737a8d1655ed38c5051737ca579819586e8898ffeca9d42b9d13594",
+  "utils/validate_reward_metadata_concat.py": "9ecfa67282688b1c726609ded491be509f184ce08c287d7614cef425c0c77c2d",
+  "scripts/train/configs/sao_sync_1node_qwen35_9b_swesmith_b64_w32_v6d_20260930.env": "269b979de3785e3bd5c9147d1c53de8b8ca566bae69500a3317828909fbe3ae1"
+}

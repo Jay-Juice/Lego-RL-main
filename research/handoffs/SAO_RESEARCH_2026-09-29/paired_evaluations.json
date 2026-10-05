@@ -1,0 +1,362 @@
+{
+  "base": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/20260923-123439-missing362/combined_500_summary.json",
+  "base_fixed_patch_reward": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/20260923-123439-missing362/single14710-verifier/verifier/reward.txt",
+  "comparisons": [
+    {
+      "step": 80,
+      "pass": 254,
+      "gained": 36,
+      "lost": 61,
+      "exact_mcnemar_p_unadjusted": 0.014389633007095661,
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/sao-step80-20260929-v1-n32-threads/summary_audited.json",
+      "sha256": "6c8f1fc9f5376c6bc34b7284091eeda4d629fb9283c47f7d2602546a177a97f5",
+      "by_repo_n_base_checkpoint": {
+        "scikit-learn__scikit-learn": [
+          32,
+          26,
+          26
+        ],
+        "django__django": [
+          231,
+          128,
+          118
+        ],
+        "pydata__xarray": [
+          22,
+          14,
+          12
+        ],
+        "astropy__astropy": [
+          22,
+          12,
+          12
+        ],
+        "sympy__sympy": [
+          75,
+          45,
+          36
+        ],
+        "psf__requests": [
+          8,
+          1,
+          1
+        ],
+        "sphinx-doc__sphinx": [
+          44,
+          19,
+          15
+        ],
+        "mwaskom__seaborn": [
+          2,
+          0,
+          0
+        ],
+        "pytest-dev__pytest": [
+          19,
+          11,
+          10
+        ],
+        "matplotlib__matplotlib": [
+          34,
+          19,
+          20
+        ],
+        "pylint-dev__pylint": [
+          10,
+          3,
+          3
+        ],
+        "pallets__flask": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "step": 100,
+      "pass": 222,
+      "gained": 24,
+      "lost": 81,
+      "exact_mcnemar_p_unadjusted": 2.0779877274240746e-08,
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/sao-step100-20260929-v1-n32-threads/summary_audited.json",
+      "sha256": "bd194f921267cce559a4d782dba57f1b0de429eb805eaab5b652c92c4aad444a",
+      "by_repo_n_base_checkpoint": {
+        "sympy__sympy": [
+          75,
+          45,
+          34
+        ],
+        "django__django": [
+          231,
+          128,
+          105
+        ],
+        "matplotlib__matplotlib": [
+          34,
+          19,
+          16
+        ],
+        "scikit-learn__scikit-learn": [
+          32,
+          26,
+          22
+        ],
+        "pylint-dev__pylint": [
+          10,
+          3,
+          1
+        ],
+        "sphinx-doc__sphinx": [
+          44,
+          19,
+          14
+        ],
+        "pydata__xarray": [
+          22,
+          14,
+          10
+        ],
+        "mwaskom__seaborn": [
+          2,
+          0,
+          0
+        ],
+        "astropy__astropy": [
+          22,
+          12,
+          9
+        ],
+        "pytest-dev__pytest": [
+          19,
+          11,
+          9
+        ],
+        "psf__requests": [
+          8,
+          1,
+          1
+        ],
+        "pallets__flask": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "step": 110,
+      "pass": 221,
+      "gained": 28,
+      "lost": 86,
+      "exact_mcnemar_p_unadjusted": 4.842132602853125e-08,
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/sao-step110-20260929-v1-n8-threads/summary_audited.json",
+      "sha256": "088095a95531c7ffa445699f30043e690e795618b159f2e868fa63daa1c2117e",
+      "by_repo_n_base_checkpoint": {
+        "pylint-dev__pylint": [
+          10,
+          3,
+          3
+        ],
+        "django__django": [
+          231,
+          128,
+          98
+        ],
+        "sympy__sympy": [
+          75,
+          45,
+          36
+        ],
+        "scikit-learn__scikit-learn": [
+          32,
+          26,
+          22
+        ],
+        "sphinx-doc__sphinx": [
+          44,
+          19,
+          10
+        ],
+        "astropy__astropy": [
+          22,
+          12,
+          11
+        ],
+        "matplotlib__matplotlib": [
+          34,
+          19,
+          18
+        ],
+        "pytest-dev__pytest": [
+          19,
+          11,
+          7
+        ],
+        "psf__requests": [
+          8,
+          1,
+          1
+        ],
+        "pydata__xarray": [
+          22,
+          14,
+          14
+        ],
+        "mwaskom__seaborn": [
+          2,
+          0,
+          0
+        ],
+        "pallets__flask": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "step": 120,
+      "pass": 240,
+      "gained": 35,
+      "lost": 74,
+      "exact_mcnemar_p_unadjusted": 0.00023746801462748817,
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/sao-step120-20260929-v1-n32-threads/summary_with_fixed_patch_reverification.json",
+      "sha256": "f11d1a9f772fd3abee5381de89861cf4d1291b42f37cfd854ba9d2ae69abc684",
+      "by_repo_n_base_checkpoint": {
+        "sphinx-doc__sphinx": [
+          44,
+          19,
+          14
+        ],
+        "matplotlib__matplotlib": [
+          34,
+          19,
+          18
+        ],
+        "pydata__xarray": [
+          22,
+          14,
+          13
+        ],
+        "django__django": [
+          231,
+          128,
+          109
+        ],
+        "sympy__sympy": [
+          75,
+          45,
+          36
+        ],
+        "astropy__astropy": [
+          22,
+          12,
+          12
+        ],
+        "scikit-learn__scikit-learn": [
+          32,
+          26,
+          22
+        ],
+        "mwaskom__seaborn": [
+          2,
+          0,
+          0
+        ],
+        "pylint-dev__pylint": [
+          10,
+          3,
+          3
+        ],
+        "psf__requests": [
+          8,
+          1,
+          1
+        ],
+        "pytest-dev__pytest": [
+          19,
+          11,
+          11
+        ],
+        "pallets__flask": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "step": 130,
+      "pass": 237,
+      "gained": 35,
+      "lost": 77,
+      "exact_mcnemar_p_unadjusted": 8.980220370452065e-05,
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/logs/eval-qwen35-9b-verified-full/sao-step130-20260929-v3-n32-threads/summary_with_diagnosed_unresolved.json",
+      "sha256": "e0169fadbdbf2ad8e8f351e3bb33ef7f3a663af1ce2a9ccc467c5cb920c60321",
+      "by_repo_n_base_checkpoint": {
+        "django__django": [
+          231,
+          128,
+          111
+        ],
+        "scikit-learn__scikit-learn": [
+          32,
+          26,
+          23
+        ],
+        "astropy__astropy": [
+          22,
+          12,
+          11
+        ],
+        "psf__requests": [
+          8,
+          1,
+          1
+        ],
+        "sympy__sympy": [
+          75,
+          45,
+          31
+        ],
+        "pydata__xarray": [
+          22,
+          14,
+          12
+        ],
+        "matplotlib__matplotlib": [
+          34,
+          19,
+          19
+        ],
+        "sphinx-doc__sphinx": [
+          44,
+          19,
+          17
+        ],
+        "pylint-dev__pylint": [
+          10,
+          3,
+          1
+        ],
+        "pytest-dev__pytest": [
+          19,
+          11,
+          10
+        ],
+        "mwaskom__seaborn": [
+          2,
+          0,
+          0
+        ],
+        "pallets__flask": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "caveat": "Single stochastic run per checkpoint; different resource settings; unadjusted exploratory p-values, not controlled causal tests."
+}

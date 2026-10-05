@@ -71,6 +71,9 @@ from uuid import uuid4
 # - harbor_agent_execute  : LLM + tool-call loop execution
 # - harbor_verifier       : verifier run time
 # - harbor_total          : trial.run() total wall time (includes retries)
+# Always present in both metrics and reward metadata, including early exits.
+_TRIAL_STATUS_METRIC_KEYS = ("agent_timeout", "verifier_timeout", "verifier_unresolved")
+
 _HARBOR_TIMING_KEYS = (
     "harbor_env_setup",
     "harbor_agent_setup",
@@ -128,6 +131,7 @@ except ImportError:
     pass
 
 import numpy as np
+from .verdict import binary_verifier_reward
 
 from .vllm_chat_completion_proxy import (  # pyright: ignore[reportMissingImports]
     _ensure_proxy_started,
@@ -420,7 +424,7 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         # ``_run_harbor_trial`` based on ``TrialResult.{environment_setup,
         # agent_setup, agent_execution, verifier, started_at/finished_at}``.
         metrics: dict[str, float] = {k: 0.0 for k in _HARBOR_TIMING_KEYS}
-        for k in _PROXY_METRIC_KEYS:
+        for k in (*_PROXY_METRIC_KEYS, *_TRIAL_STATUS_METRIC_KEYS):
             metrics.setdefault(k, 0.0)
         for name in self.harnesses:
             metrics[f"harness_selected/{name}"] = float(
@@ -448,6 +452,12 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         # uses ``argmax(generate_sequences + tool_calls + compute_score)`` -- can
         # pick the slowest trial based on actual wall-clock trial duration.
         metrics["generate_sequences"] = metrics.get("harbor_total", 0.0)
+
+        if session_meta.get("verifier_unresolved"):
+            return self._make_empty_output(
+                kwargs, metrics=metrics, session_meta=session_meta,
+                reason="verifier_unresolved", harness_selection=harness_selection,
+            )
 
         traj_acc = session_meta.get("traj_acc_ids") or []
         prompt_token_len = int(session_meta.get("initial_prompt_token_len") or 0)
@@ -566,6 +576,7 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                 "reward_extra_info": {
                     "verifier_timeout": int(metrics.get("verifier_timeout", 0)),
                     "agent_timeout": int(metrics.get("agent_timeout", 0)),
+                    "verifier_unresolved": int(metrics.get("verifier_unresolved", 0)),
                     "environment_failure": 0,
                 },
                 "termination_reason": termination_reason,
@@ -747,9 +758,13 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         trial_reason = TerminationReason.AGENT_COMPLETED
         session_meta: dict = {}
         last_attempt_meta: dict = {}
+        committed_verdict = False
+        for key in _TRIAL_STATUS_METRIC_KEYS:
+            metrics.setdefault(key, 0.0)
 
         for attempt in range(max_retries):
             terminal_commit = False
+            verdict = None
             prefix = (
                 f"[task={Path(task_path).name}] attempt {attempt + 1}/{max_retries}"
             )
@@ -850,11 +865,8 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                 # Real verifier reward whenever harbor produced a verdict — used for ALL
                 # kept categories (completed / overlong / max_turns_reached). Only env-setup
                 # failures (no usable trajectory) and the filter's drop list end up at 0.
-                verifier_reward = (
-                    float(results.verifier_result.rewards.get("reward", 0.0))
-                    if results.verifier_result
-                    else 0.0
-                )
+                verdict = binary_verifier_reward(results.verifier_result)
+                verifier_reward = verdict if verdict is not None else 0.0
 
                 if is_timeout:
                     logger.warning("%s timeout (no retry). results=%s", prefix, results)
@@ -889,7 +901,7 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                     terminal_commit = True
                     break
 
-                elif not results.verifier_result:
+                elif verdict is None:
                     logger.warning(
                         "%s no verifier result (exception=%s), retrying.",
                         prefix,
@@ -912,6 +924,7 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                 last_attempt_meta = attempt_meta
                 self._collect_harbor_timings(results, metrics)
                 if terminal_commit:
+                    committed_verdict = verdict is not None
                     self._assign_proxy_metrics_from_session(metrics, attempt_meta)
                     session_meta = attempt_meta
 
@@ -931,6 +944,12 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         ):
             trial_reason = TerminationReason.OVERLONG
 
+        if not committed_verdict:
+            # Retain partial tokens for audit, but never train them as negatives
+            # after exhausted retries or a nonzero Agent exit without a verdict.
+            metrics["verifier_unresolved"] = 1.0
+            session_meta["verifier_unresolved"] = True
+            session_meta["disable_proxy_trajectory"] = True
         return reward, trial_reason, session_meta
 
     @staticmethod
@@ -1033,7 +1052,7 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         }
         for key in _HARBOR_TIMING_KEYS:
             base_metrics.setdefault(key, 0.0)
-        for key in _PROXY_METRIC_KEYS:
+        for key in (*_PROXY_METRIC_KEYS, *_TRIAL_STATUS_METRIC_KEYS):
             base_metrics.setdefault(key, 0.0)
         for name in self.harnesses:
             base_metrics[f"harness_selected/{name}"] = float(
@@ -1077,7 +1096,8 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
                 "reward_extra_info": {
                     "verifier_timeout": int(base_metrics.get("verifier_timeout", 0)),
                     "agent_timeout": int(base_metrics.get("agent_timeout", 0)),
-                    "environment_failure": 1,
+                    "verifier_unresolved": int(base_metrics.get("verifier_unresolved", 0)),
+                    "environment_failure": int(reason != "verifier_unresolved"),
                 },
                 # Env-setup failure: the trial never produced a usable trajectory. The dummy
                 # sample only keeps the batch alive; algorithm.trajectory_filter drops it (it

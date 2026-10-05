@@ -1,0 +1,41 @@
+{
+  "protocol": "dedicated-tests-verdict-v3-20260929",
+  "files": [
+    {
+      "path": "utils/prepare_swesmith_harbor.py",
+      "sha256": "1125d9b96097fb564df1f3f43fc989ff124ecf9dc071a1ef5b874caff60ee317"
+    },
+    {
+      "path": "utils/version_swesmith_verifier_assets.py",
+      "sha256": "7423a80bc22630cc7bb6e7b1561b9607e0ea31704ac9315ef44de11018bd4967"
+    },
+    {
+      "path": "utils/swesmith_quarantine_20260929.json",
+      "sha256": "87675ebbbf2233c7db62f64eb33ff66de543ec2421b338aded600b86f1a23800"
+    },
+    {
+      "path": "utils/validate_verdict_harbor_integration.py",
+      "sha256": "678ac33d88b2606310c25081b3f639aceb8ddde36059f35d855c1dfbc93df43c"
+    },
+    {
+      "path": "utils/recheck_swesmith_v3_controls.py",
+      "sha256": "7841bb48663b533a89b7eec815786044d514f5b7c71f258a08ab0b142588a10b"
+    },
+    {
+      "path": "utils/audit_swesmith_controls_20260929.py",
+      "sha256": "03e1356293466d4c3200ad87946bfffc43074415b1f4550015e61b363bf0a4f7"
+    },
+    {
+      "path": "tests/test_audit_safety.py",
+      "sha256": "33ba9476f6b280fbc79a067c059877529c2dbec51771ed729fae85887f6341ea"
+    },
+    {
+      "path": "tests/test_swesmith_boundary.py",
+      "sha256": "229f10699715c8a1770a872d827e652ac24edf8712740c1fd271db5a7455e8c4"
+    }
+  ],
+  "data_tasks": "/media/ubuntu/D1/zsj/Lego-RL-main/data/swesmith_python_full_v7_verdict_v3_20260929",
+  "data_parquet": "/media/ubuntu/D1/zsj/Lego-RL-main/data/swesmith_python_full_v7_verdict_v3_20260929.parquet",
+  "original_data_preserved": true,
+  "training_started": false
+}

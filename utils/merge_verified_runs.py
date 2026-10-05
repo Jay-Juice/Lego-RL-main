@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -30,6 +31,7 @@ def main() -> int:
     rewards: dict[str, float] = {}
     duplicates: list[str] = []
     unexpected: list[str] = []
+    invalid_reward_files: list[str] = []
     errors_by_run: dict[str, int] = {}
     scored_by_run: dict[str, int] = {}
     result_files_by_run: dict[str, list[str]] = {}
@@ -60,6 +62,10 @@ def main() -> int:
                 try:
                     reward = float(reward_path.read_text().strip())
                 except ValueError:
+                    invalid_reward_files.append(str(reward_path))
+                    continue
+                if not math.isfinite(reward) or reward not in (0.0, 1.0):
+                    invalid_reward_files.append(str(reward_path))
                     continue
                 if instance_id in rewards:
                     duplicates.append(instance_id)
@@ -84,6 +90,7 @@ def main() -> int:
         "scored_by_run": scored_by_run,
         "missing_tasks": missing,
         "unexpected_tasks": unexpected,
+        "invalid_reward_files": invalid_reward_files,
         "duplicate_instances": sorted(set(duplicates)),
         "started_at": min(started).isoformat() if started else None,
         "finished_at": max(finished).isoformat() if finished else None,
@@ -97,7 +104,7 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
     print(json.dumps(summary, indent=2, sort_keys=True))
-    complete = not (missing or unexpected or duplicates) and len(expected) == 500
+    complete = not (missing or unexpected or duplicates or invalid_reward_files) and len(expected) == 500
     return 0 if complete else 2
 
 

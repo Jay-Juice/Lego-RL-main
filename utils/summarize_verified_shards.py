@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
@@ -33,6 +34,7 @@ def main() -> int:
     result_files: list[str] = []
     missing_shard_results: list[int] = []
     n_errors = 0
+    invalid_reward_files: list[str] = []
     started: list[datetime] = []
     finished: list[datetime] = []
 
@@ -57,6 +59,10 @@ def main() -> int:
             try:
                 reward = float(reward_path.read_text().strip())
             except ValueError:
+                invalid_reward_files.append(str(reward_path))
+                continue
+            if not math.isfinite(reward) or reward not in (0.0, 1.0):
+                invalid_reward_files.append(str(reward_path))
                 continue
             if instance_id in rewards:
                 duplicate_instances.append(instance_id)
@@ -79,6 +85,7 @@ def main() -> int:
         "score": solved / len(expected) if expected else None,
         "reward_counts": dict(sorted(reward_counts.items())),
         "n_errors_reported": n_errors,
+        "invalid_reward_files": invalid_reward_files,
         "missing_tasks": missing,
         "unexpected_tasks": unexpected,
         "duplicate_instances": sorted(set(duplicate_instances)),
@@ -91,7 +98,9 @@ def main() -> int:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(summary, indent=2, sort_keys=True) + "\n")
     print(json.dumps(summary, indent=2, sort_keys=True))
-    complete = not (missing or unexpected or duplicate_instances or missing_shard_results)
+    complete = len(expected) == 500 and not (
+        missing or unexpected or duplicate_instances or missing_shard_results or invalid_reward_files
+    )
     return 0 if complete else 2
 
 

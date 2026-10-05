@@ -19,6 +19,7 @@ write_job_config() {
     export HARBOR_EXCLUDE_NODES HARBOR_ENVIRONMENT_TYPE
     export HARBOR_AGENT_TIMEOUT_MULTIPLIER HARBOR_AGENT_SETUP_TIMEOUT_MULTIPLIER
     export HARBOR_VERIFIER_TIMEOUT_MULTIPLIER HARBOR_ENVIRONMENT_BUILD_TIMEOUT_MULTIPLIER
+    export HARBOR_VERIFIER_EXTRA_ENV
     export HARBOR_AGENT_MAX_TIMEOUT_SEC HARBOR_AGENT_OVERRIDE_TIMEOUT_SEC
     export HARBOR_AGENT_OVERRIDE_SETUP_TIMEOUT_SEC HARBOR_AGENT_MAX_ITERATIONS
     export HARBOR_AGENT_DISABLE_TOOL_CALLS HARBOR_AGENT_MODEL_INFO HARBOR_AGENT_VERSION
@@ -220,6 +221,15 @@ cfg = {
         "n_tasks": int(os.environ["N_TASKS"]) if os.environ.get("N_TASKS") else None,
     }.items() if v is not None}],
 }
+
+verifier_extra_env = json.loads(os.environ.get("HARBOR_VERIFIER_EXTRA_ENV") or "{}")
+if not isinstance(verifier_extra_env, dict) or any(
+    not isinstance(k, str) or not isinstance(v, str)
+    for k, v in verifier_extra_env.items()
+):
+    raise ValueError("HARBOR_VERIFIER_EXTRA_ENV must be a JSON object of strings")
+if verifier_extra_env:
+    cfg["verifier"]["env"] = verifier_extra_env
 
 agent_import_path = os.environ["HARBOR_AGENT_IMPORT_PATH"]
 

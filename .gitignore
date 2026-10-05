@@ -181,3 +181,12 @@ webui/dist.bak-*/
 /resume*.sh
 /ablation*_[0-9]*
 /*.out
+
+# Local Windows test scratch directories and deployment backups.
+/tmp*/
+/audit-test-*/
+/audit_staging_*/
+/audit_backups/
+/merged_models/
+/data/
+*.safetensors

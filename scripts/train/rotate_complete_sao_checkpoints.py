@@ -8,6 +8,7 @@ The default is a read-only preview; --apply removes only verified old step dirs.
 """
 
 import argparse
+import json
 import re
 import shutil
 from pathlib import Path
@@ -15,6 +16,31 @@ from pathlib import Path
 
 EXPERIMENT = "sao-qwen35-9b-swesmith-64k-full-sp8-tokenpack-v1"
 STEP_RE = re.compile(r"global_step_(\d+)")
+
+
+def deletion_plan(root, steps, keep):
+    """Keep pending/pinned models; age alone never authorizes deletion."""
+    policy_path = root / "checkpoint_retention.json"
+    if not policy_path.is_file() or policy_path.is_symlink():
+        return [], [n for n, _ in steps[:-keep]]
+    policy = json.loads(policy_path.read_text(encoding="utf-8"))
+    if not isinstance(policy, dict) or policy.get("version") != 1:
+        raise ValueError("Invalid checkpoint retention policy version")
+    sets = {}
+    for key in ("protected_steps", "deletion_approved_steps"):
+        values = policy.get(key)
+        if not isinstance(values, list) or any(type(n) is not int or n < 0 for n in values):
+            raise ValueError(f"Invalid retention policy field: {key}")
+        sets[key] = set(values)
+    remove, blocked = [], []
+    for n, path in steps[:-keep]:
+        if n in sets["protected_steps"]:
+            continue
+        if n not in sets["deletion_approved_steps"]:
+            blocked.append(n)
+        else:
+            remove.append((n, path))
+    return remove, blocked
 
 
 def check_complete(step_dir: Path) -> None:
@@ -61,12 +87,15 @@ def main() -> None:
 
     for _, path in steps:
         check_complete(path)
-    remove = steps[: max(0, len(steps) - args.keep)]
+    remove, blocked = deletion_plan(root, steps, args.keep)
     print(f"checkpoint root: {root}")
     print(f"complete steps: {[step for step, _ in steps]}")
     print(f"keep latest {args.keep}: {[step for step, _ in steps[-args.keep:]]}")
     print(f"remove: {[step for step, _ in remove]}")
+    print(f"awaiting explicit deletion approval: {blocked}")
     if args.apply:
+        if blocked:
+            raise ValueError("Refusing deletion: pending checkpoints lack explicit approval")
         for _, path in remove:
             # The explicit marker check above and fixed root constrain deletion.
             shutil.rmtree(path)

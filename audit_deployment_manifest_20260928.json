@@ -1,0 +1,62 @@
+[
+  {
+    "path": "scripts/train/rotate_complete_sao_checkpoints.py",
+    "sha256": "e9a2affa93188e6c48d98fcf3df3ac4683b0ddbccf1cf0eeae4be2d98c9605b0"
+  },
+  {
+    "path": "src/verl_patch/agent_loop/builtin_swe_agent_loop.py",
+    "sha256": "a63260d9c2cfabc3bc84a4bea7fefc63bf616abd456642aeea3213b0f55ea259"
+  },
+  {
+    "path": "src/verl_patch/agent_loop/verdict.py",
+    "sha256": "d29bf2b216f95e27f7a298999aad683bb6986351a3394fff6c6064ea07068120"
+  },
+  {
+    "path": "tests/test_audit_safety.py",
+    "sha256": "f0b49e33b498095e0fc22b0fa79180f6051027c94bb83553adb5c0bceb0106c4"
+  },
+  {
+    "path": "tests/test_rotate_complete_sao_checkpoints.py",
+    "sha256": "6e900b772e35f8d1cd82af616a8c1aa6f5a72ba82f72074680e78435758905fb"
+  },
+  {
+    "path": "utils/merge_verified_runs.py",
+    "sha256": "37f6c223d612f348d48d5a8fb289c3bb1ca87e6c59770d7590bf64d66d0ccea1"
+  },
+  {
+    "path": "utils/prepare_swesmith_harbor.py",
+    "sha256": "ef2fc9fa818fe61a208b9eda6fea842a3b0a155e9e473ad7cdaa01cce19d2212"
+  },
+  {
+    "path": "utils/summarize_verified_shards.py",
+    "sha256": "d4cf8123dbdaa9a30a0aa23d9dd18f62fd3f1f49a94f566afbceceb48e2aa3b8"
+  },
+  {
+    "path": "utils/verify_merged_hf_keys.py",
+    "sha256": "0daf0fe58802ef66657d757c2a7e4506f6a92e001e41ef341a60785b700978ab"
+  },
+  {
+    "path": "utils/apply_verdict_empty_batch_guard.py",
+    "sha256": "eb7e575601360036c9ca2944d489a3b000488c94355028d5288887c86161eef4"
+  },
+  {
+    "path": "utils/validate_verdict_guard_staged.py",
+    "sha256": "03a0f16e39a06e356cf363d41c18f924099ac440e4694b7f67c99bf6809ef043"
+  },
+  {
+    "path": "utils/validate_verdict_harbor_integration.py",
+    "sha256": "e16a691b114c123276ba3cc9a177c558984de377cebc36c172a626c6ac17ec32"
+  },
+  {
+    "path": "utils/validate_verdict_training_cpu.py",
+    "sha256": "35f7567419b16391bb10b863de250f7b2d905781c0effe1f4d8899ea9e3af10d"
+  },
+  {
+    "path": "utils/version_swesmith_verifier_assets.py",
+    "sha256": "c3b8c5b9863ee806ef3d691712352f2f96e905fe1831213e3cb609af5189f976"
+  },
+  {
+    "path": "scripts/train/configs/sao_sync_1node_qwen35_9b_swesmith_resume70_verdict_v2.env",
+    "sha256": "a36d6f9aaaa3246895ff3fdaf3a514bad4238ea65db63de638b694042f98bba0"
+  }
+]

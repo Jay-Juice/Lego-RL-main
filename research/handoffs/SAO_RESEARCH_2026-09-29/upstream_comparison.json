@@ -1,0 +1,36 @@
+{
+  "commit": "a3e28f171be165b5e8cda45030f336ec103690a7",
+  "files": [
+    {
+      "path": "scripts/train/configs/sao_async_3nodes_qwen35_ohsdk_veomni.env",
+      "same": true,
+      "upstream_sha256": "fa0454e4b39b0f2865da93d99eb32f811d17056679b1d92443799106232d21df",
+      "local_sha256": "fa0454e4b39b0f2865da93d99eb32f811d17056679b1d92443799106232d21df"
+    },
+    {
+      "path": "scripts/templates/verl/sao.env",
+      "same": true,
+      "upstream_sha256": "db3b08bf536c9a72461a71322e98cec65151a02b63db721cb6fb91e192ac211f",
+      "local_sha256": "db3b08bf536c9a72461a71322e98cec65151a02b63db721cb6fb91e192ac211f"
+    },
+    {
+      "path": "patches/verl_sao_7aed6b23.patch",
+      "same": false,
+      "upstream_sha256": "fcc9064e78de38a67af671b6cd9dfc45cc36318b2bf3ed8f339f3a3bf3616e33",
+      "local_sha256": "daff0f537eee892bf47390e2b0f182a8c0c3fe59f02f809c9387e0825afd3e14"
+    },
+    {
+      "path": "src/verl_patch/agent_loop/builtin_swe_agent_loop.py",
+      "same": false,
+      "upstream_sha256": "fc00bd43801998648a24f08ed3a46cf8a8b12c51f3df8e0ad8a29b35fbed3329",
+      "local_sha256": "cdad0922fe73f0a9b6f199a0ffa16127f848c937da6e9d45805619f0cbd6429e"
+    }
+  ],
+  "sao_paths": [
+    "docs/content/docs/run-training/sao.mdx",
+    "patches/verl_sao_7aed6b23.patch",
+    "scripts/templates/verl/sao.env",
+    "scripts/train/configs/sao_async_3nodes_qwen35_ohsdk_veomni.env",
+    "scripts/train/configs/sao_sync_1node_qwen3_8b_ohsdk_fsdp.env"
+  ]
+}

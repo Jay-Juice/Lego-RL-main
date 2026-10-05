@@ -41,6 +41,24 @@ INSTANCE_RE = re.compile(r"[A-Za-z0-9_.-]+")
 IMAGE_RE = re.compile(r"[a-z0-9./_-]+@sha256:[0-9a-f]{64}")
 
 
+def is_dedicated_test_path(value: str) -> bool:
+    """Conservative boundary: embedded doctests need a different adapter.
+
+    Restoring an entire source module to restore its tests destroys agent fixes.
+    Reject ambiguous paths instead of silently treating them as hidden tests.
+    Keep this predicate equivalent to the self-contained generated verifier.
+    """
+    path = PurePosixPath(value)
+    if not value or path.is_absolute() or ".." in path.parts or "\\" in value:
+        return False
+    name = path.name.lower()
+    return (
+        any(part.lower() in {"test", "tests"} for part in path.parts[:-1])
+        or name.startswith("test_") or name.endswith("_test.py")
+        or name in {"test.py", "tests.py", "conftest.py"}
+    )
+
+
 RUN_TESTS = r'''#!/usr/bin/env python3
 import importlib.util
 import json
@@ -48,31 +66,89 @@ import os
 import shutil
 import subprocess
 import sys
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import xml.etree.ElementTree as ET
 
 TESTBED = Path("/testbed")
 TESTS = Path("/tests")
 LOGS = Path("/logs/verifier")
 
 
+def is_dedicated_test_path(value: str) -> bool:
+    path = PurePosixPath(value)
+    if not value or path.is_absolute() or ".." in path.parts or "\\" in value:
+        return False
+    name = path.name.lower()
+    return (
+        any(part.lower() in {"test", "tests"} for part in path.parts[:-1])
+        or name.startswith("test_") or name.endswith("_test.py")
+        or name in {"test.py", "tests.py", "conftest.py"}
+    )
+
+
+def restore_dedicated_tests(config):
+    expected = {node.split("::", 1)[0] for node in config["FAIL_TO_PASS"] + config["PASS_TO_PASS"]}
+    unsafe = sorted(path for path in expected if not is_dedicated_test_path(path))
+    if unsafe:
+        raise RuntimeError(f"Unsafe test restoration overlaps possible source modules: {unsafe}")
+    payload = TESTS / "payload"
+    files = []
+    # Validate the entire copy plan before touching any task files.
+    for source in sorted(payload.rglob("*")):
+        if source.is_symlink():
+            raise RuntimeError(f"Symlink in verifier payload: {source}")
+        if not source.is_file():
+            continue
+        relative = source.relative_to(payload)
+        if relative.as_posix() not in expected:
+            raise RuntimeError(f"Unexpected file in verifier payload: {relative}")
+        target = TESTBED / relative
+        current = target
+        while current != TESTBED:
+            if current.is_symlink():
+                raise RuntimeError(f"Symlink in test restoration target: {current}")
+            current = current.parent
+        files.append((source, target))
+    if {s.relative_to(payload).as_posix() for s, _ in files} != expected:
+        raise RuntimeError("Verifier payload is missing selected test files")
+    for source, target in files:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+
+
+def junit_verdict(path, exit_code):
+    root = ET.parse(path).getroot()
+    cases = list(root.iter("testcase"))
+    if not cases or any(case.find("error") is not None for case in cases):
+        raise RuntimeError("pytest produced no test cases or a setup/teardown/collection error")
+    failures = sum(case.find("failure") is not None for case in cases)
+    passed = sum(case.find("failure") is None and case.find("skipped") is None for case in cases)
+    if exit_code == 0 and failures == 0 and passed > 0:
+        return 1, passed, failures
+    if exit_code == 1 and failures > 0:
+        return 0, passed, failures
+    raise RuntimeError("pytest exit code and executed-test report do not provide a valid verdict")
+
+
 def main() -> int:
     LOGS.mkdir(parents=True, exist_ok=True)
     reward_path = LOGS / "reward.txt"
-    reward_path.write_text("0\n")
+    # A missing verdict is distinct from a tested, incorrect patch. Never leave
+    # a stale/default zero that Harbor could interpret as a valid label.
+    reward_path.unlink(missing_ok=True)
+    status_path = LOGS / "grading_status.json"
+    status_path.unlink(missing_ok=True)
     try:
         config = json.loads((TESTS / "config.json").read_text())
         nodes = list(dict.fromkeys(config["FAIL_TO_PASS"] + config["PASS_TO_PASS"]))
         if not config["FAIL_TO_PASS"] or not nodes:
             raise RuntimeError("missing FAIL_TO_PASS nodes")
 
-        payload = TESTS / "payload"
-        for source in sorted(p for p in payload.rglob("*") if p.is_file()):
-            relative = source.relative_to(payload)
-            target = TESTBED / relative
-            target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(source, target)
+        restore_dedicated_tests(config)
 
         python = "/opt/miniconda3/envs/testbed/bin/python"
+        report = LOGS / "pytest-report.xml"
+        report.unlink(missing_ok=True)
         command = [
             python,
             "-m",
@@ -83,6 +159,7 @@ def main() -> int:
             "cache_dir=/tmp/lego-smith-pytest-cache",
             "-p",
             "no:snail",
+            f"--junitxml={report}",
         ]
         if importlib.util.find_spec("xdist") is not None:
             command += ["-n", "2"]
@@ -100,6 +177,7 @@ def main() -> int:
                 "PYTHONDONTWRITEBYTECODE": "1",
                 "OMP_NUM_THREADS": "2",
                 "OPENBLAS_NUM_THREADS": "2",
+                "PATH": str(Path(python).parent) + os.pathsep + env.get("PATH", ""),
             }
         )
         result = subprocess.run(
@@ -111,16 +189,24 @@ def main() -> int:
             stderr=subprocess.STDOUT,
             timeout=300,
         )
-        (Path("/logs") / "test_output.log").write_text(result.stdout, errors="replace")
+        (LOGS.parent / "test_output.log").write_text(result.stdout, errors="replace")
         sys.stdout.write(result.stdout)
-        if result.returncode == 0:
-            reward_path.write_text("1\n")
+        if result.returncode not in (0, 1):
+            raise RuntimeError(f"pytest did not produce a verdict: exit code {result.returncode}")
+        reward, passed, failed = junit_verdict(report, result.returncode)
+        reward_path.write_text(f"{reward}\n")
+        status_path.write_text(json.dumps({"status": "scored", "pytest_exit_code": result.returncode,
+                                           "passed": passed, "failed": failed,
+                                           "protocol": "dedicated-tests-verdict-v3"}))
         return 0
     except Exception as exc:
         message = f"SWE-Smith verifier error: {type(exc).__name__}: {exc}\n"
-        (Path("/logs") / "test_output.log").write_text(message)
+        with (LOGS.parent / "test_output.log").open("a") as handle:
+            handle.write(message)
+        reward_path.unlink(missing_ok=True)
+        status_path.write_text(json.dumps({"status": "unresolved", "error_type": type(exc).__name__, "message": str(exc)}))
         sys.stderr.write(message)
-        return 0
+        return 2
 
 
 if __name__ == "__main__":
@@ -129,11 +215,9 @@ if __name__ == "__main__":
 
 
 TEST_SH = r'''#!/bin/bash
-set -uo pipefail
+set -euo pipefail
 mkdir -p /logs/verifier
-echo 0 > /logs/verifier/reward.txt
 /opt/miniconda3/envs/testbed/bin/python /tests/run_tests.py
-exit 0
 '''
 
 
@@ -208,7 +292,17 @@ def extract_tests(row: dict, destination: Path) -> None:
         try:
             archive = docker_branch_output(
                 row,
-                'git archive --format=tar HEAD~1 -- "$@"',
+                # git archive respects export-ignore (e.g. pandas scripts/tests).
+                # Read exact tracked blobs instead: exporting is not evidence of
+                # whether a selected test exists in the frozen commit.
+                '''python -c 'import io,subprocess,sys,tarfile
+with tarfile.open(fileobj=sys.stdout.buffer,mode="w|") as tar:
+ for path in sys.argv[1:]:
+  entry=subprocess.check_output(["git","ls-tree","HEAD~1","--",path]).decode().split()
+  if not entry or entry[0] not in ("100644","100755"): raise RuntimeError("not a regular tracked test: "+path)
+  data=subprocess.check_output(["git","show","HEAD~1:"+path])
+  info=tarfile.TarInfo(path); info.size=len(data); info.mode=int(entry[0][-3:],8)
+  tar.addfile(info,io.BytesIO(data))' "$@"''',
                 *paths,
                 binary=True,
             )
@@ -245,6 +339,10 @@ def image_tag(prefix: str, instance_id: str) -> str:
 
 
 def write_task(row: dict, task_dir: Path, tag: str) -> None:
+    unsafe = sorted({node.split("::", 1)[0] for node in row["FAIL_TO_PASS"] + row["PASS_TO_PASS"]
+                     if not is_dedicated_test_path(node.split("::", 1)[0])})
+    if unsafe:
+        raise ValueError(f"{row['instance_id']}: embedded/source tests require separate adaptation: {unsafe}")
     task_dir.mkdir(parents=True, exist_ok=False)
     (task_dir / "instruction.md").write_text(row["problem_statement"].strip() + "\n")
 
@@ -305,7 +403,7 @@ def build_task(task_dir: Path, tag: str) -> None:
 
 
 def run_control(task_dir: Path, tag: str, oracle_patch: Path | None) -> int:
-    with tempfile.TemporaryDirectory(prefix="lego-smith-logs-") as log_dir:
+    with tempfile.TemporaryDirectory(prefix=".lego-smith-logs-", dir=task_dir.parent) as log_dir:
         argv = [
             "docker",
             "run",
@@ -339,7 +437,7 @@ def run_control(task_dir: Path, tag: str, oracle_patch: Path | None) -> int:
 def validate_controls(row: dict, task_dir: Path, tag: str) -> dict[str, int]:
     baseline = run_control(task_dir, tag, None)
     gold = docker_branch_output(row, "git diff --binary HEAD~1 HEAD~2", binary=True)
-    with tempfile.NamedTemporaryFile(prefix="lego-smith-oracle-", suffix=".patch", delete=False) as file:
+    with tempfile.NamedTemporaryFile(prefix=".lego-smith-oracle-", suffix=".patch", dir=task_dir.parent, delete=False) as file:
         file.write(gold)
         oracle_path = Path(file.name)
     try:
@@ -441,6 +539,11 @@ def main() -> None:
         tag = image_tag(args.image_prefix, iid)
         controls = None
         staging = args.output_dir / f".preparing-{iid}"
+        # A protocol mismatch must never enter --skip-failed cleanup: preserve
+        # existing historical tasks and require an explicitly new version.
+        if task_dir.exists() and args.resume and is_complete(task_dir):
+            if (task_dir / "tests/run_tests.py").read_text() != RUN_TESTS:
+                raise ValueError("Existing verifier version differs; create a new asset version instead of resume")
         try:
             if task_dir.exists() and args.resume and is_complete(task_dir):
                 print(f"Reusing {iid}", flush=True)

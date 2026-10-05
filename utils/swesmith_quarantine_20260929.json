@@ -1,0 +1,5 @@
+{
+  "conan-io__conan.86f29e13.pr_15457": "Oracle control: 37 passed/1 setup error, required cmake unavailable; adding testbed/bin to PATH did not resolve. logs/swesmith_controls_diagnosis_20260929",
+  "gruns__furl.da386f68.func_basic__o4gpato7": "Oracle control still 3 failed/70 passed (IPv6/netloc/URL compatibility), environment/test-set diagnosis pending. logs/swesmith_controls_audit_20260929",
+  "iterative__dvc.1d6ea681.func_pm_remove_loop__tu21q9d9": "Both bug and oracle controls exceeded 300 seconds; audit network isolation differs from production, quarantine pending matched-environment validation, not a claim that task is intrinsically invalid. logs/swesmith_controls_audit_20260929"
+}

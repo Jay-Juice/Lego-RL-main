@@ -1,0 +1,13 @@
+{
+  "files": {
+    "utils/finalize_swesmith_training_v6.py": "3f45019e0e1530685579af09acbe1bdf3b9af3826618c2841b8510a8698454f6",
+    "tests/test_swesmith_special_runners.py": "4576ee9fdc9507f6103499900ec5a7950ea03adab4d07fa3cafc688ba3bc06c5",
+    "utils/swesmith_special_runners.py": "c9dc53d2faf9835f4c13ccef9baa70a3ed8804ab4c75db01064f247c1607bfd8",
+    "utils/validate_swesmith_training_v6_harbor.py": "046a6695d63ce325ac225222ab752e06baccf775d043efba53410bf708aadc11",
+    "scripts/train/configs/sao_sync_1node_qwen35_9b_swesmith_b64_w32_v6_20260930.env": "edd8eebe030059c44fae95f4c379d15e3f6e0459d3e1adc26a99bfafc74f01df",
+    "utils/prepare_swesmith_training_v6.py": "28f7e11787e63027cf62b8ac8146609a5bfa7e97cb4c18b997a3a7100725d60a",
+    "utils/complete_pydicom_training_v6.py": "59e4113d57332af1177a9a9018b2ffa65e0f6b491a035bee3f0b20ba2fde0ad7"
+  },
+  "matched": 7,
+  "scope": "New dataset adapters and isolated batch64 config; no optimizer or core-algorithm changes"
+}

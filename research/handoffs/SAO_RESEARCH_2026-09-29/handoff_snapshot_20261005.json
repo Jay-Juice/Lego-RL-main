@@ -1,0 +1,195 @@
+{
+  "free_D1_GiB": 102.07077026367188,
+  "checkpoints": {
+    "20": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    },
+    "30": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    },
+    "40": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    },
+    "50": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    },
+    "60": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    },
+    "70": {
+      "data_bytes": 7316,
+      "actor_nonempty_pt": 24,
+      "critic_nonempty_pt": 24
+    }
+  },
+  "evals": {
+    "20": {
+      "run_id": "b64-v6d-step20-20261004-v2-n32-threads",
+      "complete": true,
+      "passed": 262,
+      "failed": 238,
+      "unresolved": [],
+      "score": 0.524,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "4879389cc8416e0232737bf350800c4ee194e7ca79601319d88b5ac54274cd72"
+    },
+    "30": {
+      "run_id": "b64-v6d-step30-20261004-v2-n32-threads",
+      "complete": false,
+      "passed": 286,
+      "failed": 213,
+      "unresolved": [
+        "django__django-15128"
+      ],
+      "score": null,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "31b984b908a18304b70a9f63f383b4dec64de683799d787bd81849747721a538"
+    },
+    "40": {
+      "run_id": "b64-v6d-step40-20261004-v2-n32-threads",
+      "complete": false,
+      "passed": 291,
+      "failed": 208,
+      "unresolved": [
+        "sphinx-doc__sphinx-7985"
+      ],
+      "score": null,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "8c9dc2380140be35cced3684b92d00c19bb64ed0fab2dbd02d5aef74f5448cdf"
+    },
+    "50": {
+      "run_id": "b64-v6d-step50-20261004-v2-n32-threads",
+      "complete": true,
+      "passed": 293,
+      "failed": 207,
+      "unresolved": [],
+      "score": 0.586,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "55f5f0196ad0d7a641867feb8a670e1795befd2e79489efcb0533514493554b2"
+    },
+    "60": {
+      "run_id": "b64-v6d-step60-20261004-v2-n32-threads",
+      "complete": true,
+      "passed": 282,
+      "failed": 218,
+      "unresolved": [],
+      "score": 0.564,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "1179d97d9d2ea51912f0cefc5a494b769bfc5e1dcd3491d41b6d304e5b9677dc"
+    },
+    "70": {
+      "run_id": "b64-v6d-step70-20261004-v2-n32-threads",
+      "complete": true,
+      "passed": 286,
+      "failed": 214,
+      "unresolved": [],
+      "score": 0.572,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "sha256": "182346cdda73598ce493c96bee0f3a35cacff62ecc3d99d38b8db36ae059f605"
+    },
+    "base_recheck": {
+      "run_id": "base0-recheck-20261005-v1-n32-threads",
+      "complete": true,
+      "passed": 266,
+      "failed": 234,
+      "unresolved": [],
+      "score": 0.532,
+      "duplicates": [],
+      "missing": [],
+      "unexpected": [],
+      "exits": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  },
+  "gpu_processes": ""
+}
