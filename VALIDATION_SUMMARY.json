@@ -1,7 +1,7 @@
 {
   "experiment": "pi_repair_state_v2_20261015",
-  "status": "implemented_cpu_and_harbor_verified_distributed_acceptance_pending",
-  "formal_training_started": false,
+  "status": "stopped_after_real_rollout_failure_cpu_repair_passed_gpu_retest_pending",
+  "formal_training_started": true,
   "parent_original_1k_files_checked": 3824,
   "parent_original_1k_modified_files": [],
   "cpu_tests": {
@@ -32,7 +32,7 @@
     "verifier_or_task_tests_run": false
   },
   "recipe": {
-    "all_130_launch_arguments_equal_except_experiment_name": true,
+    "all_130_launch_arguments_equal_except_experiment_name": false,
     "freeze_patterns": [
       "self_attn.",
       "linear_attn.",
@@ -40,7 +40,8 @@
     ],
     "value_head_initialization": "baseline unchanged",
     "model_engine_and_config_source_files_identical_to_parent": 35,
-    "preflight_exit": 0
+    "preflight_exit": 0,
+    "argument_comparison_clarification": "Actual full argv: SAO129,1K130,v2 130 (Hydra124/125/125). 1K-v2 differences are experiment name and equal-content private agent config path. SAO additionally lacks explicit resume_mode=disable (default auto). No learning hyperparameter differences."
   },
   "deployment": {
     "independent_root": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015",
@@ -177,5 +178,7 @@
     "runtime_manifest_sha256": "49af052f90d314ab29d4207ad34edd62babb5738b56eb63be176411cf18e2c64",
     "scope": "Normalize decoded dict tool arguments only for read-only test-report search; Actor messages unchanged; unsupported types fail closed.",
     "gpu_training_restart": false
-  }
+  },
+  "formal_training_running": false,
+  "source_comparison_audit": "SOURCE_COMPARISON_AUDIT_20261015.json"
 }

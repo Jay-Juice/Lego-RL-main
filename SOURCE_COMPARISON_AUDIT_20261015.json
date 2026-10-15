@@ -1,0 +1,278 @@
+{
+  "date_cst": "2026-10-15",
+  "revision": "be0ad9b",
+  "runtime_manifest_sha256": "49af052f90d314ab29d4207ad34edd62babb5738b56eb63be176411cf18e2c64",
+  "conclusion": "No new learning-algorithm trick found. Differences comprise PI content/representation/budget/history and explicit operational safeguards/auditing; not literal source identity or content-only ablation.",
+  "baseline_scope": "Current preserved remote SAO workspace /media/ubuntu/D1/zsj/Lego-RL-main and config sao_b64_resume20_tokens_20261001.env. No Git repository at remote baseline root, so this audit does not independently establish the exact historical training-time runtime or shared package hashes.",
+  "one_k_scope": "Original local pi_structural_delta_v1_20261006 plus the remote/local pi_sequential_1k_repro_20261012 baselineguard reproduction; these are distinct historical stages.",
+  "remote_source_comparison": {
+    "sao": {
+      "third_party/verl/verl": {
+        "equal_count": 420,
+        "changed": [
+          "third_party/verl/verl/trainer/ppo/ray_trainer.py",
+          "third_party/verl/verl/workers/utils/padding.py"
+        ],
+        "added": [],
+        "removed": []
+      },
+      "third_party/harbor/src": {
+        "equal_count": 218,
+        "changed": [
+          "third_party/harbor/src/harbor/trial/trial.py"
+        ],
+        "added": [],
+        "removed": []
+      },
+      "src": {
+        "equal_count": 51,
+        "changed": [
+          "src/harbor_patch/environments/remote_docker.py",
+          "src/verl_patch/agent_loop/builtin_swe_agent_loop.py",
+          "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py"
+        ],
+        "added": [
+          "src/harbor_patch/privileged_state/__init__.py",
+          "src/harbor_patch/privileged_state/container_capture.py",
+          "src/harbor_patch/privileged_state/registry.py",
+          "src/harbor_patch/privileged_state/repair_state.py",
+          "src/harbor_patch/privileged_state/structural_lift.py",
+          "src/verl_patch/agent_loop/pi_archive.py",
+          "src/verl_patch/agent_loop/pi_checkpoint.py",
+          "src/verl_patch/agent_loop/pi_disk_guard.py",
+          "src/verl_patch/agent_loop/privileged_critic_builder.py",
+          "src/verl_patch/pi_gpu_smoke.py",
+          "src/verl_patch/pi_v2_acceptance.py",
+          "src/verl_patch/pi_v2_resume_diagnostic.py",
+          "src/verl_patch/pi_v2_training_acceptance.py"
+        ],
+        "removed": [
+          "src/lego_rl.egg-info/PKG-INFO",
+          "src/lego_rl.egg-info/SOURCES.txt",
+          "src/lego_rl.egg-info/dependency_links.txt",
+          "src/lego_rl.egg-info/requires.txt",
+          "src/lego_rl.egg-info/top_level.txt"
+        ]
+      },
+      "scripts/train": {
+        "equal_count": 38,
+        "changed": [
+          "scripts/train/lib/hydra_args.sh",
+          "scripts/train/lib/runtime.sh"
+        ],
+        "added": [
+          "scripts/train/configs/pi_gpu_smoke_1k_repro_20261012.env",
+          "scripts/train/configs/pi_gpu_smoke_20261006.env",
+          "scripts/train/configs/pi_gpu_smoke_r4_20261006.env",
+          "scripts/train/configs/pi_v2_acceptance_20261015.env",
+          "scripts/train/configs/pi_v2_nosave_acceptance_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r2_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r3_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r4_20261015.env",
+          "scripts/train/configs/sao_b64_pi_1k_repro_20261012.env",
+          "scripts/train/configs/sao_b64_pi_1k_repro_baselineguard_20261013.env",
+          "scripts/train/configs/sao_b64_pi_1k_repro_lifecycle_20261012.env",
+          "scripts/train/configs/sao_b64_pi_repair_state_v2_20261015.env",
+          "scripts/train/configs/sao_b64_pi_structural_delta_v1_20261006.env",
+          "scripts/train/configs/sao_b64_pi_structural_delta_v1_r4_20261006.env"
+        ],
+        "removed": []
+      }
+    },
+    "1k": {
+      "third_party/verl/verl": {
+        "equal_count": 421,
+        "changed": [
+          "third_party/verl/verl/trainer/ppo/ray_trainer.py"
+        ],
+        "added": [],
+        "removed": []
+      },
+      "third_party/harbor/src": {
+        "equal_count": 219,
+        "changed": [],
+        "added": [],
+        "removed": []
+      },
+      "src": {
+        "equal_count": 58,
+        "changed": [
+          "src/harbor_patch/environments/remote_docker.py",
+          "src/verl_patch/agent_loop/privileged_critic_builder.py",
+          "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py"
+        ],
+        "added": [
+          "src/harbor_patch/privileged_state/repair_state.py",
+          "src/verl_patch/agent_loop/pi_archive.py",
+          "src/verl_patch/agent_loop/pi_checkpoint.py",
+          "src/verl_patch/pi_v2_acceptance.py",
+          "src/verl_patch/pi_v2_resume_diagnostic.py",
+          "src/verl_patch/pi_v2_training_acceptance.py"
+        ],
+        "removed": []
+      },
+      "scripts/train": {
+        "equal_count": 48,
+        "changed": [],
+        "added": [
+          "scripts/train/configs/pi_v2_acceptance_20261015.env",
+          "scripts/train/configs/pi_v2_nosave_acceptance_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r2_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r3_20261015.env",
+          "scripts/train/configs/pi_v2_resume_diagnostic_r4_20261015.env",
+          "scripts/train/configs/sao_b64_pi_repair_state_v2_20261015.env"
+        ],
+        "removed": []
+      }
+    }
+  },
+  "actual_dry_runs": {
+    "sao": {
+      "exit": 0,
+      "full_argv_count": 129,
+      "hydra_count": 124,
+      "command_sha256": "d2c2457c9bae33a315efe50da6ce245baaf61c2b497ad9ed44f72d663482d512"
+    },
+    "1k": {
+      "exit": 0,
+      "full_argv_count": 130,
+      "hydra_count": 125,
+      "command_sha256": "91b16b687700b01e4f00958117ac51ef9741467444b479585f357fbedc109cd9"
+    },
+    "v2": {
+      "exit": 0,
+      "full_argv_count": 130,
+      "hydra_count": 125,
+      "command_sha256": "a2732a55f259da22d284b19ad13dbbb3105d9371fa337283702f3a8b51c639e5"
+    },
+    "sao_delta": {
+      "actor_rollout_ref.rollout.agent.agent_loop_config_path": {
+        "sao": "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "v2": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml"
+      },
+      "trainer.experiment_name": {
+        "sao": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "v2": "sao-qwen35-9b-b64-pi-repair-state-v2-20261015"
+      },
+      "trainer.resume_mode": {
+        "sao": null,
+        "v2": "disable"
+      }
+    },
+    "1k_delta": {
+      "actor_rollout_ref.rollout.agent.agent_loop_config_path": {
+        "1k": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_structural_delta_v1_20261006/candidates/pi_sequential_1k_repro_20261012/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "v2": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml"
+      },
+      "trainer.experiment_name": {
+        "1k": "sao-qwen35-9b-b64-pi-1k-repro-baselineguard-20261013",
+        "v2": "sao-qwen35-9b-b64-pi-repair-state-v2-20261015"
+      }
+    },
+    "learning_args": {
+      "actor_rollout_ref.actor.clip_ratio_high": "4e-4",
+      "actor_rollout_ref.actor.clip_ratio_low": "3e-4",
+      "actor_rollout_ref.actor.kl_loss_coef": "0.0",
+      "actor_rollout_ref.actor.kl_loss_type": "low_var_kl",
+      "actor_rollout_ref.actor.loss_agg_mode": "seq-mean-token-mean",
+      "actor_rollout_ref.actor.optim.lr": "1e-6",
+      "actor_rollout_ref.actor.optim.lr_scheduler_type": "constant",
+      "actor_rollout_ref.actor.policy_loss.loss_mode": "bypass_mode",
+      "actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu": "1",
+      "actor_rollout_ref.actor.ppo_mini_batch_size": "64",
+      "actor_rollout_ref.actor.use_kl_loss": "False",
+      "actor_rollout_ref.ref.log_prob_micro_batch_size_per_gpu": "1",
+      "actor_rollout_ref.rollout.log_prob_micro_batch_size_per_gpu": "1",
+      "algorithm.gamma": "1.0",
+      "algorithm.lam": "1.0",
+      "algorithm.lam_critic": "1.0",
+      "algorithm.length_adaptive_lam_alpha": "1.5",
+      "algorithm.rollout_correction.loss_type": "reinforce",
+      "++actor_rollout_ref.actor.policy_loss.rollout_correction.bypass_mode": "True",
+      "++actor_rollout_ref.actor.policy_loss.rollout_correction.loss_type": "reinforce",
+      "++actor_rollout_ref.actor.policy_loss.rollout_correction.rollout_is": "token",
+      "++actor_rollout_ref.actor.policy_loss.rollout_correction.rollout_is_threshold": "0.2_4.0",
+      "++actor_rollout_ref.actor.policy_loss.rollout_correction.seq_dist_metrics": "True",
+      "algorithm.trajectory_filter.enable": "True",
+      "algorithm.trajectory_filter.drop_reasons": "[timeout,env_setup_failed]",
+      "data.train_batch_size": "64",
+      "data.val_batch_size": "1",
+      "trainer.save_freq": "10",
+      "trainer.total_epochs": "1",
+      "actor_rollout_ref.actor.veomni.optimizer_offload": "True",
+      "critic.optim.lr": "5e-6",
+      "critic.optim.lr_scheduler_type": "constant",
+      "critic.optim.lr_warmup_steps": "10",
+      "critic.ppo_epochs": "2",
+      "critic.ppo_mini_batch_size": "64",
+      "critic.ppo_micro_batch_size_per_gpu": "1",
+      "critic.cliprange_value": "0.5",
+      "critic.optim.clip_grad": "10",
+      "critic.loss_agg_mode": "token-mean",
+      "trainer.critic_warmup": "20",
+      "critic.veomni.optimizer_offload": "True",
+      "critic.veomni.freeze_param_patterns": "[self_attn.,linear_attn.,visual.]"
+    },
+    "harbor_diff": "--- \n+++ \n@@ -763,6 +763,9 @@\n             await self._setup_agent()\n             self._result.agent_info = self._agent.to_agent_info()\n             await self._init_predict_patch_baseline()\n+            pi_init = getattr(self._environment, \"initialize_privileged_state\", None)\n+            if pi_init is not None:\n+                await pi_init()\n \n             try:\n                 self._environment.default_user = self._task.config.agent.user\n"
+  },
+  "original_one_k_local_comparison": {
+    "verl_equal": 421,
+    "verl_changed": [
+      "trainer/ppo/ray_trainer.py"
+    ],
+    "harbor_equal": 219,
+    "harbor_changed": [],
+    "src_changed": [
+      "privileged_critic_builder.py",
+      "vllm_chat_completion_proxy.py",
+      "remote_docker.py",
+      "container_capture.py",
+      "registry.py"
+    ],
+    "reason_extra_vs_reproduction": "Baseline observer and closed-session lifecycle safeguards, inherited from repaired 1K reproduction."
+  },
+  "unchanged_learning": [
+    "Model engines and native value-head construction/init",
+    "Freeze mask self_attn.,linear_attn.,visual.; no last-eight-layer override",
+    "Actor/Critic optimizer implementations, LR 1e-6/5e-6, epochs 1/2",
+    "Batch/mini64, workers32, SP8, same base model and data paths",
+    "SAO policy loss, value loss, GAE, reward and invalid-row filtering formulas",
+    "Actor sampling parameters, original token/logprob/response-mask path",
+    "Critic-only steps1-19, first Actor step20",
+    "No warmup save; normal save20/every10/final"
+  ],
+  "pi_differences": [
+    "Old entity/current-source representation -> baseline-to-current before/after hunks and bounded static context",
+    "Completed Actor-visible tool evidence and budget status line; no new tests or oracle",
+    "Per-state maximum1024 ->2048 (1920 code+128 execution)",
+    "New fixed total PI quota172032 under Critic245760 and Actorreserve73728; causal clipping PI-only",
+    "Code-state dedup separated from per-call execution evidence; explicit reversion and exhaustion",
+    "Strict known SDK tool-call split remapping; fail unknown/ambiguous history"
+  ],
+  "engineering_differences": [
+    "Capture retries, preserved baseline observer and closed-session rejection inherited from repaired1K",
+    "Strict checkpoint identity/inventory/size gates; no overwrite or silent fresh fallback; atomic marker",
+    "Warmup-save code remains present but inactive because formal PI_WARMUP_CHECKPOINT_STEPS is empty",
+    "Exact Actor timeline and pre-update batch archival: additional disk/CPU time and disk failure surface",
+    "Private PYTHONPATH and reuse of preinstalled shared value-head sidecar instead of repatching shared wheel",
+    "Diagnostic/acceptance modules are separate entrypoints; formal entry stays verl.trainer.main_ppo"
+  ],
+  "tests": {
+    "new_tool_arguments": 4,
+    "existing_v2": 14,
+    "structural_mapping_tensor_tiny_model_loss_gradient_gae_causality": 12,
+    "all_cpu_passed": true,
+    "gpu_retested_after_fix": false,
+    "three_real_dry_runs_exit": 0
+  },
+  "unresolved": [
+    "First real step failed in rollout before updates; dict arguments repaired and CPU-tested, full real path not rerun",
+    "Repeat-update numeric difference remains unexplained despite equal pre-update full hashes; not proven caused by checkpoint save/load",
+    "No effectiveness evidence, no full-length GPU stress pass",
+    "Source/config audit cannot establish absence of all bugs or deterministic identical trajectories"
+  ],
+  "launch_status": "STOPPED; heartbeat PAUSED; explicit user authorization required; no training launched by this audit",
+  "methodological_limit": "Learning code unchanged does not imply identical values/advantages/gradients: PI intentionally changes Critic conditioning. More PI tokens also change dynamic microbatch packing and compute. Old1K vs newv2 changes multiple PI design dimensions, so it is not a content-only controlled comparison."
+}
