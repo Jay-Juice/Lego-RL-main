@@ -142,7 +142,14 @@ def completed_evidence(messages, journal, code_hash):
                  "status": "completed_observation", "freshness": "unknown",
                  "test_report": "unknown"}
         summaries = re.findall(r"\b\d+ (?:passed|failed|errors?|skipped|xfailed|xpassed)\b", text)
-        if summaries and re.search(r"(?:pytest|test)", function.get("arguments", ""), re.I):
+        # SDK history may already contain decoded JSON arguments. Normalize only
+        # this read-only search view; preserve the Actor message and its hash.
+        arguments = function.get("arguments", "")
+        if isinstance(arguments, dict):
+            arguments = json.dumps(arguments, sort_keys=True, ensure_ascii=True)
+        elif arguments is None:
+            arguments = ""
+        if summaries and re.search(r"(?:pytest|test)", arguments, re.I):
             event["test_report"] = ", ".join(summaries[-6:])
             journal["latest_test"] = event
         journal["events"].append(event)

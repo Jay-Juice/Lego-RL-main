@@ -117,8 +117,8 @@
     "scope": "baseline-recipe PI forward/backward/update without checkpoint load/save",
     "preflight_exit": 0,
     "runtime_sha_files": 3584,
-    "formal_training": "started_2026-10-15T22:16:59+08:00",
-    "auto_start_authorized": true,
+    "formal_training": "failed_first_rollout_then_user_hold_no_restart",
+    "auto_start_authorized": false,
     "exit": 0,
     "empty_pi_value_max_abs_diff": 0.0,
     "actor_tensors_unchanged": true,
@@ -149,5 +149,33 @@
     },
     "free_bytes": 225591128064,
     "taskrunners": "1918565 ray::TaskRunner.run"
+  },
+  "current_status": "stopped_after_rollout_failure_awaiting_explicit_user_start",
+  "formal_failure_stop": {
+    "observed_at": "2026-10-15T22:27:58.885257+08:00",
+    "formal_exit": "1",
+    "supervisor_exit": "1",
+    "driver_alive": false,
+    "taskrunner_alive": false,
+    "first_error": "2026-10-15 22:23:32 repair_state.py:145 re.search on dict arguments",
+    "complete_step_metric_lines": [],
+    "checkpoint_exists": false,
+    "gpu_compute_apps": "",
+    "gpu": "0, 14 MiB, 0 %\n1, 14 MiB, 0 %\n2, 14 MiB, 0 %\n3, 14 MiB, 0 %\n4, 14 MiB, 0 %\n5, 14 MiB, 0 %\n6, 14 MiB, 0 %\n7, 14 MiB, 0 %",
+    "log_sha256": "9540a9064576c5385e10a8862c9ac0c8a7c2d90b606ca8fecb14b206be3db705",
+    "runtime_revision": "7a459d0cdc7c78317422a6714fdb31da230bb20e3664372040807346cec9163f",
+    "restart_authorized": false,
+    "heartbeat": "PAUSED",
+    "stopped_by_signal": false
+  },
+  "tool_arguments_repair": {
+    "status": "deployed_cpu_passed_gpu_not_rerun",
+    "local_cpu_tests": 4,
+    "remote_cpu_tests": 18,
+    "remote_cpu_exit": 0,
+    "runtime_sha_files": 3585,
+    "runtime_manifest_sha256": "49af052f90d314ab29d4207ad34edd62babb5738b56eb63be176411cf18e2c64",
+    "scope": "Normalize decoded dict tool arguments only for read-only test-report search; Actor messages unchanged; unsupported types fail closed.",
+    "gpu_training_restart": false
   }
 }
