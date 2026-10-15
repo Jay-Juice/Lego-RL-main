@@ -3,6 +3,8 @@ set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 mode=${1:?smoke or train}
 case "$mode" in
+  diagnostic_r2) config=pi_v2_resume_diagnostic_r2_20261015.env ;;
+  diagnostic) config=pi_v2_resume_diagnostic_20261015.env ;;
   acceptance) config=pi_v2_acceptance_20261015.env ;;
   smoke) echo "Use the isolated validation entry, not an inherited smoke launcher" >&2; exit 2 ;;
   train) config=sao_b64_pi_repair_state_v2_20261015.env ;;

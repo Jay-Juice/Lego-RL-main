@@ -117,7 +117,6 @@
   },
   "persistence": {
     "full_checkpoint_steps": [
-      5,
       10,
       20,
       30,
@@ -143,7 +142,7 @@
     "min_free_gib_before_save": 200,
     "storage_note": "Baseline parameter mask unchanged; retain 200GiB minimum and recheck free space before every save.",
     "deletion": "No automatic deletion of original or new assets.",
-    "limitation": "Checkpoint5 cannot protect a failure before step5 completes; restart is not promised bitwise-equivalent across external service scheduling."
+    "limitation": "Checkpoint10 cannot protect a failure before step10 completes; restart is not promised bitwise-equivalent across external service scheduling."
   },
   "runtime_correctness": [
     "Preserve immutable baseline observer, whole-snapshot retry and session-closed handling.",

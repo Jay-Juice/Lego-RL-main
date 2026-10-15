@@ -57,18 +57,20 @@
   ],
   "interpretation": "Correctness evidence only; no claim of improved learning or task success.",
   "eight_gpu_acceptance_20261015": {
-    "status": "running_model_initialization",
+    "status": "failed_post_restore_next_update_equivalence",
     "screen": "lego-piv2-accept-train-20261015",
     "source_files": 3576,
     "cpu_regression": 14,
-    "formal_training": "authorized_after_acceptance_not_started",
+    "formal_training": "not_started",
     "queue": "logs/acceptance_v2_20261015",
     "checkpoint_probe": "isolated full warmup save/restore, one synthetic critic update, zero actor updates before save",
     "limitations": [
       "short synthetic trajectories",
       "no efficacy claim",
       "no maximum-length GPU stress test"
-    ]
+    ],
+    "max_abs_difference": 0.171875,
+    "diagnostic_screen": "lego-piv2-resume-diag-r2-20261015"
   },
   "user_save_schedule": {
     "extra_warmup_steps": [
@@ -76,5 +78,14 @@
     ],
     "step5_removed": true,
     "source_deployed": true
+  },
+  "diagnostic_sampler_cpu": {
+    "scalar": true,
+    "sizes": [
+      1024,
+      1025,
+      127139840
+    ],
+    "passed": true
   }
 }
