@@ -47,8 +47,9 @@
     "runtime_sha_files_verified": 3573
   },
   "not_yet_run": [
-    "successful complete eight-GPU acceptance including Actor update",
-    "formal training or benchmark effectiveness evaluation"
+    "first complete real formal-training step",
+    "benchmark effectiveness evaluation",
+    "maximum-length GPU stress test"
   ],
   "preserved_initial_validation_attempts": [
     "Initial character-tokenizer test exposed an overlong manifest; compact fallback added and all affected cases passed.",
@@ -111,12 +112,42 @@
     "actor_test_reached": false
   },
   "no_warmup_gpu_acceptance": {
-    "status": "running",
+    "status": "passed",
     "screen": "lego-piv2-nosave-accept-train-20261015",
     "scope": "baseline-recipe PI forward/backward/update without checkpoint load/save",
     "preflight_exit": 0,
     "runtime_sha_files": 3584,
-    "formal_training": "pending_success_gate",
-    "auto_start_authorized": true
+    "formal_training": "started_2026-10-15T22:16:59+08:00",
+    "auto_start_authorized": true,
+    "exit": 0,
+    "empty_pi_value_max_abs_diff": 0.0,
+    "actor_tensors_unchanged": true,
+    "pi_records_unchanged": true,
+    "actor_grad_norm": 1.1756867170333862,
+    "critic_grad_norm": 570.5886840820312,
+    "result_sha256": "aa988b7c8eae5d6e2331cf26bf2d42fad31a00ee42d39a36c654d46c0621a5b9"
+  },
+  "formal_start": {
+    "observed_at": "2026-10-15T22:18:25.417835+08:00",
+    "driver": 1914772,
+    "driver_alive": true,
+    "screen": "lego-piv2-nosave-accept-train-20261015",
+    "ray": "/tmp/lego-ray.NuUMtpx8",
+    "phase": "training 2026-10-15T22:16:59+08:00",
+    "launcher": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/logs/train_launcher_20261015-221659.log",
+    "launcher_exit_exists": false,
+    "env": {
+      "PI_WARMUP_CHECKPOINT_STEPS": "",
+      "PI_FORMAT": "repair_state_v2",
+      "PI_MAX_TOKENS_PER_STATE": "2048",
+      "FLASH_ATTENTION_DETERMINISTIC": null,
+      "PI_DIAGNOSTIC_FULL_HASH": null,
+      "PI_DIAGNOSTIC_REQUIRE_REPEAT": null,
+      "TRAIN_LOG": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/logs/train_pi_repair_state_v2_20261015T141659-1912736.log",
+      "HARBOR_TRIALS_DIR": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/harbor_trials/sao-qwen35-9b-b64-pi-repair-state-v2-20261015/20261015T141659-1912736",
+      "PI_SOURCE_REVISION": "7a459d0cdc7c78317422a6714fdb31da230bb20e3664372040807346cec9163f"
+    },
+    "free_bytes": 225591128064,
+    "taskrunners": "1918565 ray::TaskRunner.run"
   }
 }
