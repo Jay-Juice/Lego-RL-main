@@ -72,10 +72,11 @@
     "diagnostic_screen": "lego-piv2-resume-diag-r2-20261015"
   },
   "user_save_schedule": {
-    "extra_warmup_steps": [
-      10
-    ],
-    "step5_removed": true,
+    "extra_warmup_steps": [],
+    "first_regular_save": 20,
+    "regular_frequency": 10,
+    "final_save": true,
+    "baseline_schedule": true,
     "source_deployed": true
   },
   "diagnostic_sampler_cpu": {
@@ -95,10 +96,16 @@
     "acceptance": false
   },
   "resume_diagnostic_r3": {
-    "status": "running",
+    "status": "failed_output_parent_missing_before_numeric_diagnostic",
     "screen": "lego-piv2-resume-diag-r3-20261015",
     "validation_only_flash_attention_deterministic": true,
     "full_state_hash": true,
     "threshold_unchanged": 0.0001
+  },
+  "resume_diagnostic_r4": {
+    "status": "running",
+    "screen": "lego-piv2-resume-diag-r4-20261015",
+    "full_hash": true,
+    "validation_only_determinism": true
   }
 }

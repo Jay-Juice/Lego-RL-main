@@ -117,7 +117,6 @@
   },
   "persistence": {
     "full_checkpoint_steps": [
-      10,
       20,
       30,
       40,
@@ -142,7 +141,7 @@
     "min_free_gib_before_save": 200,
     "storage_note": "Baseline parameter mask unchanged; retain 200GiB minimum and recheck free space before every save.",
     "deletion": "No automatic deletion of original or new assets.",
-    "limitation": "Checkpoint10 cannot protect a failure before step10 completes; restart is not promised bitwise-equivalent across external service scheduling."
+    "limitation": "Baseline saves begin at step20; failures before then have no checkpoint. External rollout scheduling is not promised bitwise identical."
   },
   "runtime_correctness": [
     "Preserve immutable baseline observer, whole-snapshot retry and session-closed handling.",
@@ -167,5 +166,12 @@
     "../pi_critic_forensics_20261015/VALIDATION_SUMMARY.json",
     "../pi_critic_forensics_20261015/pi_content_audit_summary.json"
   ],
-  "confidence": "A single evidence-informed engineering choice, not proven performance improvement."
+  "confidence": "A single evidence-informed engineering choice, not proven performance improvement.",
+  "user_checkpoint_schedule_20261015": {
+    "warmup_saves": [],
+    "first_regular_save": 20,
+    "save_freq": 10,
+    "last_step": true,
+    "baseline_schedule": true
+  }
 }

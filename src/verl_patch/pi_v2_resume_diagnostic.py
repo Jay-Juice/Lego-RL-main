@@ -55,9 +55,11 @@ class DiagnosticRunner(TaskRunner):
         self.mapping[Role.Critic]='global_pool'
 
     def run(self, config):
+        # Fail on output reuse before expensive worker/model initialization.
+        Path(os.environ['PI_DIAGNOSTIC_DIR']).mkdir(parents=True, exist_ok=False)
         original=RayPPOTrainer.fit
         def diagnostic(trainer):
-            out=Path(os.environ['PI_DIAGNOSTIC_DIR']);out.mkdir(exist_ok=False)
+            out=Path(os.environ['PI_DIAGNOSTIC_DIR'])
             def save(name,value):
                 with (out/(name+'.json')).open('x') as f:json.dump(value,f,indent=2)
             def stage(name):print('PI_RESUME_DIAGNOSTIC',name,flush=True)
