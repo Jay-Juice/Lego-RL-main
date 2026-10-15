@@ -1225,6 +1225,18 @@ class _VLLMChatCompletionsProxy:
         for sub_key in sub_keys:
             await self._session_scheduler.finish_session(sub_key, reason="pop_session")
         traj_dir = meta.get("trajectory_dir")
+        if traj_dir and (meta.get("pi_call_records") or meta.get("pi_error")):
+            Path(traj_dir).mkdir(parents=True, exist_ok=True)
+            (Path(traj_dir) / "pi_calls.json").write_text(json.dumps({
+                "session_id": session_id, "records": meta.get("pi_call_records", []),
+                "error": meta.get("pi_error")}, ensure_ascii=False, indent=2))
+        if traj_dir and os.environ.get("PI_FORMAT") == "repair_state_v2":
+            # Exact proxy timeline; model-visible PI excludes this audit archive.
+            (Path(traj_dir) / "pi_exact_actor_timeline.json").write_text(json.dumps({
+                "session_id": session_id,
+                **{key: meta.get(key) for key in ("traj_acc_ids", "traj_response_mask", "traj_response_logprobs", "initial_prompt_token_len")},
+                "journal": meta.get("repair_pi", {}).get("journal", {}).get("events", [])},
+                ensure_ascii=False))
         # One-shot assemble: final snapshot already holds full chat prefix (no per-step duplication).
         if traj_dir and (
             meta.get("messages_snapshot") is not None or int(meta.get("num_calls") or 0) > 0
@@ -1549,6 +1561,39 @@ class _VLLMChatCompletionsProxy:
                 t_gen_start = time.perf_counter()
                 try:
                     try:
+                        from harbor_patch.privileged_state import registry as pi_registry
+                        if pi_registry.enabled():
+                            try:
+                                from harbor_patch.privileged_state.structural_lift import serialize
+                                pi_snapshot = await pi_registry.capture(session_id)
+                                repair_fields = {}
+                                if os.environ.get("PI_FORMAT") == "repair_state_v2":
+                                    from harbor_patch.privileged_state.repair_state import serialize as repair_serialize
+                                    repair_fields = repair_serialize(
+                                        pi_snapshot, self._tokenizer, sess, messages,
+                                        logical_call_id=getattr(attempt, "logical_call_id", str(sess.get("num_calls", 0))),
+                                        output_limit=sampling_params.get("max_tokens"))
+                                    pi_text, pi_ids = repair_fields["pi_text"], repair_fields["pi_ids"]
+                                    pi_raw_tokens, pi_truncated = repair_fields["pi_raw_tokens"], repair_fields["pi_truncated"]
+                                else:
+                                    pi_text, pi_ids, pi_raw_tokens, pi_truncated = serialize(
+                                        pi_snapshot, self._tokenizer, int(os.environ.get("PI_MAX_TOKENS_PER_STATE", "1024")))
+                                sess["pi_pending_record"] = {
+                                    **{k: v for k, v in pi_snapshot.items() if k not in {"entities", "files"}},
+                                    **repair_fields,
+                                    "pi_text": pi_text, "pi_ids": pi_ids,
+                                    "pi_raw_tokens": pi_raw_tokens, "pi_truncated": pi_truncated,
+                                    "actor_response_start_abs": len(sess.get("traj_acc_ids") or []),
+                                    "logical_call_id": getattr(attempt, "logical_call_id", str(sess.get("num_calls", 0))),
+                                }
+                            except pi_registry.SessionClosedError:
+                                # Environment teardown can precede a queued HTTP request.
+                                # Reject it before generation; retain genuine PI failures.
+                                sess["pi_closed_requests"] = int(sess.get("pi_closed_requests", 0)) + 1
+                                raise
+                            except Exception as pi_exc:
+                                sess["pi_error"] = str(pi_exc)
+                                raise
                         output: TokenOutput = await self._server_manager.generate(
                             request_id=session_id,
                             prompt_ids=list(prompt_ids),
@@ -1671,6 +1716,9 @@ class _VLLMChatCompletionsProxy:
                     sess = self._sessions.setdefault(session_id, self._fresh_session_state())
                     prev_snap = sess.get("messages_snapshot") or []
                     normalized_assistant = _normalize_openai_messages_for_template([message])[0]
+                    if sess.get("pi_call_records"):
+                        from verl_patch.agent_loop.privileged_critic_builder import message_key
+                        sess["pi_call_records"][-1]["message_key"] = message_key(normalized_assistant)
                     sess["messages_snapshot"] = list(prev_snap) + [normalized_assistant]
                     prev_debug = list(sess.get("message_snap_debug") or [])
                     if len(prev_debug) != len(prev_snap):
@@ -2114,6 +2162,7 @@ class _VLLMChatCompletionsProxy:
             rebuilt_lp: list[float] = []
             rebuilt_routing: list = []
 
+            pi_rebuilt_spans = []
             idx = len(prefix_msgs)
             while idx < len(messages):
                 if messages[idx].get("role") == "assistant":
@@ -2130,6 +2179,8 @@ class _VLLMChatCompletionsProxy:
                     # *next* turn. Strip both.
                     if gp_len > 0 and len(asst_ids) >= 2 * gp_len:
                         asst_ids = asst_ids[gp_len:-gp_len]
+                    from verl_patch.agent_loop.privileged_critic_builder import message_key
+                    pi_rebuilt_spans.append((message_key(messages[idx]), len(rebuilt_acc), len(rebuilt_acc) + len(asst_ids)))
                     rebuilt_acc.extend(asst_ids)
                     rebuilt_mask.extend([1] * len(asst_ids))
                     rebuilt_lp.extend([0.0] * len(asst_ids))
@@ -2152,6 +2203,15 @@ class _VLLMChatCompletionsProxy:
                 rebuilt_routing.extend([None] * len(batch_ids))
                 idx = run_end
 
+            from harbor_patch.privileged_state.registry import enabled as pi_enabled
+            if pi_enabled():
+                from verl_patch.agent_loop.privileged_critic_builder import remap_rebuilt_records
+                try:
+                    sess["pi_call_records"] = remap_rebuilt_records(sess.get("pi_call_records", []), pi_rebuilt_spans,
+                        old_messages=sess.get("messages_snapshot") or [], new_messages=messages)
+                except Exception as pi_exc:
+                    sess["pi_error"] = str(pi_exc)
+                    raise
             sess["rolling_acc_ids"] = list(rebuilt_acc)
             sess["messages_snapshot"] = _copy_messages_for_snapshot(messages)
             sess["message_snap_debug"] = _message_snap_debug_for(messages, "incoming_rebuild")
@@ -2308,6 +2368,11 @@ class _VLLMChatCompletionsProxy:
                 s["max_global_steps"] = mx if cur is None else max(cur, mx)
 
             output_ids = list(output.token_ids)
+            pending_pi = s.pop("pi_pending_record", None)
+            if pending_pi is not None and output_ids and not s.get("disable_proxy_trajectory"):
+                pending_pi["actor_response_end_abs"] = pending_pi["actor_response_start_abs"] + len(output_ids)
+                pending_pi["call_index"] = s["num_calls"] - 1
+                s.setdefault("pi_call_records", []).append(pending_pi)
             s["rolling_acc_ids"] = list(s.get("rolling_acc_ids") or []) + output_ids
 
             if not s.get("disable_proxy_trajectory"):

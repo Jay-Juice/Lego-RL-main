@@ -1,0 +1,59 @@
+{
+  "experiment": "pi_repair_state_v2_20261015",
+  "status": "implemented_cpu_and_harbor_verified_distributed_acceptance_pending",
+  "formal_training_started": false,
+  "parent_original_1k_files_checked": 3824,
+  "parent_original_1k_modified_files": [],
+  "cpu_tests": {
+    "new_repair_state": 14,
+    "inherited_structural_tensor_loss_gradient": 12,
+    "baseline_observer_guard": 6,
+    "closed_session_lifecycle": 8,
+    "total_passed": 40
+  },
+  "cpu_limits": [
+    "Warmup optimizer roundtrip uses a small CPU module, not a full 8-rank VeOmni checkpoint.",
+    "Existing tiny Qwen numerical tests do not establish 9B/SP8 numerical behavior."
+  ],
+  "real_harbor": {
+    "status": "passed",
+    "trial": "pi-integration-e4b7f6e66a",
+    "tokenizer": "existing Qwen3.5-9B",
+    "model_generation": "scripted, not neural inference",
+    "checks": [
+      "pre-generation capture",
+      "business code edit/restore",
+      "syntax fallback",
+      "history rebuild",
+      "baseline metadata deletion recovery",
+      "Actor token preservation",
+      "closed-session rejection"
+    ],
+    "verifier_or_task_tests_run": false
+  },
+  "recipe": {
+    "all_130_launch_arguments_equal_except_experiment_name": true,
+    "freeze_patterns": [
+      "self_attn.",
+      "linear_attn.",
+      "visual."
+    ],
+    "value_head_initialization": "baseline unchanged",
+    "model_engine_and_config_source_files_identical_to_parent": 35,
+    "preflight_exit": 0
+  },
+  "deployment": {
+    "independent_root": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015",
+    "runtime_sha_files_verified": 3573
+  },
+  "not_yet_run": [
+    "9B/SP8 distributed numerical acceptance",
+    "full 8-rank warmup checkpoint save/load and next-batch continuity",
+    "formal training or benchmark effectiveness evaluation"
+  ],
+  "preserved_initial_validation_attempts": [
+    "Initial character-tokenizer test exposed an overlong manifest; compact fallback added and all affected cases passed.",
+    "Shared venv lacks pytest; used standard-library unittest without installing packages."
+  ],
+  "interpretation": "Correctness evidence only; no claim of improved learning or task success."
+}

@@ -1,0 +1,94 @@
+--- a/third_party/verl/verl/trainer/ppo/ray_trainer.py
++++ b/third_party/verl/verl/trainer/ppo/ray_trainer.py
+@@ -1001,6 +1001,8 @@
+             self.config.trainer.default_local_dir, f"global_step_{self.global_steps}"
+         )
+ 
++        if os.environ.get("PI_CHECKPOINT_STRICT", "0") == "1" and os.path.exists(local_global_step_folder):
++            raise FileExistsError("Refusing to overwrite an existing complete or partial checkpoint")
+         print(f"local_global_step_folder: {local_global_step_folder}")
+         actor_local_path = os.path.join(local_global_step_folder, "actor")
+ 
+@@ -1059,11 +1061,21 @@
+         local_latest_checkpointed_iteration = os.path.join(
+             self.config.trainer.default_local_dir, "latest_checkpointed_iteration.txt"
+         )
+-        with open(local_latest_checkpointed_iteration, "w") as f:
++        if os.environ.get("PI_CHECKPOINT_STRICT", "0") == "1":
++            from verl_patch.agent_loop.pi_checkpoint import publish_complete
++            publish_complete(local_global_step_folder, self.config.trainer.experiment_name,
++                             self.global_steps, self.config.trainer.n_gpus_per_node * self.config.trainer.nnodes)
++        temporary_marker = local_latest_checkpointed_iteration + ".pending"
++        with open(temporary_marker, "w") as f:
+             f.write(str(self.global_steps))
++        os.replace(temporary_marker, local_latest_checkpointed_iteration)
+ 
+     def _load_checkpoint(self):
+         if self.config.trainer.resume_mode == "disable":
++            if os.environ.get("PI_CHECKPOINT_STRICT", "0") == "1":
++                from pathlib import Path
++                if list(Path(self.config.trainer.default_local_dir).glob("global_step_*")):
++                    raise RuntimeError("Existing checkpoints in this experiment; explicit resume is required")
+             return 0
+ 
+         # load from hdfs
+@@ -1079,6 +1091,8 @@
+         # find global_step_folder
+         if self.config.trainer.resume_mode == "auto":
+             if global_step_folder is None:
++                if os.environ.get("PI_CHECKPOINT_STRICT", "0") == "1":
++                    raise RuntimeError("Explicit resume requested but no complete checkpoint exists; refusing fresh fallback")
+                 print("Training from scratch")
+                 return 0
+         else:
+@@ -1091,6 +1105,9 @@
+                 if not os.path.isabs(global_step_folder):
+                     working_dir = os.getcwd()
+                     global_step_folder = os.path.join(working_dir, global_step_folder)
++        if os.environ.get("PI_CHECKPOINT_STRICT", "0") == "1":
++            from verl_patch.agent_loop.pi_checkpoint import validate_complete
++            validate_complete(global_step_folder, self.config.trainer.experiment_name)
+         print(f"Load from checkpoint folder: {global_step_folder}")
+         # set global step
+         self.global_steps = int(global_step_folder.split("global_step_")[-1])
+@@ -1241,7 +1258,7 @@
+         batch_td = batch.to_tensordict()
+         # step 2: convert from padding to nopadding
+         from verl_patch.agent_loop.privileged_critic_builder import prepare_critic_view
+-        batch_td = prepare_critic_view(batch_td)
++        batch_td = prepare_critic_view(batch_td, tokenizer=self.tokenizer)
+         # step 3: add meta info
+         tu.assign_non_tensor(batch_td, compute_loss=False)
+         output = self.critic_wg.infer_batch(batch_td)
+@@ -1362,7 +1379,7 @@
+         batch_td = batch.to_tensordict()
+         # step 2: convert from padding to no-padding
+         from verl_patch.agent_loop.privileged_critic_builder import prepare_critic_view
+-        batch_td = prepare_critic_view(batch_td)
++        batch_td = prepare_critic_view(batch_td, tokenizer=self.tokenizer)
+         ppo_mini_batch_size = self.config.critic.ppo_mini_batch_size
+         ppo_mini_batch_size = ppo_mini_batch_size * self.config.actor_rollout_ref.rollout.n
+         ppo_epochs = self.config.critic.ppo_epochs
+@@ -1677,6 +1694,9 @@
+                         # Estimator-agnostic safety net: filtered rows contribute zero gradient.
+                         batch = zero_filtered_advantages(batch)
+ 
++                    if os.environ.get("PI_FORMAT") == "repair_state_v2":
++                        from verl_patch.agent_loop.pi_archive import archive_batch
++                        archive_batch(batch, self.global_steps, self.config)
+                     # update critic
+                     if self.use_critic:
+                         with marked_timer("update_critic", timing_raw, color="pink"):
+@@ -1686,7 +1706,11 @@
+ 
+                     # implement critic warmup
+                     if self.config.trainer.critic_warmup > self.global_steps:
+-                        # Still in critic warmup, only update weights to wake up rollout replicas.
++                        # Persistence only: no Actor update or optimizer/scheduler step is added.
++                        warmup_saves = {int(x) for x in os.environ.get("PI_WARMUP_CHECKPOINT_STEPS", "").split(",") if x}
++                        if os.environ.get("PI_ENABLE", "0") == "1" and self.global_steps in warmup_saves:
++                            with marked_timer("save_checkpoint", timing_raw, color="green"):
++                                self._save_checkpoint()
+                         self.checkpoint_manager.update_weights(self.global_steps)
+                     else:
+                         # update actor

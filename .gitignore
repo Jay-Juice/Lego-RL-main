@@ -190,3 +190,16 @@ webui/dist.bak-*/
 /merged_models/
 /data/
 *.safetensors
+
+# Experiment-local evidence: source and concise validation records are tracked explicitly.
+/.deployment/
+/.env-shims/
+/ops/
+!/ops/run_phase.sh
+/audit_deployment_manifest*.json
+/REPRO_SOURCE_MANIFEST.json
+/SOURCE_BASELINE_MANIFEST.json
+/DEPLOYMENT_MANIFEST.json
+/VENDOR_BASELINE_MANIFEST.json
+/research/idea/
+/research/pi_*probe*.json

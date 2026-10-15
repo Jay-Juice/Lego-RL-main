@@ -176,6 +176,7 @@ append_common_hydra_args() {
     if var_is_set TRAINER_VALIDATION_DATA_DIR; then
         add_force trainer.validation_data_dir "$TRAINER_VALIDATION_DATA_DIR"
     fi
+    add_if_set trainer.resume_mode TRAINER_RESUME_MODE
     add trainer.total_epochs "$TRAINER_TOTAL_EPOCHS"
     add trainer.val_before_train "$TRAINER_VAL_BEFORE_TRAIN"
 }

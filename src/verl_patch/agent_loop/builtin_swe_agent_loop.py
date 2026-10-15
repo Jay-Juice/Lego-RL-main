@@ -453,6 +453,8 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
         # pick the slowest trial based on actual wall-clock trial duration.
         metrics["generate_sequences"] = metrics.get("harbor_total", 0.0)
 
+        if session_meta.get("pi_error"):
+            raise RuntimeError("PI pre-action capture/alignment failure: " + session_meta["pi_error"])
         if session_meta.get("verifier_unresolved"):
             return self._make_empty_output(
                 kwargs, metrics=metrics, session_meta=session_meta,
@@ -571,6 +573,8 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
             num_turns=num_turns,
             metrics=metrics,
             extra_fields={
+                **({"pi_call_records": session_meta.get("pi_call_records", [])}
+                   if os.environ.get("PI_ENABLE", "0").lower() in {"1", "true", "yes"} else {}),
                 "turn_scores": [],
                 "tool_rewards": [],
                 "reward_extra_info": {
@@ -1091,6 +1095,8 @@ class BuiltinSWEAgentLoop(AgentLoopBase):
             num_turns=0,
             metrics=base_metrics,
             extra_fields={
+                **({"pi_call_records": session_meta.get("pi_call_records", [])}
+                   if os.environ.get("PI_ENABLE", "0").lower() in {"1", "true", "yes"} else {}),
                 "turn_scores": [],
                 "tool_rewards": [],
                 "reward_extra_info": {

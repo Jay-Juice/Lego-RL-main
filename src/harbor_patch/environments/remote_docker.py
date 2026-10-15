@@ -240,6 +240,48 @@ class RemoteDockerEnvironment(DockerEnvironment):
             f"{EnvironmentPaths.artifacts_dir}"
         )
 
+    async def initialize_privileged_state(self):
+        from harbor_patch.privileged_state import registry
+        if not registry.enabled():
+            return
+        self._pi_baseline = await self._exec_pi_capture()
+        self._pi_seq = 0
+        registry.register(self.session_id, self.capture_structural_delta)
+        audit = self.trial_paths.trial_dir / "pi_baseline.json"
+        audit.write_text(json.dumps(self._pi_baseline, indent=2))
+
+    async def _exec_pi_capture(self, baseline=None):
+        import base64
+        import shlex
+        from harbor_patch.privileged_state import container_capture
+        code = Path(container_capture.__file__).read_bytes()
+        invoke = "import base64;exec(base64.b64decode(" + repr(base64.b64encode(code).decode()) + "))"
+        command = '"${HARBOR_VERIFIER_PYTHON:-python3}" -c ' + shlex.quote(invoke)
+        if baseline:
+            command += " " + shlex.quote(baseline["repo_root"]) + " " + shlex.quote(baseline["baseline_sha"])
+            if baseline.get("baseline_observer"):
+                command += " " + shlex.quote(baseline["baseline_observer"])
+        result = await self.exec(command=command, timeout_sec=45)
+        if result.return_code:
+            raise RuntimeError("PI capture failed: " + (result.stderr or result.stdout or "")[-2000:])
+        return json.loads(result.stdout)
+
+    async def capture_structural_delta(self):
+        if os.environ.get("PI_FORMAT") == "repair_state_v2":
+            from harbor_patch.privileged_state.repair_state import build_snapshot
+        else:
+            from harbor_patch.privileged_state.structural_lift import build_snapshot
+        raw = await self._exec_pi_capture(self._pi_baseline)
+        snapshot = build_snapshot(raw, int(os.environ.get("PI_DIFF_CONTEXT_LINES", "20")))
+        snapshot.update(session_id=self.session_id, state_seq=self._pi_seq)
+        self._pi_seq += 1
+        return snapshot
+
+    async def stop(self, delete):
+        from harbor_patch.privileged_state import registry
+        registry.unregister(self.session_id)
+        await super().stop(delete)
+
     def _write_mounts_compose_file(self) -> Path:
         """Override the base writer: alongside the bind-mounted runtime volume, inject
         CUSTOM_AGENT_RUNTIME_ROOT / CUSTOM_AGENT_PYTHON into the task container's env so

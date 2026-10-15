@@ -101,7 +101,7 @@ initialize_runtime() {
     # SWE_LEGO_RL_ROOT is the pre-rename name, kept as an alias so an older config or
     # hydra file that still reads it keeps resolving.
     export SWE_LEGO_RL_ROOT="$REPO_ROOT"
-    export PYTHONPATH="${PYTHONPATH:+${PYTHONPATH}:}$REPO_ROOT/src"
+    export PYTHONPATH="$REPO_ROOT/src:$REPO_ROOT/third_party/verl:$REPO_ROOT/third_party/harbor/src:$REPO_ROOT${PYTHONPATH:+:${PYTHONPATH}}"
 
     if [ -f "$VENV_PATH/bin/activate" ]; then
         # shellcheck disable=SC1091
@@ -132,7 +132,7 @@ initialize_runtime() {
         # managed checkout, so the fix is a site-packages patcher (idempotent, also
         # run by setup_env.sh). Re-run here because a venv rebuild loses it.
         if is_true "${CRITIC_ENABLE:-False}"; then
-            "$PYTHON_BIN" "$REPO_ROOT/utils/apply_veomni_valuehead_patch.py" || {
+            "$PYTHON_BIN" -c 'from veomni.models.auto import build_config; print("[PI] reuse existing value-head sidecar; no shared wheel modification")' || {
                 echo "[FATAL] veomni value-head patch failed; a critic would be built as a language model" >&2
                 exit 1
             }

@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "title": "Repair-state PI v2 — consolidated trainable design",
+  "date_cst": "2026-10-15",
+  "status": "implemented_cpu_and_harbor_verified_distributed_acceptance_pending",
+  "decision": "One new training recipe after correctness validation; no sequential algorithm ablation campaign.",
+  "preservation": {
+    "old_experiment": "experiments/pi_sequential_1k_repro_20261012",
+    "old_source_modified": false,
+    "implementation_destination": "experiments/pi_repair_state_v2_20261015",
+    "requirements": [
+      "Before implementation, copy the complete original 1K baselineguard source with a full SHA manifest; do not exclude nested config/data source directories.",
+      "Use independent experiment identity, logs, trials, checkpoints and deployment path.",
+      "Verify the original source manifest remains unchanged after implementation.",
+      "Existing 1K/2K checkpoints, merged models, evidence and failed runs are not overwritten or deleted."
+    ]
+  },
+  "pi_definition": {
+    "expression": "P_t = deterministic summary of Delta(B,W_t), bounded local code context, completed Agent execution evidence E_<t, and known logical budgets; only captured before generation t.",
+    "baseline": "Immutable prepared buggy source tree; no ancestor history or reference solution.",
+    "workspace": "Actual current task worktree, including added/deleted files. Verified capture interval and consistency checks; not claimed atomic or full Markov state.",
+    "code_block": [
+      "Compact baseline-to-current before/after hunks with exact source text and explicit old/current labels.",
+      "Deduplicate ranges; include relative path, enclosing symbol signature and necessary local context.",
+      "Bounded same-module imports and directly referenced local definitions/signatures; deterministic static traversal only, no semantic retriever or LLM.",
+      "Represent non-code/config changes and removals explicitly. Syntax parsing is a static observation, never a correctness verdict.",
+      "Changed/new/reverted units since the previous observation get first allocation; remaining current edits are allocated across files deterministically. Coverage and omission counts remain explicit."
+    ],
+    "execution_block": [
+      "Most recent completed Agent command result and latest known already-executed test summary, parsed only from Agent-observed events.",
+      "Return code, completed/timeout/unknown status, and available logical call/token budget.",
+      "Evidence freshness: associate command evidence with observed workspace versions at execution boundaries; mark changed/stale or unknown when attribution is uncertain.",
+      "A prior passing test is not represented as a current-code passing test after a subsequent edit.",
+      "No result for a pending command and no future result backfilled into earlier PI."
+    ],
+    "event_capture": {
+      "implementation": "Journal exact completed tool messages at the live proxy boundary before generation. No SDK callback or Agent change.",
+      "source_limit": "Already Actor-visible tool observations only; no verifier or extra tests.",
+      "freshness": "Unknown at observation because execution-boundary workspace snapshots are unavailable; stale after observed workspace change."
+    },
+    "excluded": [
+      "Hidden evaluation tests or their identifiers",
+      "terminal verifier outputs as earlier PI",
+      "reference patches or injected bug locations",
+      "future trajectories",
+      "extra LLM summaries",
+      "additional task tests",
+      "inferred correctness/progress scores",
+      "GPU/network/machine identity as quality features"
+    ],
+    "audit_only": [
+      "full hashes",
+      "capture times",
+      "absolute paths",
+      "source/runtime identity",
+      "capture retries",
+      "raw event references"
+    ],
+    "budget": {
+      "max_total_pi_per_call": 2048,
+      "max_code_block": 1920,
+      "code_subbudgets_including_formatting": {
+        "manifest_and_coverage": 128,
+        "diff": 1408,
+        "context": 384
+      },
+      "max_execution_line": 128,
+      "total_critic_tokens": 245760,
+      "actor_reserved_tokens": 73728,
+      "total_pi_tokens": 172032,
+      "truncation": "Prefer complete hunk/line units; mark omitted ranges and exceptionally long-line truncation. Never present a truncated entity as complete.",
+      "allocation": "Chronological causal allocation only. Never reallocate earlier PI based on future trajectory length. Reserve a compact exhaustion marker; when exhausted, omit subsequent PI explicitly in audit rather than trimming Actor tokens or fabricating an empty workspace."
+    },
+    "deduplication": {
+      "code": "Insert the current code capsule only on workspace/code-view change; do not resend it solely because budgets or command status changed.",
+      "execution": "A small status line is eligible at every generation, referencing the latest represented code state with a short local identifier.",
+      "restore": "Nonconsecutive return to an earlier workspace state must be represented explicitly.",
+      "omitted_capsule": "Never label an unrepresented new code state as an unchanged or fully visible state."
+    }
+  },
+  "critic_input": {
+    "layout": "One trajectory per row; exact Actor token history with causally ordered PI blocks inserted immediately before each generated span.",
+    "history": "Historical PI remains visible causally. New code-state blocks explicitly supersede earlier current-state descriptions; current-only attention is not claimed.",
+    "value_alignment": "Read value immediately before each sampled Actor token using the audited gather mapping.",
+    "loss_mask": "Original sampled action positions only. PI/tool-observation tokens add no action loss positions or denominator weight.",
+    "invariant": "Value inference and Critic update share the same builder. Actor input IDs, logprobs, response mask, reward, SAO/GAE and update timing remain unchanged.",
+    "archive": "Persist exact proxy IDs/logprobs/masks, PI bytes/token segments, completed-observation references, full pre-update batch tensors (returns and filtered-row state), and config/source identity. Gather positions are reconstructed from these inputs with the versioned builder, not separately persisted."
+  },
+  "learning": {
+    "initialization": "New independent fresh run from the existing Qwen3.5-9B base; no continuation from old PI Critic checkpoints.",
+    "critic_head": {
+      "initialization": "Unmodified SAO baseline model initialization; no zero weights or 0.5 bias override."
+    },
+    "critic_trainable": "Exactly SAO baseline resolved named-parameter mask; no final-eight-layer unfreeze.",
+    "critic_frozen": "Baseline freeze patterns self_attn., linear_attn., visual.; unchanged implementation.",
+    "critic_lr": 5e-06,
+    "actor_lr": 1e-06,
+    "critic_epochs": 2,
+    "actor_epochs": 1,
+    "critic_gradient_clip": 10,
+    "critic_lr_warmup_steps": 10,
+    "value_objective": "Existing clipped value MSE on valid action positions",
+    "gamma": 1,
+    "lam_critic": 1,
+    "reward_kl": false,
+    "additional_losses": [],
+    "actor_gae": "Preserve resolved original SAO length-adaptive GAE configuration",
+    "batch": 64,
+    "minibatch": 64,
+    "workers": 32,
+    "sequence_parallel": 8,
+    "data_parallel": 1,
+    "training_data": "Existing 6248-task training dataset, one epoch, 97 full-batch steps",
+    "critic_only_steps": "1-19",
+    "first_actor_update": 20,
+    "other_recipe": "Full baseline Hydra command identical except experiment/output identity. Only PI environment and persistence options differ."
+  },
+  "persistence": {
+    "full_checkpoint_steps": [
+      5,
+      10,
+      20,
+      30,
+      40,
+      50,
+      60,
+      70,
+      80,
+      90,
+      97
+    ],
+    "state": [
+      "Actor and Critic model",
+      "optimizers",
+      "schedulers",
+      "worker RNG",
+      "dataloader state",
+      "global step",
+      "recipe/source identity"
+    ],
+    "complete_marker": "Publish only after all required shards and data state are saved and validated.",
+    "resume": "Explicit complete checkpoint of this new experiment only; missing/corrupt checkpoint does not silently become a fresh run.",
+    "min_free_gib_before_save": 200,
+    "storage_note": "Baseline parameter mask unchanged; retain 200GiB minimum and recheck free space before every save.",
+    "deletion": "No automatic deletion of original or new assets.",
+    "limitation": "Checkpoint5 cannot protect a failure before step5 completes; restart is not promised bitwise-equivalent across external service scheduling."
+  },
+  "runtime_correctness": [
+    "Preserve immutable baseline observer, whole-snapshot retry and session-closed handling.",
+    "Port and validate strict known SDK tool-call split mapping in the new copy; reject unknown rewrites.",
+    "Do not substitute old/empty PI on collection failure or invent historical logprobs.",
+    "Classify unresolved infrastructure rewards using the existing invalid-row rules."
+  ],
+  "validation_and_launch": {
+    "only_required_validation": [
+      "CPU causality, budgeting, state reversion, event freshness and Actor-token alignment regression",
+      "Real Harbor/SDK integration without extra task tests",
+      "Distributed finite-value/gradient smoke with unchanged baseline freeze mask (pending; no formal training).",
+      "Save/load with pre-first-update Actor optimizer and exact next-batch/global-step continuity check"
+    ],
+    "not_an_ablation_campaign": true,
+    "smoke_updates_discarded": true,
+    "full_training_resource": "Original SP8 requires eight available authorized GPUs. Do not assume four-card training fits.",
+    "current_action": "Implementation complete; 40 CPU tests, real Harbor scripted-generation integration and launch-command comparison passed. 9B/SP8 and full warmup-resume acceptance pending. No formal training launched."
+  },
+  "evidence_basis": [
+    "../pi_critic_forensics_20261015/PROJECT_REVIEW.json",
+    "../pi_critic_forensics_20261015/VALIDATION_SUMMARY.json",
+    "../pi_critic_forensics_20261015/pi_content_audit_summary.json"
+  ],
+  "confidence": "A single evidence-informed engineering choice, not proven performance improvement."
+}
