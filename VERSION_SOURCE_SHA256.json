@@ -1,6 +1,6 @@
 {
   "ops/acceptance_then_train_20261015.sh": "572d7c6f4d552fafc2a043dd2d70801d27f127ebb7be84bc9c8e691a579da5c5",
-  "ops/run_phase.sh": "be3cd4b6ca356d07517ac458b364d443b0fb2c7c33ac3fa58261dc15e7f9aa16",
+  "ops/run_phase.sh": "ad6d01f8bbfbb0222612969727a48cfc3a4b1d5f54956c6959b0bf7eca2defb8",
   "scripts/README.md": "db56605ccb70640a6e4072407ac28f09a7fe99bfc7b51a50b2e366b1a5eeb9ce",
   "scripts/eval/_template.env": "53e86c63c4a1090acd4399ef0e6cbc408107fcad976ea068f93a38e9065c1361",
   "scripts/eval/configs/qwen35-35b_official_multilingual.env": "462a1a6a9fd772214af27bee0578a7dc20b9c52e37665c345a00f8a54c637ae8",
@@ -3579,5 +3579,8 @@
   "utils/verify_merged_hf_keys.py": "0daf0fe58802ef66657d757c2a7e4506f6a92e001e41ef341a60785b700978ab",
   "utils/version_swesmith_verifier_assets.py": "7423a80bc22630cc7bb6e7b1561b9607e0ea31704ac9315ef44de11018bd4967",
   "scripts/train/configs/pi_v2_resume_diagnostic_r3_20261015.env": "3aedc5351b42ec50416cd1915bc61d2ca34052de45e11f4b010557fe28781488",
-  "scripts/train/configs/pi_v2_resume_diagnostic_r4_20261015.env": "7f4425f753f5094c98eadc375f6678451e9b17e5f4ea29edae2dcb7e47af478d"
+  "scripts/train/configs/pi_v2_resume_diagnostic_r4_20261015.env": "7f4425f753f5094c98eadc375f6678451e9b17e5f4ea29edae2dcb7e47af478d",
+  "src/verl_patch/pi_v2_training_acceptance.py": "dd9e2f1093ad8f96ade5ab3127b234e869e083c0f86e0eb323de25062acdaac3",
+  "scripts/train/configs/pi_v2_nosave_acceptance_20261015.env": "2dfd49703edbca7eb5e6bc5a12fd21d246aaa1703fb1f33eef7eab74d132d25f",
+  "ops/nosave_acceptance_then_train_20261015.sh": "a2509680c12cc5b5047c61a4b367dba11b409aa1a21f167a2c6d764663d3bd6c"
 }

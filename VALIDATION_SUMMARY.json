@@ -103,9 +103,20 @@
     "threshold_unchanged": 0.0001
   },
   "resume_diagnostic_r4": {
+    "status": "failed_repeat_update_assertion",
+    "exit": 1,
+    "max_abs_difference": 0.0703125,
+    "full_pre_update_state_equal_all_8_ranks": true,
+    "flash_determinism_only_does_not_resolve": true,
+    "actor_test_reached": false
+  },
+  "no_warmup_gpu_acceptance": {
     "status": "running",
-    "screen": "lego-piv2-resume-diag-r4-20261015",
-    "full_hash": true,
-    "validation_only_determinism": true
+    "screen": "lego-piv2-nosave-accept-train-20261015",
+    "scope": "baseline-recipe PI forward/backward/update without checkpoint load/save",
+    "preflight_exit": 0,
+    "runtime_sha_files": 3584,
+    "formal_training": "pending_success_gate",
+    "auto_start_authorized": true
   }
 }
