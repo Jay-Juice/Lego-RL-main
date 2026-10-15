@@ -3,6 +3,7 @@ set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 mode=${1:?smoke or train}
 case "$mode" in
+  diagnostic_r3) config=pi_v2_resume_diagnostic_r3_20261015.env ;;
   diagnostic_r2) config=pi_v2_resume_diagnostic_r2_20261015.env ;;
   diagnostic) config=pi_v2_resume_diagnostic_20261015.env ;;
   acceptance) config=pi_v2_acceptance_20261015.env ;;

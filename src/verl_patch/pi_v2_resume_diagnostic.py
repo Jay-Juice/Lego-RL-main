@@ -26,7 +26,9 @@ def summarize(value):
             flat = flat[torch.arange(1024, dtype=torch.int64) * (flat.numel()-1) // 1023]
         raw = flat.contiguous().view(torch.uint8).numpy().tobytes()
         return {'shape': list(t.shape), 'dtype': str(t.dtype), 'sample_sha256': hashlib.sha256(raw).hexdigest(),
-                'scalar': t.item() if t.numel()==1 else None}
+                'scalar': t.item() if t.numel()==1 else None,
+                **({'full_sha256': hashlib.sha256(memoryview(t.reshape(-1).view(torch.uint8).numpy())).hexdigest()}
+                   if os.environ.get('PI_DIAGNOSTIC_FULL_HASH') == '1' else {})}
     if isinstance(value, dict): return {str(k): summarize(v) for k,v in value.items()}
     if isinstance(value, (list,tuple)): return [summarize(x) for x in value]
     if isinstance(value, (str,int,float,bool)) or value is None: return value
@@ -80,6 +82,16 @@ class DiagnosticRunner(TaskRunner):
             save('state_after_B',trainer.critic_wg.audit_optimizer())
             save('comparison',{'max_abs_difference':float((va-vb).abs().max()),'metrics_A':ma,'metrics_B':mb,
                 'pre_update_sampled_state_equal':a==b,'scope':'two loads of retained checkpoint; diagnostic only'})
+            if os.environ.get('PI_DIAGNOSTIC_REQUIRE_REPEAT') == '1':
+                assert a == b, 'Full model/optimizer/group/scheduler restore differs'
+                torch.testing.assert_close(va,vb,atol=1e-4,rtol=1e-4)
+                stage('actor_update')
+                actor=metrics(trainer._update_actor(batch));save('actor_metrics',actor)
+                assert batch_digest(dict(batch.batch))==batch_before
+                save('acceptance',{'status':'passed','scope':'full-state restore and repeat update with diagnostic deterministic FlashAttention; Actor update with unchanged learning recipe',
+                    'flash_attention_deterministic':os.environ.get('FLASH_ATTENTION_DETERMINISTIC'),
+                    'max_abs_difference':float((va-vb).abs().max()),'source_revision':os.environ['PI_SOURCE_REVISION'],
+                    'checkpoint':'pi-v2-acceptance-20261015-r1/global_step_10','production_updates':0})
             stage('finished');trainer._shutdown_dump_executor()
         RayPPOTrainer.fit=diagnostic
         try:return super().run(config)

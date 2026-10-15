@@ -1,6 +1,6 @@
 {
   "ops/acceptance_then_train_20261015.sh": "572d7c6f4d552fafc2a043dd2d70801d27f127ebb7be84bc9c8e691a579da5c5",
-  "ops/run_phase.sh": "1dfbfce25176726dd5af13a7fa20fb9d3f489b2aa38781f5a9ec6bca43ed0527",
+  "ops/run_phase.sh": "2c2e23dbc157fcf0c119e4edf347cd775c9320e88667788b7ef116cf5a6530be",
   "scripts/README.md": "db56605ccb70640a6e4072407ac28f09a7fe99bfc7b51a50b2e366b1a5eeb9ce",
   "scripts/eval/_template.env": "53e86c63c4a1090acd4399ef0e6cbc408107fcad976ea068f93a38e9065c1361",
   "scripts/eval/configs/qwen35-35b_official_multilingual.env": "462a1a6a9fd772214af27bee0578a7dc20b9c52e37665c345a00f8a54c637ae8",
@@ -173,7 +173,7 @@
   "src/verl_patch/models/qwen3_5_token_classification.py": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
   "src/verl_patch/pi_gpu_smoke.py": "837b7edfbe8f5d020cdd19865eb9937b7fde2646667cd084fa9c234bdc2f51e2",
   "src/verl_patch/pi_v2_acceptance.py": "2122ddecab54d0add32e8763e9dfff3613da6504fe284303985a66cdc199dd3c",
-  "src/verl_patch/pi_v2_resume_diagnostic.py": "32e3ff5009c57a80bffbbda40900b842150459933991188201a883da68eba2dd",
+  "src/verl_patch/pi_v2_resume_diagnostic.py": "e1c1723f26d4708d74fb2d5b5153ec1ef6733d6c4e54317fcd34cd576f8ac454",
   "src/verl_patch/token_budget_benchmark.py": "ebe96bba6e218c75cdb687497b789e96b27012736b1f93e3ca42d1c21a8afb46",
   "tests/agent_loop/test_anthropic_codec.py": "674eb1603ed57c48081bc325c358b3f08e7fab05f81f48c70e86e4cd625f24ef",
   "tests/agent_loop/test_builtin_swe_agent_loop.py": "94a537993797254a95428880f023f6cc546efa78597a65ce2fc75fe7d4caa16a",
@@ -3129,7 +3129,7 @@
   "third_party/verl/verl/experimental/fully_async_policy/shell/grpo_30b_a3b_base_math_megatron_96_32_mis.sh": "580e988b630804d6081cb2bfa9a4777ecb4e0fa625fee83e5cc219f0574d808d",
   "third_party/verl/verl/experimental/fully_async_policy/shell/grpo_8b_base_math_megatron_4_4_trtllm.sh": "95374a3b3d6576781aa167b99c38d735b7633b11baacbff44c387431720b9a6e",
   "third_party/verl/verl/experimental/fully_async_policy/shell/grpo_qwen35_35b_megatron_async.sh": "ff4fe05142dce6057ba55185430084e8b23688efb9fc979bf95a7f6fbd9ec4be",
-  "third_party/verl/verl/experimental/fully_async_policy/shell/grpo_qwen3_235b_megatron_npu.sh\u200e": "656f4f2e590e204890a87297492ac8eb1a17aba2c4f55c4e96ebfa5ed2af307d",
+  "third_party/verl/verl/experimental/fully_async_policy/shell/grpo_qwen3_235b_megatron_npu.sh‎": "656f4f2e590e204890a87297492ac8eb1a17aba2c4f55c4e96ebfa5ed2af307d",
   "third_party/verl/verl/experimental/fully_async_policy/shell/runtime_env.yaml": "19e48f7c02d2d074434bed70417018939ae912df12746a93058b63945b4ffd7c",
   "third_party/verl/verl/experimental/fully_async_policy/unittest/__init__.py": "9c3d3d9d4fe67fa9476bab44af946182b6aa1322aae82ad7c3aa784c1f393c8c",
   "third_party/verl/verl/experimental/fully_async_policy/unittest/simple_streaming_demo.py": "49ad92771a02a1b1eb457444df86f4d148d37a70c7a67866a07242f3ced85877",
@@ -3577,5 +3577,6 @@
   "utils/vendor/cpython310/parse.py": "f14ec821fe7ded126d2202eef195f66bd63f74975c9ae88322d0500f13eba8db",
   "utils/verifier_runtime/Dockerfile": "650c11fd5f8481c1e2aa2ccd47606dff0f521163977d5590b4bff5a407e7a89f",
   "utils/verify_merged_hf_keys.py": "0daf0fe58802ef66657d757c2a7e4506f6a92e001e41ef341a60785b700978ab",
-  "utils/version_swesmith_verifier_assets.py": "7423a80bc22630cc7bb6e7b1561b9607e0ea31704ac9315ef44de11018bd4967"
+  "utils/version_swesmith_verifier_assets.py": "7423a80bc22630cc7bb6e7b1561b9607e0ea31704ac9315ef44de11018bd4967",
+  "scripts/train/configs/pi_v2_resume_diagnostic_r3_20261015.env": "3aedc5351b42ec50416cd1915bc61d2ca34052de45e11f4b010557fe28781488"
 }

@@ -47,8 +47,7 @@
     "runtime_sha_files_verified": 3573
   },
   "not_yet_run": [
-    "9B/SP8 distributed numerical acceptance",
-    "full 8-rank warmup checkpoint save/load and next-batch continuity",
+    "successful complete eight-GPU acceptance including Actor update",
     "formal training or benchmark effectiveness evaluation"
   ],
   "preserved_initial_validation_attempts": [
@@ -87,5 +86,19 @@
       127139840
     ],
     "passed": true
+  },
+  "resume_diagnostic_r2": {
+    "exit": 0,
+    "max_abs_difference": 0.07421875,
+    "pre_update_sampled_state_equal": true,
+    "loss_A_B": 25.880078315734863,
+    "acceptance": false
+  },
+  "resume_diagnostic_r3": {
+    "status": "running",
+    "screen": "lego-piv2-resume-diag-r3-20261015",
+    "validation_only_flash_attention_deterministic": true,
+    "full_state_hash": true,
+    "threshold_unchanged": 0.0001
   }
 }
