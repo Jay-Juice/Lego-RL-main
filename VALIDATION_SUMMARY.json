@@ -55,5 +55,26 @@
     "Initial character-tokenizer test exposed an overlong manifest; compact fallback added and all affected cases passed.",
     "Shared venv lacks pytest; used standard-library unittest without installing packages."
   ],
-  "interpretation": "Correctness evidence only; no claim of improved learning or task success."
+  "interpretation": "Correctness evidence only; no claim of improved learning or task success.",
+  "eight_gpu_acceptance_20261015": {
+    "status": "running_model_initialization",
+    "screen": "lego-piv2-accept-train-20261015",
+    "source_files": 3576,
+    "cpu_regression": 14,
+    "formal_training": "authorized_after_acceptance_not_started",
+    "queue": "logs/acceptance_v2_20261015",
+    "checkpoint_probe": "isolated full warmup save/restore, one synthetic critic update, zero actor updates before save",
+    "limitations": [
+      "short synthetic trajectories",
+      "no efficacy claim",
+      "no maximum-length GPU stress test"
+    ]
+  },
+  "user_save_schedule": {
+    "extra_warmup_steps": [
+      10
+    ],
+    "step5_removed": true,
+    "source_deployed": true
+  }
 }

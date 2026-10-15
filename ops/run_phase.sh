@@ -3,6 +3,7 @@ set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 mode=${1:?smoke or train}
 case "$mode" in
+  acceptance) config=pi_v2_acceptance_20261015.env ;;
   smoke) echo "Use the isolated validation entry, not an inherited smoke launcher" >&2; exit 2 ;;
   train) config=sao_b64_pi_repair_state_v2_20261015.env ;;
   *) exit 2 ;;
@@ -25,13 +26,18 @@ printf '%s\n' "$log" > "$root/logs/${mode}_current_launcher.txt"
 printf '%s\n' "$$" > "$root/logs/${mode}_launcher.pid"
 trap 'code=$?; printf "%s\n" "$code" > "$exit_file"' EXIT
 /media/ubuntu/D1/zsj/Lego-RL-main/.venv/bin/python -B - <<'PY'
-import importlib.util, os, pathlib, subprocess
+import importlib.util, os, pathlib, subprocess, shutil
 r=pathlib.Path(os.environ['LEGO_RL_ROOT']).resolve()
+if shutil.disk_usage(r).free < 200 * 1024**3:
+    raise RuntimeError('Less than 200 GiB available; no assets will be deleted')
 for module in ('verl', 'harbor', 'verl_patch', 'harbor_patch'):
     location=pathlib.Path(importlib.util.find_spec(module).origin).resolve()
     if not location.is_relative_to(r): raise RuntimeError(f'Wrong source for {module}: {location}')
     print(module,location,flush=True)
 memory=subprocess.check_output(['nvidia-smi','--query-gpu=memory.used','--format=csv,noheader,nounits'],text=True)
+if len(memory.splitlines()) != 8: raise RuntimeError('Exactly eight GPUs required')
+if subprocess.check_output(['nvidia-smi','--query-compute-apps=pid','--format=csv,noheader,nounits'],text=True).strip():
+    raise RuntimeError('GPU compute processes present; refusing overlap')
 if any(int(v)>1000 for v in memory.splitlines()): raise RuntimeError('GPUs occupied; no existing process will be stopped')
 for name in ('raylet','gcs_server'):
     if subprocess.run(['pgrep','-x',name],stdout=subprocess.DEVNULL).returncode==0:
