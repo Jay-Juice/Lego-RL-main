@@ -1,6 +1,6 @@
 {
   "experiment": "pi_repair_state_v2_20261015",
-  "status": "stopped_after_real_rollout_failure_cpu_repair_passed_gpu_retest_pending",
+  "status": "full_training_started_initializing_first_step_unverified",
   "formal_training_started": true,
   "parent_original_1k_files_checked": 3824,
   "parent_original_1k_modified_files": [],
@@ -151,7 +151,7 @@
     "free_bytes": 225591128064,
     "taskrunners": "1918565 ray::TaskRunner.run"
   },
-  "current_status": "stopped_after_rollout_failure_awaiting_explicit_user_start",
+  "current_status": "training_started_20261016",
   "formal_failure_stop": {
     "observed_at": "2026-10-15T22:27:58.885257+08:00",
     "formal_exit": "1",
@@ -179,6 +179,60 @@
     "scope": "Normalize decoded dict tool arguments only for read-only test-report search; Actor messages unchanged; unsupported types fail closed.",
     "gpu_training_restart": false
   },
-  "formal_training_running": false,
-  "source_comparison_audit": "SOURCE_COMPARISON_AUDIT_20261015.json"
+  "formal_training_running": true,
+  "source_comparison_audit": "SOURCE_COMPARISON_AUDIT_20261015.json",
+  "final_check_20261016": {
+    "cpu_passed": 44,
+    "harbor_trial": "pi-integration-8c066a378d",
+    "decoded_arguments_real_proxy_passed": true,
+    "harbor_generation": "scripted with real container/proxy/tokenizer; no new neural acceptance",
+    "verifier_run": false,
+    "preflight_exit": 0,
+    "runtime_sha_files": 3587
+  },
+  "full_start_20261016": {
+    "observed_at": "2026-10-16T11:52:55.700347+08:00",
+    "phase": "training 2026-10-16T11:52:22+08:00",
+    "exit_exists": false,
+    "launcher": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/logs/train_launcher_20261016-115223.log",
+    "launcher_exit_exists": false,
+    "taskrunner": "",
+    "disk_free_bytes": 225077673984,
+    "harbor": {
+      "status": "passed",
+      "actual_model": false,
+      "verifier_run": false,
+      "decoded_dict_real_proxy_passed": true,
+      "actor_tokens": 120,
+      "critic_tokens": 2003,
+      "pi_tokens": 1883
+    },
+    "cpu_tests": [
+      "4",
+      "14",
+      "12",
+      "6",
+      "8"
+    ],
+    "cpu_exit": "0",
+    "harbor_exit": "0",
+    "dryrun_exit": "0",
+    "source_snapshot": "eab66eb86588e1ca2864330e8abc980084e404ddedb41278e33ad498adbac90c  /media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/logs/full_restart_20261016/source_snapshot.tar.gz",
+    "driver": 2081043,
+    "driver_observed_at": "2026-10-16T11:53:31.872888+08:00",
+    "ray": "/tmp/lego-ray.PpezzfY3",
+    "screen": "lego-piv2-full-20261016",
+    "mainlog": "logs/train_pi_repair_state_v2_20261016T035223-2078924.log",
+    "attempt": "20261016T035223-2078924",
+    "driver_env": {
+      "PI_FORMAT": "repair_state_v2",
+      "PI_MAX_TOKENS_PER_STATE": "2048",
+      "PI_WARMUP_CHECKPOINT_STEPS": "",
+      "PI_SOURCE_REVISION": "359e4fa5360236a8b2f7bd111ace88fcb674e98a968f3a1805571e7c00e56720",
+      "FLASH_ATTENTION_DETERMINISTIC": null,
+      "PI_DIAGNOSTIC_FULL_HASH": null,
+      "PI_DIAGNOSTIC_REQUIRE_REPEAT": null
+    },
+    "first_real_step_complete": false
+  }
 }
