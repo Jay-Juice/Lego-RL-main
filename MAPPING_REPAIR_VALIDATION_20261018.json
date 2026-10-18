@@ -1,0 +1,39 @@
+{
+  "user_authorized": true,
+  "existing_runtime_files_changed": [
+    "src/verl_patch/agent_loop/privileged_critic_builder.py"
+  ],
+  "cpu_tests_passed": 52,
+  "actual_failed_proxy_replays_passed": 5,
+  "negative_replay_mutations_rejected": 20,
+  "harbor_trial": "pi-integration-c24cfc4523",
+  "harbor_passed": true,
+  "real_neural_generation_in_probe": false,
+  "recipe_comparison": "identical except trainer.resume_mode disable -> auto",
+  "history_replay": {
+    "attempts": 2004,
+    "equal": 2004,
+    "passed": true
+  },
+  "checkpoint_step": 30,
+  "checkpoint_inventory_and_marker_checked": true,
+  "backup": "ops/mapping_resume30_20261018/BACKUP.json",
+  "fresh_fallback_allowed": false,
+  "warmup_checkpoint_steps": [],
+  "source_manifest_sha256": "6526d47fc2a979f29fa7758314ba35674f5cf85e9c1b252dba062250ea086ea7",
+  "prior_bitwise_repeat_update_unresolved": true,
+  "screen": "lego-piv2-resume30-mapping-20261018",
+  "launcher": "logs/train_launcher_20261018-234314.log",
+  "attempt": "resume30_mapping_20261018T154313-604640",
+  "ray": "/tmp/lego-ray.I6EDXnLp",
+  "task_runner": 610487,
+  "restoration_confirmed": false,
+  "test_execution_correction": {
+    "prelaunch_executed": 38,
+    "baselineguard_lifecycle_initial_script_exit_zero_but_zero_tests": true,
+    "discovery_during_initialization_passed": 14,
+    "total_actually_passed": 52,
+    "evidence": "logs/mapping_fix_check_20261018/test_discovery_correction.json"
+  },
+  "snapshot_sha256": "2305fb2234ff48f25b39e6291d753fd224071b74ab2149f949396efbe5a05558"
+}

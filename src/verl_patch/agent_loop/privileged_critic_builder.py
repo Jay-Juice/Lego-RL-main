@@ -1,4 +1,6 @@
 """Construct the critic view from exact Actor tokens and pre-generation records."""
+import copy
+import itertools
 import hashlib
 import json
 import os
@@ -7,6 +9,49 @@ from pathlib import Path
 
 def message_key(message):
     return hashlib.sha256(json.dumps(message, sort_keys=True, ensure_ascii=True, default=str).encode()).hexdigest()
+
+
+def _sdk_original_variants(message):
+    """Reverse only the two observed SDK representations; prove original by hash."""
+    choices = []
+    for tc in message.get('tool_calls', []):
+        opts = [copy.deepcopy(tc)]
+        args = tc.get('function', {}).get('arguments', {})
+        if isinstance(args, dict):
+            vr = args.get('view_range')
+            if tc['function'].get('name') == 'file_editor' and args.get('command') == 'view' and isinstance(vr, list) and len(vr) == 2 and all(type(x) is int for x in vr):
+                q = copy.deepcopy(tc)
+                q['function']['arguments']['view_range'] = json.dumps(vr)
+                opts.append(q)
+            if tc['function'].get('name') == 'file_editor' and args.get('command') == 'str_replace':
+                q = copy.deepcopy(tc)
+                q['function']['name'] = 'str_replace'
+                opts.append(q)
+        choices.append(opts)
+    if not choices or len(choices) > 4:
+        return []
+    result = []
+    for calls in itertools.product(*choices):
+        q = copy.deepcopy(message)
+        q['tool_calls'] = list(calls)
+        if q != message:
+            result.append(q)
+    return result
+
+def _verified_sdk_aliases(records, messages):
+    """Metadata alias only. All PI/token/span fields remain unchanged."""
+    result = copy.deepcopy(records)
+    changes = []
+    for i, rec in enumerate(result):
+        if any(message_key(m) == rec.get('message_key') for m in messages):
+            continue
+        matches = [m for m in messages if any(message_key(v) == rec.get('message_key') for v in _sdk_original_variants(m))]
+        if len(matches) > 1:
+            raise RuntimeError('PI history join ambiguous: repeated proven SDK alias')
+        if matches:
+            rec['message_key'] = message_key(matches[0])
+            changes.append(i)
+    return result, changes
 
 
 def _expand_verified_tool_splits(old_records, old_messages, new_messages):
@@ -59,6 +104,8 @@ def _expand_verified_tool_splits(old_records, old_messages, new_messages):
 def remap_rebuilt_records(old_records, assistant_spans, *, old_messages=None, new_messages=None):
     """Join retained assistant messages in monotonic call order; fail on unknown turns."""
     if old_messages is not None and new_messages is not None:
+        old_records, _ = _verified_sdk_aliases(
+            old_records, [m for m in old_messages if m.get("role") == "assistant"])
         old_records = _expand_verified_tool_splits(old_records, old_messages, new_messages)
     result, cursor = [], 0
     for key, start, end in assistant_spans:
