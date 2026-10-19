@@ -12,12 +12,16 @@ def message_key(message):
 
 
 def _sdk_original_variants(message):
-    """Reverse only the two observed SDK representations; prove original by hash."""
+    """Reverse only observed SDK representations; prove original by hash."""
     choices = []
     for tc in message.get('tool_calls', []):
         opts = [copy.deepcopy(tc)]
         args = tc.get('function', {}).get('arguments', {})
         if isinstance(args, dict):
+            if tc['function'].get('name') == 'terminal' and isinstance(args.get('command'), str):
+                q = copy.deepcopy(tc)
+                q['function']['name'] = 'command'
+                opts.append(q)
             vr = args.get('view_range')
             if tc['function'].get('name') == 'file_editor' and args.get('command') == 'view' and isinstance(vr, list) and len(vr) == 2 and all(type(x) is int for x in vr):
                 q = copy.deepcopy(tc)
@@ -85,7 +89,12 @@ def _expand_verified_tool_splits(old_records, old_messages, new_messages):
                             expected = dict(original)
                             expected["content"] = original.get("content") if not parts else ""
                             expected["tool_calls"] = calls[consumed:consumed + len(part)]
-                            if message != expected:
+                            # A split fragment can also carry a proven SDK alias.
+                            # The source message already matches the record hash;
+                            # every fragment must exactly recover its ordered slice.
+                            if message != expected and not any(
+                                variant == expected for variant in _sdk_original_variants(message)
+                            ):
                                 break
                             consumed += len(part)
                             parts.append(message_key(message))
