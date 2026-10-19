@@ -21,6 +21,28 @@ class ProvenAliasTests(unittest.TestCase):
         return out
     def test_view_alias(self):self.remap(*self.pair())
     def test_editor_name_alias(self):self.remap(*self.pair(True))
+    def test_inserted_command_alias(self):
+        old,new=self.pair(True)
+        del old['tool_calls'][0]['function']['arguments']['command']
+        self.remap(old,new)
+    def test_inserted_command_rejects_mutations(self):
+        old,new=self.pair(True)
+        del old['tool_calls'][0]['function']['arguments']['command']
+        for field in ('command','path','old_str','new_str','summary'):
+            bad=copy.deepcopy(new)
+            bad['tool_calls'][0]['function']['arguments'][field]='changed'
+            with self.subTest(field=field),self.assertRaises(RuntimeError):
+                self.remap(old,bad)
+    def test_command_removal_requires_original_named_tool(self):
+        old,new=self.pair(True)
+        old['tool_calls'][0]['function']['name']='file_editor'
+        del old['tool_calls'][0]['function']['arguments']['command']
+        with self.assertRaises(RuntimeError):self.remap(old,new)
+    def test_inserted_command_duplicate_rejected(self):
+        old,new=self.pair(True)
+        del old['tool_calls'][0]['function']['arguments']['command']
+        with self.assertRaises(RuntimeError):
+            b.remap_rebuilt_records([self.record(old)],[(b.message_key(new),5,8)],old_messages=[new,new],new_messages=[new])
     def test_unchanged_path_exact(self):
         old,_=self.pair();self.remap(old,copy.deepcopy(old))
     def test_mutations_fail_closed(self):

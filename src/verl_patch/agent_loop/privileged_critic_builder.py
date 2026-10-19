@@ -27,6 +27,12 @@ def _sdk_original_variants(message):
                 q = copy.deepcopy(tc)
                 q['function']['name'] = 'str_replace'
                 opts.append(q)
+                # SDK also inserts the command when the original named tool
+                # omitted it. Accept only if this entire variant hashes to
+                # the pre-generation record; never discard arbitrary fields.
+                q = copy.deepcopy(q)
+                del q['function']['arguments']['command']
+                opts.append(q)
         choices.append(opts)
     if not choices or len(choices) > 4:
         return []
