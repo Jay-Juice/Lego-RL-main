@@ -1,0 +1,31 @@
+{
+  "experiment": "pi_repair_state_v2_20261015",
+  "recorded_on": "2026-10-21",
+  "runtime_source_commit": "b05f087d951456778cc6eacf04a856a99a588fbf",
+  "benchmark": "SWE-bench Verified",
+  "tasks_per_checkpoint": 500,
+  "training_status": "stopped_by_user_after_checkpoint50",
+  "evaluation_protocol": {
+    "original": "8 single-GPU replicas, concurrency32 per replica, temperature0.7, 200iterations, task7200s, PI disabled",
+    "supplement": "Only infrastructure-review or unresolved-verifier cases; concurrency1 per GPU, same sampling and budgets, independent new trajectories",
+    "replacement_policy": "At the user's request, replace every selected task's original verdict with its supplemental verdict; do not add passes already present or choose the better verdict",
+    "replacement_scope": "Derived diagnostic aggregation; original result files remain unchanged"
+  },
+  "checkpoints": [
+    {"step": 20, "original_passed": 274, "original_scored": 500, "original_percent": 54.8, "supplement_tasks": 5, "supplement_passed": 3, "selected_original_passed": 0, "replacement_passed": 277, "replacement_scored": 500, "replacement_percent": 55.4},
+    {"step": 30, "original_passed": 285, "original_scored": 499, "original_percent": 57.0, "supplement_tasks": 3, "supplement_passed": 2, "selected_original_passed": 1, "replacement_passed": 286, "replacement_scored": 500, "replacement_percent": 57.2},
+    {"step": 40, "original_passed": 280, "original_scored": 500, "original_percent": 56.0, "supplement_tasks": 5, "supplement_passed": 2, "selected_original_passed": 1, "replacement_passed": 281, "replacement_scored": 500, "replacement_percent": 56.2},
+    {"step": 50, "original_passed": 278, "original_scored": 499, "original_percent": 55.6, "supplement_tasks": 4, "supplement_passed": 2, "selected_original_passed": 1, "replacement_passed": 279, "replacement_scored": 500, "replacement_percent": 55.8}
+  ],
+  "saved_sao_baseline": [
+    {"step": 30, "passed": 286, "scored": 499, "total": 500, "raw_percent": 57.2},
+    {"step": 40, "passed": 291, "scored": 499, "total": 500, "raw_percent": 58.2}
+  ],
+  "limitations": [
+    "Original runs contain execution failures, task-budget exhaustion and, for steps30/50, one unresolved verdict each.",
+    "Replacement aggregation mixes original and low-concurrency stochastic trajectories; it is not a uniform full500 rerun.",
+    "Saved baseline runs also contain exceptions and unresolved verdicts; the comparison does not establish a causal PI gain.",
+    "No model weights, datasets, checkpoints, logs, raw trajectories or local deployment evidence are included in this record."
+  ],
+  "conclusion": "The best observed PI checkpoint is step30. These evaluations do not establish an improvement over the saved SAO baseline."
+}

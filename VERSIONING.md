@@ -21,3 +21,21 @@ The supported local-site entry is `bash ops/run_phase.sh train`, **only after ex
 Every Friday at 18:00 Asia/Shanghai, the thread heartbeat checks this branch and synchronizes only already committed, reviewed task changes. It does not stage unknown changes, modify `main`, force-push, merge, deploy, train, stop processes or delete artifacts. Unchanged states stay quiet. Training monitoring remains separate and is not resumed by this maintenance task.
 
 AI-assisted implementation; human review is still required before merging. No upstream verl contribution is being proposed.
+
+## 2026-10-21 reviewed source and evaluation record
+
+The reviewed runtime source is commit `b05f087` (proven SDK aliases inside split
+tool messages), following `6ae21bb` (SDK-inserted command discriminator) and
+`e2700a1` (hash-proven history aliases). These changes preserve original-message
+identity checks and do not change the PI payload, Actor sampling, reward, GAE,
+model, optimizer, or training recipe.
+
+`results/evaluation_summary_20261021.json` records the completed step20/30/40/50
+evaluations, independent exception supplements, and the user's requested
+replacement aggregation. It retains the original scores and explains why the
+replacement aggregation is not a uniform full500 evaluation. Training remains
+stopped after checkpoint50; version maintenance does not authorize a restart.
+
+This maintenance commit is limited to the concise results record and this
+document. Uncommitted local monitoring documents, the private-runtime manifest,
+unknown untracked files, and deployment artifacts are not included.
