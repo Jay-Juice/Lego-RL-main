@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## R6进行中：比较新增issue信息与实际token成本
+
+先完成原607开发的R6_SIGNAL_AUDIT：R4回退16题中12有query集合Jaccard>=0.5的窗口对，9题目标proposal仍带未覆盖issue词；候选内两法均未命中57题中34有此类新词。仅词集合代理与scorer事后归因，不能声称这些词一定有价值，未读取220确认数据。
+
+R6_PLAN.md在输出前固定两个规则，复用R4全部flow proposal/候选/compact render/残余扩展：novelty_expand按原score/(1+已覆盖query词比例)贪心，首窗口打分不变；novelty_cost_expand再除以sqrt(实际边际token成本)，允许首窗口变化。不是强制候选均分或无限新增候选。最多3个不重叠真实窗口，192预算不变，128/4096及SAO配方不改；仅新增rank_windows_r6.py，W0原型不等于动态/在线。
+
+修改状态前备份archive/r5_before_novelty_experiment（5文件SHA），R4五源及旧35源再次验证不变。新增本地3契约、远端3契约已通过。唯一screen lego-pi-dynamic-dev-r6-20261028，ops/development_r6.sh，logs/development_r6/{state,exit,contracts.log,generation.log,control.log,score.log,supervisor.log}。当前Landlock生成原607，之后自动核验607冻结flow完整输出一致再独立scorer评分。不要重复启动，不热改正在使用脚本。尚无最终R6分数，不开训；若无改进保留失败，不回确认集挑规则。源与计划SHA见validation/R6_SOURCE.sha256，全部原始样本留远端.private_development_r6。
+
 ## R5已完成：保留旧证据可减少回退，但未优于冻结R4
 
 唯一R5队列已exit0，flow对照607份完整输出与R4逐项一致；本地与远端3契约通过，607实际Qwen生成budget/精确源码/往返检查通过。guard_expand目标144/366、完整88（旧129/53），gain15/lost0，净+4.10pp未达开发+5pp。anchor_expand目标164、完整93，gain47/lost12，净+9.56pp但低于R4 flow169/98（gain56/lost16）。本轮不把任一方案晋升为新正式候选，不对确认集重测挑选；R4独立未通过仍有效，训练不启动。

@@ -269,5 +269,20 @@
       }
     },
     "r4_frozen_source_unchanged": true
+  },
+  "r6_development": {
+    "status": "RUNNING_GENERATION",
+    "screen": "lego-pi-dynamic-dev-r6-20261028",
+    "variants": [
+      "novelty_expand",
+      "novelty_cost_expand"
+    ],
+    "byte_contracts_passed": 3,
+    "remote_contracts_passed": 3,
+    "source_old35_unchanged": true,
+    "frozen_r4_unchanged": true,
+    "confirmation_read": false,
+    "training_started": false,
+    "online_integrated": false
   }
 }

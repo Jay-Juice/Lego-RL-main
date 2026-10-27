@@ -1,0 +1,59 @@
+{
+  "status": "DEVELOPMENT_ONLY",
+  "groups": {
+    "gained": {
+      "cases": 56,
+      "windows": 168,
+      "any_query_jaccard_at_least_half": 33,
+      "windows_without_new_query_terms": 25,
+      "target_proposal_has_unseen_query_term": 22,
+      "target_proposal_has_any_query_term": 55
+    },
+    "both_hit": {
+      "cases": 113,
+      "windows": 336,
+      "any_query_jaccard_at_least_half": 59,
+      "windows_without_new_query_terms": 49,
+      "target_proposal_has_unseen_query_term": 37,
+      "target_proposal_has_any_query_term": 113
+    },
+    "lost": {
+      "cases": 16,
+      "windows": 48,
+      "any_query_jaccard_at_least_half": 12,
+      "windows_without_new_query_terms": 10,
+      "target_proposal_has_unseen_query_term": 9,
+      "target_proposal_has_any_query_term": 14
+    },
+    "outside_candidate": {
+      "cases": 124,
+      "windows": 370,
+      "any_query_jaccard_at_least_half": 58,
+      "windows_without_new_query_terms": 70,
+      "target_proposal_has_unseen_query_term": 0,
+      "target_proposal_has_any_query_term": 0
+    },
+    "both_miss_candidate": {
+      "cases": 57,
+      "windows": 170,
+      "any_query_jaccard_at_least_half": 29,
+      "windows_without_new_query_terms": 25,
+      "target_proposal_has_unseen_query_term": 34,
+      "target_proposal_has_any_query_term": 46
+    }
+  },
+  "confirmation_read": false,
+  "selector_changed": false,
+  "source_SHA": {
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e"
+  },
+  "script_SHA": "d9174a9f98ff1bc6e4a7999dd31491d88b5f7dfd539be979de33165bf2a962ad",
+  "limitations": [
+    "Query-set overlap is a proxy, not causal importance or semantic equivalence.",
+    "Target-proposal attribution reads labels in scorer only. No labels supplied to generator."
+  ]
+}
