@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_HARBOR_LIFECYCLE_PASS_GPU_PARITY_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：两阶段Hydra与增强CPU fixture通过，八卡未启动，资源门槛不足
+
+2026-10-28本轮：新ops/GPU_PROBE_R6.env、src/gpu_probe_r6.py与独立验证脚本已创建，原训练入口继续exit78。仅调用原train.sh --dry-run，不执行继承prepare/launch。真实展开完整Hydra与历史freshSAO、resume20两阶段逐项比较，无非白名单差异；agent YAML逐字节一致，97步、batch/mini64、SP8、LR/epochs/head/freeze/GAE/loss配置与完整checkpoint方案保持原值。namespace和resume disable为预期差异。报告GPU_PROBE_R6_HYDRA_PARITY.json。五个关键native文件与SAO相等、五个继承训练/packing/保存文件与旧ICPS相等；这尚不等于完整源码审阅或实际八rank head/freeze验收。
+
+原logs/gpu_preparation_r6 exit1：测试脚本遍历TensorDict得到数据行而非键，已备份修正为keys，未运行GPU。R2 exit0，但W0 fixture只有unknown marker；再强化fixture显式函数/路径并断言两个capture均有真实return源码窗口，R3 exit0。64行独立records、实际Qwen初始25/update26tokens、每次1源码窗口；PIon/empty/off Actor tensors精确、PI-only恢复Actor、pretoken gather和prefix因果通过。冻结七源和旧35源不变。原失败/R2输出及archive备份保留，不把第一次队列说成exit0。R2报告complete_source_parity_pass字段仅表示列出的五文件，R3改准确命名，完整source gate仍pending。
+
+现场八GPU空闲、Ray absent、6407/8307/8265可用。D1free 330.314GiB，旧原始启动预留426.911GiB（458392574347bytes），缺96.597GiB。保留保存前386.659GiB规则；不得用200GiB capture gate替换。已首次通知至少释放97GiB，建议110GiB以上，不删挪资产、不降门槛。GPU未启动，无健康job需重启。
+
+下一步不是直接运行probe：需要补齐受检launch receipt/私有Ray生命周期/实际八rank head-freeze与pack witness审计，扩展源审阅；CPU准备脚本只收据，不产生允许开GPU的launch_receipt.json。GPU脚本拟执行可丢弃的原生step20/21 packing短更新，但当前没有验证过的GPU启动器。空间解除且全部launch gate通过后再执行，无保存/复用测试权重。正式训练仍需全数据/镜像与独立唯一fresh入口全部准入。不要重复已完成coverage/Harbor/CPU对照。
+
 ## 最新：真实Harbor和实际proxy生命周期通过，下一步八卡与配方准入
 
 2026-10-28 06:39CST：logs/harbor_dynamic_r6和logs/proxy_lifecycle_r6均exit0，无健康任务待重复启动。新验证脚本按Windows备份archive/r6_before_harbor_probe、AST/bashsyntax、WSLpreview/sync及14/12源SHA执行；本轮不改运行方法，七冻结源与原35源再次一致。

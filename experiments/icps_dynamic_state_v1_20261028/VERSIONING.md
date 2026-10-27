@@ -11,8 +11,10 @@ Source authority: experiments/icps_dynamic_state_v1_20261028
 
 The old ICPS experiment and its branch are preserved. This candidate currently
 has a frozen input selector and an opt-in runtime with actual proxy CPU checks.
-Real cached Harbor and proxy lifecycle checks now pass. Eight-GPU and full
-recipe/resource admission remain pending; no training has run.
+Real cached Harbor and proxy lifecycle checks pass. Full two-phase Hydra comparison
+and actual-tokenizer GPU-fixture CPU checks pass. Eight-GPU launch/rank audit, broader
+source review and resource admission remain pending; the original disk reserve is
+not met. No GPU update or training has run.
 The inherited start_full97.sh is disabled (exit 78); inherited preparation
 scripts are references, not supported launch commands. No new training has run.
 

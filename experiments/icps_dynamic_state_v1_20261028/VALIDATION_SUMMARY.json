@@ -1,5 +1,5 @@
 {
-  "status": "R6_HARBOR_LIFECYCLE_PASS_GPU_PARITY_PENDING_TRAINING_DISABLED",
+  "status": "R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": true,
@@ -58,9 +58,11 @@
   "remote_final_queue_exit": 0,
   "model_or_optimizer_updates": 0,
   "blockers": [
-    "eight-GPU native SP8 short finite update",
-    "complete SAO source/Hydra parity",
-    "formal resource and unique fresh launch gates"
+    "GPU launch receipt/lifecycle/rank audit implementation",
+    "complete source review beyond selected native files",
+    "original start disk reserve deficit",
+    "actual eight-GPU native SP8 finite update",
+    "formal full-data/offline resource and unique fresh launch gates"
   ],
   "preserved_failures": [
     "r1 all3 allocations reduced primary coverage",
@@ -68,7 +70,13 @@
     "constructed r1 added file exceeded source capacity; no bound relaxed",
     "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
   ],
-  "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled.",
+  "next": [
+    "Implement fresh resource/source launch receipt, isolated Ray ownership/lifecycle and post-run rank audit before launching GPU probe.",
+    "Extend native source audit beyond five files, especially worker/loss/reward/filter interfaces; inspect actual per-rank head/freeze during GPU probe.",
+    "Preserve original start reserve458392574347bytes; do not use capture200GiB as launch approval. User space action notified once.",
+    "Once source/launch readiness and disk/all8GPU/ports/offline assets gates pass, run disposable20/21 packing updates; no checkpoint or reuse.",
+    "Full formal data/pinned-image availability and unique fresh training entry remain separate required gates."
+  ],
   "r4_hits": {
     "S1": 129,
     "expand": 143,
@@ -672,5 +680,88 @@
       "Five expected lifecycle exceptions are asserted negative tests, not queue failures."
     ],
     "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled."
+  },
+  "r6_GPU_preparation_review": {
+    "UTC": "2026-10-27T22:56:56.099640+00:00",
+    "status": "HYDRA_PARITY_AND_CPU_FIXTURE_PASS_GPU_LAUNCH_NOT_READY_DISK_GATE_FAILED",
+    "GPU_launched": false,
+    "training_started": false,
+    "training_admitted": false,
+    "hydra_complete_both_phases_pass": true,
+    "unexpected_config_differences": [],
+    "selected_native_source_files_exact": 5,
+    "inherited_training_files_exact": 5,
+    "full_source_review_complete": false,
+    "CPU_fixture": {
+      "passed": true,
+      "real_Qwen": true,
+      "GPU": false,
+      "independent_rows": true,
+      "Actor_tensors_equal": true,
+      "pretoken_gather_and_causal_prefix": true,
+      "fixture": {
+        "rows": 64,
+        "actor_tokens": 24,
+        "response_tokens": 17,
+        "PI_tokens": [
+          25,
+          26
+        ],
+        "mode": "real",
+        "source_windows": [
+          1,
+          1
+        ],
+        "PI_ID_SHA": "794dd259bf4d7b2d644910e650a6646e3df9ca82802750f83339ab5fd296f54f"
+      }
+    },
+    "resources": {
+      "free_bytes": 354672193536,
+      "original_start_required_bytes": 458392574347,
+      "deficit_bytes": 103720380811,
+      "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+      "save_required_bytes": 415172253607,
+      "all8GPUs_idle": true,
+      "gpu_memory_MiB": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "ports_available": {
+        "6407": true,
+        "8307": true,
+        "8265": true
+      },
+      "Ray_absent": true,
+      "disk_gate_pass": false
+    },
+    "queues": {
+      "gpu_preparation_r6": 1,
+      "gpu_preparation_r6_r2": 0,
+      "gpu_preparation_r6_r3": 0
+    },
+    "preserved_issues": [
+      "First CPU fixture test iterated TensorDict rows instead of keys; TypeError, no GPU launch. Backup and original log retained.",
+      "R2 CPU test passed but W0 fixture contained only an unknown marker. R3 strengthened explicit source/path query and requires real return-code windows at both captures. R2 result retained; no selector change.",
+      "R2 report field complete_source_parity_pass referred only to five listed files, not full source review. R3 uses selected_native_source_parity_pass; full source gate remains pending.",
+      "Local WSL default sandbox denied access; reviewed escalation succeeded. No remote source edited."
+    ],
+    "evidence_SHA": {
+      "GPU_PROBE_R6_HYDRA_PARITY.json": "42d0c0e14303b644e74eef1603da798be63f71c56c928a9739b2fa6b44928208",
+      "GPU_PREPARATION_R6.json": "5b8f0bc27d600b725b60264a5937eb2704cd9f966f06468e397e768f84224617",
+      "GPU_PREPARATION_R6_R3.json": "f48238a0b375eea737a2c7bcff5ccb56c7c135dc4ec5c4efea5b61ab09db57f8"
+    },
+    "next": [
+      "Implement fresh resource/source launch receipt, isolated Ray ownership/lifecycle and post-run rank audit before launching GPU probe.",
+      "Extend native source audit beyond five files, especially worker/loss/reward/filter interfaces; inspect actual per-rank head/freeze during GPU probe.",
+      "Preserve original start reserve458392574347bytes; do not use capture200GiB as launch approval. User space action notified once.",
+      "Once source/launch readiness and disk/all8GPU/ports/offline assets gates pass, run disposable20/21 packing updates; no checkpoint or reuse.",
+      "Full formal data/pinned-image availability and unique fresh training entry remain separate required gates."
+    ]
   }
 }
