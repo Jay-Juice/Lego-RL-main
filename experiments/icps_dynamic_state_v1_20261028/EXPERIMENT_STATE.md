@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新准备：组合证据 gate 已验证，仍等待R2完整607结束
+
+备份archive/r6_before_composite_receipt后新增ops/session_receipt_r6.py和4项门槛测试。本地4/远端4全部通过，远端既有真实scorer接口3项也通过。收据会再次核验两源manifest全部SHA、607身份/payload、24动态/budget/边界、Landlock、22契约日志、原exit1精确已知断言和修正exit0；证据漂移、缺结果、其他失败均拒绝。确认两入口改为严格验证组合收据，不能直接绕过失败exit。WSLpreview审阅/sync及4新改源SHA一致、bashsyntax通过。没有修改正在运行的R2源，没有创建收据或组合freeze，也未执行确认。
+
+R2最新500/607身份/payload精确、statusfacts0，无exit。D1可用355204816896bytes约330.8GiB，满足仅capture200GiB门槛，不代表正式训练磁盘准入。等实际完整结果后才执行receipt build/check及Windows组合7源冻结。原失败证据保持。训练exit78，未占GPU。
+
 ## 最新：R2动态24项完成，完整607初始对照仍进行中
 
 首版session_r6实际exit1：607候选身份和完整payload全部精确相同，statusfacts0，但第7个容量合格样本删除断言失败。真实Qwen隔离探针确认该样本limited=True，删除应保守标为unobserved，旧断言只接受missing/unknown而遗漏合法状态。第1个完整快照样本则正确missing。两个探针聚合报告R6_SESSION_DELETION_PROBE/R6_SESSION_LIMITED_DELETION_PROBE保留。此测试遗漏与另一个已确认的初始/更新去重哈希代码缺陷不同；首版不能准入。

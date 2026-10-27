@@ -51,5 +51,13 @@ original contracts pass. R2 uses a separate file and output directory, converts
 only clean-W0 internal last_visible to the R4 schema, and preserves the frozen
 W0 serialized dictionary, PI text/IDs and subsequent R4 transitions. New byte
 and actual-Qwen boundary regressions are required alongside the entire607/24
-checks. Only the R2 aggregate can unlock a complete source freeze and fresh
-confirmation. No training or old checkpoint restoration.
+checks. A complete R2 validation receipt is required before source freeze and
+fresh confirmation. No training or old checkpoint restoration.
+
+The original validator omitted the legal `unobserved` deletion status for a
+bounded incomplete snapshot. Its exit1 must be retained. A composite receipt
+may accept its completed607 exact initial phase only alongside the same-source
+corrected24 dynamic run, which includes the actual-tokenizer dedup boundary
+and natural exhaustion. Both source manifests, evidence hashes, test exits and
+the exact superseded assertion are checked again at confirmation entry. This
+does not represent the original whole queue as passing, nor relax a PI rule.

@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import pathlib
+from session_receipt_r6 import verify_receipt
 
 B=pathlib.Path('/media/ubuntu/D1/zsj/Lego-RL-main')
 N=B/'experiments/icps_dynamic_state_v1_20261028'
@@ -34,9 +35,8 @@ oldfamilies={family(t) for t in old}
 prior_path=N/'.private_confirmation_r4/MANIFEST.json'
 assert sha(prior_path)=='a74551529b9d8831351dfe2b3489e3a4517db93e4cef21319db6ec2fc6050855'
 prior={r['instance_id'] for r in read(prior_path)['rows']};assert len(prior)==220
-session=read(N/'reports/session_r6_r2/AGGREGATE.json')
-assert session['status']=='SESSION_CONTRACTS_PASS_NOT_ONLINE_ADMISSION'
-assert session['initial']['initial_payload_exact']==607 and session['cases']==24
+session=verify_receipt(N)
+assert session['initial_exact']==607 and session['dynamic_cases']==24
 available=[t for t in tasks if t['instance_id'] not in old|verified|prior and grades.get(t['instance_id'])=='exact_hunk']
 assert len(available)==2844
 ids={t['instance_id'] for t in available}

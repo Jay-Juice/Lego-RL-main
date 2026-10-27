@@ -3,7 +3,7 @@ set -euo pipefail
 N=/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028
 PY=/media/ubuntu/D1/zsj/Lego-RL-main/.venv/bin/python
 cd "$N"
-test "$(cat logs/session_r6_r2/exit)" = 0
+"$PY" -B ops/session_receipt_r6.py check
 test ! -e logs/confirmation_r6
 mkdir logs/confirmation_r6
 exec >logs/confirmation_r6/supervisor.log 2>&1

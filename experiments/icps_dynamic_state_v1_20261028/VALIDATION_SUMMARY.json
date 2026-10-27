@@ -324,7 +324,7 @@
     "online_integrated": false,
     "GPU_jobs": 0,
     "optimizer_steps": 0,
-    "initial_exact_last_observed": 300,
+    "initial_exact_last_observed": 500,
     "queue_exit": null,
     "inherited_assertion_omission": true
   },
@@ -369,5 +369,13 @@
       "Independent confirmation and online/Harbor/GPU admission remain pending."
     ],
     "queue_exit": 0
+  },
+  "r6_composite_gate": {
+    "prepared": true,
+    "local_tests": 4,
+    "remote_tests": 4,
+    "actual_scorer_tests": 3,
+    "receipt_created": false,
+    "confirmation_started": false
   }
 }
