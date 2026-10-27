@@ -312,7 +312,7 @@
     "assertion_failure": "limited snapshot legal unobserved omitted by deletion assertion; separate real dedup defect also blocks admission"
   },
   "r6_session_r2": {
-    "status": "RUNNING_INITIAL607_THEN_CONSTRUCTED24",
+    "status": "INITIAL607_EXACT_KNOWN_ASSERTION_FAILURE_SUPERSEDED_BY_DYNAMIC_R3",
     "local_contracts": 22,
     "remote_contracts": 22,
     "boundary_bug": "reports/R6_SESSION_BOUNDARY_FAILURE.json",
@@ -324,8 +324,8 @@
     "online_integrated": false,
     "GPU_jobs": 0,
     "optimizer_steps": 0,
-    "initial_exact_last_observed": 500,
-    "queue_exit": null,
+    "initial_exact_last_observed": 607,
+    "queue_exit": 1,
     "inherited_assertion_omission": true
   },
   "r6_session_dynamic_r3": {
@@ -375,7 +375,21 @@
     "local_tests": 4,
     "remote_tests": 4,
     "actual_scorer_tests": 3,
-    "receipt_created": false,
-    "confirmation_started": false
+    "receipt_created": true,
+    "confirmation_started": true,
+    "receipt_check_pass": true
+  },
+  "r6_confirmation": {
+    "status": "RUNNING_READONLY_CAPTURE",
+    "screen": "lego-pi-confirmation-r6-20261028",
+    "queue": "logs/confirmation_r6",
+    "candidate_freeze_SHA": "5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13",
+    "nominal_tasks": 2826,
+    "independent_pass": false,
+    "training_started": false,
+    "families": 95,
+    "all_tasks_seen_repositories": true,
+    "excluded_additional_exposure": 18,
+    "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730"
   }
 }

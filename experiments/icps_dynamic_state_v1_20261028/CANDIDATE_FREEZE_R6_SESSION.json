@@ -1,0 +1,32 @@
+{
+  "UTC": "2026-10-27T19:44:28.123997+00:00",
+  "scope": "COMBINED_SESSION_FROZEN_BEFORE_INDEPENDENT_CONFIRMATION",
+  "variant": "novelty_cost_W0_R4flow_updates",
+  "source_SHA": {
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "src/rank_windows_r6.py": "6a9f55845e3dfcf8909fa5d423554fe0a11ed44c0c27f943251962016715954f",
+    "src/dynamic_session_r6_r2.py": "2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93"
+  },
+  "W0_freeze_SHA": "02f97b93c1b6a70da2b2ab27ba95afc0a84e360e12d81b78f490195bc9d83c65",
+  "composite_receipt_SHA": "974fb6cc681a14eeef14efe338e54dbfadb7514bc5435697e1bea40654a46584",
+  "initial_exact": 607,
+  "constructed_dynamic_cases": 24,
+  "original_queue_exit": 1,
+  "corrected_dynamic_queue_exit": 0,
+  "independent_pass": false,
+  "online_pass": false,
+  "training_allowed": false,
+  "budgets": [
+    192,
+    128,
+    4096
+  ],
+  "limitations": [
+    "607 development;24 constructed sequences, not actual Actor rollout.",
+    "Original queue assertion failure retained; independent phases verified by composite receipt."
+  ]
+}

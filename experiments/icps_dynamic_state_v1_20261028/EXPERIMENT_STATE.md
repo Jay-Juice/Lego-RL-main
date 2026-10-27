@@ -1,6 +1,20 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新确认清单：2826任务已冻结，真实只读采集进行中
+
+64份历史metadata复审，从2844库存排除18个历史暴露身份，2026-10-28 03:48:51CST冻结2826任务/95仓库，全部属于607已见仓库，新任务层级不是新仓库。manifest SHA3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730，计划SHAb961a5c4bb163e4335362dca50cb502bc9fc1dda5ef01ac579eb0f71657edbda。公开reports/CONFIRMATION_EXPOSURE_FREEZE_R6.json，私有清单未下载。当前phase=capture_readonly_W0，首次已实际处理209/2826，COMPLETE与PINNED_PREPARED_UNAVAILABLE_NO_BUILD均保留，不替换，不执行pull/build/verifier。无exit，未开始评分，不能称独立通过。
+
+## 最新：607完整等价及24动态验证收据通过，R6独立确认已启动
+
+R2实际完成607身份/payload全精确、statusfacts0，857.20秒；随后原删除断言遗漏导致exit1，日志保留。ops/session_receipt_r6.py build/check均通过，严格关联同源607完成阶段与独立修正24动态exit0及源码/证据SHA，未把原失败队列改称通过。报告reports/R6_SESSION_COMPOSITE_RECEIPT.json和reports/session_r6_r2/INITIAL_COMPARISON.json。仍非在线/真实Actor/GPU验收。
+
+Windows冻结完整7生成源CANDIDATE_FREEZE_R6_SESSION.json，SHA5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13，原W0六源未改；27项CONFIRMATION_R6.sha256清单SHA044879286473ce6e22680c6f5451ed561280d929295ce5f2cb45ee27b721b0ca。WSLpreview/sync/全部27远端SHA/收据check/bashsyntax通过。
+
+CURRENT screen lego-pi-confirmation-r6-20261028 PID2985497，于2026-10-28 03:48:29CST启动ops/confirmation_r6.sh。logs/confirmation_r6/{state,exit,supervisor.log,exposure.log,capture.log,generation.log,score.log}。首次现场phase=freeze_exposure_metadata，无exit；尚未完成任务冻结/采集/评分，不能称独立通过。私有MANIFEST/captures/generated/SCORED_ROWS只留远端.private_confirmation_r6，公开reports/CONFIRMATION_EXPOSURE_FREEZE_R6.json、CONFIRMATION_CAPTURE_R6.json、confirmation_r6/{FROZEN,GENERATION_RECEIPT,AGGREGATE}.json。GENERATION_RECEIPT含逐样本标识，只远端保留，不发布。
+
+按事前规则一次冻结全部剩余exact任务，排除607+全部220+Verified500+历史诊断metadata暴露，初始库存2844，最终分母待实际审计，不按可用性/分数筛选。生成Landlock拒绝标签，输出全冻结后独立评分。只现有pinned镜像/no pull/build/verifier，4CPU有界只读采集，无GPU/optimizer。主delta>0且repo95%lower>0、full不降门槛不变。健康队列不得重启/热改，训练仍exit78。此前自动化prompt因Python控制台编码损坏，下一次prompt以直接Unicode工具参数重写，事实以Windows UTF8状态和报告为准。
+
 ## 最新准备：组合证据 gate 已验证，仍等待R2完整607结束
 
 备份archive/r6_before_composite_receipt后新增ops/session_receipt_r6.py和4项门槛测试。本地4/远端4全部通过，远端既有真实scorer接口3项也通过。收据会再次核验两源manifest全部SHA、607身份/payload、24动态/budget/边界、Landlock、22契约日志、原exit1精确已知断言和修正exit0；证据漂移、缺结果、其他失败均拒绝。确认两入口改为严格验证组合收据，不能直接绕过失败exit。WSLpreview审阅/sync及4新改源SHA一致、bashsyntax通过。没有修改正在运行的R2源，没有创建收据或组合freeze，也未执行确认。
