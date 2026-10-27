@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 当前R6会话组合验证运行中（未准入）
+
+Windows备份archive/r6_before_session_adapter后新增src/dynamic_session_r6.py，未修改R4/R6冻结源：干净W0调用冻结cost排序，含status facts及后续更新调用R4flow。capture状态转移代码仅替换局部serializer调用，新增AST等价契约；无global monkeypatch。本地21实际契约、远端21实际契约均通过，包含继承生命周期检查、初始payload、状态/更新精确R4对照及自然耗尽；部分继承pure-helper测试不等于新增端到端覆盖。
+
+唯一screen lego-pi-dynamic-session-r6-20261028，ops/session_r6.sh，logs/session_r6/{state,exit,contracts.log,validation.log,supervisor.log}。WSLpreview/sync和12源SHA、bashsyntax通过。实际PID2981289单CPU100%，正在607重新建候选+初始完整payload对照；完成后自动24真实W0+构造新增/修改/回退/删除/noop/retry、负例与真实tokenizer自然耗尽。Landlock只允许607冻结生成输出单文件，不允许PRIVATE_SCORED_ROWS。当前尚无最终报告，不把启动/21单测当607或动态通过。禁止热改运行源或重复启动；训练继续exit78，无GPU/optimizer。
+
+独立R6确认计划INDEPENDENT_VALIDATION_R6_PLAN.md仅事前规则，尚未冻结任务manifest或读取新样本；组合通过后采用全部剩余合格exact任务，排除607、全部220及历史暴露，不按可用性/成绩挑样。是已见仓库内新任务层级，不冒称全新仓库。若607初始不等价立即审查，不能直接确认/开训。
+
 ## R6完成：开发覆盖171/366，冻结下一候选但未准入
 
 R6队列exit0，3本地+3远端契约通过，607冻结flow完整输出逐项一致。novelty和novelty_cost均171/366（旧129，R4 169），完整目标分别102和105（旧53，R4 98）。相对旧S1均+11.48pp，开发+5pp门槛通过，但只比R4净增2题。追加只读审计：相对R4，novelty gain9/lost7，cost gain13/lost11；探索性repo-cluster区间均跨0，不能宣称排序改进已可靠胜过R4。cost目标行441/1320、每千实际token6.4519，R4为440/6.4462；密度基本持平。novelty为434/6.3504，说明命中题数略增不等于可见目标行整体增加。

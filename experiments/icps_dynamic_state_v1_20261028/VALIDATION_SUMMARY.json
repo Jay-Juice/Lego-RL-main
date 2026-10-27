@@ -295,5 +295,16 @@
     "dynamic_validated": false,
     "online_integrated": false,
     "training_started": false
+  },
+  "r6_session": {
+    "status": "RUNNING_INITIAL607_THEN_CONSTRUCTED24",
+    "local_contracts": 21,
+    "remote_contracts": 21,
+    "screen": "lego-pi-dynamic-session-r6-20261028",
+    "queue": "logs/session_r6",
+    "final_report_available": false,
+    "online_integrated": false,
+    "GPU_jobs": 0,
+    "optimizer_steps": 0
   }
 }
