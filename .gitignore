@@ -203,3 +203,10 @@ webui/dist.bak-*/
 /VENDOR_BASELINE_MANIFEST.json
 /research/idea/
 /research/pi_*probe*.json
+
+# Private dynamic-PI experiment state must never be published.
+experiments/icps_dynamic_state_v1_20261028/.private*/
+experiments/icps_dynamic_state_v1_20261028/logs/
+experiments/icps_dynamic_state_v1_20261028/archive/
+experiments/icps_dynamic_state_v1_20261028/checkpoints/
+experiments/icps_dynamic_state_v1_20261028/__pycache__/

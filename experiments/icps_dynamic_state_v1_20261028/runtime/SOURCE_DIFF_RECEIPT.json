@@ -1,0 +1,43 @@
+{
+  "harbor_patch.environments.remote_docker": {
+    "relative": "src/harbor_patch/environments/remote_docker.py",
+    "file": "remote_docker.py",
+    "original_SHA": "1466f38f2d45261be1f79dc809a8815e1df72aca0b8c8dd111c5ce107582bb44",
+    "candidate_SHA": "b46d445c7a24555e1310a6c515a53257534cf8f664e7ff760869e110c479c1a6",
+    "production_unchanged": true
+  },
+  "verl_patch.agent_loop.vllm_chat_completion_proxy": {
+    "relative": "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py",
+    "file": "vllm_chat_completion_proxy.py",
+    "original_SHA": "1cd0ac2f8c0e28c275ea31244fc7692e00178e8eeed841e4db97d3069e2a3cda",
+    "candidate_SHA": "4c1429999aabcc325e02610bee6da88798c8de1834bad0d6c1a15b5b9c117344",
+    "production_unchanged": true
+  },
+  "verl_patch.agent_loop.privileged_critic_builder": {
+    "relative": "src/verl_patch/agent_loop/privileged_critic_builder.py",
+    "file": "privileged_critic_builder.py",
+    "original_SHA": "acb064a2ff3d28924f67c3e9eedb5bfa3fdf228869f9d41e0d15f04b54b58a51",
+    "candidate_SHA": "6c3f85f11d20c298177ccfd378497b5bdf6dc6a1da2f5fcea1d9d940cf5905df",
+    "production_unchanged": true
+  },
+  "verl.trainer.ppo.ray_trainer": {
+    "relative": "third_party/verl/verl/trainer/ppo/ray_trainer.py",
+    "file": "ray_trainer.py",
+    "original_SHA": "3dd582d6fbd136ecfb1fc08e81f6bff1abf6de44226c77d2e119b84a7abd7733",
+    "candidate_SHA": "9331dbb86f82d984c090e5bad561a03f8151df349fe56897d99e8a696c9eb127",
+    "production_unchanged": true
+  },
+  "verl.workers.engine.utils": {
+    "relative": "third_party/verl/verl/workers/engine/utils.py",
+    "file": "engine_utils.py",
+    "original_SHA": "ecab1eff63a7e62b5f580e11514d186adcaec97be24bc1614f4f706072d304c7",
+    "candidate_SHA": "b625640524a89142fb500c380e473dc5b77a482d4c47bd055eefcc8b65cb4909",
+    "production_unchanged": true
+  },
+  "verl_patch.agent_loop.pi_disk_guard": {
+    "relative": "src/verl_patch/agent_loop/pi_disk_guard.py",
+    "file": "formal_storage.py",
+    "original_SHA": "869e8b9d28b03ef4723db1b60016f3840f93a4efc72bd47e0df55d6e3c57b035",
+    "candidate_SHA": "76d7420578946a72e627d4c556526c420a190bbae95dc2fd116231bf25f6f8cb"
+  }
+}
