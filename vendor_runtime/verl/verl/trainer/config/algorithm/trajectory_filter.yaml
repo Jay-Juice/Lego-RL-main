@@ -1,0 +1,20 @@
+# Trajectory filter: drop selected trajectory-termination categories from the policy loss
+# and GRPO group statistics. See verl.trainer.config.TrajectoryFilterConfig.
+# Dropped trajectories get zeroed token_level_rewards/advantages and a singleton uid;
+# batch shapes are unchanged. Per-reason counts logged under trajectory_filter/reason/.
+
+# Master switch (default off: no behavior change)
+enable: false
+
+# The agent loop tags every trajectory with one per-row `termination_reason`; drop the reasons
+# listed here. Valid reasons (verl.trainer.ppo.trajectory_filter.TerminationReason):
+#   agent_completed     - ran to a normal stop; verifier scored it
+#   overlong            - hit a length budget (context window or response window); truncated
+#   max_turns_reached   - exhausted the turn cap
+#   timeout             - agent/verifier wall-clock timeout
+#   env_setup_failed    - sandbox/env produced no usable trajectory (dummy 1-token row)
+# Default drops timeout + env_setup_failed (reward reflects the environment, not the policy);
+# overlong & max_turns_reached are KEPT with their real, truncated verifier reward.
+drop_reasons:
+  - timeout
+  - env_setup_failed
