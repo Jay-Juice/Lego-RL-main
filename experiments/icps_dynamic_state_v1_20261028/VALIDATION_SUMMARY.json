@@ -1,5 +1,5 @@
 {
-  "status": "R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING_TRAINING_DISABLED",
+  "status": "R6_HARBOR_LIFECYCLE_PASS_GPU_PARITY_PENDING_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": true,
@@ -58,10 +58,9 @@
   "remote_final_queue_exit": 0,
   "model_or_optimizer_updates": 0,
   "blockers": [
-    "actual Harbor provider/reader and dynamic actions",
-    "additional actual proxy retry/cross-session/concurrency/exhaustion lifecycle coverage",
-    "eight-GPU native SP8 finite short update",
-    "complete SAO source/Hydra parity and resource gates"
+    "eight-GPU native SP8 short finite update",
+    "complete SAO source/Hydra parity",
+    "formal resource and unique fresh launch gates"
   ],
   "preserved_failures": [
     "r1 all3 allocations reduced primary coverage",
@@ -69,7 +68,7 @@
     "constructed r1 added file exceeded source capacity; no bound relaxed",
     "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
   ],
-  "next": "Real Harbor bounded-provider and remaining actual-proxy lifecycle checks; then 8GPU SP8, full SAO parity and resources. No training before all gates.",
+  "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled.",
   "r4_hits": {
     "S1": 129,
     "expand": 143,
@@ -534,5 +533,144 @@
     },
     "gpu": false,
     "optimizer": false
+  },
+  "r6_harbor": {
+    "status": "passed",
+    "trial": "dynamic-r6-harbor-525b553c002a",
+    "actual_Harbor": true,
+    "actual_provider": true,
+    "actual_proxy": true,
+    "actual_Qwen": true,
+    "scripted_generation": true,
+    "actual_Actor_rollout": false,
+    "verifier_calls": 0,
+    "GPU": false,
+    "optimizer": false,
+    "exact_direct_outputs": true,
+    "actor_input_and_masks_logprobs_routing_unchanged": true,
+    "causal_gather": true,
+    "private_cache_removed": true,
+    "provider_weakref_released": true,
+    "teardown_closed410": true,
+    "events": [
+      {
+        "event": "initial",
+        "tokens": 190,
+        "windows": 3,
+        "bounded_files": 192,
+        "limited": false
+      },
+      {
+        "event": "read-only noop",
+        "tokens": 0,
+        "windows": 0,
+        "bounded_files": 192,
+        "limited": false
+      },
+      {
+        "event": "add new source file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "edit new source file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "rollback source",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "rename probe file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "parse failure in probe file",
+        "tokens": 126,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "delete only probe-created file",
+        "tokens": 125,
+        "windows": 3,
+        "bounded_files": 192,
+        "limited": false
+      }
+    ],
+    "task_SHA": "92989bc20ed4e9748816d3ea2ce34b5018818e4d2be9ddc64745b6f8a9440ce3",
+    "pinned_image_id": "sha256:3c085acdb04b111311d27865f98957a4f03884c7b9a67c901ff699a616435176",
+    "no_pull_or_build": true,
+    "subnet_pool": "172.16.0.0/20",
+    "wall_seconds": 29.625905230641365,
+    "CPU_seconds": 8.282743986999998,
+    "process_peak_RSS_KiB": 1156088,
+    "source_SHA": "a73a29b0962be4ef9201d36755290cb9aa4bc8e30581af316989aefe03462b60"
+  },
+  "r6_proxy_lifecycle": {
+    "same_logical_retry_exact_once": true,
+    "changed_retry_transactional_rejection": true,
+    "wrong_identity_and_late_before_generation": true,
+    "concurrent_sessions_isolated": true,
+    "natural_exhaustion": {
+      "calls_before_empty": 157,
+      "spent": 4096,
+      "remaining": 0,
+      "max_update": 27,
+      "subsequent_empty_unknown": true
+    },
+    "status": "passed",
+    "actual_proxy": true,
+    "actual_Qwen": true,
+    "scripted_generation": true,
+    "synthetic_workspace": true,
+    "actual_Actor_rollout": false,
+    "GPU": false,
+    "optimizer": false,
+    "wall_seconds": 2.9360611960291862,
+    "expected_errors": 5,
+    "source_SHA": "10512fdb85e12f6d992ba1f80d96dad7506602a4c3ff3a10bfa511e762b83a37"
+  },
+  "r6_harbor_lifecycle_review": {
+    "UTC": "2026-10-27T22:38:08.779553+00:00",
+    "status": "HARBOR_AND_PROXY_LIFECYCLE_PASS_GPU_PARITY_PENDING",
+    "harbor_queue_exit": 0,
+    "lifecycle_queue_exit": 0,
+    "frozen_sources_unchanged": 7,
+    "old_source_unchanged": 35,
+    "runtime_method_changes_this_round": 0,
+    "training_admitted": false,
+    "training_started": false,
+    "GPU_probe_started": false,
+    "own_probe_network_absent": true,
+    "own_running_container_absent": true,
+    "evidence_sha256": {
+      "HARBOR_DYNAMIC_R6.json": "dcb7d780cd917988682c17f8a316858b01fa93c69f86b2b28f55dd3c4b320a2e",
+      "PROXY_LIFECYCLE_R6.json": "b09d47e0fcc8e55deac5a204fbce66f7d2b21a5e85442924c3efca622175cc37"
+    },
+    "preserved_preflight_issues": [
+      "First read-only IPAM inventory failed on null Config; corrected read-only handling.",
+      "First prospective172.18.224.0/20 overlaps existing172.18/16; no probe launched there and no old network changed.172.16.0/20 passed."
+    ],
+    "limitations": [
+      "Harbor uses scripted generation, no actual Actor rollout/verifier/model forward.",
+      "Harbor fixture routing is absent; nonempty routing invariance belongs to prior CPU9call fixture.",
+      "Process peak RSS1.1GiB includes imported torch/tokenizer/runtime, not incremental PI cache RSS.",
+      "Natural exhaustion157calls4096spent is a synthetic actual-proxy path, not a measured production episode.",
+      "Five expected lifecycle exceptions are asserted negative tests, not queue failures."
+    ],
+    "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled."
   }
 }

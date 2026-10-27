@@ -1,6 +1,18 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_HARBOR_LIFECYCLE_PASS_GPU_PARITY_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：真实Harbor和实际proxy生命周期通过，下一步八卡与配方准入
+
+2026-10-28 06:39CST：logs/harbor_dynamic_r6和logs/proxy_lifecycle_r6均exit0，无健康任务待重复启动。新验证脚本按Windows备份archive/r6_before_harbor_probe、AST/bashsyntax、WSLpreview/sync及14/12源SHA执行；本轮不改运行方法，七冻结源与原35源再次一致。
+
+Harbor真实预制容器dynamic-r6-harbor-525b553c002a，按元数据排序首个cached_prepared选择，镜像/Dockerfile/task/instruction身份核验，agent/verifier runtime缓存及staged marker存在，无pull/build/verifier。首次只读网络清单遇null Config纠正；预选172.18.224/20发现与现有172.18/16重叠而未启动，改经全网重叠检查的172.16.0/20 /29，旧网络未改。D1约330.315GiB通过200GiB探针门槛，不代表正式开训资源已准入。
+
+真实provider/冻结reader读取192源码文件，新建探针文件后193，删除自己创建文件后192；8次初始/noop/add/edit/rollback/rename/parse/delete，PI token190/0/128/128/128/128/126/125，全部与冻结session逐字段相同。真实proxy/Actor ids/masks/logprobs/routing及manager输入在开关PI对照中精确，Harbor fixture routing为空，非空routing证据属于上一轮独立CPU组。Critic PI-only/gather通过。私有cache移除、provider weakref在自己的容器teardown后消失、late capture410；独立复查own network不存在且own container无运行。29.626秒wall/8.283秒CPU，峰值RSS1156088KiB包含Python/torch/tokenizer整体，不能称PI缓存增量。报告HARBOR_DYNAMIC_R6.json，无真实Actor模型生成。
+
+实际proxy生命周期：生成器第一次人为失败后同logical retry完整payload和捕获时间一致、不二次扣费，最终仅一条record；changed retry、错误身份、倒序捕获在生成前失败且cache不变；两个会话真实async重叠但互不污染。自然157次调用耗尽4096、remaining0、最大update27，下一次空PI显式unknown/omitted。PROXY_LIFECYCLE_R6.json，2.936秒，5个故意异常均已断言，不当故障重启。整体没有GPU/optimizer或任务verifier。
+
+下一步GPU_ADMISSION_R6_PLAN.md：新建隔离R6八卡SP8短probe，不能直接复用旧pi_gpu_smoke的手写旧格式PI/shared输出；从冻结session产生真实R6 records，完整SAO source/Hydra配方对照，基座模型真实finite values/loss/grad更新后权重不保存复用。先核全卡空闲/私有Ray端口/磁盘等。继承旧配置和prepare/launch只读参考，不能运行；新训练入口仍exit78。只有全部门槛通过才唯一freshbase开训。
+
 ## 最新：新格式runtime接线及真实proxy CPU对照通过，Harbor/八卡未准入
 
 2026-10-28 06:19CST：备份archive/r6_before_runtime_wiring后仅修改独立runtime三个文件：remote_docker增加icps_dynamic_v1预制镜像/provider分支；proxy调用R6桥接，pending只接受公开捕获坐标及合法PI字段，pop_session在任何可失败审计之前清除dynamic_r6_runtime_cache；builder加入新格式整窗省略分支。旧格式路径保留，冻结七生成源和原35源重新逐字节SHA一致。训练入口仍exit78。

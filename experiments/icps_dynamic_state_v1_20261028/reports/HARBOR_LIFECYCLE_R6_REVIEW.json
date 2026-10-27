@@ -1,0 +1,30 @@
+{
+  "UTC": "2026-10-27T22:38:08.779553+00:00",
+  "status": "HARBOR_AND_PROXY_LIFECYCLE_PASS_GPU_PARITY_PENDING",
+  "harbor_queue_exit": 0,
+  "lifecycle_queue_exit": 0,
+  "frozen_sources_unchanged": 7,
+  "old_source_unchanged": 35,
+  "runtime_method_changes_this_round": 0,
+  "training_admitted": false,
+  "training_started": false,
+  "GPU_probe_started": false,
+  "own_probe_network_absent": true,
+  "own_running_container_absent": true,
+  "evidence_sha256": {
+    "HARBOR_DYNAMIC_R6.json": "dcb7d780cd917988682c17f8a316858b01fa93c69f86b2b28f55dd3c4b320a2e",
+    "PROXY_LIFECYCLE_R6.json": "b09d47e0fcc8e55deac5a204fbce66f7d2b21a5e85442924c3efca622175cc37"
+  },
+  "preserved_preflight_issues": [
+    "First read-only IPAM inventory failed on null Config; corrected read-only handling.",
+    "First prospective172.18.224.0/20 overlaps existing172.18/16; no probe launched there and no old network changed.172.16.0/20 passed."
+  ],
+  "limitations": [
+    "Harbor uses scripted generation, no actual Actor rollout/verifier/model forward.",
+    "Harbor fixture routing is absent; nonempty routing invariance belongs to prior CPU9call fixture.",
+    "Process peak RSS1.1GiB includes imported torch/tokenizer/runtime, not incremental PI cache RSS.",
+    "Natural exhaustion157calls4096spent is a synthetic actual-proxy path, not a measured production episode.",
+    "Five expected lifecycle exceptions are asserted negative tests, not queue failures."
+  ],
+  "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled."
+}
