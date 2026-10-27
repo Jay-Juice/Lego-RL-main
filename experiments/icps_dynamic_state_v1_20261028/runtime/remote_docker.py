@@ -205,7 +205,7 @@ class RemoteDockerEnvironment(DockerEnvironment):
             return host_dir
 
     async def start(self, force_build: bool) -> None:
-        if os.environ.get("PI_FORMAT") == "icps_window_v11":
+        if os.environ.get("PI_FORMAT") in {"icps_window_v11", "icps_dynamic_v1"}:
             from v11_runtime import pin_prepared_image
             pin_prepared_image(self)
             force_build = False
@@ -247,6 +247,10 @@ class RemoteDockerEnvironment(DockerEnvironment):
     async def initialize_privileged_state(self):
         from harbor_patch.privileged_state import registry
         if not registry.enabled():
+            return
+        if os.environ.get("PI_FORMAT") == "icps_dynamic_v1":
+            from dynamic_runtime_r6 import install_provider
+            await install_provider(self, registry)
             return
         if os.environ.get("PI_FORMAT") == "icps_window_v11":
             from v11_runtime import install_provider

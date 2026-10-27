@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "actual_proxy": true,
+  "actual_qwen_tokenizer": true,
+  "synthetic_workspace": true,
+  "scripted_generation": true,
+  "actual_actor_rollout": false,
+  "harbor": false,
+  "gpu": false,
+  "optimizer": false,
+  "calls": 9,
+  "captures": 9,
+  "direct_frozen_outputs_exact": true,
+  "actor_invariance": [
+    "traj_acc_ids",
+    "initial_prompt_token_len",
+    "traj_response_mask",
+    "traj_response_logprobs",
+    "traj_response_routing",
+    "manager_prompt_ids"
+  ],
+  "closed_410_no_generation": true,
+  "private_metadata_cleanup": true,
+  "cleanup_before_failed_audit": true,
+  "causal_pretoken_gather": true,
+  "new_format_no_partial_window": true,
+  "empty_row_and_missing_action_checked": true,
+  "source_sha256": {
+    "runtime/vllm_chat_completion_proxy.py": "940841d41a1d4151c0af5409a55c174bdab480aabf56a2d77ff9267d4d02e22c",
+    "runtime/remote_docker.py": "532ea76e4df3f2b70b30df0138cb80ca05a95ed546f89cf9c1e060271864ac03",
+    "runtime/privileged_critic_builder.py": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+    "validation/online_proxy_r6.py": "b3255b605b39a869ffc3ae7146d2fc3664e8bb2bd88a5f90241617caa1e75486"
+  }
+}

@@ -10,7 +10,8 @@ Local Git worktree: versioning/icps-dynamic-state-20261028
 Source authority: experiments/icps_dynamic_state_v1_20261028
 
 The old ICPS experiment and its branch are preserved. This candidate currently
-has a pure input selector and CPU diagnostics, not an accepted online runtime.
+has a frozen input selector and an opt-in runtime with actual proxy CPU checks.
+Harbor, full lifecycle, eight-GPU and recipe/resource admission are still pending.
 The inherited start_full97.sh is disabled (exit 78); inherited preparation
 scripts are references, not supported launch commands. No new training has run.
 

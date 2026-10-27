@@ -193,7 +193,7 @@ def interleave(actor_ids, prompt_len, response_mask, records, *,
                 elif len(pi_ids) > remaining:
                     if "pi_text" not in record:
                         raise ValueError("Cannot mark total-budget truncation without PI text")
-                    if record.get("pi_format") in {"repair_state_v2", "icps_window_v11"}:
+                    if record.get("pi_format") in {"repair_state_v2", "icps_window_v11", "icps_dynamic_v1"}:
                         # Never cut inside a repair hunk or label a missing capsule unchanged.
                         pi_ids = tail
                     else:

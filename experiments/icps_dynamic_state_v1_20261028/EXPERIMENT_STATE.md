@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_INDEPENDENT_W0_COVERAGE_PASS_ONLINE_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：新格式runtime接线及真实proxy CPU对照通过，Harbor/八卡未准入
+
+2026-10-28 06:19CST：备份archive/r6_before_runtime_wiring后仅修改独立runtime三个文件：remote_docker增加icps_dynamic_v1预制镜像/provider分支；proxy调用R6桥接，pending只接受公开捕获坐标及合法PI字段，pop_session在任何可失败审计之前清除dynamic_r6_runtime_cache；builder加入新格式整窗省略分支。旧格式路径保留，冻结七生成源和原35源重新逐字节SHA一致。训练入口仍exit78。
+
+logs/online_proxy_r6/exit=0，实际overlay proxy+Qwen tokenizer，PI开关两组各9次脚本生成：真实捕获路径初始/noop/新文件/edit/rename/parse/limited未知/delete/rollback输出逐字段等于直接冻结session。Actor ids/初始长度/masks/logprobs/非空routing fixture和manager prompt ids精确一致；pending/pop无原始issue、files或私有cache；closed410拒绝且没有生成。人为无效审计目录实际触发OSError后缓存仍已释放。实际builder PI-only mask去除后等于Actor，逐token前一位置gather正确，添加未来调用不改变此前上下文，新格式超限只放完整耗尽标记、不切窗口；空行和缺失action记录负例通过。日志中的closed410 Traceback是明确断言的负例，不是队列故障。
+
+logs/online_builder_r6/exit=0，实际新builder运行保留测试10 split+12 proven alias+12 structural共34项通过，含CPU tiny value model/gradient及tensor-view测试。这不是八卡数值验收。公开ONLINE_PROXY_R6_CONTRACTS.json、ONLINE_BUILDER_R6_REGRESSION.json及ONLINE_RUNTIME_R6_REVIEW.json归档。本轮没有真实Harbor容器、Actor模型调用或GPU/optimizer更新；9组synthetic workspace和scripted generation不可称实际Actor rollout。未改独立确认方案、数据或读取逐题分数。
+
+下一步真实Harbor预制镜像探针与provider读取：先核镜像已缓存、专属子网无冲突、资源；不得pull/build。使用无害新建文件的add/edit/rename/parse/delete/rollback动作，不运行任务测试/verifier，捕获与冻结session逐字段对照；进一步补actual proxy的retry/cross-session/concurrency/自然耗尽与私有状态生命周期。之后才八卡SP8短更新、完整SAO source/Hydra和资源门槛，全部通过才freshbase。现无健康作业待重启，禁止重复已完成独立确认/CPU组；旧训练保持停止。
+
 ## 最新：R6独立覆盖确认通过，在线桥接开始，训练仍禁用
 
 2026-10-28 05:40:51CST确认结束，logs/confirmation_r6_transport_r3/exit=0。2826冻结任务全部处理：2258生成，568镜像不可用，另21目标未映射，2237可评分/93仓库；全部是已见仓库内未见任务，非新仓库泛化。主目标命中770/2237(34.42%)->993/2237(44.39%)，+9.97pp，gain318/lost95，repo-cluster95%CI[+7.87,+12.05]pp。完整目标292->506，未退化；候选命中1530不变、转化50.33%->64.90%。全2826严格已验证命中下界27.25%->35.14%，不可用/未映射没有替换或当普通失败。信息密度约4.59->7.45目标行/千实际token仅代理，非Critic或RL提升。

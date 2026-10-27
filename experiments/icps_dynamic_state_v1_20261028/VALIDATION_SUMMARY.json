@@ -1,8 +1,8 @@
 {
-  "status": "R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED",
+  "status": "R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
-  "online_runtime_integrated": false,
+  "online_runtime_integrated": true,
   "old_source_unchanged": true,
   "budgets": [
     192,
@@ -58,9 +58,10 @@
   "remote_final_queue_exit": 0,
   "model_or_optimizer_updates": 0,
   "blockers": [
-    "independent task exposure audit and manifest freezing/scoring pending",
-    "online provider/proxy/builder integration not done",
-    "Harbor and eight-GPU admission not done"
+    "actual Harbor provider/reader and dynamic actions",
+    "additional actual proxy retry/cross-session/concurrency/exhaustion lifecycle coverage",
+    "eight-GPU native SP8 finite short update",
+    "complete SAO source/Hydra parity and resource gates"
   ],
   "preserved_failures": [
     "r1 all3 allocations reduced primary coverage",
@@ -68,7 +69,7 @@
     "constructed r1 added file exceeded source capacity; no bound relaxed",
     "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
   ],
-  "next": "Implement frozen R6 W0 selector with unchanged R4 change-priority lifecycle, verify exact initial outputs and dynamic contracts; freeze fresh independent cohort excluding607+220+all audited exposure before outputs. No training.",
+  "next": "Real Harbor bounded-provider and remaining actual-proxy lifecycle checks; then 8GPU SP8, full SAO parity and resources. No training before all gates.",
   "r4_hits": {
     "S1": 129,
     "expand": 143,
@@ -446,5 +447,92 @@
       "Synthetic snapshots and direct bridge calls only.",
       "Actual proxy, metadata cleanup wiring, Docker/Harbor and builder remain pending."
     ]
+  },
+  "online_runtime_admitted": false,
+  "training_admitted": false,
+  "r6_runtime_wiring": {
+    "UTC": "2026-10-27T22:17:15.343571+00:00",
+    "status": "R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING",
+    "proxy_queue_exit": 0,
+    "builder_queue_exit": 0,
+    "proxy_report_sha256": "b220c655b182ce7f98d37f2956f6a3b0a1058075f5edf1a5540dc4660fc6165a",
+    "builder_report_sha256": "cc1d7d5b160e7fd5f9bf662278546751fe6ceced27ebe7fa3d9257d31ece7532",
+    "frozen_generator_sources_unchanged": 7,
+    "old_source_files_unchanged": 35,
+    "source_changes": [
+      "new-format provider/image dispatch",
+      "new-format proxy bridge with private snapshot allowlist",
+      "cache scrub before fallible pop_session audit",
+      "new-format atomic window omission"
+    ],
+    "actual_proxy_calls_per_arm": 9,
+    "old_regression_tests": 34,
+    "training_started": false,
+    "training_admitted": false,
+    "gpu_update": false,
+    "pending": [
+      "actual Harbor provider/reader and dynamic actions",
+      "additional actual proxy retry/cross-session/concurrency/exhaustion lifecycle coverage",
+      "eight-GPU native SP8 finite short update",
+      "complete SAO source/Hydra parity and resource gates"
+    ],
+    "limitations": [
+      "Synthetic bounded workspace; scripted generation and routing fixture, not model rollout.",
+      "Closed410 traceback is an intentionally asserted negative test; both queues exited0.",
+      "Tiny CPU value-model/gradient regression is not eight-GPU acceptance.",
+      "Preserved bridge8+8 contracts and earlier24 dynamic tests are separate evidence scopes."
+    ]
+  },
+  "r6_actual_proxy": {
+    "status": "passed",
+    "actual_proxy": true,
+    "actual_qwen_tokenizer": true,
+    "synthetic_workspace": true,
+    "scripted_generation": true,
+    "actual_actor_rollout": false,
+    "harbor": false,
+    "gpu": false,
+    "optimizer": false,
+    "calls": 9,
+    "captures": 9,
+    "direct_frozen_outputs_exact": true,
+    "actor_invariance": [
+      "traj_acc_ids",
+      "initial_prompt_token_len",
+      "traj_response_mask",
+      "traj_response_logprobs",
+      "traj_response_routing",
+      "manager_prompt_ids"
+    ],
+    "closed_410_no_generation": true,
+    "private_metadata_cleanup": true,
+    "cleanup_before_failed_audit": true,
+    "causal_pretoken_gather": true,
+    "new_format_no_partial_window": true,
+    "empty_row_and_missing_action_checked": true,
+    "source_sha256": {
+      "runtime/vllm_chat_completion_proxy.py": "940841d41a1d4151c0af5409a55c174bdab480aabf56a2d77ff9267d4d02e22c",
+      "runtime/remote_docker.py": "532ea76e4df3f2b70b30df0138cb80ca05a95ed546f89cf9c1e060271864ac03",
+      "runtime/privileged_critic_builder.py": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+      "validation/online_proxy_r6.py": "b3255b605b39a869ffc3ae7146d2fc3664e8bb2bd88a5f90241617caa1e75486"
+    }
+  },
+  "r6_builder_regression": {
+    "status": "passed",
+    "counts": {
+      "test_pi_split_alias.py": 10,
+      "test_pi_sdk_proven_alias.py": 12,
+      "test_structural_pi_v1.py": 12
+    },
+    "total": 34,
+    "actual_overlay_builder": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/privileged_critic_builder.py",
+    "builder_sha256": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+    "preserved_test_source_sha256": {
+      "test_pi_split_alias.py": "b5cf3656ff6711e320fbf45bf581cefdc15a3fc46a22df1836a2cf65fd276f0c",
+      "test_pi_sdk_proven_alias.py": "b7d42bde9be2648b6b29bf9c2963b837bc0da4b3e866060cfa745ee8ac4b29af",
+      "test_structural_pi_v1.py": "85d68233889aef857984f7f7c4f6e0884702c85684a99bd6ba36dc161d17aa69"
+    },
+    "gpu": false,
+    "optimizer": false
   }
 }

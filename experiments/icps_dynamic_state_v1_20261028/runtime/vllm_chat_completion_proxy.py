@@ -1221,6 +1221,8 @@ class _VLLMChatCompletionsProxy:
                 self._session_generation_locks.pop(sub_key, None)
                 self._session_state_locks.pop(sub_key, None)
                 self._session_attempts.pop(sub_key, None)
+        # Drop private bounded source state before any fallible audit/teardown IO.
+        meta.pop("dynamic_r6_runtime_cache", None)
         await self._session_scheduler.finish_session(session_id, reason="pop_session")
         for sub_key in sub_keys:
             await self._session_scheduler.finish_session(sub_key, reason="pop_session")
@@ -1568,7 +1570,16 @@ class _VLLMChatCompletionsProxy:
                                 from harbor_patch.privileged_state.structural_lift import serialize
                                 pi_snapshot = await pi_registry.capture(session_id)
                                 repair_fields = {}
-                                if os.environ.get("PI_FORMAT") == "icps_window_v11":
+                                pi_record_snapshot = {k: v for k, v in pi_snapshot.items()
+                                                      if k not in {"entities", "files", "v11_context", "dynamic_r6_context"}}
+                                if os.environ.get("PI_FORMAT") == "icps_dynamic_v1":
+                                    from dynamic_runtime_r6 import proxy_fields, public_snapshot
+                                    repair_fields = proxy_fields(pi_snapshot, self._tokenizer, sess,
+                                        logical_call_id=getattr(attempt, "logical_call_id", str(sess.get("num_calls", 0))))
+                                    pi_record_snapshot = public_snapshot(pi_snapshot)
+                                    pi_text, pi_ids = repair_fields["pi_text"], repair_fields["pi_ids"]
+                                    pi_raw_tokens, pi_truncated = repair_fields["pi_raw_tokens"], repair_fields["pi_truncated"]
+                                elif os.environ.get("PI_FORMAT") == "icps_window_v11":
                                     from v11_runtime import proxy_fields
                                     repair_fields = proxy_fields(pi_snapshot, self._tokenizer, sess,
                                         logical_call_id=getattr(attempt, "logical_call_id", str(sess.get("num_calls", 0))))
@@ -1586,7 +1597,7 @@ class _VLLMChatCompletionsProxy:
                                     pi_text, pi_ids, pi_raw_tokens, pi_truncated = serialize(
                                         pi_snapshot, self._tokenizer, int(os.environ.get("PI_MAX_TOKENS_PER_STATE", "1024")))
                                 sess["pi_pending_record"] = {
-                                    **{k: v for k, v in pi_snapshot.items() if k not in {"entities", "files", "v11_context"}},
+                                    **pi_record_snapshot,
                                     **repair_fields,
                                     "pi_text": pi_text, "pi_ids": pi_ids,
                                     "pi_raw_tokens": pi_raw_tokens, "pi_truncated": pi_truncated,

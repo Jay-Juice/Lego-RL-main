@@ -1,0 +1,33 @@
+{
+  "UTC": "2026-10-27T22:17:15.343571+00:00",
+  "status": "R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING",
+  "proxy_queue_exit": 0,
+  "builder_queue_exit": 0,
+  "proxy_report_sha256": "b220c655b182ce7f98d37f2956f6a3b0a1058075f5edf1a5540dc4660fc6165a",
+  "builder_report_sha256": "cc1d7d5b160e7fd5f9bf662278546751fe6ceced27ebe7fa3d9257d31ece7532",
+  "frozen_generator_sources_unchanged": 7,
+  "old_source_files_unchanged": 35,
+  "source_changes": [
+    "new-format provider/image dispatch",
+    "new-format proxy bridge with private snapshot allowlist",
+    "cache scrub before fallible pop_session audit",
+    "new-format atomic window omission"
+  ],
+  "actual_proxy_calls_per_arm": 9,
+  "old_regression_tests": 34,
+  "training_started": false,
+  "training_admitted": false,
+  "gpu_update": false,
+  "pending": [
+    "actual Harbor provider/reader and dynamic actions",
+    "additional actual proxy retry/cross-session/concurrency/exhaustion lifecycle coverage",
+    "eight-GPU native SP8 finite short update",
+    "complete SAO source/Hydra parity and resource gates"
+  ],
+  "limitations": [
+    "Synthetic bounded workspace; scripted generation and routing fixture, not model rollout.",
+    "Closed410 traceback is an intentionally asserted negative test; both queues exited0.",
+    "Tiny CPU value-model/gradient regression is not eight-GPU acceptance.",
+    "Preserved bridge8+8 contracts and earlier24 dynamic tests are separate evidence scopes."
+  ]
+}
