@@ -1,4 +1,8 @@
-# Repair-state PI v2 version management
+# ICPS v1.1 branch version management
+
+Current branch: `codex/icps-v11-full97-20261027`. The current ICPS snapshot and its validation/results are documented in [the experiment version record](experiments/icps_v11_full97_sao_20261024_r2/VERSIONING.md). This independent publication checkout does not change the running ICPS source, the old V2 working tree, or main. The V2 instructions below are retained as parent history; they do not redirect an existing scheduled task or describe current ICPS run status.
+
+# Repair-state PI v2 version management (inherited history)
 
 Repository: https://github.com/Jay-Juice/Lego-RL-main
 
