@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-27",
+  "status": "SOURCE_ARCHIVE_VERIFIED",
+  "runtime_files": 698,
+  "runtime_bytes": 7792669,
+  "windows_archive_byte_hashes_match": true,
+  "remote_runtime_hashes_match_all_698": true,
+  "portable_tests_run": 30,
+  "portable_tests_passed": 30,
+  "portable_test_command": "python -B utils/test_icps_archive.py",
+  "manifest_command": "python -B utils/verify_icps_archive.py",
+  "original_test_files_modified": false,
+  "external_not_run_by_portable_suite": ["Original private backup ZIP integrity"],
+  "initial_archive_discovery": "28 passed; 3 errors because two external reference-source paths and a private backup-provenance file were absent. Added hash-preserving reference source and a separate portable runner; did not alter original tests or treat missing checks as passes.",
+  "secret_pattern_scan": "No added private-key, GitHub-token, OpenAI-token or AWS access-key literal matches",
+  "model_or_dataset_upload": false,
+  "training_or_shared_environment_changed": false,
+  "gpu_contrast_results": "NOT_RUN: active training occupies all 8 GPUs",
+  "limits": "Source and CPU validation only; no new distributed or bitwise-recovery guarantee. Historical recipe/serializer limitations are retained intentionally."
+}

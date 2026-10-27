@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-27",
+  "status": "CPU_VERIFIED_GPU_PENDING",
+  "selected": 32,
+  "families": 16,
+  "positive": 26,
+  "negative": 6,
+  "unscored": 0,
+  "selected_before_outcomes": true,
+  "cache_sha256": "5aaf5182d5d996e49e5cb913ef6f2b85447667a3862839858762fb5f3eb94065",
+  "cpu_layout_and_checkpoint_identity_preflight": true,
+  "cpu_guard_and_statistics_tests": 8,
+  "cpu_guard_and_statistics_passed": 8,
+  "GPU_runs": 0,
+  "model_loads": 0,
+  "optimizer_steps": 0,
+  "training_changed": false,
+  "cache_scope": "Hash-proven initial-only PI, canonical proxy replay, native reserve cap; not a complete sampled-token archive or dynamic-PI test",
+  "resource_rule": "Protected current training must exit successfully, all8 GPUs and Ray idle, disk>=200GiB; no stop or automatic retry",
+  "limits": "Off-policy training-task cohort with six failures. Null contrast cannot establish PI contains no useful information."
+}

@@ -1,0 +1,19 @@
+{
+  "observed_date": "2026-10-27",
+  "scope": "Read-only package metadata; no installer run, not binary provenance or bitwise guarantee",
+  "torch": "2.10.0",
+  "transformers": "5.4.0",
+  "numpy": "2.2.6",
+  "ray": "2.54.1",
+  "tensordict": "0.10.0",
+  "torchdata": "0.11.0",
+  "veomni": "0.1.11",
+  "vllm": "0.19.1.dev0+g2a69949bd.d20260920.cu124",
+  "flash-attn": "2.8.3",
+  "flash-linear-attention": "0.5.1",
+  "triton": "3.6.0",
+  "harbor": "0.3.1",
+  "verl": "0.8.0.dev0",
+  "openhands-sdk": null,
+  "openhands-sdk_note": "Not installed as this distribution in the host training venv; agent runs in task containers. No version inferred."
+}

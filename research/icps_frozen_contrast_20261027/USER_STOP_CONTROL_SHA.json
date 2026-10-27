@@ -1,0 +1,6 @@
+{
+  "run_after_user_stop.py": "f8a9f3f82e1a9d3374d4b246fcd3c7e71ff170130170ac32c87493bffaf3e819",
+  "confirm_user_stop.py": "028349f94ece68ff77a90630af2c2f06b241aacbaa2dc5be1194b2bce7d47348",
+  "authorized_stop.py": "1d5276e5c02649414dff61d883df4eb453a810b58ce8b78386f8a078cb9aef0a",
+  "test_user_stop_control.py": "c4aa3696042391f5220c408c25f9cbf62cc4249d6b0079974b89bce669ecae16"
+}

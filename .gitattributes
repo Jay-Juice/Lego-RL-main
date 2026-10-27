@@ -4,3 +4,10 @@
 *.json text eol=lf
 *.md text eol=lf
 *.patch -whitespace
+
+# Preserve the byte-exact ICPS runtime archive and its SHA receipt.
+experiments/icps_v11_full97_sao_20261024_r2/** -text
+vendor_runtime/** -text
+tests/icps_reference/** -text
+ICPS_*.json -text
+research/icps_frozen_contrast_20261027/** -text
