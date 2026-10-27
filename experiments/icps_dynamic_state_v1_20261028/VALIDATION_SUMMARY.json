@@ -68,7 +68,7 @@
     "constructed r1 added file exceeded source capacity; no bound relaxed",
     "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
   ],
-  "next": "Freeze confirmation identities after prior-exposure exclusion audit; generate and score only frozen flow_expand, do not retune on confirmation. Then online integration/admission if passed.",
+  "next": "Implement frozen R6 W0 selector with unchanged R4 change-priority lifecycle, verify exact initial outputs and dynamic contracts; freeze fresh independent cohort excluding607+220+all audited exposure before outputs. No training.",
   "r4_hits": {
     "S1": 129,
     "expand": 143,
@@ -271,18 +271,29 @@
     "r4_frozen_source_unchanged": true
   },
   "r6_development": {
-    "status": "RUNNING_GENERATION",
-    "screen": "lego-pi-dynamic-dev-r6-20261028",
-    "variants": [
-      "novelty_expand",
-      "novelty_cost_expand"
-    ],
-    "byte_contracts_passed": 3,
-    "remote_contracts_passed": 3,
-    "source_old35_unchanged": true,
-    "frozen_r4_unchanged": true,
+    "status": "COMPLETE_W0_CANDIDATE_FROZEN_NOT_ADMITTED",
+    "queue_exit": 0,
+    "local_contracts": 3,
+    "remote_contracts": 3,
+    "flow_control_exact": 607,
+    "hits": {
+      "S1": 129,
+      "flow_expand": 169,
+      "novelty_expand": 171,
+      "novelty_cost_expand": 171
+    },
+    "full": {
+      "S1": 53,
+      "flow_expand": 98,
+      "novelty_expand": 102,
+      "novelty_cost_expand": 105
+    },
+    "selected_W0_variant": "novelty_cost_expand",
+    "selection_reason": "Primary tie at171; development full target105 vs102. Post-result secondary selection, not independent evidence.",
+    "review": "reports/R6_RESULT_REVIEW.json",
     "confirmation_read": false,
-    "training_started": false,
-    "online_integrated": false
+    "dynamic_validated": false,
+    "online_integrated": false,
+    "training_started": false
   }
 }

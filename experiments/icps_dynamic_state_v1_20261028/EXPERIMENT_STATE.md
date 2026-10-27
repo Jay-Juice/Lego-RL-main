@@ -1,7 +1,15 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
-## R6进行中：比较新增issue信息与实际token成本
+## R6完成：开发覆盖171/366，冻结下一候选但未准入
+
+R6队列exit0，3本地+3远端契约通过，607冻结flow完整输出逐项一致。novelty和novelty_cost均171/366（旧129，R4 169），完整目标分别102和105（旧53，R4 98）。相对旧S1均+11.48pp，开发+5pp门槛通过，但只比R4净增2题。追加只读审计：相对R4，novelty gain9/lost7，cost gain13/lost11；探索性repo-cluster区间均跨0，不能宣称排序改进已可靠胜过R4。cost目标行441/1320、每千实际token6.4519，R4为440/6.4462；密度基本持平。novelty为434/6.3504，说明命中题数略增不等于可见目标行整体增加。
+
+暂选novelty_cost_expand作下一待验证候选：主指标并列后完整目标105优于102；这个次级择优是在开发结果后作出的透明选择，不是预注册独立结论。CANDIDATE_FREEZE_R6.json固定W0六源，R4冻结原件不变。新候选尚未动态/在线验收，更未独立通过；不因小幅提高立即开训，也不重用原220确认题筛选。R6_FOLLOWUP_PLAN.md限定先实现W0新排序+既有R4变化优先更新的组合，真实tokenizer动态契约与607初始输出等价，然后事前冻结新独立任务清单。动态实现若改变W0或配方须重新审查，不能静默漂移。
+
+无健康R6进程待重启，所有生成/评分/审计完成，无GPU或optimizer。旧35源和R4五源SHA再次一致；预算192/128/4096、SAO配方保持固定。报告reports/development_r6/{FROZEN,AGGREGATE}.json和reports/R6_RESULT_REVIEW.json；所有私有样本仍只在远端。现训练入口exit78，不运行继承旧入口。
+
+## 历史R6启动记录：比较新增issue信息与实际token成本
 
 先完成原607开发的R6_SIGNAL_AUDIT：R4回退16题中12有query集合Jaccard>=0.5的窗口对，9题目标proposal仍带未覆盖issue词；候选内两法均未命中57题中34有此类新词。仅词集合代理与scorer事后归因，不能声称这些词一定有价值，未读取220确认数据。
 

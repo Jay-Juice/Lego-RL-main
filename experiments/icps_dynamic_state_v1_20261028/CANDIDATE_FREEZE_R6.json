@@ -1,0 +1,21 @@
+{
+  "UTC": "2026-10-27T18:48:35.492290+00:00",
+  "scope": "W0_ONLY_NOT_ONLINE_TRAINING",
+  "variant": "novelty_cost_expand",
+  "source_SHA": {
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "src/rank_windows_r6.py": "6a9f55845e3dfcf8909fa5d423554fe0a11ed44c0c27f943251962016715954f"
+  },
+  "development_hits": 171,
+  "development_evaluable": 366,
+  "full_target": 105,
+  "post_result_secondary_selection": true,
+  "independent_pass": false,
+  "dynamic_pass": false,
+  "training_allowed": false,
+  "plan": "R6_FOLLOWUP_PLAN.md"
+}
