@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_INDEPENDENT_W0_COVERAGE_PASS_ONLINE_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：R6独立覆盖确认通过，在线桥接开始，训练仍禁用
+
+2026-10-28 05:40:51CST确认结束，logs/confirmation_r6_transport_r3/exit=0。2826冻结任务全部处理：2258生成，568镜像不可用，另21目标未映射，2237可评分/93仓库；全部是已见仓库内未见任务，非新仓库泛化。主目标命中770/2237(34.42%)->993/2237(44.39%)，+9.97pp，gain318/lost95，repo-cluster95%CI[+7.87,+12.05]pp。完整目标292->506，未退化；候选命中1530不变、转化50.33%->64.90%。全2826严格已验证命中下界27.25%->35.14%，不可用/未映射没有替换或当普通失败。信息密度约4.59->7.45目标行/千实际token仅代理，非Critic或RL提升。
+
+收据核验2826行、2258GENERATED、原352输出全部非计时字段精确、Landlock实际拒绝2标签路径；生成5312.37秒。七冻结源/原27manifest/新增R3manifest SHA全部复查一致。公开AGGREGATE SHA f147c5e0f1a2ec7020f5e0446f58dad72875fb5839bb44f7cc753aacdf43e98d、FROZEN SHA900098fcbddc04254c9fff487a04928ac32567ba039775ae8588661076f7b39f归档，私有逐项receipt/评分不下载。原R4独立失败、原CRLF和计时断言失败保留，未降低门槛或扩大样本。reports/R6_CONFIRMATION_REVIEW.json。
+
+备份archive/r6_before_online_bridge后新增src/dynamic_runtime_r6.py，完整有界snapshot进入冻结session，缓存保存全部状态，错误调用事务性不污染缓存，同逻辑retry保持完整字段并不重复扣费；public_snapshot/release_session用于后续私有字段隔离。当前只是独立桥接模块，runtime/proxy/Docker/builder尚未接线，不能称在线完成。WSLpreview仅两新增模块测试及独立validator，sync/三源SHA通过。logs/online_bridge_r6/exit=0，8byte+8真实Qwen契约通过，报告ONLINE_BRIDGE_R6_CONTRACTS.json。Windows本地unittest停在首个asyncio捕获，未计通过；已核完整命令/父PID仅清理本轮本地测试PID52480，无远端进程停止；早期只读命令引号/CRLF与exit转义错误也保留工具记录，最终独立runner真实exit0。
+
+下一步按ONLINE_INTEGRATION_PLAN_R6.md接线新格式、pending/meta清理、provider与builder，实际proxy/Harbor因果/预算/gather/生命周期/Actor不变，再8GPU短更新、全SAO源码dryrun、资源门槛。禁止重复独立确认、读取逐题结果调参或恢复旧训练。训练入口exit78，coverage通过并非全部准入。当前无远端CPU/GPU作业。
+
 ## 最新：采集完成；测量身份/计时断言已修正，同一冻结队列继续生成
 
 2826冻结任务采集完成：2258 COMPLETE、568 PINNED_PREPARED_UNAVAILABLE_NO_BUILD，400.85秒，capture receipt SHAafcdc35f3d03f293c3795b1f152096a71a1e581a3829bb58ae27957de97aff58。无capture error，无替换，无verifier/GPU。原confirmation_r6在生成约450序号、保留352输出后exit1，尚无score；错误是把read_text规范化后的issue哈希直接对比原instruction字节SHA，原日志SHA50dec73960b24377f02ef5868ed5cc920e1e7b9c95fe2d40300618b3c79c6be4。

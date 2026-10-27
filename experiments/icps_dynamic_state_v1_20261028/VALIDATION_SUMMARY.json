@@ -380,12 +380,12 @@
     "receipt_check_pass": true
   },
   "r6_confirmation": {
-    "status": "RUNNING_SAME_COHORT_TRANSPORT_R3",
+    "status": "INDEPENDENT_W0_COVERAGE_PASS",
     "screen": "lego-pi-confirmation-r6-transport-r3-20261028",
     "queue": "logs/confirmation_r6_transport_r3",
     "candidate_freeze_SHA": "5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13",
     "nominal_tasks": 2826,
-    "independent_pass": false,
+    "independent_pass": true,
     "training_started": false,
     "families": 95,
     "all_tasks_seen_repositories": true,
@@ -399,6 +399,52 @@
     "transport_contracts_remote": 4,
     "payload_contracts_local": 3,
     "payload_contracts_remote": 3,
-    "score_started": false
+    "score_started": true,
+    "queue_exit": 0,
+    "score_complete": true,
+    "evaluable": 2237,
+    "unmapped": 21,
+    "old_hits": 770,
+    "new_hits": 993,
+    "paired": {
+      "n": 2237,
+      "families": 93,
+      "delta": 0.09968708091193562,
+      "gained": 318,
+      "lost": 95,
+      "unchanged": 1824,
+      "task_CI95": [
+        0.08225301743406348,
+        0.11668529280286102
+      ],
+      "repo_cluster_CI95": [
+        0.07869545431025217,
+        0.1205094153797668
+      ],
+      "seed": 20261023,
+      "iterations": 4000
+    }
+  },
+  "r6_online_bridge": {
+    "status": "ISOLATED_BRIDGE_CONTRACTS_PASS",
+    "tests": {
+      "byte": 8,
+      "actual_Qwen": 8
+    },
+    "source": {
+      "src/dynamic_runtime_r6.py": "eaa010532e54ad44855b47fdd09ef8f826b48941a1491f600e1ed0cb96056022",
+      "tests/test_dynamic_runtime_r6.py": "6c1a5de77e5a8ef05cb84b72c2caed753ef98fd65e6a363cd2b0d45bae603e6d",
+      "validation/online_bridge_r6.py": "072a8be1bcedbf8356e03c466bd8b1d84e880958e9ab081358367788d1a55fa2"
+    },
+    "frozen_generator_unchanged": true,
+    "runtime_dispatch_enabled": false,
+    "actual_proxy_tested": false,
+    "Harbor_tested": false,
+    "GPU_jobs": 0,
+    "training_admitted": false,
+    "limitations": [
+      "Synthetic snapshots and direct bridge calls only.",
+      "Actual proxy, metadata cleanup wiring, Docker/Harbor and builder remain pending."
+    ]
   }
 }

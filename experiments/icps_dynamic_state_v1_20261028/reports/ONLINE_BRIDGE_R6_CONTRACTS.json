@@ -1,0 +1,22 @@
+{
+  "status": "ISOLATED_BRIDGE_CONTRACTS_PASS",
+  "tests": {
+    "byte": 8,
+    "actual_Qwen": 8
+  },
+  "source": {
+    "src/dynamic_runtime_r6.py": "eaa010532e54ad44855b47fdd09ef8f826b48941a1491f600e1ed0cb96056022",
+    "tests/test_dynamic_runtime_r6.py": "6c1a5de77e5a8ef05cb84b72c2caed753ef98fd65e6a363cd2b0d45bae603e6d",
+    "validation/online_bridge_r6.py": "072a8be1bcedbf8356e03c466bd8b1d84e880958e9ab081358367788d1a55fa2"
+  },
+  "frozen_generator_unchanged": true,
+  "runtime_dispatch_enabled": false,
+  "actual_proxy_tested": false,
+  "Harbor_tested": false,
+  "GPU_jobs": 0,
+  "training_admitted": false,
+  "limitations": [
+    "Synthetic snapshots and direct bridge calls only.",
+    "Actual proxy, metadata cleanup wiring, Docker/Harbor and builder remain pending."
+  ]
+}
