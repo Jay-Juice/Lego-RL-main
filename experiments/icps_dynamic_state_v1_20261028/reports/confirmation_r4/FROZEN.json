@@ -1,0 +1,22 @@
+{
+  "UTC": "2026-10-27T18:11:09.059518+00:00",
+  "source": {
+    "generator": {
+      "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+      "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+      "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+      "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+      "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e"
+    },
+    "candidate_freeze": "5519914467a221f30ec13795bacf54c72f0862216061bfd592f1d8a690ae59db",
+    "confirmation": "1001b5f3297d7ed9b10dddd941679280f1659c0717b84b78da7a43ad4ec55729",
+    "landlock": "ea63dcb314f8e5795aac9af0e15c91a4437bdbd5d0d472823dc6e7b129df6e2a"
+  },
+  "manifest_SHA": "a74551529b9d8831351dfe2b3489e3a4517db93e4cef21319db6ec2fc6050855",
+  "capture_receipt_SHA": "1e0a765d1961fa91ad798a3089d024a52a7b656d35edaa9fcf45100bfc2fb274",
+  "variants": [
+    "S1",
+    "flow_expand"
+  ],
+  "budget": 192
+}

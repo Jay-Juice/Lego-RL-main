@@ -1,6 +1,18 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R4_DEVELOPMENT_PASS_CANDIDATE_FROZEN_NOT_TRAINING_ADMITTED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新独立确认：未通过覆盖准入，保持停训
+
+审计64份历史诊断metadata，从221库存排除1个额外已暴露任务，冻结220任务/28仓库；不是预训练未知数据，仅相对已审计PI诊断独立。manifest SHA a74551529b9d8831351dfe2b3489e3a4517db93e4cef21319db6ec2fc6050855。原CANDIDATE_FREEZE_R4.json及5份生成器未改，只测预先冻结flow_expand与旧S1，没有试其他方案。
+
+只用现有pinned prepared images，177真实只读W0捕获成功，43只有本地build配置故按无build/pull规则列不可用，不替换；另1目标不在有界capture。176可评分/26仓库，名义分母仍220。主覆盖旧79/176=44.89%，新87/176=49.43%，gain17/lost9、+4.55pp；repo-cluster95%CI[-0.72pp,+9.03pp]跨0，独立覆盖门槛未通过。完整目标27->44/176（+9.66pp），候选命中同124/176，不能用完整目标的显著性替换预设主指标。全220严格已验证命中下界35.91%->39.55%，44不可用/未映射不视为正常失败。
+
+目标行205->355，每千实际PI token目标行7.148->10.659（仅可评分输入的token密度代理）。这说明有扩大有效源码窗口的迹象，但尚不足以证明主覆盖改善可推广，更不是Critic学习或RL效果证据。scorer3契约通过，Landlock实际拒绝Gold/位置读取，生成输出先冻结再独立评分，身份/patch旧侧映射检查通过，无任务verifier、Actor rollout、GPU或optimizer。capture约23秒；generation耗时见远端receipt。logs/confirmation_capture_r4及confirmation_score_r4均exit0，没有健康队列待重启。
+
+下一步保留本次确认的失败结论和冻结源，先在原607 development分析覆盖回退与候选转化，不在这176题上筛规则/反复试参。若对本确认逐题结果用于改设计，必须将它标为development；任何新候选都需另一份事前排除既有确认的独立清单，不扩大本轮样本/重采挑分直至显著，不降低门槛。在线接入/Harbor/因果gather/八卡/SAO配方对照均仍未完成，训练入口exit78继续禁用，旧训练不恢复。
+
+公开证据reports/CONFIRMATION_EXPOSURE_FREEZE_R4.json、CONFIRMATION_CAPTURE_R4.json、confirmation_r4/{FROZEN,AGGREGATE}.json；私有manifest/captures/逐题输出仅远端.private_confirmation_r4。以下R1–R4开发记录保留为历史，不覆盖本次未准入结论。
+
 ## 最新 R4 完成：冻结 flow_expand，转入独立确认
 
 R4_PLAN.md在本轮输出生成前冻结。body_expand抑制声明/docstring作为评分锚点；flow_expand再增加一跳AST同名关系，属于语法启发式而非严格数据流。607生成实际Landlock拒绝标签访问，206秒左右；两队列development_r4和dynamic_r4均exit0。旧expand的607份完整输出与R3逐项一致。新目标覆盖body165/366、flow169/366，旧129；完整目标body99、flow98，旧53。flow净+40/366=10.93pp、gain56/lost16，首次通过预先+5pp开发门槛。开发repo-cluster CI不能当独立泛化证据。
