@@ -1,0 +1,13 @@
+{
+  "in_memory_equal": false,
+  "json_roundtrip_equal": false,
+  "type_mismatch_counts": {},
+  "differing_field_paths": [
+    "root.serialized.S1.wall_seconds",
+    "root.serialized.S1.CPU_seconds"
+  ],
+  "total_differing_leaves": 2,
+  "labels_read": false,
+  "scored_outputs_read": false,
+  "selector_changed": false
+}

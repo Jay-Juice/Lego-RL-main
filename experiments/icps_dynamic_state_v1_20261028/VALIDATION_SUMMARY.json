@@ -380,9 +380,9 @@
     "receipt_check_pass": true
   },
   "r6_confirmation": {
-    "status": "RUNNING_READONLY_CAPTURE",
-    "screen": "lego-pi-confirmation-r6-20261028",
-    "queue": "logs/confirmation_r6",
+    "status": "RUNNING_SAME_COHORT_TRANSPORT_R3",
+    "screen": "lego-pi-confirmation-r6-transport-r3-20261028",
+    "queue": "logs/confirmation_r6_transport_r3",
     "candidate_freeze_SHA": "5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13",
     "nominal_tasks": 2826,
     "independent_pass": false,
@@ -390,6 +390,15 @@
     "families": 95,
     "all_tasks_seen_repositories": true,
     "excluded_additional_exposure": 18,
-    "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730"
+    "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730",
+    "capture_complete": 2258,
+    "capture_unavailable": 568,
+    "prior_queue_exit": 1,
+    "transport_r2_exit": 1,
+    "transport_contracts_local": 4,
+    "transport_contracts_remote": 4,
+    "payload_contracts_local": 3,
+    "payload_contracts_remote": 3,
+    "score_started": false
   }
 }

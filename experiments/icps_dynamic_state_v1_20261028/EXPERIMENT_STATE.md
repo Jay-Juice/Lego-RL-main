@@ -1,6 +1,18 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：采集完成；测量身份/计时断言已修正，同一冻结队列继续生成
+
+2826冻结任务采集完成：2258 COMPLETE、568 PINNED_PREPARED_UNAVAILABLE_NO_BUILD，400.85秒，capture receipt SHAafcdc35f3d03f293c3795b1f152096a71a1e581a3829bb58ae27957de97aff58。无capture error，无替换，无verifier/GPU。原confirmation_r6在生成约450序号、保留352输出后exit1，尚无score；错误是把read_text规范化后的issue哈希直接对比原instruction字节SHA，原日志SHA50dec73960b24377f02ef5868ed5cc920e1e7b9c95fe2d40300618b3c79c6be4。
+
+只读审计2258原文件与captured文本：raw mismatch0/text mismatch0，18份CRLF经原read_text转LF，恰18份normalized hash不同。报告R6_INSTRUCTION_TRANSPORT_AUDIT.json；私有逐项receipt SHA78fefa495c070fcc848a4573831e36ebab1ff852c943385feef4f67176d8f332仅远端。生成器输入文本未改，修正只分别验证原SHA与传输SHA，并绑定原capture SHA。7冻结生成源、2826manifest/2258captures、统计门槛全部不变，无逐题评分读取。
+
+独立transport_r2续跑又在新增的旧输出比较断言exit1（首项，无新评分）：真实同源复算证明仅serialized.S1.wall_seconds与CPU_seconds不同，非JSON tuple/list、非PI token变化。R6_PREFIX_REPRESENTATION_AUDIT和R6_PREFIX_FIELD_AUDIT保留。新严格比较仅排除这两个已证实的旧S1计时字段，其他所有字段（尤其文本/IDs/source_map/state）仍精确一致；计时必须有限非负且原值留存。4运输身份+3比较负例本地/远端全通过。两次失败原输出/脚本/exit均保留，未热改。
+
+CURRENT screen lego-pi-confirmation-r6-transport-r3-20261028 PID3217729，04:11:36CST启动ops/confirmation_r6_transport_r3.sh；logs/confirmation_r6_transport_r3/{state,exit,supervisor.log,contracts.log,payload_contracts.log,generation.log,score.log}，首次phase generate_label_denied_same_cohort/noexit、7远端测试pass。新输出.private_confirmation_r6/generated_transport_r3及SCORED_ROWS_transport_r3，公开reports/confirmation_r6_transport_r3/{FROZEN,AGGREGATE}.json；GENERATION_RECEIPT只远端。生成会对原352输出逐项核对全部非计时字段后自动全输出冻结/评分。不得重启旧队列，不重采，不调整样本或算法。
+
+WSLpreview审阅/sync，原27源及新增R2五源/R3六源SHA、bashsyntax均通过。备份archive/r6_before_transport_fix。仅测量修复，不是覆盖指标失败或新PI选择。ONLINE_INTEGRATION_PLAN_R6.md记录只读源码审查：旧provider裁剪初始候选文件、旧cache/schema及record清理、builder格式识别需显式适配；未实现在线接入。训练继续exit78，所有独立/在线/GPU/SAO/资源门槛仍待完成。
+
 ## 最新确认清单：2826任务已冻结，真实只读采集进行中
 
 64份历史metadata复审，从2844库存排除18个历史暴露身份，2026-10-28 03:48:51CST冻结2826任务/95仓库，全部属于607已见仓库，新任务层级不是新仓库。manifest SHA3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730，计划SHAb961a5c4bb163e4335362dca50cb502bc9fc1dda5ef01ac579eb0f71657edbda。公开reports/CONFIRMATION_EXPOSURE_FREEZE_R6.json，私有清单未下载。当前phase=capture_readonly_W0，首次已实际处理209/2826，COMPLETE与PINNED_PREPARED_UNAVAILABLE_NO_BUILD均保留，不替换，不执行pull/build/verifier。无exit，未开始评分，不能称独立通过。

@@ -1,0 +1,16 @@
+{
+  "counts": {
+    "complete": 2258,
+    "raw_hash_mismatch": 0,
+    "capture_text_mismatch": 0,
+    "normalized_hash_differs": 18,
+    "crlf_files": 18,
+    "bare_cr_files": 0
+  },
+  "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730",
+  "capture_receipt_SHA": "afcdc35f3d03f293c3795b1f152096a71a1e581a3829bb58ae27957de97aff58",
+  "transport_receipt_SHA": "78fefa495c070fcc848a4573831e36ebab1ff852c943385feef4f67176d8f332",
+  "labels_read": false,
+  "score_read": false,
+  "source_method_changed": false
+}
