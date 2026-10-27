@@ -1,6 +1,20 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## R5已完成：保留旧证据可减少回退，但未优于冻结R4
+
+唯一R5队列已exit0，flow对照607份完整输出与R4逐项一致；本地与远端3契约通过，607实际Qwen生成budget/精确源码/往返检查通过。guard_expand目标144/366、完整88（旧129/53），gain15/lost0，净+4.10pp未达开发+5pp。anchor_expand目标164、完整93，gain47/lost12，净+9.56pp但低于R4 flow169/98（gain56/lost16）。本轮不把任一方案晋升为新正式候选，不对确认集重测挑选；R4独立未通过仍有效，训练不启动。
+
+结果说明保留旧窗口能降低覆盖回退，但同时占据新可执行窗口的预算；不能仅靠“保留全部旧信息”解决排序问题，也不能据此判定PI本身无用。下一轮先量化原607 proposal评分中的重复issue信号与候选竞争，再事前定义能提升非重复信息的排序/分配策略，保留本轮负结果，预算192/128/4096不变。不得在220确认题上继续调参；新候选仍需新独立确认、动态/在线/Harbor/八卡/SAO对照。无健康job待重启。报告reports/development_r5/{FROZEN,AGGREGATE}.json，私有输出.private_development_r5不下载。
+
+## R5开发推进：先保留当前旧证据，再使用剩余预算
+
+本轮只读原607开发输入，未读取220确认集逐题结果。R4损失诊断完成exit0：丢失16题中14仍有单独可装入192的目标proposal，但全部排在第6位以后；16均有可执行目标，仅2同时触及被排除声明/docstring，不能简单归因于排除docstring。候选已包含但两法均未命中的57题中47也有可装入proposal。分类可重叠，均属scorer事后oracle分析，不给生成器坐标。证据reports/R4_DEVELOPMENT_LOSS_AUDIT.json。
+
+修改前R4冻结5源及状态备份archive/r4_before_guard_experiment，R4源与freeze原位不改。R5_PLAN.md在新输出前固定两个W0原型：guard_expand保留当前oldS1全部真实窗口，用紧凑格式节省后仅加窗口/邻接上下文，compact不能装入则原样保留本次当前S1（不是旧状态PI）；anchor_expand只保留当前S1首窗口，再填flow候选。两者原预算、top3候选和最多3窗口不变；新增独立guard_windows_r5.py，无在线/训练实现修改。
+
+本地与远端3个契约均通过；唯一screen lego-pi-dynamic-dev-r5-20261028，ops/development_r5.sh，logs/development_r5/{state,exit,contracts.log,generation.log,control.log,score.log,supervisor.log}。正在607 Landlock生成oldS1、冻结flow对照与两新规则，之后必须607 flow完整输出等价再评分。无GPU/optimizer，不能把W0测试当动态/在线验收。第一次损失诊断SHA清单CRLF失败未执行，原failed_crlf保留，LF修正后诊断通过。
+
 ## 最新独立确认：未通过覆盖准入，保持停训
 
 审计64份历史诊断metadata，从221库存排除1个额外已暴露任务，冻结220任务/28仓库；不是预训练未知数据，仅相对已审计PI诊断独立。manifest SHA a74551529b9d8831351dfe2b3489e3a4517db93e4cef21319db6ec2fc6050855。原CANDIDATE_FREEZE_R4.json及5份生成器未改，只测预先冻结flow_expand与旧S1，没有试其他方案。

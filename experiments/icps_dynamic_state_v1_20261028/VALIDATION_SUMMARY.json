@@ -183,5 +183,91 @@
     "selected_candidate_unchanged": true,
     "old_source_files_rechecked": 35,
     "training_admitted": false
+  },
+  "r5_development": {
+    "status": "COMPLETE_NO_CANDIDATE_PROMOTED",
+    "screen": "lego-pi-dynamic-dev-r5-20261028",
+    "variants": [
+      "guard_expand",
+      "anchor_expand"
+    ],
+    "flow_control": "frozen_R4",
+    "byte_contracts_passed": 3,
+    "remote_contracts_passed": 3,
+    "training_started": false,
+    "online_integrated": false,
+    "confirmation_read": false,
+    "exit": 0,
+    "frozen_flow_outputs_exact": 607,
+    "all607_real_tokenizer_budget_source_roundtrip_passed": true,
+    "coverage": {
+      "S1": 129,
+      "flow_expand": 169,
+      "guard_expand": 144,
+      "anchor_expand": 164
+    },
+    "full_target": {
+      "S1": 53,
+      "flow_expand": 98,
+      "guard_expand": 88,
+      "anchor_expand": 93
+    },
+    "paired": {
+      "flow_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.1092896174863388,
+        "gained": 56,
+        "lost": 16,
+        "unchanged": 294,
+        "task_CI95": [
+          0.06557377049180328,
+          0.15300546448087432
+        ],
+        "repo_cluster_CI95": [
+          0.04956200525322911,
+          0.1666777188328913
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "guard_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.040983606557377046,
+        "gained": 15,
+        "lost": 0,
+        "unchanged": 351,
+        "task_CI95": [
+          0.02185792349726776,
+          0.06284153005464481
+        ],
+        "repo_cluster_CI95": [
+          0.019998338870431894,
+          0.05847993940282461
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "anchor_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.09562841530054644,
+        "gained": 47,
+        "lost": 12,
+        "unchanged": 307,
+        "task_CI95": [
+          0.05737704918032787,
+          0.1366120218579235
+        ],
+        "repo_cluster_CI95": [
+          0.04100946372239748,
+          0.1511971758927658
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    "r4_frozen_source_unchanged": true
   }
 }

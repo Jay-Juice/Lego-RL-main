@@ -1,0 +1,94 @@
+{
+  "status": "DEVELOPMENT_DIAGNOSTIC_ONLY",
+  "groups": {
+    "gained": {
+      "cases": 56,
+      "target_proposal_exists": 55,
+      "target_proposal_fits_alone": 55,
+      "first_target_rank_2to5": 23,
+      "target_in_excluded_declaration_or_docstring": 1,
+      "target_in_executable": 56,
+      "target_in_name_linked": 33,
+      "one_window_only": 0,
+      "one_entity_only": 3,
+      "used_at_least180tokens": 54,
+      "old_target_within_new_selected_entity": 0,
+      "first_target_rank_6to20": 17,
+      "first_target_rank_1": 14,
+      "first_target_rank_over20": 1
+    },
+    "both_hit": {
+      "cases": 113,
+      "target_proposal_exists": 113,
+      "target_proposal_fits_alone": 113,
+      "first_target_rank_1": 79,
+      "target_in_excluded_declaration_or_docstring": 14,
+      "target_in_executable": 111,
+      "target_in_name_linked": 61,
+      "one_window_only": 0,
+      "one_entity_only": 8,
+      "used_at_least180tokens": 102,
+      "old_target_within_new_selected_entity": 113,
+      "first_target_rank_2to5": 27,
+      "first_target_rank_6to20": 7
+    },
+    "lost": {
+      "cases": 16,
+      "target_proposal_exists": 14,
+      "target_proposal_fits_alone": 14,
+      "first_target_rank_over20": 6,
+      "target_in_excluded_declaration_or_docstring": 2,
+      "target_in_executable": 16,
+      "target_in_name_linked": 5,
+      "one_window_only": 0,
+      "one_entity_only": 6,
+      "used_at_least180tokens": 16,
+      "old_target_within_new_selected_entity": 8,
+      "first_target_rank_6to20": 8
+    },
+    "outside_candidate": {
+      "cases": 124,
+      "target_proposal_exists": 0,
+      "target_proposal_fits_alone": 0,
+      "target_in_excluded_declaration_or_docstring": 0,
+      "target_in_executable": 0,
+      "target_in_name_linked": 0,
+      "one_window_only": 0,
+      "one_entity_only": 7,
+      "used_at_least180tokens": 113,
+      "old_target_within_new_selected_entity": 0
+    },
+    "both_miss_candidate": {
+      "cases": 57,
+      "target_proposal_exists": 47,
+      "target_proposal_fits_alone": 47,
+      "first_target_rank_6to20": 19,
+      "target_in_excluded_declaration_or_docstring": 4,
+      "target_in_executable": 56,
+      "target_in_name_linked": 15,
+      "one_window_only": 0,
+      "one_entity_only": 12,
+      "used_at_least180tokens": 57,
+      "old_target_within_new_selected_entity": 0,
+      "first_target_rank_over20": 24,
+      "first_target_rank_2to5": 4
+    }
+  },
+  "original607_only": true,
+  "confirmation_read": false,
+  "selector_changed": false,
+  "source_SHA": {
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e"
+  },
+  "script_SHA": "6feb301b77f7e047f129dd59f4ecc97dcfbdc350b5dfb1e9f145ba449d6afa8a",
+  "source_receipt_SHA": "9f651bda5708ad20145bb230123dfa36330e5dcebe98a0208c8a1fc2d17a9868",
+  "limitations": [
+    "Overlapping categories, not additive causes.",
+    "Proposal rank and oracle coordinates are scorer-only; forbidden as generator inputs.",
+    "A fitting target proposal does not identify which proposal to choose without labels."
+  ]
+}
