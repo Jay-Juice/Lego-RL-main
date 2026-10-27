@@ -12,9 +12,10 @@ from issue_program_state import build_initial_index, parse_file
 from workspace_read import allowed
 from window_serializer import resolve, terms, query, sha, digest, proposals as contiguous_proposals
 
-CONFIG = dict(version='icps_dynamic_r2', initial=192, update=128, episode=4096,
+CONFIG = dict(version='icps_dynamic_r4', initial=192, update=128, episode=4096,
               max_candidates=3, max_windows=3, max_statement_lines=8,
-              variants=['compact', 'diverse', 'expand'], labels_used=False)
+              variants=['compact', 'diverse', 'expand', 'body_expand', 'flow_expand'],
+              development_variants=['expand', 'body_expand', 'flow_expand'], labels_used=False)
 
 def validate(snapshot):
     if not snapshot.get('stable'):
@@ -93,7 +94,12 @@ def proposals(candidates,snapshot,issue,delta=None,variant='compact'):
     delta=delta or {};out=[]
     # Preserve old lexical anchors and coherent 3/5/7-line context. R1 tiny
     # fragments spent more metadata and lost surrounding target evidence.
-    for w in contiguous_proposals(candidates,snapshot['files'],issue):
+    if variant in {'body_expand','flow_expand'}:
+        from executable_windows import proposals as executable_proposals
+        base_proposals=executable_proposals(candidates,snapshot['files'],issue,flow=variant=='flow_expand')
+    else:
+        base_proposals=contiguous_proposals(candidates,snapshot['files'],issue)
+    for w in base_proposals:
         w=dict(w);changed=delta.get(w['file'],{}).get('ranges',[])
         w['changed_lines']=sum(max(0,min(w['end'],y)-max(w['start'],x)+1) for x,y in changed)
         w['score']+=8*min(w['changed_lines'],3);w['unit']='context'
@@ -153,7 +159,7 @@ def serialize(candidates,snapshot,issue,tokenizer,*,budget=192,delta=None,varian
             code=w['code'].splitlines(True)[0]
             short=dict(w,end=w['start'],code=code,source_hash=sha(code),unit='line_fragment',partial=True)
             if cost([short])<=budget:chosen=[short];break
-    if variant=='expand' and chosen:
+    if variant in {'expand','body_expand','flow_expand'} and chosen:
         # Spend residual capacity on contiguous CURRENT source, never another
         # label-driven location. Lexical overlap prioritizes sides, then position.
         current={e['entity_id']:e for e in resolve(candidates,snapshot['files'])}

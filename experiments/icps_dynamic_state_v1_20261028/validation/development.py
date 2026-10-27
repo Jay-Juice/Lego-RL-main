@@ -15,6 +15,7 @@ V=P/('.private_development_'+RUN);O=P/'reports'/('development_'+RUN)
 sys.path[:0]=[str(P/'src'),str(P/'core')]
 from dense_state import CONFIG,serialize,render,proposals
 from window_serializer import digest
+VARIANTS=CONFIG.get('development_variants',CONFIG['variants'])
 def read(p):return json.loads(p.read_text())
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def save(p,x):
@@ -46,7 +47,7 @@ def generate():
         assert sha(cap)==b['source_capture_SHA'] and sha(ret)==b['old_retrieval_SHA']
         assert hashlib.sha256(r['issue'].encode()).hexdigest()==d['issue_SHA']
         z={'S1':b['serialized']['S1']['192']};elapsed={}
-        for variant in CONFIG['variants']:
+        for variant in VARIANTS:
             t=time.monotonic();z[variant]=serialize(c,s,r['issue'],tok,variant=variant);elapsed[variant]=time.monotonic()-t
         for k,a in z.items():
             assert len(a['pi_ids'])<=192 and a['pi_ids']==tok.encode(a['pi_text'],add_special_tokens=False)
@@ -111,10 +112,10 @@ def score():
         if prior['grade']!='exact_hunk' or prior['hunk_map_status']!='mapped':continue
         d=read(V/f'{uid}.json');s=json.load(gzip.open(OLD/'captures'/f'{uid}.json.gz','rt'))['snapshot']
         x=capacity(d['selected'],s,a['label_hunks'],tok,inputs[uid]['issue']);caps.append(dict(uid=uid,**x))
-    modes=['S1']+CONFIG['variants'];result={m:metrics(rr,m,192) for m in modes}
+    modes=['S1']+VARIANTS;result={m:metrics(rr,m,192) for m in modes}
     assert result['S1']['changed_visible_intersect_any']['hits']==129 and result['S1']['changed_selected_intersect_any']['hits']==242
     comparison={}
-    for mode in CONFIG['variants']:
+    for mode in VARIANTS:
         pr=[dict(r,metrics={'R0':r['metrics']['S1'],'R1':r['metrics'][mode]}) for r in rr]
         comparison[mode]={k:paired(pr,192,k) for k in ['changed_visible_intersect_any','changed_visible_full_any','pi_visible_function_any','pi_visible_file_any']}
     counts={k:sum(bool(c.get(k)) for c in caps) for k in ['candidate','line_fits','proposal_available','proposal_fits','statement_fits']}

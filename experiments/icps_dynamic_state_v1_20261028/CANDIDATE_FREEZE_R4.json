@@ -1,0 +1,28 @@
+{
+  "created": "2026-10-27T17:53:56.897737+00:00",
+  "selected_variant": "flow_expand",
+  "source_SHA": {
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e"
+  },
+  "budgets": [
+    192,
+    128,
+    4096
+  ],
+  "max_candidates": 3,
+  "max_windows": 3,
+  "development_primary_hits": 169,
+  "development_denominator": 366,
+  "development_full_hits": 98,
+  "baseline_primary_hits": 129,
+  "baseline_full_hits": 53,
+  "selection_basis": "Highest predeclared primary development coverage among R4 variants that pass full-target nonregression and CPU/dynamic contracts. Not independent evidence.",
+  "holdout_opened": false,
+  "holdout_manifest_frozen": false,
+  "selector_changes_after_freeze_forbidden": true,
+  "training_admitted": false
+}

@@ -1,5 +1,5 @@
 {
-  "status": "RESEARCH_CONTINUES_NOT_ADMITTED",
+  "status": "R4_DEVELOPMENT_PASS_CANDIDATE_FROZEN_NOT_TRAINING_ADMITTED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": false,
@@ -27,7 +27,7 @@
     "old": 53,
     "expand": 88
   },
-  "development_delta": 0.03825136612021858,
+  "development_delta": 0.1092896174863388,
   "development_required_delta": 0.05,
   "independent_holdout_scored": false,
   "real_tokenizer_contracts": 16,
@@ -58,8 +58,7 @@
   "remote_final_queue_exit": 0,
   "model_or_optimizer_updates": 0,
   "blockers": [
-    "development coverage +3.83pp below predeclared +5pp",
-    "independent validation not frozen/scored",
+    "independent task exposure audit and manifest freezing/scoring pending",
     "online provider/proxy/builder integration not done",
     "Harbor and eight-GPU admission not done"
   ],
@@ -69,5 +68,32 @@
     "constructed r1 added file exceeded source capacity; no bound relaxed",
     "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
   ],
-  "next": "Analyze remaining99 candidate-hit misses, prototype predeclared context/control/data dependency selection without labels, preserve all versions; no training until admission."
+  "next": "Freeze confirmation identities after prior-exposure exclusion audit; generate and score only frozen flow_expand, do not retune on confirmation. Then online integration/admission if passed.",
+  "r4_hits": {
+    "S1": 129,
+    "expand": 143,
+    "body_expand": 165,
+    "flow_expand": 169
+  },
+  "r4_full_hits": {
+    "S1": 53,
+    "expand": 88,
+    "body_expand": 99,
+    "flow_expand": 98
+  },
+  "development_gate_passed": true,
+  "r4_contracts": {
+    "local_byte": 21,
+    "remote_real_tokenizer": 37,
+    "dynamic_each_variant": 24,
+    "both_dynamic_passed": true,
+    "R3_control_exact_equal": 607
+  },
+  "selected_variant": "flow_expand",
+  "candidate_freeze": "CANDIDATE_FREEZE_R4.json",
+  "r4_actual_density": {
+    "old_target_lines_per1000_tokens": 4.32069931936474,
+    "flow_target_lines_per1000_tokens": 6.44622529557408,
+    "note": "scorer-only coverage surrogate; not Critic information or performance proof"
+  }
 }

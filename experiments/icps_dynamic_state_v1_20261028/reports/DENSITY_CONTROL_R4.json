@@ -1,0 +1,67 @@
+{
+  "control_R3_expand_exact_equal_cases": 607,
+  "statistics": {
+    "S1": {
+      "cases": 607,
+      "actual_PI_tokens": 99317,
+      "source_tokens_standalone": 63393,
+      "metadata_tokens_standalone": 35968,
+      "unique_visible_lines": 5712,
+      "evaluable": 366,
+      "evaluable_actual_tokens": 59944,
+      "visible_target_lines_or_anchors": 259,
+      "all_target_lines_or_anchors": 1320,
+      "target_lines_per_1000_actual_tokens": 4.32069931936474,
+      "source_standalone_per_actual_token_proxy": 0.6382895174038684,
+      "case_target_hits_per_1000_actual_tokens": 2.1520085413052183
+    },
+    "expand": {
+      "cases": 607,
+      "actual_PI_tokens": 113600,
+      "source_tokens_standalone": 92903,
+      "metadata_tokens_standalone": 20780,
+      "unique_visible_lines": 9781,
+      "evaluable": 366,
+      "evaluable_actual_tokens": 68107,
+      "visible_target_lines_or_anchors": 364,
+      "all_target_lines_or_anchors": 1320,
+      "target_lines_per_1000_actual_tokens": 5.34453139912197,
+      "source_standalone_per_actual_token_proxy": 0.8178080985915493,
+      "case_target_hits_per_1000_actual_tokens": 2.099637335369345
+    },
+    "body_expand": {
+      "cases": 607,
+      "actual_PI_tokens": 113864,
+      "source_tokens_standalone": 93330,
+      "metadata_tokens_standalone": 20623,
+      "unique_visible_lines": 10283,
+      "evaluable": 366,
+      "evaluable_actual_tokens": 68370,
+      "visible_target_lines_or_anchors": 418,
+      "all_target_lines_or_anchors": 1320,
+      "target_lines_per_1000_actual_tokens": 6.11379259909317,
+      "source_standalone_per_actual_token_proxy": 0.8196620529754796,
+      "case_target_hits_per_1000_actual_tokens": 2.413339183852567
+    },
+    "flow_expand": {
+      "cases": 607,
+      "actual_PI_tokens": 113709,
+      "source_tokens_standalone": 92924,
+      "metadata_tokens_standalone": 20870,
+      "unique_visible_lines": 10288,
+      "evaluable": 366,
+      "evaluable_actual_tokens": 68257,
+      "visible_target_lines_or_anchors": 440,
+      "all_target_lines_or_anchors": 1320,
+      "target_lines_per_1000_actual_tokens": 6.44622529557408,
+      "source_standalone_per_actual_token_proxy": 0.8172088401094021,
+      "case_target_hits_per_1000_actual_tokens": 2.4759365339818626
+    }
+  },
+  "limitations": [
+    "Scorer-only label coordinates; never used by the generator.",
+    "Standalone source and metadata tokenization is non-additive; ratios are proxies, not exact attribution.",
+    "Target-line density is a coverage surrogate, not measured value-prediction information or generalization.",
+    "All 607 cases are development. Zero-width deletion anchors count as existing source anchors."
+  ]
+}

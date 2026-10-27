@@ -1,0 +1,24 @@
+{
+  "variant": "body_expand",
+  "cases": 24,
+  "skipped_source_capacity": 1,
+  "selection": "first24 UID-sorted snapshots with room for added test file; no outcome/labels read",
+  "changed_line_visible": {
+    "old": 0,
+    "new": 24
+  },
+  "unchanged_noop_pass": 24,
+  "retry_exact_once_pass": 24,
+  "rollback_pass": 24,
+  "max_update_tokens": 128,
+  "budget": [
+    192,
+    128,
+    4096
+  ],
+  "wall_seconds": 83.77212707698345,
+  "source_SHA": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+  "evidence": "24 real W0 snapshots plus synthetic new-file/change/rollback events. No actual Actor trajectory or real bug-coverage improvement is claimed.",
+  "GPU_jobs": 0,
+  "optimizer_steps": 0
+}
