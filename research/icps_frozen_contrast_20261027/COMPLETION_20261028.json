@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-28",
+  "phase": "COMPLETED",
+  "training_state": "USER_STOPPED_DO_NOT_RESUME",
+  "latest_complete_training_checkpoint": 40,
+  "queue": {
+    "phase": "complete",
+    "UTC": "2026-10-27T16:18:42.442755+00:00"
+  },
+  "queue_exit": {
+    "exit": 0
+  },
+  "validation": {
+    "steps": [
+      20,
+      30,
+      40
+    ],
+    "trajectories_each": 32,
+    "conditions": 4,
+    "repeats": 2,
+    "trajectory_condition_forwards": 768,
+    "rank_completion_files": 24,
+    "parameter_fingerprints_unchanged": true,
+    "model_only_load": true,
+    "backward_calls": 0,
+    "optimizer_steps": 0,
+    "all_repeated_output_tensors_exact_equal": true,
+    "independent_MSE_recalculation_max_tolerance": 1e-12,
+    "analysis_source_sha256": "1ad8118977ad5a7b80e607d7ed6d4b1850550c2755f7cd6c84ac6cbb782e6315"
+  },
+  "cohort": {
+    "families": 16,
+    "success": 26,
+    "failure": 6,
+    "selection_before_reward": true,
+    "initial_PI_only": true,
+    "canonical_proxy_replay_not_original_sampled_tokens": true
+  },
+  "conclusion": "Weak useful content dependence at30/40; small average gains, no demonstrated failure discrimination improvement at40; intrinsic PI information vs training learnability remains unidentifiable from frozen ablations alone.",
+  "report": "ICPS_V11_FROZEN_CRITIC_RESULTS_20261028.md",
+  "aggregate": "diagnostics/icps_frozen_contrast_20261027/AGGREGATE_RESULTS_20261028.json",
+  "raw_assets_uploaded": false,
+  "production_code_changed": false,
+  "training_resumed": false,
+  "github": {
+    "branch": "codex/icps-v11-20261027",
+    "pull_request": "https://github.com/Jay-Juice/Lego-RL-main/pull/2",
+    "source_commit": "71e7beb",
+    "prior_diagnostic_commits": [
+      "1a65fc7",
+      "74616df"
+    ]
+  },
+  "limitations": [
+    "Post-hoc exploratory calibration; same 32 off-policy training tasks, initial-only PI and six failures.",
+    "Affine readout uses existing scalar V only, not hidden states or PI information; it does not test learnability of unused PI.",
+    "In-sample offset/prior use all labels and are descriptive lower-complexity references, not held-out estimates.",
+    "Exact block visibility collapses whitespace, requires >=20 nonspace chars, and sees only prior Actor context; no-match does not prove novelty.",
+    "Equal repeats are confined to these forward tensors, not backward/update/checkpoint bitwise reproducibility."
+  ]
+}

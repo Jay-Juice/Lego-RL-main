@@ -1,0 +1,916 @@
+{
+  "frozen_contrast": {
+    "scope": "Native canonical proxy replay on actual ICPS trajectories with hash-proven constant initial PI. Not original sampled-token archive; initial-only and <=73728 cohort. No claim about dynamic-update trajectories.",
+    "results": [
+      {
+        "step": 20,
+        "samples": 32,
+        "scored": 32,
+        "families": 16,
+        "conditions": {
+          "true": {
+            "mse": 0.2226027679640501,
+            "bias": 0.16075946297758395,
+            "early_mse": 0.23107878845284865,
+            "late_mse": 0.21483603880398855,
+            "repeat_MAE": 0,
+            "task_AUC": 0.4935897435897436
+          },
+          "neutral": {
+            "mse": 0.22046734205932553,
+            "bias": 0.15820902564542352,
+            "early_mse": 0.22912280123761533,
+            "late_mse": 0.21265933644557755,
+            "repeat_MAE": 0,
+            "task_AUC": 0.5
+          },
+          "wrong": {
+            "mse": 0.22241515530928652,
+            "bias": 0.160259998343571,
+            "early_mse": 0.2310505400951303,
+            "late_mse": 0.21469770358019083,
+            "repeat_MAE": 0,
+            "task_AUC": 0.4935897435897436
+          },
+          "history": {
+            "mse": 0.22473734894518596,
+            "bias": 0.16562449880517055,
+            "early_mse": 0.2387405822404315,
+            "late_mse": 0.21497407783481975,
+            "repeat_MAE": 0,
+            "task_AUC": 0.5064102564102564
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "mse": {
+              "mean_control_minus_true": -0.002135425904724527,
+              "family_cluster_bootstrap95": [
+                -0.00288032201256907,
+                -0.0012717715267997164
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": -0.001955987215233322,
+              "family_cluster_bootstrap95": [
+                -0.0028983300471232642,
+                -0.0009114537184617507
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": -0.002176702358410979,
+              "family_cluster_bootstrap95": [
+                -0.002924533466099304,
+                -0.0013266948894507192
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.03271044645241489,
+              "sign_disagreement": 0.01401971698315172
+            }
+          },
+          "wrong": {
+            "mse": {
+              "mean_control_minus_true": -0.00018761265476355564,
+              "family_cluster_bootstrap95": [
+                -0.000737497357657356,
+                0.00044629128930742684
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": -0.000028248357718374702,
+              "family_cluster_bootstrap95": [
+                -0.0009596631644192529,
+                0.0010113535397717809
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": -0.00013833522379769658,
+              "family_cluster_bootstrap95": [
+                -0.00047166613697707116,
+                0.000258992189195513
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.02811860812667176,
+              "sign_disagreement": 0.011996638907323756
+            }
+          },
+          "history": {
+            "mse": {
+              "mean_control_minus_true": 0.0021345809811358866,
+              "family_cluster_bootstrap95": [
+                0.0006669875591770877,
+                0.00356024567517636
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": 0.007661793787582861,
+              "family_cluster_bootstrap95": [
+                0.004185943622783935,
+                0.011061274007427412
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.00013803903083122078,
+              "family_cluster_bootstrap95": [
+                -0.0005279859268662422,
+                0.0008073254225015449
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.034989061183861074,
+              "sign_disagreement": 0.01481984971420008
+            }
+          }
+        },
+        "interpretation": "Positive control-minus-true MSE favors true PI. CIs exploratory across checkpoints/conditions. History-only changes shape. Null result is not proof PI has no information; cohort is initial-only and native-reserve-capped. GAE is offline batch32, not original training batch64."
+      },
+      {
+        "step": 30,
+        "samples": 32,
+        "scored": 32,
+        "families": 16,
+        "conditions": {
+          "true": {
+            "mse": 0.19505048730380944,
+            "bias": -0.18828214406478178,
+            "early_mse": 0.19328053430041087,
+            "late_mse": 0.19254481387684608,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6410256410256411
+          },
+          "neutral": {
+            "mse": 0.19535369182963713,
+            "bias": -0.1873213212701086,
+            "early_mse": 0.1926576738650615,
+            "late_mse": 0.1937203411996127,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6282051282051282
+          },
+          "wrong": {
+            "mse": 0.196543373445845,
+            "bias": -0.1905568137908221,
+            "early_mse": 0.19477084104593745,
+            "late_mse": 0.19386528427431837,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6282051282051282
+          },
+          "history": {
+            "mse": 0.19342150721191814,
+            "bias": -0.18092931293899883,
+            "early_mse": 0.19084231248268563,
+            "late_mse": 0.19178846204315927,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6282051282051282
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "mse": {
+              "mean_control_minus_true": 0.00030320452582767573,
+              "family_cluster_bootstrap95": [
+                -0.0006616696988749916,
+                0.0012125894793849903
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": -0.0006228604353493861,
+              "family_cluster_bootstrap95": [
+                -0.002491309434617462,
+                0.0010023498224762586
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.0011755273227666626,
+              "family_cluster_bootstrap95": [
+                0.0006451508365247268,
+                0.0018087386143238783
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.026134519261590248,
+              "sign_disagreement": 0.012119736250561966
+            }
+          },
+          "wrong": {
+            "mse": {
+              "mean_control_minus_true": 0.0014928861420355545,
+              "family_cluster_bootstrap95": [
+                0.0007196468524903806,
+                0.0025368428910910444
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": 0.0014903067455265847,
+              "family_cluster_bootstrap95": [
+                0.00045222271815503583,
+                0.0026714080246739297
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.0013204703974723253,
+              "family_cluster_bootstrap95": [
+                0.0006519507896418549,
+                0.002367000943460413
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.022794691228161017,
+              "sign_disagreement": 0.010243839780779689
+            }
+          },
+          "history": {
+            "mse": {
+              "mean_control_minus_true": -0.0016289800918913178,
+              "family_cluster_bootstrap95": [
+                -0.0036761694792123243,
+                0.00015148650167308108
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": -0.0024382218177252425,
+              "family_cluster_bootstrap95": [
+                -0.006436002479058945,
+                0.0008354447385924598
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": -0.0007563518336867903,
+              "family_cluster_bootstrap95": [
+                -0.0019240312935398008,
+                0.00021837771703201526
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.02894989628299878,
+              "sign_disagreement": 0.01335070968294406
+            }
+          }
+        },
+        "interpretation": "Positive control-minus-true MSE favors true PI. CIs exploratory across checkpoints/conditions. History-only changes shape. Null result is not proof PI has no information; cohort is initial-only and native-reserve-capped. GAE is offline batch32, not original training batch64."
+      },
+      {
+        "step": 40,
+        "samples": 32,
+        "scored": 32,
+        "families": 16,
+        "conditions": {
+          "true": {
+            "mse": 0.16941681477254034,
+            "bias": -0.09123958734886023,
+            "early_mse": 0.1709717885400603,
+            "late_mse": 0.1623622171680781,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6153846153846154
+          },
+          "neutral": {
+            "mse": 0.1710832631809944,
+            "bias": -0.09571614582907907,
+            "early_mse": 0.17355776726417063,
+            "late_mse": 0.16353512067698867,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6153846153846154
+          },
+          "wrong": {
+            "mse": 0.17044110366400853,
+            "bias": -0.09380934716229744,
+            "early_mse": 0.17240202686633366,
+            "late_mse": 0.1630193357845497,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6153846153846154
+          },
+          "history": {
+            "mse": 0.17024746494475562,
+            "bias": -0.08944642465813699,
+            "early_mse": 0.17299863421580416,
+            "late_mse": 0.16274840854629363,
+            "repeat_MAE": 0,
+            "task_AUC": 0.6153846153846154
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "mse": {
+              "mean_control_minus_true": 0.001666448408454051,
+              "family_cluster_bootstrap95": [
+                0.0007954722871844947,
+                0.002698034842564104
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": 0.0025859787241103794,
+              "family_cluster_bootstrap95": [
+                0.0015023498639811686,
+                0.003754307046222746
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.0011729035089105382,
+              "family_cluster_bootstrap95": [
+                0.00030545984791241146,
+                0.0022405183757108677
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.02355197695972137,
+              "sign_disagreement": 0.010235811693177195
+            }
+          },
+          "wrong": {
+            "mse": {
+              "mean_control_minus_true": 0.00102428889146818,
+              "family_cluster_bootstrap95": [
+                0.0002046714202416774,
+                0.0020221126766173355
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": 0.0014302383262733943,
+              "family_cluster_bootstrap95": [
+                0.00041845870503647644,
+                0.002680014485485216
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.0006571186164715629,
+              "family_cluster_bootstrap95": [
+                -0.000051789299585421664,
+                0.0016304402049616832
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.02124983059812304,
+              "sign_disagreement": 0.009202864421656569
+            }
+          },
+          "history": {
+            "mse": {
+              "mean_control_minus_true": 0.0008306501722152919,
+              "family_cluster_bootstrap95": [
+                -0.000023252213144540107,
+                0.0015023951582843341
+              ]
+            },
+            "early_mse": {
+              "mean_control_minus_true": 0.002026845675743895,
+              "family_cluster_bootstrap95": [
+                0.0003700585743039527,
+                0.003386834125571587
+              ]
+            },
+            "late_mse": {
+              "mean_control_minus_true": 0.000386191378215493,
+              "family_cluster_bootstrap95": [
+                -0.00009985974296769681,
+                0.0008542092171943296
+              ]
+            },
+            "GAE": {
+              "whitened_MAE": 0.025022404160374313,
+              "sign_disagreement": 0.010942283402196485
+            }
+          }
+        },
+        "interpretation": "Positive control-minus-true MSE favors true PI. CIs exploratory across checkpoints/conditions. History-only changes shape. Null result is not proof PI has no information; cohort is initial-only and native-reserve-capped. GAE is offline batch32, not original training batch64."
+      }
+    ],
+    "training_changed": false
+  },
+  "posthoc": {
+    "passed": true,
+    "steps": [
+      20,
+      30,
+      40
+    ],
+    "rows_each": 32,
+    "total_trajectory_condition_forwards": 768,
+    "all_repeated_output_tensors_exact_equal": true,
+    "all_24_rank_parameter_fingerprints_unchanged": true,
+    "all_checkpoints_model_only_loaded": true,
+    "cache_SHA": "5aaf5182d5d996e49e5cb913ef6f2b85447667a3862839858762fb5f3eb94065",
+    "final_report_SHA": "3e8d4a925f4b0ef8a79f3feb9da433b6cffa62603e0b1026fbb4c0f6a0df287c",
+    "all_GPU_tests_exit0": true,
+    "optimizer_steps": 0,
+    "positive": 26,
+    "negative": 6,
+    "repository_families": 16,
+    "constant_half_MSE": 0.25,
+    "in_sample_fitted_prior_MSE": 0.15234375,
+    "action_lengths": {
+      "min": 4445,
+      "q25": 7955.75,
+      "median": 10419.5,
+      "q75": 17037.75,
+      "max": 19738
+    },
+    "actor_lengths": {
+      "min": 28376,
+      "q25": 38858.75,
+      "median": 52625.5,
+      "q75": 60602.25,
+      "max": 70877
+    },
+    "PI_lengths": {
+      "min": 106,
+      "q25": 153.25,
+      "median": 166.5,
+      "q75": 181,
+      "max": 190
+    },
+    "results": [
+      {
+        "step": 20,
+        "conditions": {
+          "true": {
+            "mean_value": 0.9732594629775839,
+            "bias": 0.16075946297758395,
+            "task_equal_MSE": 0.2226027679640501,
+            "within_trajectory_variance": 0.04255812227247094,
+            "trajectory_mean_prediction_MSE": 0.18004464569157916,
+            "in_sample_oracle_offset_corrected_MSE": 0.19675916302720892,
+            "leave_repository_out_intercept_MSE": 0.2071485694190066,
+            "leave_repository_out_affine_MSE": 0.16080377063805285,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.966749827338024,
+              "1": 0.9747616865867132
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.9792624498953155,
+              "1": 0.04798899521068112
+            },
+            "outside_0_1_fraction_task_equal": 0.44185154091044077
+          },
+          "neutral": {
+            "mean_value": 0.9707090256454235,
+            "bias": 0.15820902564542352,
+            "task_equal_MSE": 0.2204673420593255,
+            "within_trajectory_variance": 0.04133722158777589,
+            "trajectory_mean_prediction_MSE": 0.1791301204715497,
+            "in_sample_oracle_offset_corrected_MSE": 0.19543724626365122,
+            "leave_repository_out_intercept_MSE": 0.20575590676380906,
+            "leave_repository_out_affine_MSE": 0.16079637504606575,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.9643897075147302,
+              "1": 0.9721673298294297
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.9737917356464467,
+              "1": 0.04662325123152836
+            },
+            "outside_0_1_fraction_task_equal": 0.4348143826818238
+          },
+          "wrong": {
+            "mean_value": 0.972759998343571,
+            "bias": 0.160259998343571,
+            "task_equal_MSE": 0.2224151553092865,
+            "within_trajectory_variance": 0.04241374562875978,
+            "trajectory_mean_prediction_MSE": 0.1800014096805267,
+            "in_sample_oracle_offset_corrected_MSE": 0.1967318882402051,
+            "leave_repository_out_intercept_MSE": 0.2070893958419317,
+            "leave_repository_out_affine_MSE": 0.16077954625220103,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.966589797292627,
+              "1": 0.9741838908937889
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.9788381640227816,
+              "1": 0.047855999452326076
+            },
+            "outside_0_1_fraction_task_equal": 0.43986855580212525
+          },
+          "history": {
+            "mean_value": 0.9781244988051705,
+            "bias": 0.16562449880517055,
+            "task_equal_MSE": 0.224737348945186,
+            "within_trajectory_variance": 0.04305439614709163,
+            "trajectory_mean_prediction_MSE": 0.18168295279809435,
+            "in_sample_oracle_offset_corrected_MSE": 0.19730587434072205,
+            "leave_repository_out_intercept_MSE": 0.207719790076198,
+            "leave_repository_out_affine_MSE": 0.1607788558965272,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.9716869982214238,
+              "1": 0.9796100758629583
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.9895930839213326,
+              "1": 0.048232179335306
+            },
+            "outside_0_1_fraction_task_equal": 0.45044817997016745
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "task_value_MAE": {
+              "min": 0.010519676069490988,
+              "q25": 0.011379717320661453,
+              "median": 0.012544069505786685,
+              "q75": 0.01394137115782856,
+              "max": 0.017372486642294713
+            },
+            "mean_task_value_MAE": 0.012913167061459499,
+            "mean_control_value_shift": -0.002550437332160425,
+            "positive_MSE_benefit_tasks": 1,
+            "negative_MSE_benefit_tasks": 31,
+            "raw_MSE_gain": -0.002135425904724527,
+            "gain_by_outcome": {
+              "0": -0.00547071424886895,
+              "1": -0.0013657439791527372
+            },
+            "relative_raw_MSE_gain": -0.009685905788939502,
+            "gain_after_in_sample_offset_correction": -0.0013219167635576956,
+            "gain_after_leave_repository_out_affine": -0.00000739559198709161
+          },
+          "wrong": {
+            "task_value_MAE": {
+              "min": 0.008545797910656362,
+              "q25": 0.00975101263098838,
+              "median": 0.010655118969026,
+              "q75": 0.011982748532483458,
+              "max": 0.01493640809547244
+            },
+            "mean_task_value_MAE": 0.010993406005953683,
+            "mean_control_value_shift": -0.0004994646340129773,
+            "positive_MSE_benefit_tasks": 13,
+            "negative_MSE_benefit_tasks": 19,
+            "raw_MSE_gain": -0.00018761265476355564,
+            "gain_by_outcome": {
+              "0": -0.00042428587253406924,
+              "1": -0.00013299575835497556
+            },
+            "relative_raw_MSE_gain": -0.0008435245993136791,
+            "gain_after_in_sample_offset_correction": -0.000027274787003817025,
+            "gain_after_leave_repository_out_affine": -0.00002422438585181208
+          },
+          "history": {
+            "task_value_MAE": {
+              "min": 0.010267416205898048,
+              "q25": 0.01249896848091656,
+              "median": 0.013805044777781987,
+              "q75": 0.01582717296582447,
+              "max": 0.01894775665248875
+            },
+            "mean_task_value_MAE": 0.014067842258581688,
+            "mean_control_value_shift": 0.004865035827586602,
+            "positive_MSE_benefit_tasks": 21,
+            "negative_MSE_benefit_tasks": 11,
+            "raw_MSE_gain": 0.0021345809811358866,
+            "gain_by_outcome": {
+              "0": 0.010330634026016972,
+              "1": 0.0002431841246248667
+            },
+            "relative_raw_MSE_gain": 0.009498114092537936,
+            "gain_after_in_sample_offset_correction": 0.0005467113135131374,
+            "gain_after_leave_repository_out_affine": -0.000024914741525633444
+          }
+        }
+      },
+      {
+        "step": 30,
+        "conditions": {
+          "true": {
+            "mean_value": 0.6242178559352183,
+            "bias": -0.18828214406478178,
+            "task_equal_MSE": 0.19505048730380944,
+            "within_trajectory_variance": 0.012986105446628862,
+            "trajectory_mean_prediction_MSE": 0.18206438185718055,
+            "in_sample_oracle_offset_corrected_MSE": 0.1596003215301782,
+            "leave_repository_out_intercept_MSE": 0.16914132818726504,
+            "leave_repository_out_affine_MSE": 0.16139746155685342,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.596835736948424,
+              "1": 0.6305368064706323
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.37451506072700685,
+              "1": 0.15363558574461003
+            },
+            "outside_0_1_fraction_task_equal": 0.005096911963275384
+          },
+          "neutral": {
+            "mean_value": 0.6251786787298914,
+            "bias": -0.1873213212701086,
+            "task_equal_MSE": 0.19535369182963713,
+            "within_trajectory_variance": 0.012878227696817143,
+            "trajectory_mean_prediction_MSE": 0.18247546413281998,
+            "in_sample_oracle_offset_corrected_MSE": 0.1602644144272579,
+            "leave_repository_out_intercept_MSE": 0.16978026174047753,
+            "leave_repository_out_affine_MSE": 0.16155907678814113,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6000464254204525,
+              "1": 0.6309784294936082
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.37829853912644484,
+              "1": 0.15313565014575842
+            },
+            "outside_0_1_fraction_task_equal": 0.004932470862463583
+          },
+          "wrong": {
+            "mean_value": 0.6219431862091779,
+            "bias": -0.1905568137908221,
+            "task_equal_MSE": 0.196543373445845,
+            "within_trajectory_variance": 0.013088871940236241,
+            "trajectory_mean_prediction_MSE": 0.18345450150560877,
+            "in_sample_oracle_offset_corrected_MSE": 0.16023147416373495,
+            "leave_repository_out_intercept_MSE": 0.16976206253868925,
+            "leave_repository_out_affine_MSE": 0.1614397419143282,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.5958318490049552,
+              "1": 0.6279688794101523
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.37337926225072265,
+              "1": 0.15573509141395017
+            },
+            "outside_0_1_fraction_task_equal": 0.005015467024633576
+          },
+          "history": {
+            "mean_value": 0.6315706870610012,
+            "bias": -0.18092931293899883,
+            "task_equal_MSE": 0.19342150721191814,
+            "within_trajectory_variance": 0.013510297678271475,
+            "trajectory_mean_prediction_MSE": 0.17991120953364667,
+            "in_sample_oracle_offset_corrected_MSE": 0.16068609093133998,
+            "leave_repository_out_intercept_MSE": 0.1702824684255243,
+            "leave_repository_out_affine_MSE": 0.16146120704446687,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6051523717800925,
+              "1": 0.6376672213565955
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.38529299282818447,
+              "1": 0.14914347206970283
+            },
+            "outside_0_1_fraction_task_equal": 0.006356425982092994
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "task_value_MAE": {
+              "min": 0.007398250493918464,
+              "q25": 0.008301873425635816,
+              "median": 0.008731111933944779,
+              "q75": 0.009682790953026498,
+              "max": 0.011285942772778402
+            },
+            "mean_task_value_MAE": 0.008984260912187174,
+            "mean_control_value_shift": 0.0009608227946731798,
+            "positive_MSE_benefit_tasks": 15,
+            "negative_MSE_benefit_tasks": 17,
+            "raw_MSE_gain": 0.00030320452582767573,
+            "gain_by_outcome": {
+              "0": 0.003783478399437943,
+              "1": -0.0004999355988516168
+            },
+            "relative_raw_MSE_gain": 0.0015520798352359397,
+            "gain_after_in_sample_offset_correction": 0.0006640928970796933,
+            "gain_after_leave_repository_out_affine": 0.00016161523128771504
+          },
+          "wrong": {
+            "task_value_MAE": {
+              "min": 0.0064899589016810515,
+              "q25": 0.007188774846210093,
+              "median": 0.007676198309677612,
+              "q75": 0.008417223323067626,
+              "max": 0.010295282003327544
+            },
+            "mean_task_value_MAE": 0.007886100414302023,
+            "mean_control_value_shift": -0.002274669726040299,
+            "positive_MSE_benefit_tasks": 23,
+            "negative_MSE_benefit_tasks": 9,
+            "raw_MSE_gain": 0.0014928861420355545,
+            "gain_by_outcome": {
+              "0": -0.0011357984762842555,
+              "1": 0.002099505669340126
+            },
+            "relative_raw_MSE_gain": 0.007595708346009946,
+            "gain_after_in_sample_offset_correction": 0.0006311526335567585,
+            "gain_after_leave_repository_out_affine": 0.00004228035747477765
+          },
+          "history": {
+            "task_value_MAE": {
+              "min": 0.008278971894702532,
+              "q25": 0.009701775950633993,
+              "median": 0.011532750659432468,
+              "q75": 0.012881504023196454,
+              "max": 0.015322478598074226
+            },
+            "mean_task_value_MAE": 0.011493688209345383,
+            "mean_control_value_shift": 0.007352831125782941,
+            "positive_MSE_benefit_tasks": 6,
+            "negative_MSE_benefit_tasks": 26,
+            "raw_MSE_gain": -0.0016289800918913178,
+            "gain_by_outcome": {
+              "0": 0.010777932101177603,
+              "1": -0.004492113674907223
+            },
+            "relative_raw_MSE_gain": -0.008421918096763462,
+            "gain_after_in_sample_offset_correction": 0.0010857694011617847,
+            "gain_after_leave_repository_out_affine": 0.00006374548761345356
+          }
+        }
+      },
+      {
+        "step": 40,
+        "conditions": {
+          "true": {
+            "mean_value": 0.7212604126511398,
+            "bias": -0.09123958734886023,
+            "task_equal_MSE": 0.1694168147725403,
+            "within_trajectory_variance": 0.013513453817514834,
+            "trajectory_mean_prediction_MSE": 0.15590336095502547,
+            "in_sample_oracle_offset_corrected_MSE": 0.16109215247295,
+            "leave_repository_out_intercept_MSE": 0.17139447227183865,
+            "leave_repository_out_affine_MSE": 0.162011244854494,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6901499333699553,
+              "1": 0.7284397540237207
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.4971578455242274,
+              "1": 0.09378426921445866
+            },
+            "outside_0_1_fraction_task_equal": 0.023740347398530703
+          },
+          "neutral": {
+            "mean_value": 0.7167838541709209,
+            "bias": -0.09571614582907907,
+            "task_equal_MSE": 0.17108326318099437,
+            "within_trajectory_variance": 0.013820445681510172,
+            "trajectory_mean_prediction_MSE": 0.1572628174994842,
+            "in_sample_oracle_offset_corrected_MSE": 0.16192168260862083,
+            "leave_repository_out_intercept_MSE": 0.17221880253843908,
+            "leave_repository_out_affine_MSE": 0.16207926415351706,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6871101372650874,
+              "1": 0.723631634995344
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.49327560187938674,
+              "1": 0.09673118501982692
+            },
+            "outside_0_1_fraction_task_equal": 0.023068297849996214
+          },
+          "wrong": {
+            "mean_value": 0.7186906528377025,
+            "bias": -0.09380934716229744,
+            "task_equal_MSE": 0.17044110366400853,
+            "within_trajectory_variance": 0.013630049427756712,
+            "trajectory_mean_prediction_MSE": 0.1568110542362518,
+            "in_sample_oracle_offset_corrected_MSE": 0.1616409100489921,
+            "leave_repository_out_intercept_MSE": 0.17195108801860137,
+            "leave_repository_out_affine_MSE": 0.16201885405439803,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6885293775453593,
+              "1": 0.7256509471359356
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.4950000750541874,
+              "1": 0.09554287949704415
+            },
+            "outside_0_1_fraction_task_equal": 0.023315128775440234
+          },
+          "history": {
+            "mean_value": 0.723053575341863,
+            "bias": -0.08944642465813699,
+            "task_equal_MSE": 0.17024746494475562,
+            "within_trajectory_variance": 0.014262114629094352,
+            "trajectory_mean_prediction_MSE": 0.1559853503156613,
+            "in_sample_oracle_offset_corrected_MSE": 0.16224680206063186,
+            "leave_repository_out_intercept_MSE": 0.17261467482717666,
+            "leave_repository_out_affine_MSE": 0.1620384601769187,
+            "leave_repository_out_prior_MSE": 0.16021315635892766,
+            "value_mean_by_outcome": {
+              "0": 0.6926263953800972,
+              "1": 0.7300752322561166
+            },
+            "task_equal_MSE_by_outcome": {
+              "0": 0.5015679895371545,
+              "1": 0.09378888234650971
+            },
+            "outside_0_1_fraction_task_equal": 0.026445695916389553
+          }
+        },
+        "contrasts": {
+          "neutral": {
+            "task_value_MAE": {
+              "min": 0.0067485857471749336,
+              "q25": 0.007798667711201131,
+              "median": 0.008334455483103718,
+              "q75": 0.009561602956420254,
+              "max": 0.01081278117990416
+            },
+            "mean_task_value_MAE": 0.008628366462965472,
+            "mean_control_value_shift": -0.0044765584802188224,
+            "positive_MSE_benefit_tasks": 27,
+            "negative_MSE_benefit_tasks": 5,
+            "raw_MSE_gain": 0.001666448408454051,
+            "gain_by_outcome": {
+              "0": -0.003882243644840725,
+              "1": 0.00294691580536823
+            },
+            "relative_raw_MSE_gain": 0.009740569459977288,
+            "gain_after_in_sample_offset_correction": 0.0008295301356708307,
+            "gain_after_leave_repository_out_affine": 0.00006801929902305881
+          },
+          "wrong": {
+            "task_value_MAE": {
+              "min": 0.006132914757853403,
+              "q25": 0.006590107369525689,
+              "median": 0.007228678645751522,
+              "q75": 0.007772296506316946,
+              "max": 0.0100191183669618
+            },
+            "mean_task_value_MAE": 0.007387372895807228,
+            "mean_control_value_shift": -0.0025697598134371853,
+            "positive_MSE_benefit_tasks": 24,
+            "negative_MSE_benefit_tasks": 8,
+            "raw_MSE_gain": 0.00102428889146818,
+            "gain_by_outcome": {
+              "0": -0.002157770470040029,
+              "1": 0.0017586102825854592
+            },
+            "relative_raw_MSE_gain": 0.006009635407474046,
+            "gain_after_in_sample_offset_correction": 0.000548757576042086,
+            "gain_after_leave_repository_out_affine": 0.000007609199904029529
+          },
+          "history": {
+            "task_value_MAE": {
+              "min": 0.00722246171698768,
+              "q25": 0.00774522629289238,
+              "median": 0.008421531701028044,
+              "q75": 0.009421219352147518,
+              "max": 0.011531786065804274
+            },
+            "mean_task_value_MAE": 0.008637419864759436,
+            "mean_control_value_shift": 0.0017931626907232553,
+            "positive_MSE_benefit_tasks": 17,
+            "negative_MSE_benefit_tasks": 15,
+            "raw_MSE_gain": 0.0008306501722152919,
+            "gain_by_outcome": {
+              "0": 0.004410144012927053,
+              "1": 0.000004613132051039307
+            },
+            "relative_raw_MSE_gain": 0.004879075130339435,
+            "gain_after_in_sample_offset_correction": 0.0011546495876818552,
+            "gain_after_leave_repository_out_affine": 0.000027215322424695154
+          }
+        }
+      }
+    ],
+    "exact_block_visibility": {
+      "initial": {
+        "blocks": 92,
+        "seen": 0,
+        "trajectories_with_any": 0,
+        "trajectories_with_all": 0
+      },
+      "quarter": {
+        "blocks": 92,
+        "seen": 7,
+        "trajectories_with_any": 4,
+        "trajectories_with_all": 1
+      },
+      "three_quarters": {
+        "blocks": 92,
+        "seen": 9,
+        "trajectories_with_any": 5,
+        "trajectories_with_all": 1
+      },
+      "last": {
+        "blocks": 92,
+        "seen": 12,
+        "trajectories_with_any": 7,
+        "trajectories_with_all": 1
+      }
+    },
+    "limits": [
+      "Post-hoc exploratory calibration; same 32 off-policy training tasks, initial-only PI and six failures.",
+      "Affine readout uses existing scalar V only, not hidden states or PI information; it does not test learnability of unused PI.",
+      "In-sample offset/prior use all labels and are descriptive lower-complexity references, not held-out estimates.",
+      "Exact block visibility collapses whitespace, requires >=20 nonspace chars, and sees only prior Actor context; no-match does not prove novelty.",
+      "Equal repeats are confined to these forward tensors, not backward/update/checkpoint bitwise reproducibility."
+    ]
+  },
+  "queue_state": {
+    "phase": "complete",
+    "UTC": "2026-10-27T16:18:42.442755+00:00"
+  },
+  "queue_exit": {
+    "exit": 0
+  },
+  "analysis_source_sha256": "1ad8118977ad5a7b80e607d7ed6d4b1850550c2755f7cd6c84ac6cbb782e6315"
+}
