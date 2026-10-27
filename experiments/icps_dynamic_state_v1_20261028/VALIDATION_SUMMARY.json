@@ -1,0 +1,73 @@
+{
+  "status": "RESEARCH_CONTINUES_NOT_ADMITTED",
+  "conditional_fresh_training_authorized": true,
+  "training_started": false,
+  "online_runtime_integrated": false,
+  "old_source_unchanged": true,
+  "budgets": [
+    192,
+    128,
+    4096
+  ],
+  "r1_hits": [
+    111,
+    106,
+    120
+  ],
+  "r2_and_r3_hits": {
+    "old": 129,
+    "compact": 130,
+    "diverse": 108,
+    "expand": 143
+  },
+  "evaluable": 366,
+  "exact_nominal": 370,
+  "unmapped": 4,
+  "full_target": {
+    "old": 53,
+    "expand": 88
+  },
+  "development_delta": 0.03825136612021858,
+  "development_required_delta": 0.05,
+  "independent_holdout_scored": false,
+  "real_tokenizer_contracts": 16,
+  "byte_tokenizer_contracts": 16,
+  "dynamic_constructed": {
+    "cases": 24,
+    "skipped_source_capacity": 1,
+    "selection": "first24 UID-sorted snapshots with room for added test file; no outcome/labels read",
+    "changed_line_visible": {
+      "old": 0,
+      "new": 24
+    },
+    "unchanged_noop_pass": 24,
+    "retry_exact_once_pass": 24,
+    "rollback_pass": 24,
+    "max_update_tokens": 128,
+    "budget": [
+      192,
+      128,
+      4096
+    ],
+    "wall_seconds": 81.1158210746944,
+    "source_SHA": "cd9438f8684b15f94b68a4c1df12c2971ea41efc9ee213e2fade24efada39a53",
+    "evidence": "24 real W0 snapshots plus synthetic new-file/change/rollback events. No actual Actor trajectory or real bug-coverage improvement is claimed.",
+    "GPU_jobs": 0,
+    "optimizer_steps": 0
+  },
+  "remote_final_queue_exit": 0,
+  "model_or_optimizer_updates": 0,
+  "blockers": [
+    "development coverage +3.83pp below predeclared +5pp",
+    "independent validation not frozen/scored",
+    "online provider/proxy/builder integration not done",
+    "Harbor and eight-GPU admission not done"
+  ],
+  "preserved_failures": [
+    "r1 all3 allocations reduced primary coverage",
+    "r2 byte-token status budget test initially failed before fix",
+    "constructed r1 added file exceeded source capacity; no bound relaxed",
+    "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
+  ],
+  "next": "Analyze remaining99 candidate-hit misses, prototype predeclared context/control/data dependency selection without labels, preserve all versions; no training until admission."
+}

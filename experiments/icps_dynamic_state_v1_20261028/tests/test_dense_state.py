@@ -47,6 +47,14 @@ class DenseContracts(unittest.TestCase):
         initial=d.build_initial_index(x,'class C',task_uid='t',session_id='s')['focus']
         selected=d.dynamic_candidates(initial,y,d.changes(x['files'],y['files']),'class C')
         self.assertEqual(selected[0]['qualified'],'C.g')
+    def test_change_window_beats_strong_unchanged_issue(self):
+        words='alpha bravo charlie delta echo foxtrot golf hotel india juliet kilo lima'
+        x=snap('def f():\n    return '+repr(words)+'\n',**{'b.py':'def g(x):\n    return x+1\n'})
+        y=snap(x['files']['a.py'],**{'b.py':'def g(x):\n    return x-2\n'})
+        initial=d.build_initial_index(x,words,task_uid='t',session_id='s')['focus']
+        delta=d.changes(x['files'],y['files']);selected=d.dynamic_candidates(initial,y,delta,words)
+        props=d.proposals(selected,y,words,delta)
+        self.assertEqual(props[0]['file'],'b.py');self.assertGreater(props[0]['changed_lines'],0)
     def test_missing_status_explicit(self):
         s=self.session();self.call(s,snap(),0);x=dict(files={},stable=True,limited=False)
         r=self.call(s,x,1);self.assertIn('missing',r['pi_text']);self.assertTrue(r['unknown'])

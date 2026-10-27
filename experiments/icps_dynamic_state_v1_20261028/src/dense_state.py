@@ -108,7 +108,9 @@ def proposals(candidates,snapshot,issue,delta=None,variant='compact'):
                 a=max(lo,min(max(lo,x)-1,hi-size+1));b=min(hi,a+size-1)
                 code=''.join(lines[a-1:b]);n=max(0,min(b,y)-max(a,x)+1)
                 out.append(dict(file=e['file'],qualified=e['qualified'],entity_id=e['entity_id'],rank=rank,start=a,end=b,code=code,source_hash=sha(code),syntax=e.get('syntax','valid'),unit='context',score=8*min(n,3),changed_lines=n,partial=a!=lo or b!=hi,low_confidence=False))
-    return sorted(out,key=lambda w:(-w['score'],w['rank'],w['file'],w['start'],-(w['end']-w['start'])))
+    # In a change observation, existing issue overlap must not evict a fitting
+    # observed-change window. W0 order is identical because all counts are zero.
+    return sorted(out,key=lambda w:(-int(w['changed_lines']>0),-w['score'],w['rank'],w['file'],w['start'],-(w['end']-w['start'])))
 
 def render(windows,limited=False,facts=(),status='initial'):
     # One global partial-window disclosure. Keep full paths, omit redundant end

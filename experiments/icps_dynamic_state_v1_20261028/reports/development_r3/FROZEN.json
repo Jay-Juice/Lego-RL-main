@@ -1,0 +1,39 @@
+{
+  "UTC": "2026-10-27T17:27:53.612448+00:00",
+  "config": {
+    "version": "icps_dynamic_r2",
+    "initial": 192,
+    "update": 128,
+    "episode": 4096,
+    "max_candidates": 3,
+    "max_windows": 3,
+    "max_statement_lines": 8,
+    "variants": [
+      "compact",
+      "diverse",
+      "expand"
+    ],
+    "labels_used": false
+  },
+  "source_SHA": {
+    "src/formal_completion.py": "d7bd8271ad2d3115343c1a9259c96c6690a30d10314ccfb1768bb4edc437f21b",
+    "src/resolve_audit.py": "a8a2c6d3f19124c65da26a6105f7df2cec8fc94c02eeb7d67ca1bfac0995aa13",
+    "src/dense_state.py": "cd9438f8684b15f94b68a4c1df12c2971ea41efc9ee213e2fade24efada39a53",
+    "src/formal_packing.py": "7c7c1366d4203e269e632f7f9876f4829074caa0e1430e75426917e2d9355be3",
+    "src/formal_main.py": "f9a1aface814ecec798f7c63d91705c7b235056963e8450cfc977ca4f2293c3b",
+    "src/formal_checkpoint.py": "33151f8b09ae24ad66bf436cba1c8799ea7f2298e7354025532d01dbb105709c",
+    "src/v11_runtime.py": "33f80e8c055cb165c40bf3ca11229bb59d69e96f9740f8cde9bf4dab022583a6",
+    "src/prepare_full.py": "0aff0e1a4afd2acd1f1dd76b1dbe95dc4838bc2c1f6b63052e43f1a5e1888753",
+    "src/formal_storage.py": "76d7420578946a72e627d4c556526c420a190bbae95dc2fd116231bf25f6f8cb",
+    "src/launch_preflight.py": "a2bb57aab1430b626e2416dadfcd33327dfbbb95e3586bee7540c2a5134da458",
+    "src/formal_metrics.py": "58eb0d21e547faeab6386b363ea361171b4b8a90e14232b46abf72e5e6259899",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "validation/landlock.py": "ea63dcb314f8e5795aac9af0e15c91a4437bdbd5d0d472823dc6e7b129df6e2a",
+    "validation/development.py": "19f2ac9b5aa3bf9a07c0fc289f4660bee768bad744540838117ce2a3dd578ca7"
+  },
+  "baseline_receipt_SHA": "579d8fd9dc63ab2711227491ca49e26ae78b4ec526a2a1b391918f31c8a598d8",
+  "input_SHA": "98097627c24b76148c5d42fe9b785d5d02285840334f2bb905faf5c2c6e12da6",
+  "all607_development": true
+}
