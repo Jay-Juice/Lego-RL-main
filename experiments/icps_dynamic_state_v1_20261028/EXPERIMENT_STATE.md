@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：R2动态24项完成，完整607初始对照仍进行中
+
+首版session_r6实际exit1：607候选身份和完整payload全部精确相同，statusfacts0，但第7个容量合格样本删除断言失败。真实Qwen隔离探针确认该样本limited=True，删除应保守标为unobserved，旧断言只接受missing/unknown而遗漏合法状态。第1个完整快照样本则正确missing。两个探针聚合报告R6_SESSION_DELETION_PROBE/R6_SESSION_LIMITED_DELETION_PROBE保留。此测试遗漏与另一个已确认的初始/更新去重哈希代码缺陷不同；首版不能准入。
+
+没有热改正在跑的R2：其607对照最新300/607精确、statusfacts0、无exit。原R2 validator继承遗漏断言，完成607后可能同样exit1；必须保留实际失败，不把整队列称通过。另起只跑相同24容量筛选样本的validation/session_r6_dynamic_r3.py，删除预期按limited区分unobserved/missing，预算导致unknown_omitted也明确接受，不修改PI算法。运行源锁同一个R2 adapter SHA 2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93。
+
+该独立动态队列logs/session_r6_dynamic_r3已exit0，22实际契约通过，24个真实W0加构造add/edit/rollback/delete/noop/retry及身份/逆序/改变重试负例全部通过；实际Qwen初始→更新相同可见信息不扣费通过；151次自然更新spent4091/remaining5、maxupdate128。25初始检查含1容量排除，不能冒称607。报告reports/R6_DYNAMIC_R3_AGGREGATE.json。Landlock拒绝2标签路径，无GPU/optimizer/Actor rollout。预算192/128/4096不变。
+
+下一步收集R2最终INITIAL_COMPARISON，只有607全精确且动态24报告/源码SHA匹配才形成明确的组合验证收据，记录两个独立验证来源和原测试遗漏导致的exit1；不删失败、不伪称原队列exit0、不为断言修正重复整个607。已准备的confirmation gate仍要求旧R2整队列exit0/AGGREGATE，因此必须在组合证据完成后审查并改为严格验证该收据，不能直接跳过gate。尚未创建组合freeze或确认manifest，独立确认/在线/Harbor/8GPU/SAO/资源准入均未通过，训练保持exit78。
+
 ## 当前R6 R2：修复初始→更新去重边界，独立确认尚未开始
 
 代码审查补出一个原21测试未覆盖的组合问题：R6 W0 semantic_hash只含file/code，R4后续hash还含qualified/unit/syntax/facts/limited；仅改无关b.py注释、可见a.py代码完全相同，仍发出63 byte-token并扣63预算。本地实际复现保留reports/R6_SESSION_BOUNDARY_FAILURE.json。这是尚未上线的新研发session adapter问题，不能推断旧ICPS训练有此问题。原R6运行未热改/停止，全部历史和备份保留；即使旧session_r6退出0也因该漏测缺陷不能准入。

@@ -1,0 +1,14 @@
+{
+  "capacity_qualified_position": 7,
+  "snapshot_limited": true,
+  "has_unobserved": true,
+  "has_missing": false,
+  "has_unknown": false,
+  "unknown": true,
+  "tokens": 128,
+  "original_assertion_pass": false,
+  "expected_incomplete_capture_status": "unobserved",
+  "actual_source_SHA": "2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93",
+  "labels_read": false,
+  "GPU_jobs": 0
+}

@@ -297,7 +297,7 @@
     "training_started": false
   },
   "r6_session": {
-    "status": "RUNNING_INITIAL607_THEN_CONSTRUCTED24",
+    "status": "INITIAL607_EXACT_DYNAMIC_ASSERTION_FAILED",
     "local_contracts": 21,
     "remote_contracts": 21,
     "screen": "lego-pi-dynamic-session-r6-20261028",
@@ -306,7 +306,10 @@
     "online_integrated": false,
     "GPU_jobs": 0,
     "optimizer_steps": 0,
-    "admission_blocked_by_new_boundary_bug": true
+    "admission_blocked_by_new_boundary_bug": true,
+    "queue_exit": 1,
+    "initial_exact": 607,
+    "assertion_failure": "limited snapshot legal unobserved omitted by deletion assertion; separate real dedup defect also blocks admission"
   },
   "r6_session_r2": {
     "status": "RUNNING_INITIAL607_THEN_CONSTRUCTED24",
@@ -320,6 +323,51 @@
     "training_started": false,
     "online_integrated": false,
     "GPU_jobs": 0,
-    "optimizer_steps": 0
+    "optimizer_steps": 0,
+    "initial_exact_last_observed": 300,
+    "queue_exit": null,
+    "inherited_assertion_omission": true
+  },
+  "r6_session_dynamic_r3": {
+    "status": "DYNAMIC_CONTRACTS_PASS_AWAIT_INITIAL607",
+    "initial": {
+      "status_path_cases": 0,
+      "candidate_identity_exact": 25,
+      "initial_payload_exact": 25,
+      "cases": 25,
+      "capacity_excluded": 1
+    },
+    "constructed": {
+      "addition": 24,
+      "retry": 24,
+      "noop": 24,
+      "edit_rollback": 24,
+      "deletion": 24,
+      "late_rejected": 24,
+      "retry_change_rejected": 24,
+      "identity_rejected": 24,
+      "initial_update_semantic_boundary_nocharge": 1
+    },
+    "cases": 24,
+    "max_update_tokens": 128,
+    "natural_exhaustion_calls": 151,
+    "spent": 4091,
+    "remaining": 5,
+    "actual_Landlock": true,
+    "label_paths_denied": 2,
+    "budgets": [
+      192,
+      128,
+      4096
+    ],
+    "wall_seconds": 65.27763193845749,
+    "GPU_jobs": 0,
+    "optimizer_steps": 0,
+    "limitations": [
+      "Only capacity-selected24 dynamic cases plus excluded-capacity initial checks; full607 equivalence must come from separate R2 INITIAL_COMPARISON.",
+      "24 subsequent sequences are constructed events, not actual Actor rollout.",
+      "Independent confirmation and online/Harbor/GPU admission remain pending."
+    ],
+    "queue_exit": 0
   }
 }
