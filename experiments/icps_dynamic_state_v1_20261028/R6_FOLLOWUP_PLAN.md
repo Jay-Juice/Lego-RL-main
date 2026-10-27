@@ -39,3 +39,17 @@ Online provider/proxy/builder, real Harbor, causal gather/Actor invariance,
 8GPU short discarded update, full SAO source/dryrun and resource gates are still
 mandatory. Training remains disabled. No budget, packing, optimizer, reward or
 SAO formula changes are authorized by this plan.
+
+## Composition boundary correction before any confirmation
+
+A constructed local case exposed incompatible initial/update semantic digest
+schemas: changing an unrelated comment re-emitted the same visible source and
+spent63 byte tokens. Evidence is R6_SESSION_BOUNDARY_FAILURE.json. This affects
+only the new, undeployed adapter; it is not evidence about old ICPS training.
+The first session run is preserved and cannot admit the candidate even if its
+original contracts pass. R2 uses a separate file and output directory, converts
+only clean-W0 internal last_visible to the R4 schema, and preserves the frozen
+W0 serialized dictionary, PI text/IDs and subsequent R4 transitions. New byte
+and actual-Qwen boundary regressions are required alongside the entire607/24
+checks. Only the R2 aggregate can unlock a complete source freeze and fresh
+confirmation. No training or old checkpoint restoration.

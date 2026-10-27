@@ -1,7 +1,17 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R4_INDEPENDENT_COVERAGE_NOT_ADMITTED_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
-## 当前R6会话组合验证运行中（未准入）
+## 当前R6 R2：修复初始→更新去重边界，独立确认尚未开始
+
+代码审查补出一个原21测试未覆盖的组合问题：R6 W0 semantic_hash只含file/code，R4后续hash还含qualified/unit/syntax/facts/limited；仅改无关b.py注释、可见a.py代码完全相同，仍发出63 byte-token并扣63预算。本地实际复现保留reports/R6_SESSION_BOUNDARY_FAILURE.json。这是尚未上线的新研发session adapter问题，不能推断旧ICPS训练有此问题。原R6运行未热改/停止，全部历史和备份保留；即使旧session_r6退出0也因该漏测缺陷不能准入。
+
+备份archive/r6_before_semantic_boundary_fix后新增独立src/dynamic_session_r6_r2.py。仅把干净初始W0的内部last_visible键转换成既有R4语义结构；冻结W0文本/IDs/serialized semantic字段不改，后续R4字段与状态机不改。AST契约允许serializer dispatch与该内部键归一化两处明确差异。22本地+22远端实际契约通过，新增初始→更新相同可见源码不发送不扣费的回归；非GPU或真实Actor。R4五源/R6六源不变。
+
+CURRENT验证screen lego-pi-dynamic-session-r6-r2-20261028，source ops/session_r6_r2.sh，logs/session_r6_r2/{state,exit,contracts.log,validation.log,supervisor.log}，reports/session_r6_r2/{INITIAL_COMPARISON,AGGREGATE}.json。14源SHA、WSLpreview/sync/bashsyntax通过；实际远端22test通过后正跑607初始等价，再24构造动态+真实Qwen去重边界/耗尽，尚无最终结果。原session_r6仍运行，最新550/607精确、statusfacts0；不是重复健康job，是独立修复版本对照，原源不改。不得以旧run最终0当新R2通过。
+
+新确认ops/freeze_confirmation_r6.py、confirmation_capture_r6.py、confirmation_r6.sh和validation/confirmation_r6.py已按事前计划准备/静态逐项审查/部署，但未执行，未读新任务样本，CANDIDATE_FREEZE_R6_SESSION.json与CONFIRMATION_R6.sha256尚未创建，故入口不能运行。前置严格读取R2完整报告；必须R2全部通过后才锁组合7源、准备实际scorer契约和SHA，再冻结排除607+全220+历史暴露的全部新清单。确认只是已见仓库的新任务层级，绝不复用220/追加样本直到显著。训练仍exit78，无GPU/optimizer。
+
+## 历史R6首版会话验证运行记录（未准入）
 
 Windows备份archive/r6_before_session_adapter后新增src/dynamic_session_r6.py，未修改R4/R6冻结源：干净W0调用冻结cost排序，含status facts及后续更新调用R4flow。capture状态转移代码仅替换局部serializer调用，新增AST等价契约；无global monkeypatch。本地21实际契约、远端21实际契约均通过，包含继承生命周期检查、初始payload、状态/更新精确R4对照及自然耗尽；部分继承pure-helper测试不等于新增端到端覆盖。
 

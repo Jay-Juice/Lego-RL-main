@@ -1,0 +1,13 @@
+{
+  "status": "REPRODUCED_COMPOSITION_DEDUP_BUG",
+  "scope": "local_byte_tokenizer_constructed_case",
+  "same_visible_source": true,
+  "update_tokens": 63,
+  "budget_spent": 63,
+  "initial_semantic": "1af12b2a710742b4966319cef59ff99247450ba269b8c46ba550617cdd99ad7d",
+  "update_semantic": "94e32c66902eae49d90716ac647ff95b7b7cce2abe5fcd84c99284571d6d471a",
+  "cause": "R6 initial serializer digest uses file/code pairs; R4 update digest uses qualified/unit/syntax/facts/limited structure. Identical visible source differs across schemes.",
+  "independent_confirmation_started": false,
+  "training_started": false,
+  "original_source_SHA": "6f88001f9086e03d32be5e1220845ebb8a659771d3580fe4f06ba8e57457e09c"
+}
