@@ -10,3 +10,4 @@ experiments/icps_v11_full97_sao_20261024_r2/** -text
 vendor_runtime/** -text
 tests/icps_reference/** -text
 ICPS_*.json -text
+research/icps_frozen_contrast_20261027/** -text

@@ -83,3 +83,7 @@ these are not strict causal single-variable estimates.
 The frozen-Critic contrast is a separate diagnostic task. Its source and reports
 must distinguish CPU cache validation, pending GPU work, and actual model results.
 No training resume/stop/deploy is authorized by version maintenance itself.
+
+## Frozen Critic diagnostic source
+
+The separately deployed diagnostic is archived under research/icps_frozen_contrast_20261027. CPU_VALIDATION.json records 32 hash-proven constant-state trajectories and eight resource/statistics tests. GPU results remain pending until the protected training finishes successfully and all eight GPUs are idle. This protocol does not change production code; it is scoped to initial PI and cannot by itself prove that PI is intrinsically uninformative.
