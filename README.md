@@ -1,3 +1,5 @@
+> **ICPS v1.1 experiment branch:** See the [exact source snapshot and usage boundary](experiments/icps_v11_full97_sao_20261024_r2/README.md), [training/evaluation results](experiments/icps_v11_full97_sao_20261024_r2/results/RESULTS_20261027.md), and [version record](experiments/icps_v11_full97_sao_20261024_r2/VERSIONING.md). This branch is an experiment archive, not a launch instruction. The application documentation below is inherited from the V2 parent.
+
 <div align="center">
 
 <img src="img/legorl_emblem.png" alt="Lego-RL" width="120"/>
