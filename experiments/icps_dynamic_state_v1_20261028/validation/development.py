@@ -71,7 +71,16 @@ def capacity(c,s,hunks,tok,issue):
     props=proposals(c,s,issue)
     fitting=[w for w in props if any(w['file']==p and w['start']<=n<=w['end'] for p,n in points)]
     proposalcost=min((len(tok.encode(render([w]),add_special_tokens=False)) for w in fitting),default=None)
-    complete=[w for w in fitting if w['unit']=='statement']
+    complete=[]
+    for path in {p for p,_ in points}:
+        try:tree=ast.parse(s['files'][path])
+        except (SyntaxError,ValueError,RecursionError):continue
+        lines=s['files'][path].splitlines(True)
+        for n in ast.walk(tree):
+            if not isinstance(n,ast.stmt) or not hasattr(n,'end_lineno'):continue
+            if not any(p==path and n.lineno<=line<=n.end_lineno for p,line in points):continue
+            if not any(e['file']==path and e['start_line']<=n.lineno<=n.end_lineno<=e['end_line'] for e in c):continue
+            complete.append(dict(file=path,start=n.lineno,end=n.end_lineno,code=''.join(lines[n.lineno-1:n.end_lineno]),unit='statement'))
     statementcost=min((len(tok.encode(render([w]),add_special_tokens=False)) for w in complete),default=None)
     return dict(candidate=True,minimum_one_line_tokens=linecost,line_fits=linecost<=192,proposal_available=bool(fitting),proposal_fits=proposalcost is not None and proposalcost<=192,statement_fits=statementcost is not None and statementcost<=192)
 

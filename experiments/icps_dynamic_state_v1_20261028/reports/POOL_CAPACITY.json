@@ -1,0 +1,20 @@
+{
+  "candidate_hit_tasks": 242,
+  "full_top3_source_tokens": {
+    "n": 242,
+    "median": 1448.5,
+    "p90": 4361.200000000001,
+    "max": 17105
+  },
+  "full_top3_lines": {
+    "n": 242,
+    "median": 152.0,
+    "p90": 482.00000000000006,
+    "max": 1949
+  },
+  "entire_pool_fits_192": 6,
+  "smallest_whole_candidate_fits_192": 166,
+  "target_one_line_fits_192": 242,
+  "oracle_used_only_to_define_scored_subset": true,
+  "note": "Full candidate bodies can overlap (class and method); this is literal full-top3 representation cost, not an optimal compression bound. One target line fitting is not a label-blind guarantee of choosing it."
+}

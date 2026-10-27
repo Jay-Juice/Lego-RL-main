@@ -1,0 +1,39 @@
+{
+  "method": "expand",
+  "round": "r2",
+  "all_development": true,
+  "counts": {
+    "missed_inside_candidate_pool": 99,
+    "target_line_has_issue_terms": 84,
+    "target_line_no_issue_terms": 15
+  },
+  "nearest_visible_distance_lines": {
+    "<=2": 16,
+    "<=5": 14,
+    ">20": 42,
+    "<=20": 9,
+    "<=10": 11,
+    "no_target_file_window": 7
+  },
+  "target_statement_type_nonexclusive": {
+    "Assign": 40,
+    "Return": 60,
+    "If": 35,
+    "Try": 5,
+    "Raise": 4,
+    "Expr": 17,
+    "FunctionDef": 6,
+    "For": 7,
+    "AugAssign": 4,
+    "Pass": 5,
+    "Continue": 1,
+    "With": 2,
+    "While": 1,
+    "Break": 1,
+    "ClassDef": 1
+  },
+  "notes": [
+    "Labels used only in offline scorer. No per-task locations exported.",
+    "Distance is nearest window edge in the same file, not proof that expanding that window would fit."
+  ]
+}

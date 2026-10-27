@@ -10,11 +10,11 @@ import math
 import re
 from issue_program_state import build_initial_index, parse_file
 from workspace_read import allowed
-from window_serializer import resolve, terms, query, sha, digest
+from window_serializer import resolve, terms, query, sha, digest, proposals as contiguous_proposals
 
-CONFIG = dict(version='icps_dynamic_v1', initial=192, update=128, episode=4096,
-              max_candidates=3, max_windows=4, max_statement_lines=8,
-              variants=['balanced', 'focused', 'flow'], labels_used=False)
+CONFIG = dict(version='icps_dynamic_r2', initial=192, update=128, episode=4096,
+              max_candidates=3, max_windows=3, max_statement_lines=8,
+              variants=['compact', 'diverse', 'expand'], labels_used=False)
 
 def validate(snapshot):
     if not snapshot.get('stable'):
@@ -82,78 +82,54 @@ def status_facts(initial,snapshot,delta):
     facts=[]
     for e in resolve(initial,snapshot['files']):
         if not e['available'] or e.get('syntax')=='parse_unavailable':
-            facts.append((e['file'],e['qualified'],e.get('status','unknown')))
+            facts.append((e['file'],e['qualified'],'unobserved' if snapshot.get('limited') and e.get('status')=='missing' else e.get('status','unknown')))
     # No assertion of deletion when an incomplete scan might omit a file.
     for path,d in sorted(delta.items()):
         if d['kind']=='missing':facts.append((path,'','unobserved' if snapshot.get('limited') else 'missing'))
     return sorted(set(facts))
 
-def proposals(candidates,snapshot,issue,delta=None,variant='balanced'):
+def proposals(candidates,snapshot,issue,delta=None,variant='compact'):
     if variant not in CONFIG['variants']:raise ValueError('unknown frozen variant')
-    delta=delta or {};q,explicit=query(issue);out=[]
+    delta=delta or {};out=[]
+    # Preserve old lexical anchors and coherent 3/5/7-line context. R1 tiny
+    # fragments spent more metadata and lost surrounding target evidence.
+    for w in contiguous_proposals(candidates,snapshot['files'],issue):
+        w=dict(w);changed=delta.get(w['file'],{}).get('ranges',[])
+        w['changed_lines']=sum(max(0,min(w['end'],y)-max(w['start'],x)+1) for x,y in changed)
+        w['score']+=8*min(w['changed_lines'],3);w['unit']='context'
+        out.append(w)
+    # New changes must be representable even far from the issue anchor.
     for rank,e in enumerate(resolve(candidates,snapshot['files'])):
         if not e['available']:continue
         lines=snapshot['files'][e['file']].splitlines(True);lo=e['start_line'];hi=e['end_line']
-        if hi<lo:continue
-        spans={};node=e.get('node');changed=delta.get(e['file'],{}).get('ranges',[])
-        def add(a,b,unit):
-            a=max(a,lo);b=min(b,hi)
-            if a<=b and b-a+1<=8:spans[(a,b)]=unit
-        if node:
-            for n in ast.walk(node):
-                if not isinstance(n,ast.stmt) or not hasattr(n,'end_lineno'):continue
-                a,b=n.lineno,n.end_lineno
-                if not lo<=a<=b<=hi:continue
-                # Complete small statements, or full multi-line compound headers.
-                if b-a+1<=8:add(a,b,'statement')
-                body=getattr(n,'body',None)
-                if isinstance(body,list) and body and hasattr(body[0],'lineno'):
-                    add(a,body[0].lineno-1,'header')
-        # Explicit one-line source fragments are not called complete statements.
-        for n in range(lo,hi+1):
-            if lines[n-1].strip() and not lines[n-1].lstrip().startswith('#'):
-                spans.setdefault((n,n),'line_fragment')
-        items=[]
-        for (a,b),unit in spans.items():
-            code=''.join(lines[a-1:b]);ts=terms(code)
-            ids={s.lower() for s in re.findall(r'[A-Za-z_]\w*',code)}
-            lexical=len(ts&q);exact=len(ids&explicit)
-            changed_lines=sum(max(0,min(b,y)-max(a,x)+1) for x,y in changed)
-            flow=bool(re.search(r'\b(if|elif|return|raise|except|assert|yield)\b',code))
-            # Static scores frozen before evaluation, not inferred bug locations.
-            score=2*exact+lexical+.12/(rank+1)+(.3 if unit=='statement' else 0)
-            if variant=='flow':score+=.7*flow
-            if changed:score+=8*min(changed_lines,3)
-            if score<=0:continue
-            items.append(dict(file=e['file'],qualified=e['qualified'],entity_id=e['entity_id'],rank=rank,
-                start=a,end=b,code=code,source_hash=sha(code),syntax=e.get('syntax','valid'),
-                unit=unit,score=score,changed_lines=changed_lines,partial=a!=lo or b!=hi,
-                low_confidence=not (lexical or exact or changed_lines)))
-        # Bound allocator work without excluding entire lower-ranked candidates.
-        items.sort(key=lambda w:(-w['score']/math.sqrt(max(1,len(w['code']))),w['start'],w['end']))
-        out.extend(items[:48])
-    return out
+        for x,y in delta.get(e['file'],{}).get('ranges',[]):
+            if not overlap((lo,hi),(x,y)):continue
+            for size in [7,5,3,1]:
+                a=max(lo,min(max(lo,x)-1,hi-size+1));b=min(hi,a+size-1)
+                code=''.join(lines[a-1:b]);n=max(0,min(b,y)-max(a,x)+1)
+                out.append(dict(file=e['file'],qualified=e['qualified'],entity_id=e['entity_id'],rank=rank,start=a,end=b,code=code,source_hash=sha(code),syntax=e.get('syntax','valid'),unit='context',score=8*min(n,3),changed_lines=n,partial=a!=lo or b!=hi,low_confidence=False))
+    return sorted(out,key=lambda w:(-w['score'],w['rank'],w['file'],w['start'],-(w['end']-w['start'])))
 
 def render(windows,limited=False,facts=(),status='initial'):
-    parts=['[PI D1 '+status+(' limited' if limited else '')+']\n'];paths=[]
+    # One global partial-window disclosure. Keep full paths, omit redundant end
+    # coordinates and aliases; exact end/identity remain in verified source maps.
+    parts=['[PI D2 '+status+' partial'+(' limited' if limited else '')+']\n'];lastpath=None
     for path,qualified,state in facts:
         parts.append('state '+path+('::'+qualified if qualified else '')+' '+state+'\n')
     for w in windows:
-        path=w['file']
-        if path not in paths:paths.append(path);parts.append('file @'+str(len(paths))+' '+path+'\n')
-        ref=paths.index(path)+1
-        flags=' fragment' if w['unit']=='line_fragment' else (' header' if w['unit']=='header' else '')
-        if w.get('syntax')=='parse_unavailable':flags+=' parse?'
-        parts.append('@'+str(ref)+':'+str(w['start'])+'-'+str(w['end'])+flags+'\n'+w['code']+('' if w['code'].endswith('\n') else '\n'))
+        path=w['file'];prefix=path if path!=lastpath else ''
+        flags=' parse?' if w.get('syntax')=='parse_unavailable' else ''
+        parts.append(prefix+':'+str(w['start'])+flags+'\n'+w['code']+('' if w['code'].endswith('\n') else '\n'))
+        lastpath=path
     return ''.join(parts)
 
-def serialize(candidates,snapshot,issue,tokenizer,*,budget=192,delta=None,variant='balanced',facts=(),status='initial'):
+def serialize(candidates,snapshot,issue,tokenizer,*,budget=192,delta=None,variant='compact',facts=(),status='initial'):
     validate(snapshot)
     if budget<0 or budget>192:raise ValueError('per-state budget')
     # Status facts are bounded; never silently label omitted facts as known.
     kept_facts=[]
     for fact in facts:
-        if len(tokenizer.encode(render([],snapshot.get('limited'),kept_facts+[fact],status),add_special_tokens=False))<=min(budget,48):kept_facts.append(fact)
+        if len(tokenizer.encode(render([],snapshot.get('limited'),kept_facts+[fact],status),add_special_tokens=False))<=min(budget,max(48,budget//2)):kept_facts.append(fact)
     omitted_facts=len(kept_facts)<len(facts)
     effective_status=status+(' unknown_omitted' if omitted_facts else '')
     def text(ws):return render(ws,snapshot.get('limited'),kept_facts,effective_status)
@@ -161,20 +137,39 @@ def serialize(candidates,snapshot,issue,tokenizer,*,budget=192,delta=None,varian
     props=proposals(candidates,snapshot,issue,delta,variant);chosen=[]
     def admissible(w):return not any(w['file']==x['file'] and overlap((w['start'],w['end']),(x['start'],x['end'])) for x in chosen)
     # Equal candidate access before densifying; compare focused rule independently.
-    if variant!='focused':
+    if variant=='diverse':
         for entity in dict.fromkeys(e['entity_id'] for e in candidates):
             opts=[w for w in props if w['entity_id']==entity and admissible(w) and cost(chosen+[w])<=budget]
             if opts:
                 opts.sort(key=lambda w:(-w['score']/max(1,cost(chosen+[w])-cost(chosen))**.5,w['start'],w['end']))
                 chosen.append(opts[0])
-    while len(chosen)<CONFIG['max_windows']:
-        old=cost(chosen);used={w['entity_id'] for w in chosen};opts=[]
+    for w in props:
+        if len(chosen)>=CONFIG['max_windows']:break
+        if admissible(w) and cost(chosen+[w])<=budget:chosen.append(w)
+    if not chosen:
         for w in props:
-            if not admissible(w):continue
-            c=cost(chosen+[w])
-            if c<=budget:opts.append((-(w['score']+(.5 if w['entity_id'] not in used else 0))/max(1,c-old)**.5,w['rank'],w['file'],w['start'],w['end'],w))
-        if not opts:break
-        chosen.append(min(opts,key=lambda x:x[:-1])[-1])
+            code=w['code'].splitlines(True)[0]
+            short=dict(w,end=w['start'],code=code,source_hash=sha(code),unit='line_fragment',partial=True)
+            if cost([short])<=budget:chosen=[short];break
+    if variant=='expand' and chosen:
+        # Spend residual capacity on contiguous CURRENT source, never another
+        # label-driven location. Lexical overlap prioritizes sides, then position.
+        current={e['entity_id']:e for e in resolve(candidates,snapshot['files'])}
+        q,_=query(issue)
+        while True:
+            options=[]
+            for i,w in enumerate(chosen):
+                e=current[w['entity_id']];lines=snapshot['files'][w['file']].splitlines(True)
+                for a,b in [(w['start']-1,w['end']),(w['start'],w['end']+1)]:
+                    if a<e['start_line'] or b>e['end_line']:continue
+                    if any(j!=i and x['file']==w['file'] and overlap((a,b),(x['start'],x['end'])) for j,x in enumerate(chosen)):continue
+                    code=''.join(lines[a-1:b]);nw=dict(w,start=a,end=b,code=code,source_hash=sha(code),partial=a!=e['start_line'] or b!=e['end_line'])
+                    trial=chosen[:i]+[nw]+chosen[i+1:]
+                    if cost(trial)>budget:continue
+                    line=lines[a-1] if a<w['start'] else lines[b-1]
+                    options.append((-len(terms(line)&q),cost(trial)-cost(chosen),w['rank'],a,i,nw))
+            if not options:break
+            _,_,_,_,i,nw=min(options,key=lambda z:z[:-1]);chosen[i]=nw
     payload=text(chosen)
     if not chosen and not facts:payload='[PI D1 unknown no_window_fits]\n'
     ids=tokenizer.encode(payload,add_special_tokens=False)
@@ -195,7 +190,7 @@ def serialize(candidates,snapshot,issue,tokenizer,*,budget=192,delta=None,varian
 
 class DynamicSession:
     """Bounded private pre-action cache. Never serialized into training records."""
-    def __init__(self,issue,tokenizer,task_uid,session_id,variant='balanced'):
+    def __init__(self,issue,tokenizer,task_uid,session_id,variant='compact'):
         self.issue=issue;self.tokenizer=tokenizer;self.identity=(task_uid,session_id);self.variant=variant
         self.initial=None;self.previous=None;self.remaining=4096;self.last=-1;self.seen=set();self.retry=None
         self.last_visible=None;self.exhausted=False
