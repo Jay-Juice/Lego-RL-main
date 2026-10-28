@@ -180,13 +180,18 @@ def main(config):
     assert not Path(config.trainer.default_local_dir).exists(), 'no checkpoint reuse'
     run = Path(os.environ['ICPS_FORMAL_RUN_DIR'])
     from gpu_launch_gate_r6 import consume
-    consume(OmegaConf.to_container(config, resolve=True))
-    with (run/'resolved_actual.json').open('x') as f:
-        json.dump(OmegaConf.to_container(config, resolve=True), f, indent=2)
-    try:
-        run_ppo(config, task_runner_class=ray.remote(num_cpus=1)(ProbeRunner))
-    finally:
-        ray.shutdown()
+    from gpu_private_ray_r6 import PrivateRayLease, validate_ray_namespace
+    resolved = OmegaConf.to_container(config, resolve=True)
+    assert not ray.is_initialized(), 'probe must own its local Ray instance'
+    validate_ray_namespace(resolved, run)
+    with PrivateRayLease(run):
+        consume(resolved)  # Fresh resource observation while holding native shared launch lock.
+        with (run/'resolved_actual.json').open('x') as f:
+            json.dump(resolved, f, indent=2)
+        try:
+            run_ppo(config, task_runner_class=ray.remote(num_cpus=1)(ProbeRunner))
+        finally:
+            ray.shutdown()  # address=local: terminates only the Ray instance created here.
 
 
 if __name__ == '__main__':

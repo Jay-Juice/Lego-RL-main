@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：私有Ray启动租约CPU契约通过；尚未启动Ray或GPU
+
+2026-10-28：新增gpu_private_ray_r6.py，隔离probe main要求address=local、唯一namespace、短/tmp/r6g-16hex目录、8GPU和禁用dashboard，拒绝外部RAY_ADDRESS与reinit。使用原native启动器同名/tmp/lego-ray-start.lock非阻塞flock，锁内消费receipt并重新检查资源，锁保持至自己的local Ray shutdown和归属检查完成。私有目录0700、独占owner marker绑定run/boot/PID/starttime；拒绝目录或lock symlink和owner篡改。仅检查自己tag的进程，不发signal、不删除目录、没有global cleanup；目录/证据保留。旧GPU_PROBE_R6.env单独不满足新Ray kwargs，必须先补producer与完整namespace-only配置对照，不能直接运行probe。
+
+logs/gpu_private_ray_r6_contracts原exit1：同UID较早无关进程的/proc/environ不可读导致3项测试报错，已保留队列和archive/r6_private_ray_proc_permission_failure。最小修正先读starttime，早于owner进程者无需读环境；更新/同龄不可读进程仍fail closed，检查PID复用。新logs/gpu_private_ray_r6_contracts_r2 exit0，8项Linux CPU测试通过，含真实自建stdin子进程的归属发现/EOF正常退出、锁排他/释放、失败传播、symlink与marker拒绝、旧进程跳过及新未知进程拒绝。测试没有Ray init、CUDA或optimizer。检查了installed Ray init/shutdown源码，但真实Ray启动/退出尚未验收，CPU子进程不是Ray worker。
+
+七冻结源和旧35源exact；实际方法/runtime没有改动。report GPU_PRIVATE_RAY_R6_CONTRACTS.json，最新五源清单GPU_PRIVATE_RAY_R6_CONTRACTS.sha256。旧rank清单绑定archive/r6_before_private_ray中的旧probe；原失败清单绑定对应failure archive，不对当前source重跑旧队列。共享flock只协调遵守该锁的launcher，不能保证其他程序不会抢GPU/端口；资源检查与启动之间仍有不可消除的外部race，任何启动失败必须保留为失败。
+
+下一步：完成审核后的receipt producer、传递依赖/offline assets清单策略、私有Ray配置与完整两阶段Hydra对照；实际Ray生命周期和八rank模型更新仍pending。没有production receipt或launch approval。原disk reserve保持，未重复轮询/通知，训练exit78；不得将这8项CPU契约当成Ray/GPU准入。
+
 ## 最新：rank审计已接入隔离probe，9项CPU契约通过；未运行真实八rank
 
 2026-10-28本轮：新增src/gpu_rank_audit_r6.py和gpu_probe_workers_r6.py。只在测试ProbeRunner替换角色映射为继承原生worker的子类，新增blocking ONE_TO_ALL只读审计方法；原init/update/infer方法身份一致。probe在更新前后分别要求rank0..7、8个PID、实际distributed world8/SPgroup8/DP1，记录native Qwen3.5 TokenClassification类来源SHA、标量Linear score、每个参数requires_grad和optimizer成员关系、冻结pattern命中和跨rank一致hash，更新前后inventory不变。只查metadata，不复制或修改权重/gradient/optimizer state；更新前证据单独写rank_before.json，完成后rank_after.json/result.json，失败不会被伪称通过。审计方法本身尚未在真实worker上运行。

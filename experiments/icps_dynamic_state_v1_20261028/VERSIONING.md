@@ -40,3 +40,14 @@ audit. Nine Linux CPU contracts and thirteen selected native-file comparisons
 pass; real rank execution and complete source/launch admission remain pending.
 Latest manifest: validation/GPU_RANK_AUDIT_R6_CONTRACTS.sha256. Prior receipt
 consumer manifest binds probe bytes preserved in archive/r6_before_rank_audit.
+
+Private-Ray lease implementation: eight Linux CPU contracts pass in the R2 queue.
+The first queue exited1 on an unrelated older process environment permission error;
+its source/manifest and logs are preserved. Start-time-first inspection skips older
+processes; newer unreadable candidates still fail closed. A real owned Python child
+was detected and exited by stdin EOF. No Ray/GPU was initialized and no signal sent.
+The probe now requires explicit local Ray kwargs and holds the native shared flock
+through receipt consumption and shutdown. Old config alone fails closed; producer,
+complete manifest policy, updated whole-Hydra parity and actual Ray lifecycle remain
+pending. Latest manifest: validation/GPU_PRIVATE_RAY_R6_CONTRACTS.sha256. Prior rank
+manifest binds the archived probe in archive/r6_before_private_ray.

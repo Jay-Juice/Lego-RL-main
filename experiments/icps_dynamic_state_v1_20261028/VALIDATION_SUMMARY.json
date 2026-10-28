@@ -929,5 +929,46 @@
       "Native head source is recorded per rank for subsequent review; no whole-source acceptance inferred.",
       "No launch producer/private Ray lifecycle and no GPU launch in this stage."
     ]
+  },
+  "gpu_private_ray_r6": {
+    "status": "PRIVATE_RAY_LEASE_CPU_CONTRACTS_PASS_REAL_RAY_PENDING",
+    "tests": 8,
+    "prior_attempt": "logs/gpu_private_ray_r6_contracts exit1: unrelated older proc environ permission; preserved",
+    "process_start_cutoff_tested": true,
+    "newer_unreadable_process_fails_closed": true,
+    "Linux_flock_tested": true,
+    "private_marker_tested": true,
+    "actual_owned_CPU_child_tested": true,
+    "child_exited_by_stdin_EOF": true,
+    "process_signals_sent": 0,
+    "global_cleanup": false,
+    "Ray_initialized": false,
+    "GPU_launched": false,
+    "live_approval_created": false,
+    "training_admitted": false,
+    "frozen_sources_exact": 7,
+    "old_sources_exact": 35,
+    "installed_ray": {
+      "version": "2.54.1",
+      "source_path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py",
+      "init_source_SHA": "a7c6276d8d5c3827ae07cf915ed3249df06dd97cf688371eff5e26c2d41a4ad6",
+      "shutdown_source_SHA": "05395a18d62208192baae8b1014ec8ad507640a919120063d7f001aa9a0c05b3"
+    },
+    "source_SHA": {
+      "src/gpu_private_ray_r6.py": "f40553c67de9c0d790f621b253edc9706c6a6a2850ffbf7fd2ee88f101f13602",
+      "src/gpu_probe_r6.py": "66b470124e4139010d1d6b587efe31690e369b0637740b5ac0259d73b0fae1b0",
+      "tests/test_gpu_private_ray_r6.py": "0b7eb89bd7524fcb2c95a55ab5f11b84c23ac24729a6a58ffc20004a05094181",
+      "validation/gpu_private_ray_r6_contracts.py": "cd8ba70e81e682106712bf391168fc1b336749349e2562c9fe0dff28bd9052fd",
+      "ops/gpu_private_ray_r6_contracts.sh": "e014c8af6446132c4bd3d139a6a652bddd864239e97f9b5c05486b1e25d5d30d"
+    },
+    "limitations": [
+      "No actual Ray startup/shutdown was exercised; only installed API source was inspected.",
+      "The CPU child is an owned Python stdin reader, not a Ray worker.",
+      "Shared flock coordinates cooperating native launchers; it cannot prevent unrelated programs from taking GPUs or ports.",
+      "Resource gate executes under this lock immediately before Ray; private local Ray startup failures remain failures.",
+      "No reviewed producer, complete native/offline manifests or current private-Ray config parity receipt exists.",
+      "The probe now requires explicit address=local/namespace/private_temp/num_gpus8/dashboardfalse; old config alone will fail closed.",
+      "Private directories/logs are retained; no global kill or filesystem cleanup is implemented."
+    ]
   }
 }
