@@ -34,3 +34,9 @@ Receipt-consumer follow-up: eleven local and eleven Linux CPU contracts pass.
 No approved receipt or GPU launch exists. The five-file consumer manifest is
 validation/GPU_LAUNCH_GATE_R6_CONTRACTS.sha256; earlier GPU preparation manifests
 bind historical probe bytes preserved under archive/r6_before_launch_gate.
+
+Rank-audit follow-up: probe-only subclasses add a blocking ONE_TO_ALL read-only
+audit. Nine Linux CPU contracts and thirteen selected native-file comparisons
+pass; real rank execution and complete source/launch admission remain pending.
+Latest manifest: validation/GPU_RANK_AUDIT_R6_CONTRACTS.sha256. Prior receipt
+consumer manifest binds probe bytes preserved in archive/r6_before_rank_audit.

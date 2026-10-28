@@ -71,3 +71,10 @@ The consumer has11 local/11 remote CPU contracts; no production receipt was crea
 A reviewed receipt producer, complete native dependency/asset coverage, private Ray
 lifecycle and actual eight-rank audit remain required before launch.
 See GPU_LAUNCH_GATE_R6_REVIEW.json for the current scope and pending work.
+
+Rank-audit implementation is now connected through probe-only native worker
+subclasses. Nine remote CPU contracts pass; no real distributed rank was started.
+Thirteen explicitly listed native files match SAO, including worker, loss, reward
+and trajectory-filter interfaces. Full transitive source review remains pending.
+Use GPU_RANK_AUDIT_R6_CONTRACTS.json for scope. The producer/private-Ray gates and
+actual eight-GPU acceptance still remain; these CPU assertions do not admit launch.

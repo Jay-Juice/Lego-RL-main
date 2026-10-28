@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：rank审计已接入隔离probe，9项CPU契约通过；未运行真实八rank
+
+2026-10-28本轮：新增src/gpu_rank_audit_r6.py和gpu_probe_workers_r6.py。只在测试ProbeRunner替换角色映射为继承原生worker的子类，新增blocking ONE_TO_ALL只读审计方法；原init/update/infer方法身份一致。probe在更新前后分别要求rank0..7、8个PID、实际distributed world8/SPgroup8/DP1，记录native Qwen3.5 TokenClassification类来源SHA、标量Linear score、每个参数requires_grad和optimizer成员关系、冻结pattern命中和跨rank一致hash，更新前后inventory不变。只查metadata，不复制或修改权重/gradient/optimizer state；更新前证据单独写rank_before.json，完成后rank_after.json/result.json，失败不会被伪称通过。审计方法本身尚未在真实worker上运行。
+
+logs/gpu_rank_audit_r6_contracts exit0，9项远端Linux CPU契约通过：tiny CPU module、synthetic rank rows、实际native subclass导入/注册和继承方法身份检查。错误freeze/多冻结/未冻结attention、optimizer缺失/额外/重复参数、非scalar或LM head、未命中pattern、缺/重复rank、错topology/role/stage/跨rank变化均拒绝。CUDA_VISIBLE_DEVICES为空且torch.cuda未初始化，optimizer step0、没有Ray/worker启动；本地仅5文件AST，不声称local9测试。七冻结源、旧35源与继承5训练文件exact。
+
+源对照扩展至13个明确列出的native文件，新增main_ppo/engine_workers/engine.utils/losses/reward/naive reward manager/trajectory_filter/dispatch decorator；与SAO同路径均SHA相同。报告GPU_RANK_AUDIT_R6_CONTRACTS.json；13文件相同仍非所有传递依赖的完整source审阅。共享venv/VeOmni/vLLM只读。backup archive/r6_before_rank_audit；WSL七文件preview/sync和六源SHA/bash语法通过。旧GPU_LAUNCH_GATE_R6_CONTRACTS.sha256绑定该backup中的旧probe版本，不能对当前probe重跑旧队列；最新有效清单GPU_RANK_AUDIT_R6_CONTRACTS.sha256。
+
+下一步：实现审核后的receipt producer、完整native/offlineasset清单策略和短私有Ray/TMP生命周期/启动race控制，CPU测试这些边界；扩大到传递依赖和实际head来源的完整审阅。磁盘缺口已通知，未再次轮询或通知；所有门槛含原reserve通过后才能运行一次真实八卡短更新。实际8rank审计和formal训练准入仍false，训练exit78。不要把本轮synthetic CPU rank contracts算为GPU验收。
+
 ## 最新：GPU receipt consumer CPU契约通过；完整启动器与rank审计仍待实现
 
 2026-10-28本轮新增src/gpu_launch_gate_r6.py，probe main替换原单个boolean receipt占位检查。消费端绑定resolved config、source与offline asset manifests、独立receipt SHA、run、boot、GPU身份和120秒时效；原启动458392574347bytes与保存415172253607bytes不变，完成文件hash后重新读取GPU/进程/端口/空间，独占创建launch_claim防止同attempt复用。没有receipt writer、真实launch_receipt或GPU启动。此组件不是完整启动保护，也不是对恶意本地用户的认证机制；producer的完整native依赖覆盖、已审查证据与私有Ray生命周期仍需补齐。

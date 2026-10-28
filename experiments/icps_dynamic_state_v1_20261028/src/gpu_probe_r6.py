@@ -90,14 +90,36 @@ def cpu_contracts(tokenizer):
 
 
 class ProbeRunner(TaskRunner):
+    def add_actor_rollout_worker(self, config):
+        from verl.trainer.ppo.ray_trainer import Role
+        from gpu_probe_workers_r6 import AuditedActorWorker
+        _, group_class = super().add_actor_rollout_worker(config)
+        roles = [role for role in (Role.ActorRollout, Role.ActorRolloutRef) if role in self.role_worker_mapping]
+        assert len(roles) == 1
+        self.role_worker_mapping[roles[0]] = ray.remote(AuditedActorWorker)
+        return AuditedActorWorker, group_class
+
+    def add_critic_worker(self, config):
+        from verl.trainer.ppo.ray_trainer import Role
+        from gpu_probe_workers_r6 import AuditedCriticWorker
+        super().add_critic_worker(config)
+        self.role_worker_mapping[Role.Critic] = ray.remote(AuditedCriticWorker)
+
     def run(self, config):
         original_fit = RayPPOTrainer.fit
 
         def probe(trainer):
+            from gpu_rank_audit_r6 import validate_rank_rows, compare_stages
+            def audit(stage):
+                return dict(actor=validate_rank_rows(trainer.actor_rollout_wg.r6_rank_audit(stage), 'actor', stage),
+                            critic=validate_rank_rows(trainer.critic_wg.r6_rank_audit(stage), 'critic', stage))
             tokenizer = trainer.tokenizer
             contracts = cpu_contracts(tokenizer)
             assert trainer.total_training_steps == 97 and len(trainer.train_dataloader) == 97
             trainer.checkpoint_manager.sleep_replicas()
+            rank_before = audit('before_updates')
+            with (Path(os.environ['ICPS_FORMAL_RUN_DIR'])/'rank_before.json').open('x') as handle:
+                json.dump(rank_before, handle, indent=2, allow_nan=False)
             trainer.global_steps = 20
             print('R6_GPU baseline_values', flush=True)
             baseline = trainer._compute_values(short_batch(tokenizer, 'baseline')[0]).batch['values']
@@ -128,9 +150,14 @@ class ProbeRunner(TaskRunner):
                     assert grad and any(v > 0 for v in grad.values()), (role, metrics)
                 phases.append(dict(packing_step=step, metrics=metrics, fixture=witness,
                                    values_shape=list(values.batch['values'].shape)))
+            rank_after = audit('after_updates')
+            compare_stages(rank_before, rank_after)
+            with (Path(os.environ['ICPS_FORMAL_RUN_DIR'])/'rank_after.json').open('x') as handle:
+                json.dump(rank_after, handle, indent=2, allow_nan=False)
             out = Path(os.environ['ICPS_FORMAL_RUN_DIR'])/'result.json'
             with out.open('x') as f:
-                json.dump(dict(status='native_updates_complete_pending_rank_audit', contracts=contracts,
+                json.dump(dict(status='native_updates_and_rank_checks_complete_pending_review', contracts=contracts,
+                    rank_before=rank_before, rank_after=rank_after,
                     phases=phases, empty_PI_value_max_abs_diff=float((baseline-empty).abs().max()),
                     synthetic_fixture=True, actual_Actor_rollout=False, checkpoint_saved=False,
                     reuse_weights_allowed=False, training_admission=False), f, indent=2, allow_nan=False)

@@ -1,0 +1,123 @@
+{
+  "status": "CPU_RANK_AUDIT_CONTRACTS_PASS_ACTUAL_EIGHT_RANKS_PENDING",
+  "tests": 9,
+  "CPU_tiny_modules": true,
+  "synthetic_rank_rows": true,
+  "native_worker_subclasses_imported": true,
+  "native_update_init_methods_inherited": true,
+  "ONE_TO_ALL_blocking_registration_checked": true,
+  "real_distributed_workers_started": false,
+  "CUDA_initialized": false,
+  "GPU_launched": false,
+  "optimizer_steps": 0,
+  "actual_rank_audit_pass": false,
+  "training_admitted": false,
+  "native_source_inventory": [
+    {
+      "path": "src/verl_patch/models/qwen3_5_token_classification.py",
+      "SAO_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+      "inherited_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/trainer/main_ppo.py",
+      "SAO_SHA": "e3fe6e73b18d63367402a2570c5ba054a2b05443ac40a168524dbf545b1da392",
+      "inherited_SHA": "e3fe6e73b18d63367402a2570c5ba054a2b05443ac40a168524dbf545b1da392",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/trainer/ppo/core_algos.py",
+      "SAO_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+      "inherited_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/trainer/ppo/reward.py",
+      "SAO_SHA": "10d99d93f2525148a74ca5260c51b8d945eda20f656219f02f112a0f75882e85",
+      "inherited_SHA": "10d99d93f2525148a74ca5260c51b8d945eda20f656219f02f112a0f75882e85",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/trainer/ppo/trajectory_filter.py",
+      "SAO_SHA": "2f99944b09d84e24d9d52aa2d8509daaafa2294b6d460d53e8891daa9fa63f93",
+      "inherited_SHA": "2f99944b09d84e24d9d52aa2d8509daaafa2294b6d460d53e8891daa9fa63f93",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/engine_workers.py",
+      "SAO_SHA": "e7bef8f34b16f8f0cdacbc58a6ef8f041d06c2a5e3c2d6e9649b84fc337c0bad",
+      "inherited_SHA": "e7bef8f34b16f8f0cdacbc58a6ef8f041d06c2a5e3c2d6e9649b84fc337c0bad",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/engine/utils.py",
+      "SAO_SHA": "ecab1eff63a7e62b5f580e11514d186adcaec97be24bc1614f4f706072d304c7",
+      "inherited_SHA": "ecab1eff63a7e62b5f580e11514d186adcaec97be24bc1614f4f706072d304c7",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/engine/veomni/transformer_impl.py",
+      "SAO_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+      "inherited_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/utils/losses.py",
+      "SAO_SHA": "4f4bb75acf38c7ea84872db0b493c7c03c474df1be690dfc585111c6d5f885b5",
+      "inherited_SHA": "4f4bb75acf38c7ea84872db0b493c7c03c474df1be690dfc585111c6d5f885b5",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/reward_manager/naive.py",
+      "SAO_SHA": "f936d5fb1589cd8b1a0a1c31b58bea092886ec4e00493fb40483a9af4ac685a6",
+      "inherited_SHA": "f936d5fb1589cd8b1a0a1c31b58bea092886ec4e00493fb40483a9af4ac685a6",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/config/critic.py",
+      "SAO_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+      "inherited_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/config/actor.py",
+      "SAO_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+      "inherited_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/single_controller/base/decorator.py",
+      "SAO_SHA": "718876c4c59e9f3cdb0339185be156aeb7b6d8eb42a2a6f919a3163961634ace",
+      "inherited_SHA": "718876c4c59e9f3cdb0339185be156aeb7b6d8eb42a2a6f919a3163961634ace",
+      "equal": true
+    }
+  ],
+  "selected_native_files": 13,
+  "selected_native_source_parity_pass": true,
+  "complete_source_review": false,
+  "inherited_files_exact": [
+    "runtime/ray_trainer.py",
+    "runtime/engine_utils.py",
+    "src/formal_packing.py",
+    "src/formal_storage.py",
+    "src/formal_checkpoint.py"
+  ],
+  "frozen_generator_exact": 7,
+  "old_source_exact": 35,
+  "source_SHA": {
+    "src/gpu_rank_audit_r6.py": "ba22fd35f55025fa135d131a35c570173f2ab35b6cfee85d4a6b4bc68eb7f7cb",
+    "src/gpu_probe_workers_r6.py": "739124476c796c148d42d943a7255de47750742ff11e4253cade4303eb3bc7ca",
+    "src/gpu_probe_r6.py": "7b2c7307b879962f9224e01afe4e38751c322bdc089cb202882d661e2be7e31f",
+    "tests/test_gpu_rank_audit_r6.py": "161cccbdc3e62e9ede52fabd1b8bf0c4eb04ea076bf68a3f5c54a181424c474d",
+    "validation/gpu_rank_audit_r6_contracts.py": "e9523299d145f22c38f1a15c25f1cff63b0f6bf18fbd76e2563c077420a2495f",
+    "ops/gpu_rank_audit_r6_contracts.sh": "ae5487e9a58db1139d2b7bb67f7b9205a2ea667758a8376092207463df0fda46"
+  },
+  "limitations": [
+    "Synthetic rows test missing/duplicate rank rejection, not real eight-rank execution.",
+    "Tiny CPU modules test freeze/head/optimizer assertions, not native Qwen parameter acceptance.",
+    "Native class registration/inherited-method identity inspected without constructing a worker.",
+    "Thirteen selected files cover worker/loss/reward/filter interfaces; transitive dependency review remains pending.",
+    "Native head source is recorded per rank for subsequent review; no whole-source acceptance inferred.",
+    "No launch producer/private Ray lifecycle and no GPU launch in this stage."
+  ]
+}
