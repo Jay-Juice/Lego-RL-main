@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：私有Ray配置与当前两阶段Hydra逐字段对照通过；receipt producer仍未完成
+
+2026-10-28新增src/gpu_launch_config_r6.py，作为producer的只读配置准备组件。先校验原GPU_PROBE_R6_HYDRA_PARITY.json固定SHA，从记录的真实命令在当前R/B Hydra树重新compose；当前seed与原完整resolved config精确一致后，仅改两个输出路径和五个Ray字段（local、唯一namespace、短temp、num_gpus8、dashboardfalse）。对所有字段重新比较历史fresh/resume20，除已批准namespace/禁用resume外无差异；agent YAML bytes相等，97步与两阶段packing、head/freeze/LR/epochs/checkpoint schema保持。第二阶段配置只是对照见证，实际probe仍用原native per-batch packing。
+
+logs/gpu_private_config_r6_contracts_r2 exit0：5项CPU契约含配方漂移、Ray未知字段/错误类型、run/output错误绑定、missing-null/bool-int区分等负例；随后实际Hydra compose/完整两阶段对照通过，当前四个config树的YAML SHA归档于GPU_PRIVATE_CONFIG_R6_CONTRACTS.json。没有创建run目录、production receipt、Ray实例、CUDA或模型/optimizer。原队列exit1发生在五测试和compose之后，因错误断言“不得导入Ray”；native配置插件可以导入但不初始化Ray。保留原队列和archive/r6_private_config_import_assertion，修正为实际ray.is_initialized和torch.cuda.is_initialized均false，不把导入当启动。
+
+本轮只有新准备/测试源，未改七冻结生成源、runtime、probe main、receipt consumer或旧env。七冻结源/旧35源再次exact；最新本组清单GPU_PRIVATE_CONFIG_R6_CONTRACTS.sha256有效，上一组private-Ray manifest也仍有效。backup archive/r6_before_private_config。完整launcher环境、依赖/offline asset manifest policy、review evidence绑定和真正receipt producer尚未完成，不能用本报告构造绕过准入的许可。实际Ray生命周期、八rank短更新及原磁盘reserve仍pending，训练exit78；未重复磁盘通知。
+
+下一步集中完成传递依赖/实际head来源清单与producer：准备配置组件已可用，不重复已完成五测试或两阶段compose，除非相关源有新变化。审核proof必须绑定当前source/config/assets及实际Ray生命周期证据；不得直接置review flags为true。保留全源/八卡/正式数据镜像准入区分。
+
 ## 最新：私有Ray启动租约CPU契约通过；尚未启动Ray或GPU
 
 2026-10-28：新增gpu_private_ray_r6.py，隔离probe main要求address=local、唯一namespace、短/tmp/r6g-16hex目录、8GPU和禁用dashboard，拒绝外部RAY_ADDRESS与reinit。使用原native启动器同名/tmp/lego-ray-start.lock非阻塞flock，锁内消费receipt并重新检查资源，锁保持至自己的local Ray shutdown和归属检查完成。私有目录0700、独占owner marker绑定run/boot/PID/starttime；拒绝目录或lock symlink和owner篡改。仅检查自己tag的进程，不发signal、不删除目录、没有global cleanup；目录/证据保留。旧GPU_PROBE_R6.env单独不满足新Ray kwargs，必须先补producer与完整namespace-only配置对照，不能直接运行probe。

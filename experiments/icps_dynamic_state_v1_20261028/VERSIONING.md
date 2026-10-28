@@ -51,3 +51,15 @@ through receipt consumption and shutdown. Old config alone fails closed; produce
 complete manifest policy, updated whole-Hydra parity and actual Ray lifecycle remain
 pending. Latest manifest: validation/GPU_PRIVATE_RAY_R6_CONTRACTS.sha256. Prior rank
 manifest binds the archived probe in archive/r6_before_private_ray.
+
+Private config preparation now recomposes current native Hydra trees with the
+archived actual commands and verifies exact agreement with the pinned resolved
+reference. Only two output paths and five explicit local-Ray fields change.
+Whole-config comparison against both historical packing phases and agent YAML
+byte identity pass. Five Linux CPU negative contracts pass; no run directory,
+receipt, Ray instance, CUDA or model update was created. The first queue failed
+an overstrict import-presence assertion; its evidence is preserved. Native config
+plugins import Ray without initialization, now explicitly checked. See
+GPU_PRIVATE_CONFIG_R6_CONTRACTS.json and its seven-input SHA manifest. Producer,
+complete environment/dependency/asset policy and actual Ray/GPU acceptance remain
+pending. Earlier private-Ray source manifest remains valid (probe unchanged).
