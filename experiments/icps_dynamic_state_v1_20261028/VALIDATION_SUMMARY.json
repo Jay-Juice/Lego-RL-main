@@ -1,5 +1,5 @@
 {
-  "status": "R6_ACTUAL_PRIVATE_RAY_PASS_NATIVE_8GPU_LAUNCH_PENDING_TRAINING_DISABLED",
+  "status": "R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": true,
@@ -56,12 +56,23 @@
     "optimizer_steps": 0
   },
   "remote_final_queue_exit": 0,
-  "model_or_optimizer_updates": 0,
+  "model_or_optimizer_updates": {
+    "actual_disposable_updates": true,
+    "roles": [
+      "critic",
+      "actor"
+    ],
+    "packing_phases": [
+      20,
+      21
+    ],
+    "checkpoint_saved": false,
+    "exact_optimizer_step_counter_instrumented": false
+  },
   "blockers": [
-    "Closed native/shared/lazy dependency policy and reviewed receipt producer/consumer integration",
-    "Actual private Ray lifecycle acceptance",
-    "Actual native eight-GPU updates and rank evidence",
-    "Formal full prepared-data/image and unique freshbase gates"
+    "Resolve/validate optional MFU controller compatibility for any formal entry; current adaptation is probe-only",
+    "Formal complete prepared-data/image identities and separately reviewed freshbase experiment entry",
+    "Remaining formal source/admission requirements; short test is not blanket approval"
   ],
   "preserved_failures": [
     "r1 all3 allocations reduced primary coverage",
@@ -71,9 +82,8 @@
     "Offline-asset local Windows strict Path.resolve temporary-directory PermissionErrors (8 errors/11 tests, 1 skipped); Linux R1 11 and R2 12 pass. No local full-suite pass."
   ],
   "next": [
-    "Complete the existing isolated probe launcher, real Ray lifecycle and required evidence bindings with no generic framework expansion; resource gate now passes and must be refreshed immediately before launch.",
-    "Keep frozen R6 as GPU baseline; pursue the separate R7 changed-unit/module/decorator design only on synthetic and development inputs, never retune confirmation.",
-    "Collect actual eight-rank finite-update/head/freeze evidence before formal training admission."
+    "Report completed eight-GPU numerical/gradient/Actor-isolation evidence to user; do not rerun this completed test.",
+    "Formal training remains separately gated; R6 unchanged."
   ],
   "r4_hits": {
     "S1": 129,
@@ -1651,5 +1661,15 @@
     "production_receipt_created": false,
     "training_admitted": false,
     "next": "Finish bounded existing producer/source-assets evidence binding and shell environment, then fresh resources and actual native8GPU probe; do not expand generic audit framework."
+  },
+  "native_gpu_probe_current": {
+    "run": "gpu-r6-c4000612667ac86e",
+    "status": "passed",
+    "exit": 0,
+    "actual_native_GPU": true,
+    "result": "reports/GPU_SHORT_R6_RESULT.json",
+    "review": "reports/GPU_SHORT_R6_REVIEW.json",
+    "training_admission": false,
+    "full_transitive_review": false
   }
 }

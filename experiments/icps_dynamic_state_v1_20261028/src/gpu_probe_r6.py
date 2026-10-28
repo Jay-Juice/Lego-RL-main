@@ -89,6 +89,36 @@ def cpu_contracts(tokenizer):
                 Actor_tensors_equal=True, pretoken_gather_and_causal_prefix=True, fixture=witness)
 
 
+def optional_mfu_controllers(trainer):
+    """Probe-instance-only telemetry compatibility; native worker math is untouched.
+
+    This installed engine omits optional MFU telemetry. Retain the complete
+    inspected controller methods, changing only their three MFU reads/pops.
+    Missing MFU is absent/None, never a fabricated numeric measurement.
+    """
+    import inspect, textwrap, types
+    edits = {
+        '_compute_old_log_prob': ('old_log_prob_mfu = tu.get(output, "metrics")["mfu"]',
+                                 'old_log_prob_mfu = tu.get(output, "metrics").get("mfu")'),
+        '_update_actor': ('actor_output["perf/mfu/actor"] = actor_output.pop("actor/mfu")',
+                         'if "actor/mfu" in actor_output: actor_output["perf/mfu/actor"] = actor_output.pop("actor/mfu")'),
+        '_update_critic': ('output["perf/mfu/critic"] = output.pop("critic/mfu")',
+                          'if "critic/mfu" in output: output["perf/mfu/critic"] = output.pop("critic/mfu")'),
+    }
+    witness = {}
+    for name, (before, after) in edits.items():
+        original = getattr(type(trainer), name)
+        source = textwrap.dedent(inspect.getsource(original))
+        assert source.count(before) == 1, (name, 'native controller changed')
+        patched = source.replace(before, after)
+        namespace = dict(original.__globals__)
+        exec(compile(patched, '<R6-probe-optional-MFU:'+name+'>', 'exec'), namespace)
+        setattr(trainer, name, types.MethodType(namespace[name], trainer))
+        witness[name] = dict(original_source_SHA=hashlib.sha256(source.encode()).hexdigest(),
+                             replacement_before=before, replacement_after=after)
+    return witness
+
+
 class ProbeRunner(TaskRunner):
     def add_actor_rollout_worker(self, config):
         from verl.trainer.ppo.ray_trainer import Role
@@ -113,6 +143,7 @@ class ProbeRunner(TaskRunner):
             def audit(stage):
                 return dict(actor=validate_rank_rows(trainer.actor_rollout_wg.r6_rank_audit(stage), 'actor', stage),
                             critic=validate_rank_rows(trainer.critic_wg.r6_rank_audit(stage), 'critic', stage))
+            telemetry_compatibility = optional_mfu_controllers(trainer)
             tokenizer = trainer.tokenizer
             contracts = cpu_contracts(tokenizer)
             assert trainer.total_training_steps == 97 and len(trainer.train_dataloader) == 97
@@ -130,6 +161,14 @@ class ProbeRunner(TaskRunner):
             for step in (20, 21):
                 trainer.global_steps = step  # packing API only, not real training progress
                 batch, witness = short_batch(tokenizer)
+                # Use native current-policy probabilities for a well-scaled disposable
+                # policy update. Synthetic zero rollout probabilities would distort IS.
+                old, _ = trainer._compute_old_log_prob(batch)
+                without_pi = short_batch(tokenizer, 'baseline')[0]
+                old_off, _ = trainer._compute_old_log_prob(without_pi)
+                torch.testing.assert_close(old.batch['old_log_probs'], old_off.batch['old_log_probs'], atol=1e-5, rtol=1e-5)
+                batch.batch['old_log_probs'] = old.batch['old_log_probs'].clone()
+                batch.batch['rollout_log_probs'] = old.batch['old_log_probs'].clone()
                 original = {k: v.clone() for k, v in batch.batch.items()}
                 print(f'R6_GPU phase{step} values', flush=True)
                 values = trainer._compute_values(batch)
@@ -138,7 +177,30 @@ class ProbeRunner(TaskRunner):
                 print(f'R6_GPU phase{step} critic_update', flush=True)
                 critic = trainer._update_critic(batch)
                 print(f'R6_GPU phase{step} actor_update', flush=True)
-                actor = trainer._update_actor(batch)
+                # Observe the actual controller-to-worker Actor boundary; forward
+                # unchanged to the native method after verifying PI was removed.
+                from verl.trainer.ppo import ray_trainer as rt
+                expected = batch.to_tensordict()
+                expected.pop('pi_call_records', None)
+                expected = rt.left_right_2_no_padding(expected)
+                native_actor_update = trainer.actor_rollout_wg.update_actor
+                actor_boundary = []
+                def checked_actor_update(td):
+                    assert not any(str(k).startswith(('pi_', 'critic_')) for k in td.keys())
+                    for key in original:
+                        if key not in expected: continue
+                        a,b=td[key],expected[key]
+                        if getattr(a,'is_nested',False):
+                            assert torch.equal(a.values(),b.values()) and torch.equal(a.offsets(),b.offsets()), key
+                        else: assert torch.equal(a,b), key
+                    actor_boundary.append(True)
+                    return native_actor_update(td)
+                trainer.actor_rollout_wg.update_actor = checked_actor_update
+                try:
+                    actor = trainer._update_actor(batch)
+                finally:
+                    trainer.actor_rollout_wg.update_actor = native_actor_update
+                assert actor_boundary == [True]
                 for key, value in original.items():
                     assert torch.equal(batch.batch[key], value), key
                 metrics = {**reduce_metrics(critic.meta_info['metrics']),
@@ -149,7 +211,14 @@ class ProbeRunner(TaskRunner):
                     grad = {k: v for k, v in metrics.items() if k.startswith(role+'/') and 'grad_norm' in k}
                     assert grad and any(v > 0 for v in grad.values()), (role, metrics)
                 phases.append(dict(packing_step=step, metrics=metrics, fixture=witness,
-                                   values_shape=list(values.batch['values'].shape)))
+                                   values_shape=list(values.batch['values'].shape),
+                                   values_min=float(values.batch['values'].min()),
+                                   values_max=float(values.batch['values'].max()),
+                                   values_mean=float(values.batch['values'].mean()),
+                                   Actor_boundary_PI_absent=True, Actor_boundary_tensors_exact=True,
+                                   Actor_PI_on_off_logprob_max_abs_diff=float((old.batch['old_log_probs']-old_off.batch['old_log_probs']).abs().max())))
+                with (Path(os.environ['ICPS_FORMAL_RUN_DIR'])/f'phase_{step}.json').open('x') as f:
+                    json.dump(phases[-1],f,indent=2,allow_nan=False)
             rank_after = audit('after_updates')
             compare_stages(rank_before, rank_after)
             with (Path(os.environ['ICPS_FORMAL_RUN_DIR'])/'rank_after.json').open('x') as handle:
@@ -158,6 +227,7 @@ class ProbeRunner(TaskRunner):
             with out.open('x') as f:
                 json.dump(dict(status='native_updates_and_rank_checks_complete_pending_review', contracts=contracts,
                     rank_before=rank_before, rank_after=rank_after,
+                    probe_controller_optional_MFU=telemetry_compatibility,
                     phases=phases, empty_PI_value_max_abs_diff=float((baseline-empty).abs().max()),
                     synthetic_fixture=True, actual_Actor_rollout=False, checkpoint_saved=False,
                     reuse_weights_allowed=False, training_admission=False), f, indent=2, allow_nan=False)
@@ -184,7 +254,12 @@ def main(config):
     resolved = OmegaConf.to_container(config, resolve=True)
     assert not ray.is_initialized(), 'probe must own its local Ray instance'
     validate_ray_namespace(resolved, run)
-    with PrivateRayLease(run):
+    with PrivateRayLease(run) as lease:
+        import tempfile, time
+        short_tmp = lease.temp/'tmp'
+        short_tmp.mkdir(mode=0o700)
+        os.environ['TMPDIR'] = str(short_tmp)
+        tempfile.tempdir = None  # Native imports may have cached the previous long path.
         consume(resolved)  # Fresh resource observation while holding native shared launch lock.
         with (run/'resolved_actual.json').open('x') as f:
             json.dump(resolved, f, indent=2)
@@ -192,6 +267,19 @@ def main(config):
             run_ppo(config, task_runner_class=ray.remote(num_cpus=1)(ProbeRunner))
         finally:
             ray.shutdown()  # address=local: terminates only the Ray instance created here.
+            from gpu_private_ray_r6 import owned_processes
+            deadline = time.monotonic()+20
+            while True:
+                try:
+                    remaining = owned_processes(lease.owner)
+                except PermissionError:
+                    # /proc can become unreadable while a worker exits. Retry,
+                    # never count an unreadable process as gone or passed.
+                    if time.monotonic() >= deadline: raise
+                    time.sleep(0.5)
+                    continue
+                if not remaining or time.monotonic() >= deadline: break
+                time.sleep(0.5)  # No signals or global cleanup; lease checks final state.
 
 
 if __name__ == '__main__':

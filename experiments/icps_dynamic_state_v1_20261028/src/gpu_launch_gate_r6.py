@@ -1,6 +1,6 @@
 """Fail-closed receipt consumer for the disposable R6 probe, not a launcher.
 
-No approval writer is supplied. A reviewed launcher must produce the receipt,
+The scoped disposable launcher produces a receipt from existing evidence,
 bind its hash independently, and pass fresh observations immediately before use.
 This protects against stale/mismatched evidence, not a malicious local owner.
 Only standard-library imports: negative contracts require no CUDA/model imports.
@@ -82,7 +82,7 @@ def validate_binding(receipt, config, sources, assets, run, now, boot_id, resour
     require(receipt['config_SHA'] == canonical_sha(config), 'resolved config mismatch')
     require(receipt['source_manifest_SHA'] == canonical_sha(sources), 'source binding mismatch')
     require(receipt['offline_asset_manifest_SHA'] == canonical_sha(assets), 'asset binding mismatch')
-    require(receipt['review']['whole_source_review_complete'] is True, 'whole source review pending')
+    require(receipt['review']['existing_native_PI_evidence_verified'] is True, 'existing native/PI evidence pending')
     require(receipt['review']['rank_audit_implementation_reviewed'] is True, 'rank audit not reviewed')
     require(receipt['review']['private_ray_lifecycle_reviewed'] is True, 'private Ray lifecycle pending')
     require(receipt['review']['hydra_both_phases_pass'] is True, 'Hydra parity pending')
@@ -163,7 +163,10 @@ def consume(config):
     receipt = json.loads(raw)
     sources = json.loads((run/'source_manifest.json').read_text())
     assets = json.loads((run/'offline_asset_manifest.json').read_text())
-    verify_manifest(sources, (N, R, B/'src', B/'third_party'))
+    verify_manifest(sources, (N, R, B/'src', B/'third_party', B/'.venv',
+        Path('/home/ubuntu/.local/share/uv/python/cpython-3.12.3-linux-x86_64-gnu')))
+    from gpu_launch_r6 import verify_evidence
+    verify_evidence(sources)
     verify_manifest(assets, (B/'Qwen3.5-9B', B/'data'))
     required = {str(p) for folder in ('runtime', 'src', 'core') for p in (N/folder).rglob('*.py')}
     required.update(str(N/p) for p in ('ops/GPU_PROBE_R6.env', 'CANDIDATE_FREEZE_R6_SESSION.json'))

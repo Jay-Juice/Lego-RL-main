@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_ACTUAL_PRIVATE_RAY_PASS_NATIVE_8GPU_LAUNCH_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest 2026-10-28: actual eight-GPU short test PASS, exit0
+
+Run `gpu-r6-c4000612667ac86e` completed real native Qwen3.5-9B SP8/DP1 Critic/Actor updates under both historical packing steps20/21. See reports/GPU_SHORT_R6_RESULT.json and GPU_SHORT_R6_REVIEW.json. Value ranges[-1.625,8.375] and[-1.4921875,3.046875]; Critic loss5.601695 ->0.741666; Actor loss0.375610 ->0.358571. Pre-clipping gradient norms Critic455.272 ->160.420, Actor10.9128 ->10.5837, finite/nonzero; native clip thresholds10/1 unchanged. These are a short synthetic-fixture numerical result, not long-run stability or RL benefit.
+
+Empty-PI vs baseline values maximum difference0.0. Actor PI-on/off native log-prob maximum difference0.0 in both phases; actual Actor worker input excludes PI/critic fields and preserves original Actor tensors exactly. Actual eight-rank audits before/after agree: world8/SP8/DP1, native scalar score4096->1, Critic164trainable/597frozen and optimizer164, Actor760trainable/optimizer760. Native head SHAa5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9 equals historical SAO. Successful lease wall1048.53s includes native model/vLLM initialization, not PI overhead. Own Ray shutdown verified no leftovers; post-run8GPUs14MiB/util0, noCompute/noRay, ports available. No model checkpoint saved/reused; formal start_full97.sh remains exit78.
+
+Direct human instruction bounded this work to existing launcher evidence, not expanded transitive audits. Dedicated producer binds reviewed PI/native source and observed shared origins, actual offline assets, complete Hydra parity, fresh original resources and one-use private namespace. Full transitive dependency review is explicitly false. Missing optional MFU telemetry required probe-instance copies of three controller methods with only MFU read/pop guards; absent fields are None/omitted, not fabricated metrics. Native workers, loss/reward/filter/GAE/optimizer/head/freeze/packing, frozen7 and PI runtime unchanged. Formal entry compatibility still needs its own fix/review; this probe adaptation does not silently alter training.
+
+All four earlier failed attempts and Windows source/manifests remain: canonical asset digest, overstrict CUDA-import assertion, long TMP ZMQ path after model load, and missing MFU after actual rank/emptyPI checks. Own processes naturally exited; no global cleanup, signal, shared environment edit or asset deletion. Short private TMP and bounded asynchronous shutdown retry fixed launcher integration. Reports classify scopes and failures. Completed short test should not be restarted. Formal prepared-data/image/freshbase and remaining formal admission requirements are separate; no automatic training from this result.
+
 ## 最新：真实私有Ray启动/任务/退出通过，八GPU尚未运行
 
 2026-10-28 logs/gpu_private_ray_r6_live_r2 exit0：真实local Ray完成一个带所有权tag的CPU worker任务，namespace准确、GPU资源0；ray.shutdown后所属进程扫描为空，外层目录0700保持。wall8.829秒。不是mock，也不是八rank/model/optimizer证据。相关9项lease+5项config Linux CPU测试共14项通过；因Ray路径修复重新compose完整两阶段Hydra，只有既定输出/Ray namespace差异，native配方无变更。

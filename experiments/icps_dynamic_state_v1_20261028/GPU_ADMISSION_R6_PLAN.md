@@ -1,5 +1,7 @@
 # R6 remaining admission: native engine and recipe
 
+Current status 2026-10-28: actual disposable eight-GPU SP8/DP1 short test PASS, exit0; both packing phases20/21 have finite values/loss/positive gradients and exact Actor isolation. See reports/GPU_SHORT_R6_RESULT.json and GPU_SHORT_R6_REVIEW.json. This test is complete; do not rerun it without relevant change. Formal training remains disabled: full prepared-data/image/freshbase gates and formal controller optional-MFU compatibility are separate. Short-test source scope was explicitly bounded by the human request, not declared full transitive review. The older preparation entries below are retained as history.
+
 This plan follows completed CPU proxy, real cached Harbor, and lifecycle checks.
 It is not a GPU result or permission to skip existing admission gates.
 The frozen seven generator sources and the tested runtime stay unchanged.

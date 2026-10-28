@@ -14,8 +14,9 @@ has a frozen input selector and an opt-in runtime with actual proxy CPU checks.
 Real cached Harbor and proxy lifecycle checks pass. Full two-phase Hydra comparison
 and actual-tokenizer GPU-fixture CPU checks pass. Actual private Ray CPU init/task/shutdown now passes with no owned leftovers.
 The original disk reserve and eight-idle-GPU snapshot pass after user cleanup.
-Native eight-GPU updates and the bounded producer/evidence binding remain pending.
-No GPU update or training has run.
+Native eight-GPU disposable updates now PASS at packing phases20/21; the bounded
+producer/evidence binding is implemented. See GPU_SHORT_R6_RESULT/REVIEW.json.
+No formal training or checkpoint save/reuse has occurred.
 The inherited start_full97.sh is disabled (exit 78); inherited preparation
 scripts are references, not supported launch commands. No new training has run.
 
@@ -99,3 +100,13 @@ Fourteen affected Linux CPU contracts and full two-phase Hydra parity pass.
 Latest validation/GPU_PRIVATE_RAY_R6_LIVE.sha256 binds nine inputs; earlier lease/config
 manifests bind pre-fix archived bytes. No GPU/model/optimizer update or production
 receipt exists. Continue the bounded eight-GPU launch path, not generic expansion.
+
+Actual eight-GPU short test completed in gpu-r6-c4000612667ac86e, exit0. Both native
+roles have finite positive gradients and finite values/losses; empty PI and Actor
+PI-on/off comparisons are exact. Actual rank/head/freeze/optimizer membership
+passes before/after; own Ray/GPU teardown is verified. Four earlier failed
+attempts and source archives remain. Probe-only MFU compatibility handles missing
+telemetry; native math and frozen method unchanged. Latest17-input launcher
+manifest is GPU_LAUNCH_R6.sha256. Earlier changed-probe manifests are historical.
+Existing reviewed evidence scope is explicit, not full transitive approval.
+Formal training remains separately gated and its entry disabled.

@@ -27,7 +27,7 @@ class LaunchBindingTests(unittest.TestCase):
             training_admission=False, created_at=self.now, boot_id='synthetic-boot', run=str(self.run),
             config_SHA=gate.canonical_sha(self.config), source_manifest_SHA=gate.canonical_sha(self.sources),
             offline_asset_manifest_SHA=gate.canonical_sha(self.assets), resources=copy.deepcopy(self.resources),
-            review=dict(whole_source_review_complete=True, rank_audit_implementation_reviewed=True,
+            review=dict(existing_native_PI_evidence_verified=True, rank_audit_implementation_reviewed=True,
                 private_ray_lifecycle_reviewed=True, hydra_both_phases_pass=True))
 
     def check(self):

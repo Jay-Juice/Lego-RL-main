@@ -1,5 +1,7 @@
 # 动态 PI 设计与训练准入
 
+Current status 2026-10-28: actual disposable eight-GPU SP8/DP1 short test PASS, exit0; both packing phases20/21 have finite values/loss/positive gradients and exact Actor isolation. See reports/GPU_SHORT_R6_RESULT.json and GPU_SHORT_R6_REVIEW.json. This test is complete; do not rerun it without relevant change. Formal training remains disabled: full prepared-data/image/freshbase gates and formal controller optional-MFU compatibility are separate. Short-test source scope was explicitly bounded by the human request, not declared full transitive review. The older preparation entries below are retained as history.
+
 本轮用户授权先研发验证，方案合理收敛后直接启动新实验训练。不是立刻开训，不恢复旧checkpoint。方法变化只限PI选择、表达和去重；head、freeze、Actor/reward/filter/SAO/GAE/loss/optimizer与既有ICPS匹配SAO的训练配方不变。PI预算192/128/4096不变。旧SAO历史packing阶段1–20和21–97保持原对照，不私自统一或调整。
 
 ## 研发设计
