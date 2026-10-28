@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: budget/slot study raises final coverage to68.58%, at density cost
+
+Nine actualQwen arms completed607seen development/366exactmapped/77repos, passage24candidate343fixed. Original3slots caps256/384/512/768 give205/213/214/223visible,134/174/191/209full; no-target-entity-selected remains98.6slots at384/512/768 give225/237/251visible,135/171/212full; entitymisses66. Same768cap223→251,+7.65pp repoCI[+4.79,+10.88]pp,35gained7lost; full+3CIcross0. Versus prior384/3,any58.20→68.58%,full47.54→57.92%,butmean366.77→744.86(+103.08%)anddensity5.106→3.179(-37.73%). Keep developmentbreadth/capacity comparators only; no jointdensity/runtimepromotion.
+
+Append original256finalwindows reaches236/166at512,245/180at768,zeroany/fullloss vs256only; lowerdepth/density thanfree6. Best768/6remainingmisses66entityselection+26wrongregion+23candidateabsence. Need better issue/code relevance, not cap-only inflation. Semanticranker notimplemented. Allsource/proposals/scoringfixed;6local6Linuxcontracts,11actualLandlockdenials/shard,607exactpayloadreplaysper256/384. Originalqueueexit1scorerKeyError on nonmappedrows afteralloutputsfreeze; separateeligibilitywrapper4local4Linuxpasses,correctedscore+diagnosticexit0,samegeneration. LocalLinux-resourceimportfailure retained. Frozen7/runtime/confirmationunchanged,noGPU/model/optimizer/training/noactivejobs. SeeR7_CAPACITY_ALLOCATION_RESULTS.md;aggregate68a20273c6b2ef287663382201382b60ad242467b32a1bb607586c06857dbeee.
+
 ## Latest R7: structural windows/protection complete; no net task-coverage gain
 
 Two six-arm actualQwen development queues exit0 on607seen inputs/366exactmapped/77repos. Fixed passage24candidate343. Unrestricted structural256 visible200/full129 vs205/134;384211/175 vs213/174,density+3.20%,no coverage gain. Extra structural seeds give same aggregate targetcounts. Source signals occur in552entity-prior/501line-cue inputs out of607; not rare but not validated target relevance.
