@@ -1,0 +1,13 @@
+{
+  "UTC": "2026-10-28T09:14:05.433846+00:00",
+  "synthetic_byte_tokenizer_checks": 15,
+  "multiline_statement_and_docstring_exclusion": true,
+  "source_AST": true,
+  "actual_Qwen": false,
+  "source_SHA": {
+    "R7_WINDOW_RESEARCH_PLAN.md": "dfeec10c1e58b4991ce20956685adc4486228e45cc0ec475ae00533cd1c46739",
+    "src/window_research_r7.py": "227b7b6ba1f4acdd110a6fed2b3cf2cfb34f7b18a3eab6cd63b7b4c130a6a6ea",
+    "validation/window_research_r7.py": "df84ed7ab986ddecb620d3907e2f89f76bf693436ff20b934db8459b87c9d85c",
+    "ops/window_research_r7.sh": "f91e044fc9561675d827ca52c313ae45a705e720ddcfbcc0427332fc4f27f804"
+  }
+}

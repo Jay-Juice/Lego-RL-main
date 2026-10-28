@@ -52,3 +52,7 @@ this design note or a resource snapshot as launch approval.
 ## Development budget/pool evidence after human budget authorization
 
 The six-arm W0 factorial is implemented separately and complete; see R7_BUDGET_RESULTS.md. It is not a deployment of the changed-unit design above. Pool3/256 improves visible171->179 and full105->128 on366 development targets. Pool6 improves candidate242->282 but reduces visible hits at every matched cap. Prioritize candidate-to-window ranking (retrieval prior vs local window utility) rather than simply doubling candidates or budget. Keep module/decorator and multi-unit dynamic corrections separate. No R6 confirmation reuse, no runtime budget change, no transferred GPU/independent-admission claim.
+
+## Window research outcome
+
+Predeclared seven-arm development run is complete (R7_WINDOW_RESEARCH_RESULTS.md). At the same256 cap, ordinal retrieval prior and a same-entity window-repeat penalty improve task coverage179->197 with essentially unchanged mean tokens. The improvement is breadth: full-target only128->130 and target-line density only+0.37%. Rank-prior-only188/full137 gives a more balanced point estimate and+4.93% target-line density, but its coverage CI crosses zero. Whole short-statement proposals and no-expansion compression do not jointly improve objectives. Keep diverse6/rank6 as development comparators; next focus is coherent context retention under cross-candidate diversity. No runtime integration or independent confirmation; module/decorator/dynamic-unit proposal remains separate and unimplemented.

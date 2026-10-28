@@ -120,3 +120,11 @@ Original overly broad baseline directory grant and queue preserved; not accepted
 as complete isolation evidence. No R6 runtime/confirmation or GPU changes.
 Pool3/256 is only a next-development comparator. See R7_BUDGET_RESULTS.md and
 BUDGET_ABLATION_R7_REVIEW.json. Private per-case payloads/receipts are excluded.
+
+R7 window research completed in a separate prototype: five new rules plus two
+controls at256 tokens/max3 windows,607 development inputs. diverse6 gives
+197visible/130full vs baseline179/128 with249.76 vs246.91 mean tokens.
+rank6 gives188/137 and+4.93% target-line density; diverse6 density only+0.37%.
+Atomic/compact negative results retained. Four actual label denials,607 exact
+baseline outputs, source/cap/roundtrip checks and exit0. No R6 runtime, GPU or
+confirmation changes. See WINDOW_RESEARCH_R7_REVIEW.json and results document.

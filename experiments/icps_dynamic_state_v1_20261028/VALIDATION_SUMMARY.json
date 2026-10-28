@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Keep pool3/256 as a development comparator; improve retrieval-prior-aware window selection and separately changed-unit candidate omissions before a new freeze and independent confirmation.",
+  "current_priority": "Keep diverse6 and rank6 as bounded development candidates. Next study whether cross-candidate diversity can preserve complete context, and separately add missing changed/module/decorator units. No coefficient sweep on confirmation or automatic deployment.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -1705,5 +1705,39 @@
     "original_isolation_not_accepted": true,
     "R2_denial_paths": 3,
     "exit": 0
+  },
+  "r7_window_research": {
+    "status": "DEVELOPMENT_SIGNAL_NOT_ADMITTED",
+    "queue": "logs/window_research_r7",
+    "exit": 0,
+    "report": "reports/WINDOW_RESEARCH_R7_REVIEW.json",
+    "aggregate_SHA": "1d93b77ada88a000056948a36b8bd757cddd1b56f63633f82734049481dc6951",
+    "budget": 256,
+    "controls": [
+      "base3",
+      "base6"
+    ],
+    "visible_hits": {
+      "base3": 179,
+      "base6": 170,
+      "rank6": 188,
+      "diverse6": 197,
+      "atomic3": 166,
+      "atomic_rank6": 176,
+      "compact3": 126
+    },
+    "full_hits": {
+      "base3": 128,
+      "base6": 112,
+      "rank6": 137,
+      "diverse6": 130,
+      "atomic3": 125,
+      "atomic_rank6": 139,
+      "compact3": 41
+    },
+    "coverage_candidate": "diverse6",
+    "density_comparator": "rank6",
+    "runtime_changed": false,
+    "confirmation_used": false
   }
 }

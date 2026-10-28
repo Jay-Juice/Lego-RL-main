@@ -1,0 +1,389 @@
+{
+  "UTC": "2026-10-28T09:26:12.439819+00:00",
+  "status": "DEVELOPMENT_SIGNAL_NOT_ADMITTED",
+  "queue": "logs/window_research_r7",
+  "exit": 0,
+  "aggregate_SHA": "1d93b77ada88a000056948a36b8bd757cddd1b56f63633f82734049481dc6951",
+  "frozen_SHA": "1f5f98484d8cb2870fb469039714a7e3589c710b6ade84e456f1938a7bc9461e",
+  "inputs": 607,
+  "evaluable": 366,
+  "repositories": 77,
+  "rows": [
+    {
+      "mode": "base3",
+      "candidate_pool": 3,
+      "visible_hits": 179,
+      "visible_rate": 0.4890710382513661,
+      "full_hits": 128,
+      "mean_tokens": 246.90609555189457,
+      "target_lines_per1000_PI_tokens": 5.845800283365128,
+      "hit_tasks_per1000_PI_tokens": 1.9969432265693854,
+      "target_line_density_relative_change": 0.0,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 0,
+          "lost": 0,
+          "unchanged": 366,
+          "task_CI95": [
+            0.0,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.0
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 0,
+          "lost": 0,
+          "unchanged": 366,
+          "task_CI95": [
+            0.0,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.0
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "base6",
+      "candidate_pool": 6,
+      "visible_hits": 170,
+      "visible_rate": 0.4644808743169399,
+      "full_hits": 112,
+      "mean_tokens": 248.88467874794068,
+      "target_lines_per1000_PI_tokens": 5.116983300730524,
+      "hit_tasks_per1000_PI_tokens": 1.8788059635511642,
+      "target_line_density_relative_change": -0.12467360280995798,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.02459016393442623,
+          "gained": 21,
+          "lost": 30,
+          "unchanged": 315,
+          "task_CI95": [
+            -0.06284153005464481,
+            0.01366120218579235
+          ],
+          "repo_cluster_CI95": [
+            -0.05782312925170068,
+            0.014494071146245064
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.04371584699453552,
+          "gained": 17,
+          "lost": 33,
+          "unchanged": 316,
+          "task_CI95": [
+            -0.08196721311475409,
+            -0.00819672131147541
+          ],
+          "repo_cluster_CI95": [
+            -0.08136559238234756,
+            -0.006779088410444341
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "rank6",
+      "candidate_pool": 6,
+      "visible_hits": 188,
+      "visible_rate": 0.5136612021857924,
+      "full_hits": 137,
+      "mean_tokens": 248.5650741350906,
+      "target_lines_per1000_PI_tokens": 6.134155641765311,
+      "hit_tasks_per1000_PI_tokens": 2.0778761453186996,
+      "target_line_density_relative_change": 0.049326926070452526,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.02459016393442623,
+          "gained": 23,
+          "lost": 14,
+          "unchanged": 329,
+          "task_CI95": [
+            -0.00546448087431694,
+            0.05737704918032787
+          ],
+          "repo_cluster_CI95": [
+            -0.011204638806195124,
+            0.06594076655052268
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.02459016393442623,
+          "gained": 21,
+          "lost": 12,
+          "unchanged": 333,
+          "task_CI95": [
+            -0.00546448087431694,
+            0.0546448087431694
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.05782542746828462
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "diverse6",
+      "candidate_pool": 6,
+      "visible_hits": 197,
+      "visible_rate": 0.5382513661202186,
+      "full_hits": 130,
+      "mean_tokens": 249.76441515650743,
+      "target_lines_per1000_PI_tokens": 5.867293683319965,
+      "hit_tasks_per1000_PI_tokens": 2.1645259468427587,
+      "target_line_density_relative_change": 0.0036767249842590832,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.04918032786885246,
+          "gained": 30,
+          "lost": 12,
+          "unchanged": 324,
+          "task_CI95": [
+            0.01639344262295082,
+            0.08196721311475409
+          ],
+          "repo_cluster_CI95": [
+            0.018955110435482432,
+            0.08642343836373688
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.00546448087431694,
+          "gained": 21,
+          "lost": 19,
+          "unchanged": 326,
+          "task_CI95": [
+            -0.030054644808743168,
+            0.03825136612021858
+          ],
+          "repo_cluster_CI95": [
+            -0.026706231454005934,
+            0.03420626498718338
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "atomic3",
+      "candidate_pool": 3,
+      "visible_hits": 166,
+      "visible_rate": 0.453551912568306,
+      "full_hits": 125,
+      "mean_tokens": 242.8138385502471,
+      "target_lines_per1000_PI_tokens": 5.583042077073215,
+      "hit_tasks_per1000_PI_tokens": 1.8837093186873042,
+      "target_line_density_relative_change": -0.04494820102555008,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.03551912568306011,
+          "gained": 9,
+          "lost": 22,
+          "unchanged": 335,
+          "task_CI95": [
+            -0.06557377049180328,
+            -0.00546448087431694
+          ],
+          "repo_cluster_CI95": [
+            -0.07299555945188771,
+            0.0023489733582216245
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.00819672131147541,
+          "gained": 14,
+          "lost": 17,
+          "unchanged": 335,
+          "task_CI95": [
+            -0.03825136612021858,
+            0.02185792349726776
+          ],
+          "repo_cluster_CI95": [
+            -0.0352652244777004,
+            0.021109016160252587
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "atomic_rank6",
+      "candidate_pool": 6,
+      "visible_hits": 176,
+      "visible_rate": 0.4808743169398907,
+      "full_hits": 139,
+      "mean_tokens": 244.22734761120265,
+      "target_lines_per1000_PI_tokens": 6.181194730193106,
+      "hit_tasks_per1000_PI_tokens": 1.9852012272153041,
+      "target_line_density_relative_change": 0.05737357257694531,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.00819672131147541,
+          "gained": 25,
+          "lost": 28,
+          "unchanged": 313,
+          "task_CI95": [
+            -0.04918032786885246,
+            0.030054644808743168
+          ],
+          "repo_cluster_CI95": [
+            -0.056787277449738015,
+            0.0468758328891258
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.030054644808743168,
+          "gained": 30,
+          "lost": 19,
+          "unchanged": 317,
+          "task_CI95": [
+            -0.00819672131147541,
+            0.06557377049180328
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.06928263246034333
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "compact3",
+      "candidate_pool": 3,
+      "visible_hits": 126,
+      "visible_rate": 0.3442622950819672,
+      "full_hits": 41,
+      "mean_tokens": 76.42009884678748,
+      "target_lines_per1000_PI_tokens": 5.808980755523877,
+      "hit_tasks_per1000_PI_tokens": 4.490377761938703,
+      "target_line_density_relative_change": -0.006298458047912625,
+      "paired_vs_base3": {
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.1448087431693989,
+          "gained": 7,
+          "lost": 60,
+          "unchanged": 299,
+          "task_CI95": [
+            -0.18579234972677597,
+            -0.10382513661202186
+          ],
+          "repo_cluster_CI95": [
+            -0.1886148014914197,
+            -0.09755927712480467
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.23770491803278687,
+          "gained": 1,
+          "lost": 88,
+          "unchanged": 277,
+          "task_CI95": [
+            -0.2814207650273224,
+            -0.19398907103825136
+          ],
+          "repo_cluster_CI95": [
+            -0.2857142857142857,
+            -0.19873383092086397
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    }
+  ],
+  "best_coverage_development_candidate": "diverse6",
+  "balanced_development_comparator": "rank6",
+  "conclusions": [
+    "diverse6 adds18 net tasks at nearly unchanged tokens:179->197,48.91%->53.83%,mean246.91->249.76;30gained/12lost; exploratory repoCI+1.90 to+8.64pp.",
+    "Coverage diversity trades depth: full-target128->130 only; target-line density+0.37%, while hit-task density+8.39%. Do not call this a large target-line density improvement.",
+    "rank6 adds9 task hits and9 full hits:188/137; target-line density+4.93%; coverage repoCI crosses zero, so it remains an exploratory comparator.",
+    "atomic3 loses coverage; atomic_rank6 raises full-target/density but reduces task coverage. Complete statements alone do not solve window selection.",
+    "compact3 averages76.42 tokens but loses53 task hits and87 full targets. A high hit-task-per-token ratio or source-line precision must not override severe recall/context loss."
+  ],
+  "next": "Keep diverse6 and rank6 as bounded development candidates. Next study whether cross-candidate diversity can preserve complete context, and separately add missing changed/module/decorator units. No coefficient sweep on confirmation or automatic deployment.",
+  "validation": {
+    "local_byte_synthetic_checks": 15,
+    "complete_multiline_and_docstring_exclusion": true,
+    "actual_Qwen_inputs": 607,
+    "all_baseline_outputs_exact": true,
+    "actual_Landlock_denial_paths_per_shard": 4,
+    "shards": 4,
+    "frozen_before_scores": true,
+    "source_roundtrip_coordinates_and_nonoverlap_checked": true,
+    "frozen7_exact": true
+  },
+  "limitations": [
+    "All607 inputs previously seen; development comparisons and winner selection, not independent confirmation.",
+    "Exploratory bootstrap intervals are not adjusted for five-variant selection.",
+    "Density uses verified source-location labels only in scorer; not semantic usefulness, Critic learning or RL benefit.",
+    "Token means cover607; density and coverage cover identical366 exact-mapped tasks.",
+    "Controls reuse cached serialization; their timing is not comparable to newly executed variants.",
+    "No W0 runtime integration, dynamic update or episode budget experiment; no new GPU/model update."
+  ],
+  "runtime_modified": false,
+  "confirmation_used": false,
+  "independent_confirmation_status": "not_run",
+  "training_admitted": false
+}
