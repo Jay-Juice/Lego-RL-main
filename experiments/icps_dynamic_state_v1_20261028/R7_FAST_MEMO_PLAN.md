@@ -1,0 +1,9 @@
+# Lossless constructor memoization follow-up
+
+Declared while the seven-arm fast allocation experiment is still generating, before quality scoring. Source inspection shows repeated splitting of the same file, repeated term extraction for the same proposal and repeated rendering/cost lookup of the unchanged chosen list during expansion. Cache lines/terms only within one invocation and hoist unchanged costs. No new selection rule, budget, score, retrieval or neural inference.
+
+Predeclared replay arms fast768_8 and fast1024_12 cover the practical breadth option and the highest-cost option. Require exact entire output dictionaries versus the completed frozen fast study for every607source-only input at both arms; any mismatch fails, no relaxed equivalence. Four local/Linux synthetic contracts include source edit invalidation and no module-global mutation. Frozen R6 unchanged.
+
+Run only after the preceding607x7generation receipt is complete and source-bound. Per-file grants to the frozen outputs and original source captures; no score/label access. All607replays get fresh tokenizer caches. For timing, use first64metadata-sorted input IDs selected without labels, measuring BOTH original fast and memo implementations sequentially in rotated order within the same worker, independent caches. This is a fixed benchmark subset, not quality-selected. Compare wall mean/median/P95 and paired ratios; repeat no tasks for statistical cherry-picking. Four-worker contention remains; no production latency claim. Quality counts may be inherited only when all607byte-exact replays pass; this is not new independent quality evidence.
+
+No per-case output download. Export aggregate replay counts/timing/source hashes only. No runtime integration, GPU/model/optimizer/training, or global cache lifetime. Windows authority, WSL preview/sync/SHA. Preserve any failure and use a new queue for repair.

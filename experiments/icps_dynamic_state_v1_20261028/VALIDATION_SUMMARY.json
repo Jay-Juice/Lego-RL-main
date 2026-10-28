@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Improve issue/code relevance rather than blanket rank-prior removal or diversity constraints; no runtime promotion. No active jobs.",
+  "current_priority": "Evaluate low-cost final-window allocation with coverage/completeness/density and actual constructor cost; no deployed change. See latest fast allocation review. No active jobs.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -2218,5 +2218,281 @@
       "LOSS_DECOMPOSITION.json": "a83e83463e360453cf16b97b4f5b3579272819a12565cfe9b861d7e5963c7c0b"
     },
     "report": "R7_ENTITY_ALLOCATION_RESULTS.md"
+  },
+  "r7_fast_allocation": {
+    "UTC": "2026-10-28T16:45:02.543650+00:00",
+    "status": "COMPLETE_DEVELOPMENT_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control512_6": {
+        "any_hits": 237,
+        "full_all": 171,
+        "tokens": 506.00329489291596,
+        "density": 3.848232623500162,
+        "wall_mean": 1.3232380714776881,
+        "wall_median": 1.2894900925457478,
+        "wall_p95": 2.2329192675650114,
+        "cpu_mean": 1.32314332683196
+      },
+      "control768_6": {
+        "any_hits": 251,
+        "full_all": 212,
+        "tokens": 744.8583196046128,
+        "density": 3.1793749562513587,
+        "wall_mean": 1.601592168752012,
+        "wall_median": 1.5753618143498898,
+        "wall_p95": 2.7056650258600703,
+        "cpu_mean": 1.6014711932965413
+      },
+      "fast512_6": {
+        "any_hits": 237,
+        "full_all": 171,
+        "tokens": 506.00329489291596,
+        "density": 3.848232623500162,
+        "wall_mean": 0.675306795186423,
+        "wall_median": 0.6385226398706436,
+        "wall_p95": 1.2074439596384758,
+        "cpu_mean": 0.6752642650098862
+      },
+      "fast768_6": {
+        "any_hits": 251,
+        "full_all": 212,
+        "tokens": 744.8583196046128,
+        "density": 3.1793749562513587,
+        "wall_mean": 0.9573422424262006,
+        "wall_median": 0.9438253119587898,
+        "wall_p95": 1.6127245157957075,
+        "cpu_mean": 0.9572764960082372
+      },
+      "fast768_8": {
+        "any_hits": 261,
+        "full_all": 208,
+        "tokens": 758.0461285008237,
+        "density": 3.0315293505517458,
+        "wall_mean": 1.179071983129179,
+        "wall_median": 1.1706124693155289,
+        "wall_p95": 1.8875956710428,
+        "cpu_mean": 1.1789843474810555
+      },
+      "fast1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.6448764217007887,
+        "wall_median": 1.6721939407289028,
+        "wall_p95": 2.6694826476275915,
+        "cpu_mean": 1.6447540236754514
+      },
+      "fast1024_12": {
+        "any_hits": 272,
+        "full_all": 214,
+        "tokens": 1016.3574958813839,
+        "density": 2.3684437171647574,
+        "wall_mean": 2.31708684688836,
+        "wall_median": 2.3795169107615948,
+        "wall_p95": 3.617346883937716,
+        "cpu_mean": 2.316924136291591
+      }
+    },
+    "interpretation": "The best practical coverage/depth point in this study is fast1024_8:272/366=74.32%any and238/366=65.03%full-all, versus prior768/6control251/366=68.58% and212/366=57.92%. It gains22any tasks and loses1 (+5.74pp, exploratory repo95%CI[+3.09,+8.43]pp), and gains29full tasks/loses3 (+7.10pp,CI[+4.09,+9.73]pp). Mean construction time1.602→1.645s (+2.70%), median1.575→1.672s (+6.15%), P952.706→2.669s. The paired per-task median time ratio is1.029. This is a coverage improvement with a small mean constructor-time increase relative to the previous768/6development baseline, not proof of equal production training cost.\n\nThe tradeoff remains substantial in tokens/density: mean744.86→998.57tokens (+34.06%), visible target lines863→935, but density3.179→2.574target lines/1000PI tokens (-19.05%). Candidate recall stays343/366=93.72%; candidate-to-final conversion reaches272/343=79.30%. Thus more code improves final coverage/depth without a large mean construction penalty, but it is not a joint information-density improvement, near100% result or a deployed1024budget.\n\nAt unchanged budgets/window counts, fast512_6 and fast768_6 preserve all measured any/full per-task hit decisions and aggregate target-line/token counts. Mean construction time falls1.323→0.675s (512) and1.602→0.957s (768); medians1.289→0.639s and1.575→0.944s. Mean tokenizer misses2322→880 and2508→1066. The approximate shortlist is empirically adequate on this development cohort; no universal BPE/output-equivalence guarantee follows from equal coverage metrics.\n\nfast768_8 reaches261any/208full with1.179s mean, but versus768/6the any gain10has repoCI[-0.32,+5.69]pp crossing0; full declines4 and density3.179→3.032. Keep only a lower-construction-cost breadth comparator. fast1024_12 also has272any but only214full, density2.368 and2.317s mean. It is worse than1024/8 on aggregate completeness, density and time despite the same any count, so reject12slots as the practical choice. Equal any counts do not imply equal hit sets (27gained6lost vs768control for12slots,22gained1lost for8slots).\n\nLoss diagnosis explains the breadth/depth balance:768/6leaves66no-target-entity and26wrong-region misses;1024/8leaves45and26;1024/12leaves34and37. More slots reach additional entities but spread context thinner.23tasks remain outside the fixed candidate pool in every arm. Retain retrieval prior, moderate breadth and adequate context together; do not keep increasing slots blindly. Source-line integrity is preserved, while semantic completeness remains unproven.\n\nRecommendation is a separate development candidate: fast1024/8for coverage/depth with near-baseline mean constructor time; fast768/6when preserving the prior token/density point and reducing constructor cost is more important. Both require fresh independent confirmation, dynamic/episode integration and actual Critic/training-cost measurement before deployment. Runtime192/128/4096, frozenR6 and training entry stay unchanged. No additional repository search or neural reranker is introduced; initial retrieval cost is excluded rather than claimed free.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "queue_exit": 0,
+    "control_replays_each": 607,
+    "label_denials_per_shard": 13,
+    "fresh_cache_per_arm": true,
+    "rotated_order": true,
+    "no_new_retrieval": true,
+    "live_training_latency_measured": false,
+    "GPU_model_optimizer_training": false,
+    "frozen_runtime_changed": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "8454998af70b1666c9f975c4e78a8c2ee88e20b8de53f10547338bc402e4b71f",
+      "FROZEN.json": "88641985551f5f05c68cca51c0b3a1160c719512c84c8bea0583da7ccf4bf42e",
+      "LOSS_DECOMPOSITION.json": "a72df8b2bd6750999bcb6d6a8b3f327e02984a1651102875e0e28ef7d99d5baf"
+    },
+    "report": "R7_FAST_ALLOCATION_RESULTS.md"
+  },
+  "r7_fast_memo": {
+    "report": "R7_FAST_MEMO_RESULTS.md",
+    "aggregate_SHA": "5eba17b8a9a459504551601144741e7ef997dd4e89bbb6ebeb37f632a58175ae",
+    "exact_each": 607,
+    "benchmark_each": 64,
+    "source_only": true,
+    "contracts_local": 4,
+    "contracts_Linux": 4,
+    "queue_exit": 0,
+    "timing": {
+      "fast768_8": {
+        "old": {
+          "wall": {
+            "n": 64,
+            "mean": 1.0621985995676368,
+            "median": 1.0465124901384115,
+            "p95": 1.7136611081659794,
+            "max": 2.2868145257234573
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 1.062132243109375,
+            "median": 1.0464230034999993,
+            "p95": 1.7135812300000026,
+            "max": 2.2864074619999997
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 4647.1875,
+            "median": 4887.5,
+            "p95": 6650,
+            "max": 8381
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1182.640625,
+            "median": 1229.0,
+            "p95": 1747,
+            "max": 1790
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 1338538.609375,
+            "median": 1377048.0,
+            "p95": 2195249,
+            "max": 2398164
+          }
+        },
+        "new": {
+          "wall": {
+            "n": 64,
+            "mean": 0.944106588663999,
+            "median": 0.9368320927023888,
+            "p95": 1.4544034153223038,
+            "max": 2.008923515677452
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 0.9440371982187508,
+            "median": 0.9367148960000016,
+            "p95": 1.4542951939999966,
+            "max": 2.0088743889999954
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 3620.515625,
+            "median": 3808.5,
+            "p95": 5359,
+            "max": 7325
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1182.640625,
+            "median": 1229.0,
+            "p95": 1747,
+            "max": 1790
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 1338538.609375,
+            "median": 1377048.0,
+            "p95": 2195249,
+            "max": 2398164
+          }
+        },
+        "paired_wall_ratio": {
+          "n": 64,
+          "mean": 0.8955365271948218,
+          "median": 0.8851683872755243,
+          "p95": 1.021225951247572,
+          "max": 1.2358620179100805
+        }
+      },
+      "fast1024_12": {
+        "old": {
+          "wall": {
+            "n": 64,
+            "mean": 2.064668928447645,
+            "median": 2.051724059507251,
+            "p95": 3.6822249479591846,
+            "max": 4.041851472109556
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 2.064525162453125,
+            "median": 2.051707813,
+            "p95": 3.681945665999997,
+            "max": 4.0418016859999994
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 7334.125,
+            "median": 7807.0,
+            "p95": 11252,
+            "max": 13538
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1708.484375,
+            "median": 1777.5,
+            "p95": 2539,
+            "max": 2853
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 3202223.390625,
+            "median": 3182019.0,
+            "p95": 5353190,
+            "max": 6107774
+          }
+        },
+        "new": {
+          "wall": {
+            "n": 64,
+            "mean": 1.8306742502609268,
+            "median": 1.830201093107462,
+            "p95": 3.24910868704319,
+            "max": 3.4857718013226986
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 1.830541567140625,
+            "median": 1.8299277635000024,
+            "p95": 3.249042631000002,
+            "max": 3.485708260999999
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 5412.5,
+            "median": 5717.5,
+            "p95": 8122,
+            "max": 11199
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1708.484375,
+            "median": 1777.5,
+            "p95": 2539,
+            "max": 2853
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 3202223.390625,
+            "median": 3182019.0,
+            "p95": 5353190,
+            "max": 6107774
+          }
+        },
+        "paired_wall_ratio": {
+          "n": 64,
+          "mean": 0.8887100964439789,
+          "median": 0.892428120355031,
+          "p95": 0.9658558435451476,
+          "max": 1.0325001597569863
+        }
+      }
+    }
   }
 }

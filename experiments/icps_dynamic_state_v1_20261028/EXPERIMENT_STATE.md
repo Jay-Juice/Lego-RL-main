@@ -1,6 +1,26 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: low-cost allocation and expanded-budget experiment complete
+
+The best practical coverage/depth point in this study is fast1024_8:272/366=74.32%any and238/366=65.03%full-all, versus prior768/6control251/366=68.58% and212/366=57.92%. It gains22any tasks and loses1 (+5.74pp, exploratory repo95%CI[+3.09,+8.43]pp), and gains29full tasks/loses3 (+7.10pp,CI[+4.09,+9.73]pp). Mean construction time1.602→1.645s (+2.70%), median1.575→1.672s (+6.15%), P952.706→2.669s. The paired per-task median time ratio is1.029. This is a coverage improvement with a small mean constructor-time increase relative to the previous768/6development baseline, not proof of equal production training cost.
+
+The tradeoff remains substantial in tokens/density: mean744.86→998.57tokens (+34.06%), visible target lines863→935, but density3.179→2.574target lines/1000PI tokens (-19.05%). Candidate recall stays343/366=93.72%; candidate-to-final conversion reaches272/343=79.30%. Thus more code improves final coverage/depth without a large mean construction penalty, but it is not a joint information-density improvement, near100% result or a deployed1024budget.
+
+At unchanged budgets/window counts, fast512_6 and fast768_6 preserve all measured any/full per-task hit decisions and aggregate target-line/token counts. Mean construction time falls1.323→0.675s (512) and1.602→0.957s (768); medians1.289→0.639s and1.575→0.944s. Mean tokenizer misses2322→880 and2508→1066. The approximate shortlist is empirically adequate on this development cohort; no universal BPE/output-equivalence guarantee follows from equal coverage metrics.
+
+fast768_8 reaches261any/208full with1.179s mean, but versus768/6the any gain10has repoCI[-0.32,+5.69]pp crossing0; full declines4 and density3.179→3.032. Keep only a lower-construction-cost breadth comparator. fast1024_12 also has272any but only214full, density2.368 and2.317s mean. It is worse than1024/8 on aggregate completeness, density and time despite the same any count, so reject12slots as the practical choice. Equal any counts do not imply equal hit sets (27gained6lost vs768control for12slots,22gained1lost for8slots).
+
+Loss diagnosis explains the breadth/depth balance:768/6leaves66no-target-entity and26wrong-region misses;1024/8leaves45and26;1024/12leaves34and37. More slots reach additional entities but spread context thinner.23tasks remain outside the fixed candidate pool in every arm. Retain retrieval prior, moderate breadth and adequate context together; do not keep increasing slots blindly. Source-line integrity is preserved, while semantic completeness remains unproven.
+
+Recommendation is a separate development candidate: fast1024/8for coverage/depth with near-baseline mean constructor time; fast768/6when preserving the prior token/density point and reducing constructor cost is more important. Both require fresh independent confirmation, dynamic/episode integration and actual Critic/training-cost measurement before deployment. Runtime192/128/4096, frozenR6 and training entry stay unchanged. No additional repository search or neural reranker is introduced; initial retrieval cost is excluded rather than claimed free.
+
+Sevenarms607seen/366exactmapped/77repos,candidate343fixed;7local+7Linuxcontracts,607exactcontrols EACH512/768,13Landlockdenials/shard,freeze-before-score/diagnosticexit0. Fresh cache perarm, rotated order; timing is offline constructor only, not live training/Critic overhead. Frozen7/runtime/R6confirmation unchanged,noGPU/model/optimizer/training/noactivejobs. SeeR7_FAST_ALLOCATION_RESULTS.md; aggregateSHA 8454998af70b1666c9f975c4e78a8c2ee88e20b8de53f10547338bc402e4b71f.
+
+### Exact local memoization follow-up
+
+fast768_8 and fast1024_12 each replay all607frozen outputs exactly;4local+4Linuxcontracts,14Landlockdenials/shard,queueexit0. Fixed64metadata-sorted inputs provide paired timings with separate caches/alternating order; see R7_FAST_MEMO_RESULTS.md. No new quality evidence and no silent transfer of these timings to recommended1024/8 (not a memo replay arm). No runtime/GPU/training change. AggregateSHA 5eba17b8a9a459504551601144741e7ef997dd4e89bbb6ebeb37f632a58175ae.
+
 ## Latest R7: fixed-budget rank and entity allocation completed
 
 No new arm improves final coverage, completeness or density. Reject all four interventions as replacements; retain the exact512/6control (237/366=64.75%any,171/366=46.72%full-all). The previous768/6historical result251/366=68.58% remains the best observed breadth point at higher cost, not a same-budget comparison or new result.
