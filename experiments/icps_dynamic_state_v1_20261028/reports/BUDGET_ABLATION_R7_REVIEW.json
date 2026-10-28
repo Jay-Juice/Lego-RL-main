@@ -234,5 +234,14 @@
     "GPU_runs": 0,
     "optimizer_updates": 0,
     "training_admitted": false
+  },
+  "replay_check": {
+    "original_queue_exit": 0,
+    "accepted_queue_exit": 0,
+    "inputs": 607,
+    "serialized_payloads_exact": 3642,
+    "timing_fields_excluded": true,
+    "private_rows_exported": false,
+    "note": "Original queue finished naturally. Original sandbox scope remains unaccepted; all six per-case serialized outputs equal strict R2."
   }
 }
