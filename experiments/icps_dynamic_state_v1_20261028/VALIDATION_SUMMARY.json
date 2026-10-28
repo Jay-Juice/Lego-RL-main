@@ -58,23 +58,24 @@
   "remote_final_queue_exit": 0,
   "model_or_optimizer_updates": 0,
   "blockers": [
-    "Reviewed producer/private Ray lifecycle and complete manifests",
-    "Transitive source and head origin review",
+    "Closed native/shared/lazy dependency policy and reviewed receipt producer/consumer integration",
+    "Actual private Ray lifecycle acceptance",
     "Original disk reserve deficit",
     "Actual native eight-GPU updates and rank evidence",
-    "Formal full assets/fresh launch gates"
+    "Formal full prepared-data/image and unique freshbase gates"
   ],
   "preserved_failures": [
     "r1 all3 allocations reduced primary coverage",
     "r2 byte-token status budget test initially failed before fix",
     "constructed r1 added file exceeded source capacity; no bound relaxed",
-    "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed"
+    "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed",
+    "Offline-asset local Windows strict Path.resolve temporary-directory PermissionErrors (8 errors/11 tests, 1 skipped); Linux R1 11 and R2 12 pass. No local full-suite pass."
   ],
   "next": [
-    "Implement reviewed receipt producer, complete native/offline-asset manifest policy and private short Ray lifecycle/race controls.",
-    "Complete transitive source and actual native-head-origin review; thirteen exact files are not whole-source proof.",
-    "Only after fresh original resource gates pass, execute disposable eight-GPU updates and collect actual before/after rank evidence.",
-    "Formal full prepared-data/image and unique freshbase entry remain separate final gates."
+    "Close exact native/shared-package/lazy-vLLM/Python/native-library source policy using observed origins and whole critical trees.",
+    "Integrate reviewed source and asset policies with producer/consumer, binding real evidence and the checked private config/environment; never fabricate review booleans.",
+    "Validate actual private Ray startup/teardown under required gates, then disposable eight-rank updates only after fresh original resources.",
+    "Formal prepared-data/image and unique freshbase entry remain separate gates."
   ],
   "r4_hits": {
     "S1": 129,
@@ -1524,6 +1525,63 @@
       "Build closed manifest coverage for lazy shared native packages and offline model/tokenizer/data identities; observed imports alone are insufficient.",
       "Extend consumer allowed roots only with reviewed exact dependency policy and missing/extra/path/symlink negatives.",
       "Finish producer environment/evidence binding and actual private Ray lifecycle acceptance before any GPU admission."
+    ]
+  },
+  "gpu_offline_assets_r6_review": {
+    "UTC": "2026-10-28T05:10:10.614563+00:00",
+    "status": "OFFLINE_ASSETS_REVIEWED_COMPONENT_NOT_LAUNCH_ADMISSION",
+    "remote_exit": 0,
+    "remote_queue": "logs/gpu_offline_assets_r6_contracts_r2",
+    "report_SHA": "b09693d5837f2ecec61a74f8a3eb0bd1fe864b1326a134dba86c6d80af62716f",
+    "CPU_contracts": 12,
+    "actual_assets": {
+      "file_count": 18,
+      "shard_count": 4,
+      "tensor_count": 775,
+      "tensor_bytes": 19306216416,
+      "parquet_envelope_only": true,
+      "training_admitted": false
+    },
+    "asset_manifest_SHA": "850361941c94b02d7854e989684b4c1e299c8c69e1b3ef0fcdefa3970d24a3c9",
+    "policy": {
+      "model_top_level_exact_files": 16,
+      "dataset_exact_files": 2,
+      "cache_excluded": ".cache (canonical real directory only; no loader executes)",
+      "config_paths": "Exact actor/critic base path and original train/validation parquet paths from pinned complete Hydra reference",
+      "headers": "Bounded duplicate-key-rejecting JSON; exact index/shard/tensor mapping; dtype/shape/byte offsets; contiguous layout and full size; index total_size",
+      "hashing": "SHA256 of all 18 files; metadata bytes and entire inspection/hash pass identity checked; missing/extra/symlink/hash/mid-pass mutation rejected",
+      "scope": "Current offline identity, not historical package identity, model inference or full formal task/image admission"
+    },
+    "preserved_attempts": {
+      "remote_R1": "11 Linux contracts and actual assets passed; source archived before snapshot strengthening. Its manifest binds the archived earlier source.",
+      "local_Windows": "exit1: 8 PermissionErrors from strict Path.resolve on workspace temp subdirectories, 2 tests passed and 1 Linux symlink test skipped; not a local suite pass. No permission changes.",
+      "transfer": "One rsync executable path typo failed before transfer (0 bytes); corrected and SHA verified."
+    },
+    "lazy_vllm_origin": {
+      "observed_finder": "__editable___vllm_0_19_1_dev0_g2a69949bd_d20260920_cu124_finder.py",
+      "mapping": "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/vllm/vllm",
+      "method": "Read installed finder source without executing vLLM; whole lazy/native dependency coverage still pending"
+    },
+    "unchanged": [
+      "frozen seven generators",
+      "runtime overlay",
+      "probe",
+      "receipt consumer",
+      "private Ray lease",
+      "private config component",
+      "old 35 sources"
+    ],
+    "consumer_integrated": false,
+    "production_receipt_created": false,
+    "Ray_started": false,
+    "GPU_started": false,
+    "model_or_optimizer_updates": 0,
+    "training_admitted": false,
+    "next": [
+      "Close exact native/shared-package/lazy-vLLM/Python/native-library source policy using observed origins and whole critical trees.",
+      "Integrate reviewed source and asset policies with producer/consumer, binding real evidence and the checked private config/environment; never fabricate review booleans.",
+      "Validate actual private Ray startup/teardown under required gates, then disposable eight-rank updates only after fresh original resources.",
+      "Formal prepared-data/image and unique freshbase entry remain separate gates."
     ]
   }
 }

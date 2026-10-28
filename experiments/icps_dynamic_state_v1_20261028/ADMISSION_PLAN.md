@@ -33,3 +33,16 @@ Windows独立源备份后修改，WSL rsync预览审阅、sync、SHA。共享ven
 GitHub新分支codex/icps-dynamic-state-20261028，从当前已归档ICPS commit823ac02建立独立worktree。仅提交审核后的源码、聚合报告和方案，不上传模型/数据/日志/原始轨迹/私有评分证据。旧分支与main不改。
 
 本线程heartbeat初始30分钟；短CPU阶段可调整15–30分钟，长GPU/训练阶段按实测耗时改30–120分钟。每次先读本状态/验证报告/最新证据；健康或无变化静默，只有阶段完成、失败、需用户操作时通知。准入全部通过后启动一次正式训练，不重复健康任务；完成或无法安全继续时报告并结束相应监控。
+
+Offline asset preparation (2026-10-28): twelve Linux CPU contracts and readonly
+hashing of 18 actual cached files pass. Four safetensors shards/775 tensor headers
+match the exact index/layout/total bytes; tokenizer/chat template/config and the
+two original parquet identities are bound. Parquet rows/labels were not read.
+The entire inspection/hash pass rejects metadata/file-set drift, symlinks and
+mid-pass mutations. First eleven-contract Linux pass is preserved before this
+strengthening; local Windows strict-resolve permission errors are not a pass.
+See GPU_OFFLINE_ASSETS_R6_CONTRACTS_R2.json and GPU_OFFLINE_ASSETS_R6_REVIEW.json.
+The private manifest remains remote. This new component is not yet integrated
+with the receipt consumer. Native/shared/lazy dependency policy, reviewed producer
+and real Ray/GPU acceptance remain pending; no admission or GPU update occurred.
+The current five-input GPU_OFFLINE_ASSETS_R6_CONTRACTS.sha256 binds the R2 source.

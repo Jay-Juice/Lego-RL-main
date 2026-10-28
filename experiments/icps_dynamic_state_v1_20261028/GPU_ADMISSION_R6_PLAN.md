@@ -112,3 +112,16 @@ is a lower bound, not complete lazy/native dependency coverage. No whole-source
 launch approval, Ray/CUDA initialization or GPU update was issued. See
 GPU_NATIVE_INVENTORY_R6.json and GPU_NATIVE_SOURCE_R6_REVIEW.json. Complete manifest
 policy, producer/environment and actual Ray lifecycle remain pending.
+
+Offline asset preparation (2026-10-28): twelve Linux CPU contracts and readonly
+hashing of 18 actual cached files pass. Four safetensors shards/775 tensor headers
+match the exact index/layout/total bytes; tokenizer/chat template/config and the
+two original parquet identities are bound. Parquet rows/labels were not read.
+The entire inspection/hash pass rejects metadata/file-set drift, symlinks and
+mid-pass mutations. First eleven-contract Linux pass is preserved before this
+strengthening; local Windows strict-resolve permission errors are not a pass.
+See GPU_OFFLINE_ASSETS_R6_CONTRACTS_R2.json and GPU_OFFLINE_ASSETS_R6_REVIEW.json.
+The private manifest remains remote. This new component is not yet integrated
+with the receipt consumer. Native/shared/lazy dependency policy, reviewed producer
+and real Ray/GPU acceptance remain pending; no admission or GPU update occurred.
+The current five-input GPU_OFFLINE_ASSETS_R6_CONTRACTS.sha256 binds the R2 source.

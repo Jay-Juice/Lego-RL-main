@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：离线模型/tokenizer/数据身份组件通过；依赖policy与producer仍pending
+
+2026-10-28 logs/gpu_offline_assets_r6_contracts_r2 exit0：12项Linux CPU契约通过。只读检查真实cached Qwen3.5-9B的16个顶层文件及2个原始parquet，共18个文件SHA；4个safetensors分片的775个tensor header与index逐项一致，tensor bytes19306216416。严格绑定原Hydra中的actor/critic模型与train/val路径，检查完整文件集合、tokenizer/chat template、index/shard映射、shape/dtype/offset/总长度、重复JSON key、symlink、hash和跨检查/哈希阶段文件变化。未加载模型、未解析parquet行或读取标签；数据只做封装与字节身份检查。私有manifest留远端，公开报告只有aggregate与manifest SHA850361941c94b02d7854e989684b4c1e299c8c69e1b3ef0fcdefa3970d24a3c9。
+
+原R1的11项Linux契约与实际资产检查也exit0，随后补充跨header检查与hash间变更负例，archive/r6_offline_assets_snapshot_strengthening保存旧源/清单，R2重新hash所得资产身份相同。本地Windows首次11项测试有8个strict Path.resolve临时目录PermissionError、1个Linux symlink跳过，只算2项通过，完整失败摘要保存在archive/r6_before_offline_assets；没有修改系统权限。一次rsync执行路径拼写错误在传输前失败，纠正后四文件preview/sync/SHA与bash syntax通过。
+
+新src/gpu_offline_assets_r6.py是准备组件，尚未接入consumer或创建production receipt。冻结7源、旧35源exact，runtime/probe/gate/Ray/config未改。实际vLLM editable finder只读确认指向B/third_party/vllm/vllm，lazy全树及共享native依赖策略仍未闭合。当前资产hash不是历史binary一致性或正式6248任务/镜像身份准入。Ray/GPU/optimizer均未启动；资源原门槛和训练exit78保持，没有重复磁盘轮询或通知。
+
+下一步：闭合共享native包、lazy vLLM、Python及native库清单策略，再将真实review证据/已验证资产组件接入producer和consumer；补完整私有环境与实际Ray生命周期。配置组件无需重复compose，既有覆盖/proxy/Harbor无需重跑。只有所有准备与新鲜原始资源门槛通过后才执行八rank短更新，正式训练准入另行完成。
+
 ## 最新：原生源码树与实际head来源已盘点，完整dependency policy仍待补齐
 
 2026-10-28 logs/gpu_native_inventory_r6 exit0：CPU仅导入native trainer/worker/engine/loss/reward/filter和head类，未构建模型/worker、未初始化Ray/CUDA、optimizer step0。对R/src、R/third_party/verl/verl、R/third_party/harbor/src全部633个Python/YAML文件与当前SAO B对应树比较：614相同，6个既有文件修改、13个PI helper/历史诊断新增。19个差异已列出，6份既有文件的完整diff已阅读；新增诊断不执行。padding只有PI gather dispatch，Harbor trial只有可选PI初始化，builtin loop传递PI记录与错误；其余provider/proxy/trainer为既有PI/持久化修改，实际路径还受N overlay约束。不是把19个差异忽略后声称全源一致。
