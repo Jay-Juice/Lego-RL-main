@@ -1,0 +1,55 @@
+{
+  "UTC": "2026-10-28T15:47:11.154183+00:00",
+  "arms": {
+    "control512": [
+      "passage24",
+      512
+    ],
+    "flat512": [
+      "passage24",
+      512
+    ],
+    "unique512": [
+      "passage24",
+      512
+    ],
+    "unique_flat512": [
+      "passage24",
+      512
+    ],
+    "anchor2_flat512": [
+      "passage24",
+      512
+    ]
+  },
+  "matching_controls": {
+    "control512": "control512",
+    "flat512": "control512",
+    "unique512": "control512",
+    "unique_flat512": "control512",
+    "anchor2_flat512": "control512"
+  },
+  "source_SHA": {
+    "src/capacity_allocation_r7.py": "8c70ec27bf0d01bb2cee79ab28d6cc0ae16d5435b78306f9354def8db806025e",
+    "validation/entity_loss_diagnostic_r7.py": "6ec49d7413bb85761a78f75dc3cd07d1c71e0827a8d08499d8bb3853de9690fe",
+    "src/entity_allocation_r7.py": "fe1c3946eb9dcf12dddec92cb08a76d399fa3132c45135cc781972eb64e9f4f0",
+    "src/joint_windows_r7.py": "e285838b0cf826b1670d9a2552270de03598a8a172db170cd8e5a60f4a299d36",
+    "src/window_research_r7.py": "227b7b6ba1f4acdd110a6fed2b3cf2cfb34f7b18a3eab6cd63b7b4c130a6a6ea",
+    "src/budget_ablation_r7.py": "445f51d704fe390be1413f5e48fa5aed3f8cb4df54bc592cf6002b867a923fb6",
+    "validation/entity_allocation_r7.py": "8b3de066eb234ba9da8e601b6833f1f44fe3f5ca3028ad17e04311920d700280",
+    "validation/entity_allocation_r7_contracts.py": "5b46d78002ffcede0b50443bb87f72ca2dd5b67990f38a2223e22a2ebb2666e3",
+    "validation/development.py": "c158079c4de5caeb7b0984db8a41d036a2b3b530d37106fe7c3b94fc5922181f",
+    "validation/landlock.py": "ea63dcb314f8e5795aac9af0e15c91a4437bdbd5d0d472823dc6e7b129df6e2a",
+    "R7_ENTITY_ALLOCATION_PLAN.md": "8e1506dbc7d5e0a8958a1f94ffc54756a4d2190ef010b1cb4500f8d438698f08",
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "src/rank_windows_r6.py": "6a9f55845e3dfcf8909fa5d423554fe0a11ed44c0c27f943251962016715954f",
+    "src/dynamic_session_r6_r2.py": "2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93"
+  },
+  "input_SHA": "98097627c24b76148c5d42fe9b785d5d02285840334f2bb905faf5c2c6e12da6",
+  "baseline_receipt_SHA": "8c68b28a022461670e3e2e573524ebe890a901b49daa6c8804ac39c56c8fb229",
+  "confirmation_used": false
+}

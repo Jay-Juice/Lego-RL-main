@@ -163,3 +163,17 @@ Append original256finalwindows reaches236/166at512,245/180at768,zeroany/fullloss
 
 
 Track only newcapacitysources/plans/publicreports and the scorer-onlyeligibilityrepair; private frozen generation andscoresstayremote.
+
+## Latest R7: fixed-budget rank and entity allocation completed
+
+No new arm improves final coverage, completeness or density. Reject all four interventions as replacements; retain the exact512/6control (237/366=64.75%any,171/366=46.72%full-all). The previous768/6historical result251/366=68.58% remains the best observed breadth point at higher cost, not a same-budget comparison or new result.
+
+Removing the seed-selection candidate-rank penalty reduces237→182any and171→139full-all,14gained69lost,any delta-15.03pp with exploratory repo95%CI[-19.61,-9.82]pp. Mean tokens506.00→503.85 are nearly unchanged; density3.848→2.942. Combining removal with hard diversity gives the same target counts. The candidate rank prior carries useful information under this scorer; removing it makes no-target-entity misses66→137. This intervention does not prove the prior is optimally calibrated, or isolate which remaining content-score term is weak.
+
+Hard entity diversity raises mean distinct entities5.532→6.000 and lowers no-target-entity misses66→60, but wrong-region misses40→48. Finalany237→235(3gained5lost;repoCI[-2.46,+1.51]pp),full171→164(4gained11lost),density3.848→3.752. Selecting additional entities alone does not ensure the correct lines survive within their windows. Aggregate categories are descriptive; they do not establish that every displaced context caused a particular miss.
+
+Keeping original rank scoring for the first2seeds before flattening later selections reaches208any/150full,13gained42lost,anyCI[-12.83,-2.92]pp; it also fails. This protects seed choices only, not the final context or hits after shared-budget expansion. Do not promote any of these variants or widen the budget to disguise the loss.
+
+Together with the previous budget/slot experiment, the evidence points to a relevance and allocation problem as well as a budget tradeoff: extra budget improves depth, extra slots improve breadth, but indiscriminate diversity or rank flattening hurts. The next distinct research axis is issue-conditioned semantic/behavioral relevance for entity AND within-entity region, retaining the useful retrieval prior and exact source rendering. It should be predeclared and evaluated on repository-separated development before fresh independent confirmation. No semantic reranker is implemented here, and no claim of approaching100% or semantic/RL benefit is supported.
+
+Five512/6arms,607seen development/366exactmapped/77repos,candidate343fixed.7local+7Linuxcontracts,607exactcontrolreplays,12Landlockdenials/shard; alloutputs frozenbeforelabels,score+diagnosticexit0. Frozen7/runtime/R6confirmation unchanged,noGPU/model/optimizer/training/noactivejob. See R7_ENTITY_ALLOCATION_RESULTS.md. AggregateSHA 888113e3970289245208dbdb5c74a93f0929f9b4124332e86ee91b440b9c6e39.
