@@ -1,0 +1,19 @@
+{
+  "status": "PRE_RUN_NO_SCORES_READ",
+  "arms": 6,
+  "local_contracts": 10,
+  "candidates": "exact saved passage24",
+  "max_windows": 3,
+  "budgets": [
+    256,
+    384
+  ],
+  "method": "Explicit issue symbols/error strings, lexical-scope-local nearest stores/guards/returns and unique one-hop callee priors; bounded original-scale boost; optional additional original-line seeds.",
+  "limits": [
+    "Approximate static name relations, not semantic or runtime call resolution.",
+    "No original first seed guarantee; all original proposals retained.",
+    "Reused development; no R6confirmation or labels during generation."
+  ],
+  "preserved_local_failure": "Synthetic extra-seed fixture originally already covered by old proposal bank; corrected fixture before deployment. Original source and failure saved in archive/r7_behavior_synthetic_fixture_failure.",
+  "frozen_runtime_changes": false
+}

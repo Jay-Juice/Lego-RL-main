@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: structural windows/protection complete; no net task-coverage gain
+
+Two six-arm actualQwen development queues exit0 on607seen inputs/366exactmapped/77repos. Fixed passage24candidate343. Unrestricted structural256 visible200/full129 vs205/134;384211/175 vs213/174,density+3.20%,no coverage gain. Extra structural seeds give same aggregate targetcounts. Source signals occur in552entity-prior/501line-cue inputs out of607; not rare but not validated target relevance.
+
+Follow-up protects original first1or2seeds, sameweights/originalbank. Protect1:200/132at256,211/175at384. Protect2:201/129at256,213/176at384. Protect2/384 totalany213unchanged (7gained7lost),full174->176(10gained8lost),repoCI[-1.90,+3.32]pp crosses0. Targetlines679->707/1320;density5.106->5.379(+5.35%);mean366.77->363.89(-.79%). Keep only exploratory depth/density comparator, not robust coverage/runtime promotion. Bestany remains58.20%;full-all48.09%,not near100%.
+
+10local10Linux firststagecontracts;4local4Linux followupinclprotected3controlidentity.607exactbaseline firststage and607perbudget followup;9/10actualLandlockdenials/shard;alloutputs frozenbeforelabels. One initial syntheticextra-seed fixture failure preserved/repairedbeforedata. Bothqueuescomplete,noactivejob/monitor,newGPU/model/optimizer/training. Frozen7/runtime/R6confirmation unchanged. See R7_BEHAVIOR_WINDOWS_RESULTS.md and bothreviewreports. Aggregate8430ceb24e3bed952ae2358cec2ec8328b89be7bb1a1997dd19b9dae208eb9c5;followup176aa0cc1b0730cc27e161e239cb66bdf604d2283f388fff96d90aedff964514. Next investigate fixed offline semantic relevance with predeclared repo-separated evaluation; no semanticranker implemented and no further per-case heuristic tuning.
+
 ## Latest R7: fixed-pool window relevance fusion rejected;384 improves depth at density cost
 
 logs/relevance_windows_r7 exit0:607seen development/366exactmapped/77repos,6actualQwen arms on exact saved passage24(candidate343). Original256 visible205/full-all134/mean250.01/density6.031. New lexical-RRF fusion190/127; original-first-seed anchored fusion196/132. At384 original213/174/mean366.77/density5.106; fused196/163,anchored202/170. Reject all4newarms, no runtime promotion. Original256->384 gains8visible/40full with0loss, mean+46.70%,density-15.34%; exploratory visible repoCI[+0.78,+3.79]pp. Best observed58.20%anyhit and47.54%all-target completeness, not near100%. Full-any/full-all counts coincide here, definitions distinct; no semantic/RL claim.

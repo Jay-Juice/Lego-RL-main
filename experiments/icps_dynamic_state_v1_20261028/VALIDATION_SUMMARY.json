@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "New lexical fusion rejected. Change relevance signal toward issue/code behavior or source dependencies with predeclared repository-separated development. Retain original256 density/384 depth comparators. No semantic ranker implemented, runtime promotion or active job/monitor.",
+  "current_priority": "No net any-task coverage gain. Retain protected2_384 only as exploratory depth/density comparator (+5.35%density,+2uncertain full). Next bounded direction fixed offline semantic relevance and repository-separated evaluation; no semantic ranker implemented. FrozenR6/runtime unchanged; no active jobs/monitor.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -1909,6 +1909,162 @@
       "Density measures target location evidence, not semantic or RL benefit.",
       "Fixed passage24 candidates; heuristic window-level relevance fusion; no semantic model or learned ranking.",
       "Adaptive development after prior aggregate results; no per-case tuning or independent confirmation."
+    ]
+  },
+  "r7_behavior_windows": {
+    "status": "COMPLETE_DEVELOPMENT_ONLY_NO_COVERAGE_GAIN",
+    "exit": 0,
+    "inputs": 607,
+    "evaluable": 366,
+    "repos": 77,
+    "local_contracts": 10,
+    "linux_contracts": 10,
+    "baseline_exact": 607,
+    "label_denials_per_shard": 9,
+    "source_only_mechanism_task_counts": {
+      "any_prior": 552,
+      "any_line_cue": 501,
+      "enclosing_guard": 206,
+      "explicit_call": 469,
+      "linked_return": 300,
+      "nearest_store": 356,
+      "one_hop_callee": 274,
+      "literal_message": 94
+    },
+    "results": {
+      "base256": {
+        "candidate": 343,
+        "visible": 205,
+        "full_all": 134,
+        "mean_tokens": 250.01153212520592,
+        "density": 6.031363088057901
+      },
+      "base384": {
+        "candidate": 343,
+        "visible": 213,
+        "full_all": 174,
+        "mean_tokens": 366.77429983525536,
+        "density": 5.106030982102572
+      },
+      "rank256": {
+        "candidate": 343,
+        "visible": 200,
+        "full_all": 129,
+        "mean_tokens": 249.65733113673807,
+        "density": 5.891793259612637
+      },
+      "rank384": {
+        "candidate": 343,
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 363.6227347611203,
+        "density": 5.269218157832529
+      },
+      "extend256": {
+        "candidate": 343,
+        "visible": 200,
+        "full_all": 129,
+        "mean_tokens": 249.65897858319605,
+        "density": 5.891793259612637
+      },
+      "extend384": {
+        "candidate": 343,
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 363.6227347611203,
+        "density": 5.269218157832529
+      }
+    },
+    "decision": "Reject unrestricted structural ranking/extension as final coverage improvement. Separate protected follow-up complete; see PROTECTED_BEHAVIOR_R7_REVIEW.json.",
+    "aggregate_SHA": "8430ceb24e3bed952ae2358cec2ec8328b89be7bb1a1997dd19b9dae208eb9c5",
+    "frozen_SHA": "a9a90e4ff52b87b0922ad5024509577522cdf8de03379ae5b072eda651e97d15",
+    "runtime_promoted": false,
+    "frozen7_unchanged": true,
+    "new_GPU_or_model_updates": false,
+    "limitations": [
+      "Static name/AST heuristics, not semantic dataflow or sound alias/call resolution.",
+      "Current input graph can resolve unique names across files; no import-resolution proof.",
+      "Mechanism counts cover607inputs, not just366evaluable tasks; they are not successful-target counts.",
+      "Extension has identical aggregate target counts; this does not prove all payloads or all seeds are identical.",
+      "Repeated adaptive development, no independent admission.",
+      "First local extra-seed fixture failed because old bank already covered its cues; repaired synthetic fixture before any data run, failure preserved."
+    ]
+  },
+  "r7_protected_behavior": {
+    "status": "COMPLETE_DEVELOPMENT_DENSITY_COMPARATOR_NO_NET_TASK_COVERAGE_GAIN",
+    "exit": 0,
+    "inputs": 607,
+    "evaluable": 366,
+    "repos": 77,
+    "local_contracts": 4,
+    "linux_contracts": 4,
+    "baseline_exact_each_budget": 607,
+    "label_denials_per_shard": 10,
+    "results": {
+      "base256": {
+        "visible": 205,
+        "full_all": 134,
+        "mean_tokens": 250.01153212520592,
+        "density": 6.031363088057901
+      },
+      "base384": {
+        "visible": 213,
+        "full_all": 174,
+        "mean_tokens": 366.77429983525536,
+        "density": 5.106030982102572
+      },
+      "protect1_256": {
+        "visible": 200,
+        "full_all": 132,
+        "mean_tokens": 249.67051070840196,
+        "density": 5.815103880400132
+      },
+      "protect1_384": {
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 364.2405271828666,
+        "density": 5.211622298135229
+      },
+      "protect2_256": {
+        "visible": 201,
+        "full_all": 129,
+        "mean_tokens": 249.52388797364085,
+        "density": 5.951726110585492
+      },
+      "protect2_384": {
+        "visible": 213,
+        "full_all": 176,
+        "mean_tokens": 363.89456342668865,
+        "density": 5.37920749893481
+      }
+    },
+    "best_depth_density_arm": "protect2_384",
+    "any_task_gained": 7,
+    "any_task_lost": 7,
+    "full_all_gained": 10,
+    "full_all_lost": 8,
+    "full_all_repo_CI95_pp": [
+      -1.898820170610897,
+      3.315377532228363
+    ],
+    "target_lines_before": 679,
+    "target_lines_after": 707,
+    "target_lines_total": 1320,
+    "density_gain_percent": 5.350075582967739,
+    "mean_tokens_change_percent": -0.7851521793812211,
+    "aggregate_SHA": "176aa0cc1b0730cc27e161e239cb66bdf604d2283f388fff96d90aedff964514",
+    "freeze_SHA": "cfeeea376d48acd3ec18bcd8087265543359c54883e7644f63d8865225d286a2",
+    "runtime_promoted": false,
+    "frozen7_unchanged": true,
+    "new_GPU_or_model_updates": false,
+    "active_jobs": 0,
+    "decision": "Keep protected2_384 only as exploratory depth/density comparator. No net any-task gain, no independent or robust completeness gain; no runtime promotion.",
+    "limitations": [
+      "First seed protection does not preserve final expansion or task identities.",
+      "Same213any-hit count includes7gained/7lost, not an identical task set.",
+      "All607previously seen;366exactmapped in77repos,370nominal exact includes4unmapped.",
+      "Adaptive follow-up using aggregate results, no per-case scores/confirmation tuning.",
+      "Density is target-location evidence pertoken, not semantic information or RL benefit."
     ]
   }
 }
