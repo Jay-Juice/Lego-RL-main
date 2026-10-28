@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7 development: budget/pool factorial complete, no runtime promotion
+
+Human authorized modest experimental budget increases. logs/budget_ablation_r7_r2 exit0:607 development inputs,366 mapped exact targets/77repositories. Pool3 caps192/256/384 visible hits171/179/189 (46.72/48.91/51.64%); full105/128/159; mean tokens187.57/246.91/359.36. Pool6 candidate hits282 vs242 (77.05% vs66.12%) but visible166/170/183, lower at every matched budget. More retrieval alone does not solve window competition. Pool3/256 is a next-development comparator, not admitted deployment. New coverage/RL or80-90% claims are unsupported. See R7_BUDGET_RESULTS.md and reports/BUDGET_ABLATION_R7_REVIEW.json; AGGREGATE SHA5d98ac88cf20a983108d586187d49a57b989c22d75a1a3b1d3109514467814d5.
+
+R2 uses four disjoint CPU shards and per-file baseline permissions, all607 baseline payloads/prefixes exact, actual Qwen/source coordinates/caps/max3 checked, three label/score paths denied per shard. Original run's BASE directory grant also permitted old PRIVATE_SCORED_ROWS.json, although generation code did not read it. Original source/queue retained and not accepted as complete isolation evidence; R2 corrects permissions without outcome-dependent method/cohort change. Scoring follows complete frozen generation. Private per-case files stay remote. R6 confirmation untouched; seven frozen files and runtime unchanged. Update128/episode4096 unchanged; W0-only development, no new GPU/model/training.
+
+Next substantive PI work: retrieval-prior-aware candidate-to-window allocation, then separate changed-unit/module/decorator availability experiment. Any selected revision requires new freeze and fresh independent confirmation. Do not rerun the completed R6 GPU/Harbor/proxy checks without relevant changes. Formal training remains disabled.
+
 ## Latest 2026-10-28: actual eight-GPU short test PASS, exit0
 
 Run `gpu-r6-c4000612667ac86e` completed real native Qwen3.5-9B SP8/DP1 Critic/Actor updates under both historical packing steps20/21. See reports/GPU_SHORT_R6_RESULT.json and GPU_SHORT_R6_REVIEW.json. Value ranges[-1.625,8.375] and[-1.4921875,3.046875]; Critic loss5.601695 ->0.741666; Actor loss0.375610 ->0.358571. Pre-clipping gradient norms Critic455.272 ->160.420, Actor10.9128 ->10.5837, finite/nonzero; native clip thresholds10/1 unchanged. These are a short synthetic-fixture numerical result, not long-run stability or RL benefit.

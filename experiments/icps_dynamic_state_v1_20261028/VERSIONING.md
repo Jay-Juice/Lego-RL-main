@@ -1,7 +1,8 @@
 # Dynamic PI research version
 
-User authorization: 2026-10-28, an independent copy, unchanged PI budgets and SAO
-recipe, iterative diagnostics, conditional fresh training only after admission.
+User authorization: 2026-10-28, an independent copy and unchanged native SAO
+recipe. Later direct instruction permits modest experimental PI budget increases;
+frozen R6/runtime remains192/128/4096. Fresh training is conditional on admission.
 
 Repository: https://github.com/Jay-Juice/Lego-RL-main.git
 Branch: codex/icps-dynamic-state-20261028
@@ -110,3 +111,12 @@ telemetry; native math and frozen method unchanged. Latest17-input launcher
 manifest is GPU_LAUNCH_R6.sha256. Earlier changed-probe manifests are historical.
 Existing reviewed evidence scope is explicit, not full transitive approval.
 Formal training remains separately gated and its entry disabled.
+
+R7 W0 candidate-pool/budget factorial:607 development inputs,366 exact mapped
+targets. Pool3 caps192/256/384 visible171/179/189, full105/128/159; pool6
+candidate recall282 vs242 but visible166/170/183. R2 exit0 with four CPU shards,
+per-file baseline grants and three actual label denials,607 baseline/prefix checks.
+Original overly broad baseline directory grant and queue preserved; not accepted
+as complete isolation evidence. No R6 runtime/confirmation or GPU changes.
+Pool3/256 is only a next-development comparator. See R7_BUDGET_RESULTS.md and
+BUDGET_ABLATION_R7_REVIEW.json. Private per-case payloads/receipts are excluded.

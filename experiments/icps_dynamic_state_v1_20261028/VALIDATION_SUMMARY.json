@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Actual disposable GPU validation and substantive PI design; stop generic audit expansion.",
+  "current_priority": "Keep pool3/256 as a development comparator; improve retrieval-prior-aware window selection and separately changed-unit candidate omissions before a new freeze and independent confirmation.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -1671,5 +1671,39 @@
     "review": "reports/GPU_SHORT_R6_REVIEW.json",
     "training_admission": false,
     "full_transitive_review": false
+  },
+  "r7_budget_ablation": {
+    "status": "DEVELOPMENT_ABLATION_COMPLETE_R6_UNCHANGED",
+    "report": "reports/BUDGET_ABLATION_R7_REVIEW.json",
+    "aggregate_SHA": "5d98ac88cf20a983108d586187d49a57b989c22d75a1a3b1d3109514467814d5",
+    "inputs": 607,
+    "evaluable": 366,
+    "candidate_hits": {
+      "3": 242,
+      "6": 282
+    },
+    "visible_hits": {
+      "3": [
+        171,
+        179,
+        189
+      ],
+      "6": [
+        166,
+        170,
+        183
+      ]
+    },
+    "caps": [
+      192,
+      256,
+      384
+    ],
+    "provisional_comparator": "pool3 cap256; development only",
+    "runtime_promoted": false,
+    "confirmation_used": false,
+    "original_isolation_not_accepted": true,
+    "R2_denial_paths": 3,
+    "exit": 0
   }
 }
