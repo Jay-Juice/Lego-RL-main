@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Keep diverse6 and rank6 as bounded development candidates. Next study whether cross-candidate diversity can preserve complete context, and separately add missing changed/module/decorator units. No coefficient sweep on confirmation or automatic deployment.",
+  "current_priority": "Joint allocation experiments complete; no robust method promotion. Next research should quantify budget-feasible windows separately from relevance. No training or monitor.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -1796,5 +1796,26 @@
       "limited_capture": 35
     },
     "runtime_promoted": false
+  },
+  "r7_joint_allocation": {
+    "status": "DEVELOPMENT_COMPLETE_NO_ROBUST_PROMOTION",
+    "inputs": 607,
+    "evaluable": 366,
+    "repositories": 77,
+    "joint_review": "reports/JOINT_WINDOWS_R7_REVIEW.json",
+    "lookahead_review": "reports/LOOKAHEAD_WINDOWS_R7_REVIEW.json",
+    "joint_aggregate_SHA": "81c61e4cf938936d2c1788f8cd4ed5a6ceb8a1a17cba94943c4055c6f63db09d",
+    "lookahead_aggregate_SHA": "f72d59bd7a64d36a4b42cd19dde48e3e99d4d7cffe644dc789ba281344ce4a7c",
+    "objective_diagnostic_SHA": "eca83516254a31e15c1b02753736193fcddb37b23abdbe3567e7d3a7726848b8",
+    "best_observed_visible": 209,
+    "best_observed_cap": 384,
+    "matching_control_visible": 208,
+    "matching_control_full": 170,
+    "best_observed_full": 173,
+    "candidate_ceiling": 306,
+    "runtime_promoted": false,
+    "independent_validation": false,
+    "all_joint_new_arms_rejected": true,
+    "frozen7_exact": true
   }
 }

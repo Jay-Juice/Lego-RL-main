@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: joint budget/window experiments complete; no robust promotion
+
+Two actualQwen development experiments completed exit0 on607inputs/366exactmapped/77repos. Seven-arm joint global-objective beam experiment loses coverage/full/density in all4newarms; symbols12/256 visible200->144,full128->71. Post-score diagnostic shows548/607higher heuristic scores, including62/65lost visible hits: objective misalignment, not proof of individual-feature cause. Diagnostic missing-metric exit1 and CRLFmanifest failure retained, corrected aggregate execution exit0; generation/scoring unchanged.
+
+Six-arm same-score lookahead follow-up preserves original proposals/utility/residual expansion; only selection uses width4 approximate search with greedy incumbent. Base6/256 visible197->195/full130->125; symbols12/256 stays200/128,density+1.29%; symbols12/384 visible208->209/full170->173,density+3.91%, but visible repoCI[-1.03,+1.34]pp and full[-0.29,+2.12]pp include0. No reliable coverage breakthrough. Budget-only original symbols12 256->384 gives200->208visible/128->170full at+46.41%mean tokens and-14.54%density. Retain original comparator; do not deploy new variants.
+
+Fixed symbols12 candidate ceiling306/366=83.61%, observedbest209/366=57.10%(209/306candidate conversion68.30%). Source-union99.18%is an oracle availability ceiling, not token-feasible coverage. Next bounded study: constrained-window budget feasibility diagnostic followed by better relevance calibrated on repository-separated development; labels never enter generation, any new candidate needs fresh independent evidence. No near100claim. See R7_JOINT_ALLOCATION_RESULTS.md and joint/lookahead review+aggregate reports. Joint8local/8Linuxsynthetic contracts,followup4/4;607exactcontrol replay each,6/7Landlockdenials/shard,allgenerationfrozenbeforelabels. Frozen7 rehashed exact; runtime/R6confirmation unchanged. No GPU/model/optimizer/training this round; no jobs or monitor remain.
+
 ## Latest R7: candidate recall experiment complete; no robust final-coverage gain
 
 logs/candidate_research_r7 exit0;607development/366exactmapped/77repos, cap256/max3windows, same diverse6 allocator. Baseline candidate282/visible197/full130. Plain pool12 candidate308(84.15%) but visible195/full129; files12 283/186/123; symbol/signature fusion306/200/128; static-neighbor301/194/126. Symbols gain14/lost11,net3(+0.82pp),repoCI[-1.92,+4.43]pp crosses0;target-line density+1.48%,mean249.73vs249.76. No robust promotion; keep original diverse6 baseline. Do not confuse retrieval recall gain with useful visible PI gain.
