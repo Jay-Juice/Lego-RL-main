@@ -66,4 +66,8 @@ healthy job. Preserve every old experiment and failed measurement.
 Current completed evidence is in `HARBOR_DYNAMIC_R6.json`,
 `PROXY_LIFECYCLE_R6.json`, `ONLINE_PROXY_R6_CONTRACTS.json`,
 `ONLINE_BUILDER_R6_REGRESSION.json`, and `R6_CONFIRMATION_REVIEW.json`.
-No GPU probe has been implemented or launched as of this plan.
+A disposable probe and receipt consumer are implemented but have not run on GPU.
+The consumer has11 local/11 remote CPU contracts; no production receipt was created.
+A reviewed receipt producer, complete native dependency/asset coverage, private Ray
+lifecycle and actual eight-rank audit remain required before launch.
+See GPU_LAUNCH_GATE_R6_REVIEW.json for the current scope and pending work.

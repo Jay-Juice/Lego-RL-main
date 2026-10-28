@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：GPU receipt consumer CPU契约通过；完整启动器与rank审计仍待实现
+
+2026-10-28本轮新增src/gpu_launch_gate_r6.py，probe main替换原单个boolean receipt占位检查。消费端绑定resolved config、source与offline asset manifests、独立receipt SHA、run、boot、GPU身份和120秒时效；原启动458392574347bytes与保存415172253607bytes不变，完成文件hash后重新读取GPU/进程/端口/空间，独占创建launch_claim防止同attempt复用。没有receipt writer、真实launch_receipt或GPU启动。此组件不是完整启动保护，也不是对恶意本地用户的认证机制；producer的完整native依赖覆盖、已审查证据与私有Ray生命周期仍需补齐。
+
+logs/gpu_launch_gate_r6_contracts exit0：本地11和远端Linux11 CPU测试通过，含hash/run/boot篡改、过期/未来/非有限时间、review未完成、resume、磁盘/端口/GPU忙与身份变化、source文件改变/路径越界、独占claim重复拒绝。均是内存或临时目录中的synthetic contracts，不是实际许可。第一次本地临时目录因sandbox TEMP权限失败，指定workspace临时目录后通过；未修改系统权限。七冻结源和旧35源再次exact；运行方法/runtime未改。远端source SHA和bash语法已验证，WSL仅传送六个审查文件。报告GPU_LAUNCH_GATE_R6_CONTRACTS.json与GPU_LAUNCH_GATE_R6_REVIEW.json。
+
+资源只读复查仍因原磁盘reserve失败（free354672136192bytes），八GPU空闲、无Ray、三个端口可用；空间通知已经给出，不重复。旧GPU_PREPARATION_R6_R3.sha256现绑定archive/r6_before_launch_gate/src/gpu_probe_r6.py中的历史版本，不能直接对新probe重跑旧队列。本轮新五文件SHA清单有效，无健康任务需重启。
+
+下一步实际实现完整producer/私有短Ray目录与生命周期、八rank原生head/freeze/optimizer审计，并扩展全源审查。已只读确认TrainingWorker.engine.module、ActorRolloutRefWorker.actor.engine、engine.ulysses_sequence_parallel_size/get_data_parallel_size可用于审计；VeOmni get_model_parallel_group明确NotImplemented，不能调用它猜测SP。使用受限probe子类与ONE_TO_ALL注册，不改共享engine。测试后仍须原资源门槛通过才能运行八卡。正式训练保持exit78。
+
 ## 最新：两阶段Hydra与增强CPU fixture通过，八卡未启动，资源门槛不足
 
 2026-10-28本轮：新ops/GPU_PROBE_R6.env、src/gpu_probe_r6.py与独立验证脚本已创建，原训练入口继续exit78。仅调用原train.sh --dry-run，不执行继承prepare/launch。真实展开完整Hydra与历史freshSAO、resume20两阶段逐项比较，无非白名单差异；agent YAML逐字节一致，97步、batch/mini64、SP8、LR/epochs/head/freeze/GAE/loss配置与完整checkpoint方案保持原值。namespace和resume disable为预期差异。报告GPU_PROBE_R6_HYDRA_PARITY.json。五个关键native文件与SAO相等、五个继承训练/packing/保存文件与旧ICPS相等；这尚不等于完整源码审阅或实际八rank head/freeze验收。

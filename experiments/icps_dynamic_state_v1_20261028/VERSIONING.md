@@ -29,3 +29,8 @@ Recurring maintenance may push only reviewed committed changes on this branch.
 Do not stage unknown files, change main, force-push, merge or launch training
 as part of version maintenance. A draft PR is a review record, not approval to
 train. ADMISSION_PLAN.md governs the separate conditional training decision.
+
+Receipt-consumer follow-up: eleven local and eleven Linux CPU contracts pass.
+No approved receipt or GPU launch exists. The five-file consumer manifest is
+validation/GPU_LAUNCH_GATE_R6_CONTRACTS.sha256; earlier GPU preparation manifests
+bind historical probe bytes preserved under archive/r6_before_launch_gate.

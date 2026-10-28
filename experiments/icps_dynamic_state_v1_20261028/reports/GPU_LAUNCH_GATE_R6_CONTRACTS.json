@@ -1,0 +1,93 @@
+{
+  "status": "CPU_RECEIPT_CONSUMER_CONTRACTS_PASS_LAUNCHER_PENDING",
+  "tests": 11,
+  "failures": 0,
+  "errors": 0,
+  "synthetic_receipts_only": true,
+  "live_approval_created": false,
+  "GPU_launched": false,
+  "frozen_generator_files_exact": 7,
+  "current_resources": {
+    "observed_at": 1793159734.3059554,
+    "original_start_required_bytes": 458392574347,
+    "save_required_bytes": 415172253607,
+    "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+    "free_bytes": 354672136192,
+    "gpus": [
+      {
+        "index": 0,
+        "uuid": "GPU-8646b7b3-c017-2c22-fd84-d0fe5c63923c",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-c3d4eac9-29a6-6fed-83b3-08de9b84b044",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-e6f28467-6a27-691b-c2b7-5a89b80c3a1c",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-ee68ce74-4f78-c8d1-f403-f85ef72ffcf2",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 4,
+        "uuid": "GPU-1084651e-4587-705e-3a1c-324de6ea9540",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 5,
+        "uuid": "GPU-51971f60-370d-1c16-5851-346ba8515a53",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 6,
+        "uuid": "GPU-47516d49-6b13-df8c-07c4-6464e60203e5",
+        "memory_MiB": 14,
+        "utilization": 0
+      },
+      {
+        "index": 7,
+        "uuid": "GPU-1b1a4b5e-cf5e-735e-b43e-6e97e663433b",
+        "memory_MiB": 14,
+        "utilization": 0
+      }
+    ],
+    "compute_processes": [],
+    "ray_processes": [],
+    "ports_available": {
+      "6407": true,
+      "8265": true,
+      "8307": true
+    }
+  },
+  "resource_gate_pass": false,
+  "resource_rejection": "disk reserve",
+  "source_SHA": {
+    "src/gpu_launch_gate_r6.py": "a50e8a4cc06f31e6b8e1ad3f88cf61abe89d2b07b2100c26218e5ad7eea59804",
+    "src/gpu_probe_r6.py": "ee816ba7c90877860c1a81db30b61b206cc3f5a78bd4cbd6678bea3f7741e68f",
+    "tests/test_gpu_launch_gate_r6.py": "47c077c0fd31cf59da4894b6d28a7750114775ca3e1e78d841f544ee02c91351",
+    "validation/gpu_launch_gate_r6_contracts.py": "ed4607fe078ceb00ec2a8dc79e2b5097ba48f84fd8f7285a25fac3bee3b442a6",
+    "ops/gpu_launch_gate_r6_contracts.sh": "fff821becb747c64a28f9b35663adef54bae43a33332d1d607f84fdccea62cdb"
+  },
+  "training_admission": false,
+  "launch_readiness": false,
+  "limitations": [
+    "Pure receipt/resource validation and exclusive claim contracts only.",
+    "No reviewed producer/launcher, private Ray lifecycle, or eight-rank audit yet.",
+    "Review flags require a subsequently reviewed producer; this is not an authentication boundary.",
+    "Source manifest coverage for native dependencies and full offline data identities remains to be reviewed.",
+    "Read-only port bind checks do not reserve ports; launcher must control startup race.",
+    "No model import, model forward, optimizer update, or test checkpoint in this validator."
+  ]
+}

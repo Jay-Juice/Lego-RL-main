@@ -152,8 +152,8 @@ def main(config):
     assert config.trainer.experiment_name == 'sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028'
     assert not Path(config.trainer.default_local_dir).exists(), 'no checkpoint reuse'
     run = Path(os.environ['ICPS_FORMAL_RUN_DIR'])
-    receipt = json.loads((run/'launch_receipt.json').read_text())
-    assert receipt['source_and_resource_pass'] and receipt['run'] == str(run)
+    from gpu_launch_gate_r6 import consume
+    consume(OmegaConf.to_container(config, resolve=True))
     with (run/'resolved_actual.json').open('x') as f:
         json.dump(OmegaConf.to_container(config, resolve=True), f, indent=2)
     try:
