@@ -45,6 +45,15 @@ class PrivateRayTests(unittest.TestCase):
         with self.lease(other):
             pass
 
+    def test_ray_shared_child_keeps_parent_private(self):
+        with self.lease() as lease:
+            child = lease.temp/'ray'
+            child.mkdir()
+            child.chmod(0o777)  # Actual Ray try_to_create_directory behavior.
+            lease.verify_owner()
+            self.assertEqual(lease.temp.stat().st_mode & 0o777, 0o700)
+            self.assertEqual(child.stat().st_mode & 0o777, 0o777)
+
     def test_existing_tmp_and_symlink_refused(self):
         target = private_path(self.run, self.temp_root)
         target.symlink_to(self.root, target_is_directory=True)
@@ -112,11 +121,11 @@ class PrivateRayTests(unittest.TestCase):
 
     def test_external_ray_and_wrong_namespace_rejected(self):
         cfg = {'ray_kwargs': {'ray_init': dict(address='local', namespace=self.run.name,
-            _temp_dir=str(private_path(self.run, self.temp_root)), include_dashboard=False, num_gpus=8)}}
+            _temp_dir=str(private_path(self.run, self.temp_root)/'ray'), include_dashboard=False, num_gpus=8)}}
         old = os.environ.pop('RAY_ADDRESS', None)
         try:
             validate_ray_namespace(cfg, self.run, self.temp_root)
-            for key, value in [('address', 'auto'), ('namespace', 'other'), ('_temp_dir', '/tmp/ray'),
+            for key, value in [('address', 'auto'), ('namespace', 'other'), ('_temp_dir', '/tmp/ray'), ('_temp_dir', str(private_path(self.run, self.temp_root))),
                                ('num_gpus', 1), ('include_dashboard', True), ('ignore_reinit_error', True)]:
                 changed = copy.deepcopy(cfg)
                 changed['ray_kwargs']['ray_init'][key] = value

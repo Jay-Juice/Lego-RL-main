@@ -12,9 +12,10 @@ Source authority: experiments/icps_dynamic_state_v1_20261028
 The old ICPS experiment and its branch are preserved. This candidate currently
 has a frozen input selector and an opt-in runtime with actual proxy CPU checks.
 Real cached Harbor and proxy lifecycle checks pass. Full two-phase Hydra comparison
-and actual-tokenizer GPU-fixture CPU checks pass. Eight-GPU launch/rank audit, broader
-source review and resource admission remain pending; the original disk reserve is
-not met. No GPU update or training has run.
+and actual-tokenizer GPU-fixture CPU checks pass. Actual private Ray CPU init/task/shutdown now passes with no owned leftovers.
+The original disk reserve and eight-idle-GPU snapshot pass after user cleanup.
+Native eight-GPU updates and the bounded producer/evidence binding remain pending.
+No GPU update or training has run.
 The inherited start_full97.sh is disabled (exit 78); inherited preparation
 scripts are references, not supported launch commands. No new training has run.
 
@@ -89,3 +90,12 @@ and real Ray/GPU acceptance remain pending; no admission or GPU update occurred.
 The current five-input GPU_OFFLINE_ASSETS_R6_CONTRACTS.sha256 binds the R2 source.
 
 2026-10-28 user steering: prioritize actual GPU validation or PI information design, not continued generic audit expansion. Fresh resources now pass: 506.972GiB free versus 426.911GiB required, eight GPUs idle and required ports available. This observation is not a launch receipt and must be refreshed before launch. R6 remains frozen; separate R7 design records three synthetic candidate omissions. No GPU/model update or training admission yet.
+
+Actual private Ray follow-up: first attempt failed because installed Ray chmods its
+supplied temp root0777. Preserve that attempt and archive/r6_live_ray_directory_mode_failure.
+The minimal fix places Ray in a child below the existing private0700 parent.
+R2 actual local init/CPU task/shutdown passes; tagged process scan has no leftovers.
+Fourteen affected Linux CPU contracts and full two-phase Hydra parity pass.
+Latest validation/GPU_PRIVATE_RAY_R6_LIVE.sha256 binds nine inputs; earlier lease/config
+manifests bind pre-fix archived bytes. No GPU/model/optimizer update or production
+receipt exists. Continue the bounded eight-GPU launch path, not generic expansion.

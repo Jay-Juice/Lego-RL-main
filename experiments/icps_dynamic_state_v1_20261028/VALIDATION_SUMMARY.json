@@ -1,5 +1,5 @@
 {
-  "status": "R6_RESOURCE_PASS_GPU_LAUNCH_PREPARATION_PENDING_TRAINING_DISABLED",
+  "status": "R6_ACTUAL_PRIVATE_RAY_PASS_NATIVE_8GPU_LAUNCH_PENDING_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": true,
@@ -1607,5 +1607,49 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Actual disposable GPU validation and substantive PI design; stop generic audit expansion."
+  "current_priority": "Actual disposable GPU validation and substantive PI design; stop generic audit expansion.",
+  "actual_private_Ray_lifecycle": {
+    "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
+    "UTC": "2026-10-28T05:42:25.294751+00:00",
+    "remote_exit": 0,
+    "queue": "logs/gpu_private_ray_r6_live_r2",
+    "actual_run": "gpu-r6-862f01ff018c3654",
+    "actual_Ray_init_task_shutdown": true,
+    "owned_processes_remaining": [],
+    "private_parent_mode": "0700",
+    "Ray_temp_child": "ray",
+    "tests_Linux_CPU": 14,
+    "whole_two_phase_Hydra_parity": true,
+    "source_changes": [
+      "src/gpu_private_ray_r6.py: require Ray child under private parent",
+      "src/gpu_launch_config_r6.py: only Ray _temp_dir points at child"
+    ],
+    "first_failure": {
+      "queue": "logs/gpu_private_ray_r6_live",
+      "exit": 1,
+      "run": "gpu-r6-7381ff649f7eb298",
+      "cause": "Installed Ray try_to_create_directory chmods supplied root0777; outer0700 ownership check correctly failed",
+      "shutdown_finally_called": true,
+      "subsequent_global_Ray_process_scan_empty": true,
+      "full_owner_scan_after_failure": "inconclusive: unrelated newer proc environment PermissionError; no cleanup/signals"
+    },
+    "backup": "archive/r6_live_ray_directory_mode_failure",
+    "source_SHA": {
+      "src/gpu_private_ray_r6.py": "ed3ad89515c390953d46c64ca6419d49eac6dbea1518b59c2147fd993ec72b7f",
+      "src/gpu_launch_config_r6.py": "a480f11d023969b7dd6a6611e925506d5508eebccf7cda47de4df6dd7fba80da",
+      "src/gpu_probe_r6.py": "66b470124e4139010d1d6b587efe31690e369b0637740b5ac0259d73b0fae1b0"
+    },
+    "evidence_SHA": {
+      "reports/GPU_PRIVATE_RAY_R6_LIVE_R2.json": "4488452c96c7f91e04655b60369937d36c77a5a67e4e73a358ac5782c60b0a0d",
+      "reports/GPU_NESTED_RAY_CONFIG_R6_CONTRACTS.json": "f86b3b880c4d230bde421e8b60e3b2e29357feab1462a007cbc113613e6bde8c"
+    },
+    "frozen_method_changed": false,
+    "runtime_changed": false,
+    "GPU_started": false,
+    "model_constructed": false,
+    "optimizer_steps": 0,
+    "production_receipt_created": false,
+    "training_admitted": false,
+    "next": "Finish bounded existing producer/source-assets evidence binding and shell environment, then fresh resources and actual native8GPU probe; do not expand generic audit framework."
+  }
 }

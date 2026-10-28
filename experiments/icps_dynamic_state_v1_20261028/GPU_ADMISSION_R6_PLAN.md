@@ -127,3 +127,14 @@ and real Ray/GPU acceptance remain pending; no admission or GPU update occurred.
 The current five-input GPU_OFFLINE_ASSETS_R6_CONTRACTS.sha256 binds the R2 source.
 
 2026-10-28 user steering: prioritize actual GPU validation or PI information design, not continued generic audit expansion. Fresh resources now pass: 506.972GiB free versus 426.911GiB required, eight GPUs idle and required ports available. This observation is not a launch receipt and must be refreshed before launch. R6 remains frozen; separate R7 design records three synthetic candidate omissions. No GPU/model update or training admission yet.
+
+## Actual private Ray acceptance (2026-10-28)
+
+The zero-GPU local Ray canary now passes after the nested-temp fix: private outer
+/tmp/r6g-ID stays0700, Ray controls its /ray child. Fourteen affected CPU contracts
+and complete two-phase Hydra parity pass. First chmod-related exit1 is preserved.
+No owned Ray processes remain after successful shutdown. This closes CPU local
+Ray lifecycle only, not native model workers or eight-GPU updates. Resources now
+pass after user cleanup; refresh immediately before launch. Complete only the
+existing producer/source-assets binding and inherited shell environment, then
+run the disposable native probe. No production receipt has yet been created.

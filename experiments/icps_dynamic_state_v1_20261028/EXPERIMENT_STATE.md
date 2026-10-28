@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_RESOURCE_PASS_GPU_LAUNCH_PREPARATION_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_ACTUAL_PRIVATE_RAY_PASS_NATIVE_8GPU_LAUNCH_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：真实私有Ray启动/任务/退出通过，八GPU尚未运行
+
+2026-10-28 logs/gpu_private_ray_r6_live_r2 exit0：真实local Ray完成一个带所有权tag的CPU worker任务，namespace准确、GPU资源0；ray.shutdown后所属进程扫描为空，外层目录0700保持。wall8.829秒。不是mock，也不是八rank/model/optimizer证据。相关9项lease+5项config Linux CPU测试共14项通过；因Ray路径修复重新compose完整两阶段Hydra，只有既定输出/Ray namespace差异，native配方无变更。
+
+首次logs/gpu_private_ray_r6_live exit1保留：Ray的try_to_create_directory将传入temp根chmod0777，触发既有0700校验。finally调用自己的ray.shutdown；后续Ray进程名扫描为空，但独立旧owner扫描遇到较新无关/proc PermissionError，不能称首次完整owner扫描通过。最小修复把Ray工作目录放入私有0700父目录的/ray子目录；不放宽权限校验、不修改共享Ray、不发送额外signal或全局cleanup。修改仅lease namespace与config路径；probe/frozen7/runtime不变。备份archive/r6_live_ray_directory_mode_failure保存失败源与manifest。
+
+报告GPU_PRIVATE_RAY_R6_LIVE_R2.json、GPU_NESTED_RAY_CONFIG_R6_CONTRACTS.json及GPU_PRIVATE_RAY_R6_LIVE_REVIEW.json。最新9输入manifest GPU_PRIVATE_RAY_R6_LIVE.sha256有效；旧private-Ray/private-config manifests绑定修复前归档字节，不对当前源重跑旧队列。资源门槛已通过，磁盘不阻塞。生产receipt/受检producer与完整隔离shell环境尚未完成，不能虚构reviewflags启动probe。下一步仅完成现有八卡短测必需的source/assets证据绑定与启动器，然后刷新资源并执行真实native SP8短更新；不继续扩展通用检查。正式训练保持exit78。
+
 ## 当前优先级：实际GPU验证 / PI信息设计；磁盘与8GPU资源检查已通过
 
 用户明确要求停止将泛化启动/依赖检查作为主要进展。已回到PI代码，三个新合成例直接复现候选层遗漏：新增同文件两个函数只选一个；模块常量变化未落入函数候选；装饰器参数变化在def范围之外。见PI_INFORMATION_DESIGN_R7.md，下一版按变更源码单元分配候选、补模块级/装饰器单元，在原192/128/4096内分配；R6保持冻结基线，不使用确认集调参，尚未实现/部署R7。

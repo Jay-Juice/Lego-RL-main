@@ -27,7 +27,7 @@ def private_path(run, temp_root=Path('/tmp')):
 
 def validate_ray_namespace(config, run, temp_root=Path('/tmp')):
     value = config['ray_kwargs']['ray_init']
-    expected = dict(address='local', namespace=run.name, _temp_dir=str(private_path(run, temp_root)),
+    expected = dict(address='local', namespace=run.name, _temp_dir=str(private_path(run, temp_root)/'ray'),
                     include_dashboard=False, num_gpus=8)
     for key, wanted in expected.items():
         check(key in value and type(value[key]) is type(wanted) and value[key] == wanted,

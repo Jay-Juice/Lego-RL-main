@@ -52,7 +52,7 @@ def bind_private_config(seed, run):
     value['trainer']['default_local_dir'] = str(run/'NEVER_SAVE_CHECKPOINT')
     value['trainer']['episode_log_dir'] = str(run/'episode_logs')
     value['ray_kwargs']['ray_init'].update(address='local', namespace=run.name,
-        _temp_dir=str(tmp), num_gpus=8, include_dashboard=False)
+        _temp_dir=str(tmp/'ray'), num_gpus=8, include_dashboard=False)
     return value
 
 
