@@ -1,6 +1,16 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 最新：原生源码树与实际head来源已盘点，完整dependency policy仍待补齐
+
+2026-10-28 logs/gpu_native_inventory_r6 exit0：CPU仅导入native trainer/worker/engine/loss/reward/filter和head类，未构建模型/worker、未初始化Ray/CUDA、optimizer step0。对R/src、R/third_party/verl/verl、R/third_party/harbor/src全部633个Python/YAML文件与当前SAO B对应树比较：614相同，6个既有文件修改、13个PI helper/历史诊断新增。19个差异已列出，6份既有文件的完整diff已阅读；新增诊断不执行。padding只有PI gather dispatch，Harbor trial只有可选PI初始化，builtin loop传递PI记录与错误；其余provider/proxy/trainer为既有PI/持久化修改，实际路径还受N overlay约束。不是把19个差异忽略后声称全源一致。
+
+实测AutoModelForTokenClassification映射为R中native Qwen3_5ForTokenClassification，SHA与当前SAO对应head相等；body/base实际来自共享venv VeOmni patched_modeling_qwen3_5_gpu.py（SHAd4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c），5个OpSlot引用身份相同。只验证类注册/来源，未验证实际模型rank/head数值。5027个已加载模块文件归属与SHA留在远端logs下；这是观察到的import closure下界，不覆盖lazy runtime依赖。共享包和Python解释器路径已确认，无项目外自定义源码根；未修改共享依赖。导入已有VeOmni cache_position docstring [ERROR]诊断保留，实际exit0。
+
+公开GPU_NATIVE_INVENTORY_R6.json和GPU_NATIVE_SOURCE_R6_REVIEW.json记录树hash/19差异/类来源/边界；七冻结源、旧35源和overlay receipt精确。仅新增inventory/ops/manifest，没有更改运行方法、probe、consumer或config。backup archive/r6_before_native_inventory；四输入SHA清单GPU_NATIVE_INVENTORY_R6.sha256通过。本地试读缺失的SAO文件失败后改用远端只读diff，diff exit1代表有差异，未作为测试失败或通过混报。
+
+下一步集中补闭合manifest policy：lazy共享native包、模型/tokenizer与数据身份，消费者精确允许root/缺失额外/symlink检查；producer环境和review证据绑定、实际Ray生命周期仍pending。不能把5027import或633源码树盘点当作完整传递依赖批准。GPU和训练仍未启动，原reserve未满足，无新增用户操作、不重复空间通知。
+
 ## 最新：私有Ray配置与当前两阶段Hydra逐字段对照通过；receipt producer仍未完成
 
 2026-10-28新增src/gpu_launch_config_r6.py，作为producer的只读配置准备组件。先校验原GPU_PROBE_R6_HYDRA_PARITY.json固定SHA，从记录的真实命令在当前R/B Hydra树重新compose；当前seed与原完整resolved config精确一致后，仅改两个输出路径和五个Ray字段（local、唯一namespace、短temp、num_gpus8、dashboardfalse）。对所有字段重新比较历史fresh/resume20，除已批准namespace/禁用resume外无差异；agent YAML bytes相等，97步与两阶段packing、head/freeze/LR/epochs/checkpoint schema保持。第二阶段配置只是对照见证，实际probe仍用原native per-batch packing。

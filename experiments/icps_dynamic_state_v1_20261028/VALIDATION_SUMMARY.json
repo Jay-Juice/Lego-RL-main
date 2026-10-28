@@ -1344,5 +1344,186 @@
       "validation/gpu_launch_config_r6_contracts.py": "7a960d90f770031ce05dc7664d70e98df0249af359814145ca4458ea1ed3a437",
       "ops/gpu_launch_config_r6_contracts.sh": "b431ae4a444ea3c959614927c8a8fd50e8390f91cfbe01a74c81af6c84d69dca"
     }
+  },
+  "gpu_native_source_r6_review": {
+    "UTC": "2026-10-28T04:49:54.497118+00:00",
+    "status": "NATIVE_TREE_DIFFERENCES_CLASSIFIED_MANIFEST_POLICY_PENDING",
+    "remote_exit": 0,
+    "inventory_report_SHA": "aa92010a05ebfa656e30932bd44d732fa61ac80ebc52d2456f09bf1ab379836c",
+    "inherited_python_yaml_files": 633,
+    "equal_python_yaml_files": 614,
+    "modified_existing_files": 6,
+    "added_helper_or_diagnostic_files": 13,
+    "classified_differences": [
+      {
+        "path": "src/harbor_patch/environments/remote_docker.py",
+        "inherited_SHA": "1466f38f2d45261be1f79dc809a8815e1df72aca0b8c8dd111c5ce107582bb44",
+        "SAO_SHA": "01916a0aa25c7031dc0ef10412d5527a88efedcc8f375dd22765c99a25c54120",
+        "review": "Inherited PI provider registration/capture/teardown; effective module is N runtime overlay, tested by prior cached Harbor captures.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/__init__.py",
+        "inherited_SHA": "2066ccb5f7d19423485cadbc0a11f1a9bccdcacb3e6920ea1007719d85ed9a1c",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/container_capture.py",
+        "inherited_SHA": "1fbd1e8109e699d845833d7f5701b86c1457bda0367464ea034f47548ccd1596",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/registry.py",
+        "inherited_SHA": "df4d3205c737255c1e385c3d73dee1f53c32b87b4da3ddef166644749e53266b",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/repair_state.py",
+        "inherited_SHA": "4cf433f9baa893795ebe1787a89c5498137f298637eab40a05f454630dbd38dd",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/structural_lift.py",
+        "inherited_SHA": "c4d93e3d5766aa37860e6d10399cc56b3aa9ae06b70aa25b9922039011f0d3d2",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/builtin_swe_agent_loop.py",
+        "inherited_SHA": "cc8b362d3fe33e7cb839ea8b1a9046b8a69aece9a27785d174ceb70edc08a0ab",
+        "SAO_SHA": "e8d81f5a1737a8d1655ed38c5051737ca579819586e8898ffeca9d42b9d13594",
+        "review": "Propagate PI capture/alignment errors and pass pi_call_records through extra_fields when PI enabled; no reward/filter change in this diff.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_archive.py",
+        "inherited_SHA": "632bedaf55d2365f2348a64c10ed25bd38b6e4cb76a0bdd961a372fa62128064",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_checkpoint.py",
+        "inherited_SHA": "633aa32c46c70b3172b010cf74ed1717d7368f336b417474871b1f2da68d9a6a",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_disk_guard.py",
+        "inherited_SHA": "869e8b9d28b03ef4723db1b60016f3840f93a4efc72bd47e0df55d6e3c57b035",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/privileged_critic_builder.py",
+        "inherited_SHA": "acb064a2ff3d28924f67c3e9eedb5bfa3fdf228869f9d41e0d15f04b54b58a51",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py",
+        "inherited_SHA": "1cd0ac2f8c0e28c275ea31244fc7692e00178e8eeed841e4db97d3069e2a3cda",
+        "SAO_SHA": "dd32112bf4c06156c74b9fed1fba26f3caf0a8fd9db21b83e8f549a550f32c29",
+        "review": "Inherited pre-action PI capture, records/audit and remap; effective N runtime overlay reviewed/tested in prior proxy stage.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/verl_patch/pi_gpu_smoke.py",
+        "inherited_SHA": "837b7edfbe8f5d020cdd19865eb9937b7fde2646667cd084fa9c234bdc2f51e2",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_acceptance.py",
+        "inherited_SHA": "2122ddecab54d0add32e8763e9dfff3613da6504fe284303985a66cdc199dd3c",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_resume_diagnostic.py",
+        "inherited_SHA": "2e75b18b0cbc10f59adfe20cdc915efdfc8cfa7fc037cea72b72c062c7b3b85a",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_training_acceptance.py",
+        "inherited_SHA": "dd9e2f1093ad8f96ade5ab3127b234e869e083c0f86e0eb323de25062acdaac3",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "third_party/verl/verl/trainer/ppo/ray_trainer.py",
+        "inherited_SHA": "3dd582d6fbd136ecfb1fc08e81f6bff1abf6de44226c77d2e119b84a7abd7733",
+        "SAO_SHA": "6d526f661bd14e778c787eaedc27b99c3bdeb4c177872892905dca9ed37a507d",
+        "review": "Inherited Critic view preparation and Actor/ref PI metadata removal, PI metrics/archive and strict complete checkpoint persistence. No loss/GAE/optimizer/reward/filter formula changes in the inspected diff. N overlay further preserves historical packing and full saves.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/utils/padding.py",
+        "inherited_SHA": "ad7f1d9f8940305ca9eaa897eb3daf5c277c17d26a4e851c9aaed2876ca681da",
+        "SAO_SHA": "f3cc823e6ef2099075406f6fe1244498f15a775f0fac90010c0babf1c82cbe7b",
+        "review": "Three-line PI-only response extraction dispatch to gather_critic_values when critic_value_gather_indices is present; original path retained otherwise.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "third_party/harbor/src/harbor/trial/trial.py",
+        "inherited_SHA": "d8f1aef75af9dc1f2e763a86f4df30b521306cc8a4ff51d4b9e5c882cd000d16",
+        "SAO_SHA": "75b7b707d6160e9aab06543646958610477b7105d7048ea71859a055c1bbdbec",
+        "review": "Three-line optional initialize_privileged_state callback after agent/baseline setup; no verifier/reward change.",
+        "modified_diff_read": true
+      }
+    ],
+    "native_head_origin_verified_without_construction": true,
+    "head_origins": [
+      {
+        "class_name": "Qwen3_5ForTokenClassification",
+        "module": "verl_patch.models.qwen3_5_token_classification",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/models/qwen3_5_token_classification.py",
+        "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+      },
+      {
+        "class_name": "Qwen3_5Model",
+        "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+        "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+      },
+      {
+        "class_name": "Qwen3_5PreTrainedModel",
+        "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+        "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+      }
+    ],
+    "shared_OpSlot_identity": true,
+    "loaded_modules": 5027,
+    "import_closure_is_lower_bound": true,
+    "complete_transitive_dependency_policy": false,
+    "whole_source_launch_approval": false,
+    "production_receipt_created": false,
+    "Ray_initialized": false,
+    "CUDA_initialized": false,
+    "training_admitted": false,
+    "warnings": "Installed VeOmni emits existing cache_position docstring [ERROR] diagnostics on import; inventory exits0 and source/identity assertions pass. No shared package modifications.",
+    "next": [
+      "Build closed manifest coverage for lazy shared native packages and offline model/tokenizer/data identities; observed imports alone are insufficient.",
+      "Extend consumer allowed roots only with reviewed exact dependency policy and missing/extra/path/symlink negatives.",
+      "Finish producer environment/evidence binding and actual private Ray lifecycle acceptance before any GPU admission."
+    ]
   }
 }

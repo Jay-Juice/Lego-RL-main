@@ -101,3 +101,14 @@ plugins import Ray without initialization, now explicitly checked. See
 GPU_PRIVATE_CONFIG_R6_CONTRACTS.json and its seven-input SHA manifest. Producer,
 complete environment/dependency/asset policy and actual Ray/GPU acceptance remain
 pending. Earlier private-Ray source manifest remains valid (probe unchanged).
+
+Native source inventory expands beyond the earlier thirteen selected files:
+633 inherited Python/YAML files across three trees, 614 equal, six modified
+existing files and thirteen PI helper/diagnostic additions. Existing-file diffs
+were inspected and classified. Actual native head registration, shared VeOmni
+body origin and five OpSlot identities were checked without model construction.
+5027 loaded module-file origins/hashes remain remote; this observed import closure
+is a lower bound, not complete lazy/native dependency coverage. No whole-source
+launch approval, Ray/CUDA initialization or GPU update was issued. See
+GPU_NATIVE_INVENTORY_R6.json and GPU_NATIVE_SOURCE_R6_REVIEW.json. Complete manifest
+policy, producer/environment and actual Ray lifecycle remain pending.
