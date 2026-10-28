@@ -1,0 +1,25 @@
+{
+  "status": "RESOURCE_SNAPSHOT_PASS_NOT_LAUNCH_RECEIPT",
+  "observed_at": 1793164892.9219766,
+  "free_bytes": 544357101568,
+  "free_GiB": 506.9720573425293,
+  "original_start_required_bytes": 458392574347,
+  "start_required_GiB": 426.9113525254652,
+  "margin_GiB": 80.0607048170641,
+  "save_required_bytes": 415172253607,
+  "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+  "gpu_count": 8,
+  "all_gpu_utilization_zero": true,
+  "each_gpu_memory_MiB": 14,
+  "compute_processes": [],
+  "ray_processes": [],
+  "ports_available": [
+    6407,
+    8265,
+    8307
+  ],
+  "existing_validate_resources_passed": true,
+  "GPU_launched": false,
+  "training_admitted": false,
+  "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
+}

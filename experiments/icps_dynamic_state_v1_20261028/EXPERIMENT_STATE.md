@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
-状态：R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+状态：R6_RESOURCE_PASS_GPU_LAUNCH_PREPARATION_PENDING_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## 当前优先级：实际GPU验证 / PI信息设计；磁盘与8GPU资源检查已通过
+
+用户明确要求停止将泛化启动/依赖检查作为主要进展。已回到PI代码，三个新合成例直接复现候选层遗漏：新增同文件两个函数只选一个；模块常量变化未落入函数候选；装饰器参数变化在def范围之外。见PI_INFORMATION_DESIGN_R7.md，下一版按变更源码单元分配候选、补模块级/装饰器单元，在原192/128/4096内分配；R6保持冻结基线，不使用确认集调参，尚未实现/部署R7。
+
+用户随后清理空间。2026-10-28T05:21:32.921977Z实测free544357101568bytes=506.972GiB，原START426.911GiB，余量80.061GiB；原reserve receipt SHA仍精确。8张GPU各14MiB/util0、无compute/Ray进程、6407/8265/8307可绑定，现有validate_resources通过。见reports/RESOURCE_REFRESH_R6_20261028.json。这是资源快照，非生产launch receipt；上卡前仍须刷新。磁盘不再是当前阻塞，不能继续重复“磁盘不足”。优先尽快完成现有隔离8GPU probe所需的最小launcher/实际Ray生命周期和证据绑定，不继续无边界扩展通用审计框架。尚无GPU/optimizer更新，正式训练仍exit78且未准入。
+
 ## 最新：离线模型/tokenizer/数据身份组件通过；依赖policy与producer仍pending
 
 2026-10-28 logs/gpu_offline_assets_r6_contracts_r2 exit0：12项Linux CPU契约通过。只读检查真实cached Qwen3.5-9B的16个顶层文件及2个原始parquet，共18个文件SHA；4个safetensors分片的775个tensor header与index逐项一致，tensor bytes19306216416。严格绑定原Hydra中的actor/critic模型与train/val路径，检查完整文件集合、tokenizer/chat template、index/shard映射、shape/dtype/offset/总长度、重复JSON key、symlink、hash和跨检查/哈希阶段文件变化。未加载模型、未解析parquet行或读取标签；数据只做封装与字节身份检查。私有manifest留远端，公开报告只有aggregate与manifest SHA850361941c94b02d7854e989684b4c1e299c8c69e1b3ef0fcdefa3970d24a3c9。

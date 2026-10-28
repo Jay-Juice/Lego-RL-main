@@ -1,5 +1,5 @@
 {
-  "status": "R6_HYDRA_CPU_PREPARATION_PASS_GPU_PENDING_DISK_WAIT_TRAINING_DISABLED",
+  "status": "R6_RESOURCE_PASS_GPU_LAUNCH_PREPARATION_PENDING_TRAINING_DISABLED",
   "conditional_fresh_training_authorized": true,
   "training_started": false,
   "online_runtime_integrated": true,
@@ -60,7 +60,6 @@
   "blockers": [
     "Closed native/shared/lazy dependency policy and reviewed receipt producer/consumer integration",
     "Actual private Ray lifecycle acceptance",
-    "Original disk reserve deficit",
     "Actual native eight-GPU updates and rank evidence",
     "Formal full prepared-data/image and unique freshbase gates"
   ],
@@ -72,10 +71,9 @@
     "Offline-asset local Windows strict Path.resolve temporary-directory PermissionErrors (8 errors/11 tests, 1 skipped); Linux R1 11 and R2 12 pass. No local full-suite pass."
   ],
   "next": [
-    "Close exact native/shared-package/lazy-vLLM/Python/native-library source policy using observed origins and whole critical trees.",
-    "Integrate reviewed source and asset policies with producer/consumer, binding real evidence and the checked private config/environment; never fabricate review booleans.",
-    "Validate actual private Ray startup/teardown under required gates, then disposable eight-rank updates only after fresh original resources.",
-    "Formal prepared-data/image and unique freshbase entry remain separate gates."
+    "Complete the existing isolated probe launcher, real Ray lifecycle and required evidence bindings with no generic framework expansion; resource gate now passes and must be refreshed immediately before launch.",
+    "Keep frozen R6 as GPU baseline; pursue the separate R7 changed-unit/module/decorator design only on synthetic and development inputs, never retune confirmation.",
+    "Collect actual eight-rank finite-update/head/freeze evidence before formal training admission."
   ],
   "r4_hits": {
     "S1": 129,
@@ -1583,5 +1581,31 @@
       "Validate actual private Ray startup/teardown under required gates, then disposable eight-rank updates only after fresh original resources.",
       "Formal prepared-data/image and unique freshbase entry remain separate gates."
     ]
-  }
+  },
+  "resource_refresh_20261028": {
+    "status": "RESOURCE_SNAPSHOT_PASS_NOT_LAUNCH_RECEIPT",
+    "observed_at": 1793164892.9219766,
+    "free_bytes": 544357101568,
+    "free_GiB": 506.9720573425293,
+    "original_start_required_bytes": 458392574347,
+    "start_required_GiB": 426.9113525254652,
+    "margin_GiB": 80.0607048170641,
+    "save_required_bytes": 415172253607,
+    "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+    "gpu_count": 8,
+    "all_gpu_utilization_zero": true,
+    "each_gpu_memory_MiB": 14,
+    "compute_processes": [],
+    "ray_processes": [],
+    "ports_available": [
+      6407,
+      8265,
+      8307
+    ],
+    "existing_validate_resources_passed": true,
+    "GPU_launched": false,
+    "training_admitted": false,
+    "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
+  },
+  "current_priority": "Actual disposable GPU validation and substantive PI design; stop generic audit expansion."
 }

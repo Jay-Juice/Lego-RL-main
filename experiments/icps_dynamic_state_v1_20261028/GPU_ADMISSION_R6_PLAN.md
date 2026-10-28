@@ -125,3 +125,5 @@ The private manifest remains remote. This new component is not yet integrated
 with the receipt consumer. Native/shared/lazy dependency policy, reviewed producer
 and real Ray/GPU acceptance remain pending; no admission or GPU update occurred.
 The current five-input GPU_OFFLINE_ASSETS_R6_CONTRACTS.sha256 binds the R2 source.
+
+2026-10-28 user steering: prioritize actual GPU validation or PI information design, not continued generic audit expansion. Fresh resources now pass: 506.972GiB free versus 426.911GiB required, eight GPUs idle and required ports available. This observation is not a launch receipt and must be refreshed before launch. R6 remains frozen; separate R7 design records three synthetic candidate omissions. No GPU/model update or training admission yet.
