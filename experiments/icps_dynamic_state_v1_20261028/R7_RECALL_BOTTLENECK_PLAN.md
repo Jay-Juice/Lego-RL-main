@@ -1,0 +1,5 @@
+# Fixed-proposal bottleneck diagnostic
+
+Declared while six-arm generation is running, before its scores. Run only after frozen607receipt and main aggregate exist. For each of366exactmapped cases, classify every arm as already visible, candidate missing, candidate present but none of original flow seed proposals hits, hitting proposals all exceed actual cap when rendered alone, or a fitting hitting seed exists but is not selected. Use actual Qwen full rendered cost, original issue/source/proposals, and only scorer-side development labels. No generated payload, ranking, parameter or frozen source changes. Sum categories366 and reproduce observed hits. Aggregate only; no case exports or confirmation.
+
+A target-aware single-window witness satisfies cap/max3/nonoverlap but is not a deployable selector, semantic sufficiency, or a global upper bound over expanded/other source windows. It provides a concrete same-budget feasibility witness rather than treating every missing target as budget shortage. Diagnostic does not choose a winning variant; compare all six arms. Private state stays remote.

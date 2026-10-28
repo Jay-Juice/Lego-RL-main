@@ -1,0 +1,393 @@
+{
+  "UTC": "2026-10-28T12:46:48.268091+00:00",
+  "status": "DEVELOPMENT_RECALL_GAIN_FINAL_COVERAGE_GAIN_UNCERTAIN",
+  "queue": "logs/recall_windows_r7_r2",
+  "exit": 0,
+  "inputs": 607,
+  "evaluable": 366,
+  "repositories": 77,
+  "rows": [
+    {
+      "mode": "base12_256",
+      "cap": 256,
+      "candidate": 306,
+      "visible": 200,
+      "full": 128,
+      "mean_tokens": 249.7331136738056,
+      "density": 5.954146480791835,
+      "matching_control": null,
+      "paired": null
+    },
+    {
+      "mode": "base12_384",
+      "cap": 384,
+      "candidate": 306,
+      "visible": 208,
+      "full": 170,
+      "mean_tokens": 365.6342668863262,
+      "density": 5.088674302194774,
+      "matching_control": null,
+      "paired": null
+    },
+    {
+      "mode": "symbols24_256",
+      "cap": 256,
+      "candidate": 327,
+      "visible": 202,
+      "full": 129,
+      "mean_tokens": 249.7001647446458,
+      "density": 5.989076803041792,
+      "matching_control": "base12_256",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.05737704918032787,
+          "gained": 21,
+          "lost": 0,
+          "unchanged": 345,
+          "task_CI95": [
+            0.03551912568306011,
+            0.08196721311475409
+          ],
+          "repo_cluster_CI95": [
+            0.036360342555994726,
+            0.08226358235626058
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.00546448087431694,
+          "gained": 3,
+          "lost": 1,
+          "unchanged": 362,
+          "task_CI95": [
+            -0.00546448087431694,
+            0.01639344262295082
+          ],
+          "repo_cluster_CI95": [
+            -0.004796163069544364,
+            0.016628068091844816
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.00273224043715847,
+          "gained": 2,
+          "lost": 1,
+          "unchanged": 363,
+          "task_CI95": [
+            -0.00546448087431694,
+            0.01092896174863388
+          ],
+          "repo_cluster_CI95": [
+            -0.005405405405405406,
+            0.013513513513513514
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "passage24_256",
+      "cap": 256,
+      "candidate": 343,
+      "visible": 205,
+      "full": 134,
+      "mean_tokens": 250.01153212520592,
+      "density": 6.031363088057901,
+      "matching_control": "base12_256",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.10109289617486339,
+          "gained": 37,
+          "lost": 0,
+          "unchanged": 329,
+          "task_CI95": [
+            0.07103825136612021,
+            0.13114754098360656
+          ],
+          "repo_cluster_CI95": [
+            0.06976744186046512,
+            0.13287185787185787
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.01366120218579235,
+          "gained": 7,
+          "lost": 2,
+          "unchanged": 357,
+          "task_CI95": [
+            0.0,
+            0.030054644808743168
+          ],
+          "repo_cluster_CI95": [
+            -0.0023268242832679663,
+            0.02888138811794412
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.01639344262295082,
+          "gained": 7,
+          "lost": 1,
+          "unchanged": 358,
+          "task_CI95": [
+            0.00273224043715847,
+            0.03278688524590164
+          ],
+          "repo_cluster_CI95": [
+            0.002730958554915836,
+            0.031144571799307966
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "free24_256",
+      "cap": 256,
+      "candidate": 343,
+      "visible": 186,
+      "full": 123,
+      "mean_tokens": 248.83855024711696,
+      "density": 6.0401570883345315,
+      "matching_control": "base12_256",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.10109289617486339,
+          "gained": 37,
+          "lost": 0,
+          "unchanged": 329,
+          "task_CI95": [
+            0.07103825136612021,
+            0.13114754098360656
+          ],
+          "repo_cluster_CI95": [
+            0.06976744186046512,
+            0.13287185787185787
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.03825136612021858,
+          "gained": 18,
+          "lost": 32,
+          "unchanged": 316,
+          "task_CI95": [
+            -0.07377049180327869,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            -0.08239741161616161,
+            0.008911872434056951
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.01366120218579235,
+          "gained": 17,
+          "lost": 22,
+          "unchanged": 327,
+          "task_CI95": [
+            -0.04644808743169399,
+            0.01912568306010929
+          ],
+          "repo_cluster_CI95": [
+            -0.04601327897965773,
+            0.018519951840385282
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "free24_384",
+      "cap": 384,
+      "candidate": 343,
+      "visible": 198,
+      "full": 162,
+      "mean_tokens": 360.4794069192751,
+      "density": 5.281866619374041,
+      "matching_control": "base12_384",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.10109289617486339,
+          "gained": 37,
+          "lost": 0,
+          "unchanged": 329,
+          "task_CI95": [
+            0.07103825136612021,
+            0.13114754098360656
+          ],
+          "repo_cluster_CI95": [
+            0.06976744186046512,
+            0.13287185787185787
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.0273224043715847,
+          "gained": 22,
+          "lost": 32,
+          "unchanged": 312,
+          "task_CI95": [
+            -0.06557377049180328,
+            0.01092896174863388
+          ],
+          "repo_cluster_CI95": [
+            -0.07229267537439477,
+            0.02230587111378788
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.02185792349726776,
+          "gained": 23,
+          "lost": 31,
+          "unchanged": 312,
+          "task_CI95": [
+            -0.060109289617486336,
+            0.01639344262295082
+          ],
+          "repo_cluster_CI95": [
+            -0.06419217650126009,
+            0.019357078853046605
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    }
+  ],
+  "recall_diagnostic": {
+    "evaluable": 366,
+    "free24_256_candidate_not_final": 157,
+    "base12_256_candidate_not_final": 106,
+    "base12_384_candidate_not_final": 98,
+    "symbols24_256_candidate_not_final": 125,
+    "passage24_256_candidate_not_final": 138,
+    "free24_384_candidate_not_final": 145,
+    "baseline_candidate_miss": 60,
+    "best_symbols_rank_13_24": 21,
+    "target_file_in_baseline_candidates": 41,
+    "symbols24_256_rescues_candidate": 21,
+    "passage24_256_rescues_candidate": 37,
+    "free24_256_rescues_candidate": 37,
+    "free24_384_rescues_candidate": 37,
+    "best_symbols_rank_25_48": 16,
+    "target_file_absent_from_baseline_candidates": 19,
+    "no_parsed_entity_target": 3,
+    "best_symbols_rank_49_96": 9,
+    "best_symbols_rank_97_plus": 11
+  },
+  "local_contracts": 7,
+  "Linux_contracts": 7,
+  "baseline_payloads_exact": 607,
+  "Landlock_denials_per_shard": 8,
+  "aggregate_SHA": "c9b4320767e9dfda12e17e53573c0f7f92d155c86f6fd73903e7f508c73b63b6",
+  "frozen_SHA": "6fbee6cf48468f7692c7b5c16805796e110703aeb8fc0a3ec027db279356e9f5",
+  "retained_failure": "logs/recall_windows_r7 exit1: header unordered-term near-tie baseline reconstruction mismatch. Fresh old agrees with new; corrected fixed-input control and canonical new header channel before scoring.",
+  "runtime_changed": false,
+  "independent_validation": false,
+  "training_started": false,
+  "interpretation": [
+    "Passage24 recovers37previously missing candidate hits without losing baseline task hits:306->343/366 (83.61->93.72%). Exploratory repo CI+6.98to+13.29pp.",
+    "Passage24/256 final visible200->205 (7gained2lost),full128->134,density+1.30%,mean249.73->250.01. Final visible repo CI[-0.23,+2.89]pp includes0.",
+    "Dropping forced top3anchors retains same candidate hit count but final186/full123 at256,198/full162 at384; reject this joint utility tradeoff.",
+    "Keep passage24 as next development retrieval comparator, not admitted runtime. Old R6 confirmation cannot transfer.",
+    "Passage24/256:205visible,23candidate-missing,9no hitting seed proposal,129fitting hitting seed exists but unselected;0of these misses have all hitting seeds over256.",
+    "Actual-or-single-window witness334/366=91.26% is label-informed feasibility evidence, not deployed coverage, global optimum or semantic/full-target sufficiency. Prioritize ranking/preservation of context rather than universal budget growth."
+  ],
+  "limitations": [
+    "607seen development inputs;366exactmapped metric denominator, not total607task success.",
+    "Passage channel and multi-channel fusion jointly change retrieval; no isolated proof that8192-character truncation alone caused recovery.",
+    "Candidate/source-coordinate hits can include enclosing classes; not proof of precise useful final context or RL gain."
+  ],
+  "window_bottlenecks": {
+    "base12_256": {
+      "tasks": 366,
+      "already_visible": 200,
+      "actual_or_single_seed_attainability_witness": 300,
+      "fitting_hitting_seed_exists_but_not_selected": 100,
+      "candidate_missing": 60,
+      "candidate_present_but_no_seed_proposal_hits": 6
+    },
+    "base12_384": {
+      "tasks": 366,
+      "already_visible": 208,
+      "actual_or_single_seed_attainability_witness": 300,
+      "fitting_hitting_seed_exists_but_not_selected": 92,
+      "candidate_missing": 60,
+      "candidate_present_but_no_seed_proposal_hits": 6
+    },
+    "symbols24_256": {
+      "tasks": 366,
+      "already_visible": 202,
+      "actual_or_single_seed_attainability_witness": 320,
+      "fitting_hitting_seed_exists_but_not_selected": 118,
+      "candidate_missing": 39,
+      "candidate_present_but_no_seed_proposal_hits": 7
+    },
+    "passage24_256": {
+      "tasks": 366,
+      "already_visible": 205,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 129,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    },
+    "free24_256": {
+      "tasks": 366,
+      "already_visible": 186,
+      "actual_or_single_seed_attainability_witness": 333,
+      "fitting_hitting_seed_exists_but_not_selected": 147,
+      "candidate_present_but_no_seed_proposal_hits": 10,
+      "candidate_missing": 23
+    },
+    "free24_384": {
+      "tasks": 366,
+      "already_visible": 198,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 136,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    }
+  },
+  "bottleneck_SHA": "5575bcd833162f8d667e6c965e3b4c22c58e4a569be93b0d00fba9d665926096",
+  "bottleneck_exit": 0
+}

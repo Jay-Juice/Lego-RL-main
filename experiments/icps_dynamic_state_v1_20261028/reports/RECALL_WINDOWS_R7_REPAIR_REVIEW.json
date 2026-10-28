@@ -1,0 +1,31 @@
+{
+  "status": "REPAIR_VERIFIED_SYNTHETIC_NOT_COVERAGE",
+  "initial_queue": "logs/recall_windows_r7",
+  "initial_exit": 1,
+  "scoring_ran_initial": false,
+  "baseline_diagnostic": "New equals fresh old; fresh old differs from saved in positions9/10. Only differing field names exported; no score/case text used.",
+  "repair": "Cached symbols12 baseline is exact input/prefix; canonical sorted query terms in new header channel; fixed process hash seed; no frozen runtime edit.",
+  "local_contracts": 7,
+  "cross_process_seeds": [
+    1,
+    17,
+    103
+  ],
+  "previous_local_contracts": 6,
+  "failure_archive": "archive/r7_recall_header_order_failure",
+  "current_queue": "logs/recall_windows_r7_r2",
+  "current_status": "generation_and_scoring_exit0",
+  "source_SHA": {
+    "src/recall_windows_r7_r2.py": "56576c4c37aa3fcd9f539cfaf9805397f6799a29607defce4b7a2e14213159c6",
+    "validation/recall_windows_r7_r2_contracts.py": "5292d50e4bc75601421f428d17f1ffd59dcff07f61cd2c659e5584b6c62ad536"
+  },
+  "Linux_contracts": 7,
+  "synthetic_full_build_tail_recovery": {
+    "old_channels": 0,
+    "passage_channel": 1,
+    "not_development_coverage": true
+  },
+  "frozen7_exact": true,
+  "current_exit": 0,
+  "baseline_payloads_exact": 607
+}

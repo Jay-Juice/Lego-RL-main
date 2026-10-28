@@ -134,3 +134,7 @@ R7 candidate recall follow-up: four retrieval hypotheses plus exact diverse6 con
 ## 2026-10-28 joint-window allocation evidence
 
 Joint7arm and same-score lookahead6arm development experiments complete. Four new global-objective/coherent variants rejected; lookahead384+1visible/+3full is not robust vs matched control. Post-score objective diagnostic records higher-score/lower-coverage association; all failures retained. See R7_JOINT_ALLOCATION_RESULTS.md. Only new research helpers/ops/contracts/plans/aggregate reports and these current-state documents change. Frozen7/runtime unchanged; no confirmation inputs, GPU/model/checkpoint or formal training. Prior head086d7fae17d90a60d283f25b9c6789410642d448 retained; next evidence commit on existing draft PR3 only.
+
+## 2026-10-28 recall and final-window bottleneck evidence
+
+R2six-arm607development experiment improves candidate306->343/366; anchoredpassage24final200->205/full128->134 at256, density+1.30%, finalcoverageCIcrosses0. Label-informed fixed-window diagnostic identifies129fitting but unselected misses;334/366feasibility witness is not achieved or semantic coverage. R1header-order baseline failure retained; R2fixed savedprefix/canonical newquery,7local7Linuxcontracts. No runtime/frozen/confirmation/GPU/training change. See R7_RECALL_WINDOWS_RESULTS.md. Priorcommit671bacbb63c5dcaa8336beb047bcc6dbb9509aa6 retained; reviewedsource/plans/aggregates only, same draftPR3.

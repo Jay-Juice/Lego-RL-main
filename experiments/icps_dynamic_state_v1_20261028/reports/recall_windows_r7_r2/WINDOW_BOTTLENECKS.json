@@ -1,0 +1,62 @@
+{
+  "UTC": "2026-10-28T12:50:07.461087+00:00",
+  "status": "SCORER_ONLY_FIXED_PROPOSAL_DIAGNOSTIC_NOT_DEPLOYABLE",
+  "counts": {
+    "base12_256": {
+      "tasks": 366,
+      "already_visible": 200,
+      "actual_or_single_seed_attainability_witness": 300,
+      "fitting_hitting_seed_exists_but_not_selected": 100,
+      "candidate_missing": 60,
+      "candidate_present_but_no_seed_proposal_hits": 6
+    },
+    "base12_384": {
+      "tasks": 366,
+      "already_visible": 208,
+      "actual_or_single_seed_attainability_witness": 300,
+      "fitting_hitting_seed_exists_but_not_selected": 92,
+      "candidate_missing": 60,
+      "candidate_present_but_no_seed_proposal_hits": 6
+    },
+    "symbols24_256": {
+      "tasks": 366,
+      "already_visible": 202,
+      "actual_or_single_seed_attainability_witness": 320,
+      "fitting_hitting_seed_exists_but_not_selected": 118,
+      "candidate_missing": 39,
+      "candidate_present_but_no_seed_proposal_hits": 7
+    },
+    "passage24_256": {
+      "tasks": 366,
+      "already_visible": 205,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 129,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    },
+    "free24_256": {
+      "tasks": 366,
+      "already_visible": 186,
+      "actual_or_single_seed_attainability_witness": 333,
+      "fitting_hitting_seed_exists_but_not_selected": 147,
+      "candidate_present_but_no_seed_proposal_hits": 10,
+      "candidate_missing": 23
+    },
+    "free24_384": {
+      "tasks": 366,
+      "already_visible": 198,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 136,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    }
+  },
+  "aggregate_SHA": "c9b4320767e9dfda12e17e53573c0f7f92d155c86f6fd73903e7f508c73b63b6",
+  "source_SHA": "acb80eae136295e597a25608eef60524a9978abb7bf30454b06e3ec97529bf65",
+  "limitations": [
+    "Labels only after frozen generation and main scoring; never used to select deployed PI.",
+    "A one-window target-hit witness fits the real token cap and max3/nonoverlap constraints, but does not establish semantic completeness.",
+    "Fixed seed proposals exclude later residual expansion alternatives; this is not a global optimum or an upper bound over all possible source windows.",
+    "Categories describe a fixed pipeline, not causal proof about individual features. No case IDs or scores exported."
+  ]
+}

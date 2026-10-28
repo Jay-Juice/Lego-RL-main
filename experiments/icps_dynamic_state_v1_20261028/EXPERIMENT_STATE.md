@@ -1,6 +1,14 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: candidate recall93.72%; final-window ranking remains main bottleneck
+
+logs/recall_windows_r7_r2 exit0 on607seen development inputs/366exactmapped/77repos, actualQwen6arms. Saved symbols12baseline306candidate/200visible/128full at256. Append-only symbols24 gives327/202/129. Full-body128word passage/stride64 retrieval with3channelRRF and originaltop3anchors gives343/205/134,mean250.01vs249.73tokens,density6.031vs5.954(+1.30%). Candidate37gained0lost,+10.11pp(repoCI[+6.98,+13.29]);final7gained2lost,+1.37pp(repoCI[-0.23,+2.89])notrobust. Unforced-prefix free24 retains343candidate hits but final186/123at256,198/162at384; reject as joint utility improvement. Keep anchored passage24 as next development retrieval comparator, not runtime promotion.
+
+Original60candidate misses:3no parsed target entity;57ranked beyond12 (21at13-24,16at25-48,9at49-96,11at97+ in fixed-prefix canonical expansion).41alreadyhave targetfile amongcandidatefiles,19do not. Post-freeze window diagnostic exit0: passage24/256205visible,23candidateabsent,9no hitting seed,129fitting hitting seed not selected,0standalone-budget-blocked. Label-informed actual-or-single-window witness334/366=91.26%does NOT mean achieved coverage or semantic/fulltarget sufficiency; not globalupperbound. Next priority window relevance with anchors/context, not blanket budget increases. R6confirmation untouched.
+
+R1baseline assertion exit1 retained: oldheaderBM25 set iteration yields floating near-tie ordering; fresh old=new but savedpositions9/10swap. R2preserves savedbaseline/prefix, validates identities/sourcehashes/coordinates, canonicalizes newheaderquery and fixesprocesshashseed. Local7/Linux7contracts inclcrossprocessseeds;607exact256payloadreplays,8actualLandlockdenials/shard;allgenerationfrozenbeforelabels. No prior metrics invalidated/no case-score tuning. See R7_RECALL_WINDOWS_RESULTS.md and RECALL_WINDOWS_R7_REVIEW.json. AggregateSHAc9b4320767e9dfda12e17e53573c0f7f92d155c86f6fd73903e7f508c73b63b6,diagnostic5575bcd833162f8d667e6c965e3b4c22c58e4a569be93b0d00fba9d665926096. Frozen7/runtime unchanged; no newGPU/model/optimizer/training; nojobs/monitorremain.
+
 ## Latest R7: joint budget/window experiments complete; no robust promotion
 
 Two actualQwen development experiments completed exit0 on607inputs/366exactmapped/77repos. Seven-arm joint global-objective beam experiment loses coverage/full/density in all4newarms; symbols12/256 visible200->144,full128->71. Post-score diagnostic shows548/607higher heuristic scores, including62/65lost visible hits: objective misalignment, not proof of individual-feature cause. Diagnostic missing-metric exit1 and CRLFmanifest failure retained, corrected aggregate execution exit0; generation/scoring unchanged.

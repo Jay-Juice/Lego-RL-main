@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Joint allocation experiments complete; no robust method promotion. Next research should quantify budget-feasible windows separately from relevance. No training or monitor.",
+  "current_priority": "Passage24 is next development retrieval comparator; prioritize issue/window relevance with intact context.129misses have fitting hitting seed witnesses. No new model/training or active monitor.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -1817,5 +1817,32 @@
     "independent_validation": false,
     "all_joint_new_arms_rejected": true,
     "frozen7_exact": true
+  },
+  "r7_recall_windows": {
+    "status": "DEVELOPMENT_RECALL_GAIN_FINAL_COVERAGE_UNCERTAIN",
+    "inputs": 607,
+    "evaluable": 366,
+    "candidate": 343,
+    "candidate_previous": 306,
+    "visible": 205,
+    "visible_previous": 200,
+    "full": 134,
+    "full_previous": 128,
+    "W0_cap": 256,
+    "density_gain_percent": 1.2968543436942204,
+    "actual_or_single_window_witness": 334,
+    "witness_not_deployable": true,
+    "window_buckets": {
+      "tasks": 366,
+      "already_visible": 205,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 129,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    },
+    "aggregate_SHA": "c9b4320767e9dfda12e17e53573c0f7f92d155c86f6fd73903e7f508c73b63b6",
+    "diagnostic_SHA": "5575bcd833162f8d667e6c965e3b4c22c58e4a569be93b0d00fba9d665926096",
+    "runtime_promoted": false,
+    "independent": false
   }
 }
