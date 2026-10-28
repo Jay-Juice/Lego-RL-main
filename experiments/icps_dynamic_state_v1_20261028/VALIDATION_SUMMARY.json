@@ -1739,5 +1739,62 @@
     "density_comparator": "rank6",
     "runtime_changed": false,
     "confirmation_used": false
+  },
+  "r7_candidate_research": {
+    "status": "DEVELOPMENT_RECALL_GAIN_WITHOUT_ROBUST_VISIBLE_GAIN_NOT_ADMITTED",
+    "report": "reports/CANDIDATE_RESEARCH_R7_REVIEW.json",
+    "aggregate_SHA": "8291253def7bad0c44aa79726491a9946595e1e9c8c097e8bc1e80a59c4f6d6c",
+    "rows": [
+      {
+        "mode": "base6",
+        "candidate_hits": 282,
+        "visible_hits": 197,
+        "full_hits": 130,
+        "mean_tokens": 249.76441515650743
+      },
+      {
+        "mode": "pool12",
+        "candidate_hits": 308,
+        "visible_hits": 195,
+        "full_hits": 129,
+        "mean_tokens": 250.48105436573312
+      },
+      {
+        "mode": "files12",
+        "candidate_hits": 283,
+        "visible_hits": 186,
+        "full_hits": 123,
+        "mean_tokens": 250.81878088962108
+      },
+      {
+        "mode": "symbols12",
+        "candidate_hits": 306,
+        "visible_hits": 200,
+        "full_hits": 128,
+        "mean_tokens": 249.7331136738056
+      },
+      {
+        "mode": "links12",
+        "candidate_hits": 301,
+        "visible_hits": 194,
+        "full_hits": 126,
+        "mean_tokens": 250.5337726523888
+      }
+    ],
+    "scope": {
+      "tasks": 366,
+      "target_lines": 1320,
+      "captured_target_lines": 1320,
+      "represented_target_lines": 1314,
+      "capture_any": 366,
+      "entity_any": 363,
+      "capture_full_any": 366,
+      "entity_full_any": 362,
+      "capture_missing_all": 0,
+      "representation_missing_all_given_capture": 3,
+      "has_outside_entity_target": 4,
+      "limited_capture": 35
+    },
+    "runtime_promoted": false
   }
 }

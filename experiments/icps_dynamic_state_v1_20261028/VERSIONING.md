@@ -128,3 +128,5 @@ rank6 gives188/137 and+4.93% target-line density; diverse6 density only+0.37%.
 Atomic/compact negative results retained. Four actual label denials,607 exact
 baseline outputs, source/cap/roundtrip checks and exit0. No R6 runtime, GPU or
 confirmation changes. See WINDOW_RESEARCH_R7_REVIEW.json and results document.
+
+R7 candidate recall follow-up: four retrieval hypotheses plus exact diverse6 control, same607development inputs and256/max3window allocator. pool12 recalls308targets but displays195 vs baseline282/197; symbol fusion306/200/full128 is a weak development comparator with interval crossingzero. All seven local/Linux synthetic contracts and607actualQwen baseline replays pass. Separate aggregate availability diagnostic finds363/366current-entity ceiling on exactmapped tasks, not deployable coverage. Frozen7/runtime unchanged. Track only new source/plans/aggregate reports; queue and diagnostic exit0, no training or promotion.

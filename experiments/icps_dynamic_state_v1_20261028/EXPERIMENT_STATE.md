@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: candidate recall experiment complete; no robust final-coverage gain
+
+logs/candidate_research_r7 exit0;607development/366exactmapped/77repos, cap256/max3windows, same diverse6 allocator. Baseline candidate282/visible197/full130. Plain pool12 candidate308(84.15%) but visible195/full129; files12 283/186/123; symbol/signature fusion306/200/128; static-neighbor301/194/126. Symbols gain14/lost11,net3(+0.82pp),repoCI[-1.92,+4.43]pp crosses0;target-line density+1.48%,mean249.73vs249.76. No robust promotion; keep original diverse6 baseline. Do not confuse retrieval recall gain with useful visible PI gain.
+
+Separate scorer-only availability diagnostic exit0: all1320targetlines captured on366exactmapped cases; original entity union contains1314lines/363tasks,362full-any. Only3tasks wholly lack entity representation. This conditional mapped-development oracle ceiling99.18% is not achievable token-limited coverage or general capture guarantee. Main next direction: joint candidate/window relevance and coherent-context allocation, not blindly more candidates or module-only fixes. Seven synthetic contracts local/remote,607exacttop6+payload replays,5actualLandlockdenials/shard, all frozen before scoring. Frozen7/runtime/R6confirmation untouched. AGGREGATE8291253def7bad0c44aa79726491a9946595e1e9c8c097e8bc1e80a59c4f6d6c; see R7_CANDIDATE_RESEARCH_RESULTS.md and CANDIDATE_RESEARCH_R7_REVIEW.json. No GPU/model/training; no active job/monitor.
+
 ## Latest R7: coverage/density window research complete, no runtime promotion
 
 logs/window_research_r7 exit0, same607 development inputs/366 exact targets/77repos. At cap256/max3windows, baseline pool3 hits179/full128/mean246.91tokens. Retrieval-prior rank6 reaches188/full137/248.57; diversity penalty on repeated same-entity windows reaches197/full130/249.76. Best task coverage48.91->53.83% (+4.92pp),30gained/12lost, exploratory repoCI[+1.90,+8.64]pp. This is reused development and five-variant selection, not independent admission. Target-line density improves4.93% for rank6 but only0.37% for diverse6; do not call coverage breadth a large information-density gain. Complete short-statement variants do not jointly improve coverage/completeness; compact3 drops to126/full41 at76.42tokens and is rejected for joint utility.
