@@ -1,0 +1,25 @@
+{
+  "status": "PRE_RUN_SCOPE_REVIEW_GENERATION_IN_PROGRESS",
+  "arms": 6,
+  "candidates": "fixed saved passage24",
+  "new_source_only": [
+    "src/relevance_windows_r7.py",
+    "validation/relevance_windows_r7.py",
+    "validation/relevance_windows_r7_contracts.py",
+    "ops/relevance_windows_r7.sh"
+  ],
+  "original_runtime_changed": false,
+  "local_synthetic_tests": 5,
+  "remote_synthetic_tests": 5,
+  "checks": [
+    "Exact clone edits preserve original rendering, expansion, source mapping, max3, diversity and actual marginal cost.",
+    "Anchored mode retains original first selected SEED, not necessarily final expanded coordinates.",
+    "Native utility rank plus pooled seed BM25 RRF has fixed 2:1 weights and constant20; no fit or labels.",
+    "Six full generation arms freeze before scorer reads labels; original205hit baseline must replay607outputs exactly."
+  ],
+  "limits": [
+    "Lexical rank is heuristic, not semantic or calibrated probability.",
+    "Full-any metric means complete changed lines of at least ONE hunk; full-all metric in aggregate means all hunks.",
+    "All607 are previously seen development; no confirmation or runtime promotion."
+  ]
+}

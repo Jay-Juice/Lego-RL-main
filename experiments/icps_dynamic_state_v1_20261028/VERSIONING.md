@@ -138,3 +138,11 @@ Joint7arm and same-score lookahead6arm development experiments complete. Four ne
 ## 2026-10-28 recall and final-window bottleneck evidence
 
 R2six-arm607development experiment improves candidate306->343/366; anchoredpassage24final200->205/full128->134 at256, density+1.30%, finalcoverageCIcrosses0. Label-informed fixed-window diagnostic identifies129fitting but unselected misses;334/366feasibility witness is not achieved or semantic coverage. R1header-order baseline failure retained; R2fixed savedprefix/canonical newquery,7local7Linuxcontracts. No runtime/frozen/confirmation/GPU/training change. See R7_RECALL_WINDOWS_RESULTS.md. Priorcommit671bacbb63c5dcaa8336beb047bcc6dbb9509aa6 retained; reviewedsource/plans/aggregates only, same draftPR3.
+
+## Fixed-pool relevance experiment
+
+## Latest R7: fixed-pool window relevance fusion rejected;384 improves depth at density cost
+
+logs/relevance_windows_r7 exit0:607seen development/366exactmapped/77repos,6actualQwen arms on exact saved passage24(candidate343). Original256 visible205/full-all134/mean250.01/density6.031. New lexical-RRF fusion190/127; original-first-seed anchored fusion196/132. At384 original213/174/mean366.77/density5.106; fused196/163,anchored202/170. Reject all4newarms, no runtime promotion. Original256->384 gains8visible/40full with0loss, mean+46.70%,density-15.34%; exploratory visible repoCI[+0.78,+3.79]pp. Best observed58.20%anyhit and47.54%all-target completeness, not near100%. Full-any/full-all counts coincide here, definitions distinct; no semantic/RL claim.
+
+5local+5Linux contracts,607exactbaselinepayload replays,8actualLandlockdenials/shard,all607x6outputs frozen before labels. Frozen7/runtime unchanged; no newGPU/model/optimizer/training or activejob/monitor. AGGREGATEad286593f0752faeab8c0cd2fa33d7101b4348fa25f43502a017c5999ccf2eb6. See R7_RELEVANCE_WINDOWS_RESULTS.md and RELEVANCE_WINDOWS_R7_REVIEW.json. Next change relevance signal toward issue/code behavior and source dependencies or semantic ranking with predeclared repo-separated validation; stop treating lexical-score increases as coverage evidence. No semantic ranker implemented. R6confirmation excluded; runtime192/128/4096 unchanged.

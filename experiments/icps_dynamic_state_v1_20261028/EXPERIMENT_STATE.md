@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: fixed-pool window relevance fusion rejected;384 improves depth at density cost
+
+logs/relevance_windows_r7 exit0:607seen development/366exactmapped/77repos,6actualQwen arms on exact saved passage24(candidate343). Original256 visible205/full-all134/mean250.01/density6.031. New lexical-RRF fusion190/127; original-first-seed anchored fusion196/132. At384 original213/174/mean366.77/density5.106; fused196/163,anchored202/170. Reject all4newarms, no runtime promotion. Original256->384 gains8visible/40full with0loss, mean+46.70%,density-15.34%; exploratory visible repoCI[+0.78,+3.79]pp. Best observed58.20%anyhit and47.54%all-target completeness, not near100%. Full-any/full-all counts coincide here, definitions distinct; no semantic/RL claim.
+
+5local+5Linux contracts,607exactbaselinepayload replays,8actualLandlockdenials/shard,all607x6outputs frozen before labels. Frozen7/runtime unchanged; no newGPU/model/optimizer/training or activejob/monitor. AGGREGATEad286593f0752faeab8c0cd2fa33d7101b4348fa25f43502a017c5999ccf2eb6. See R7_RELEVANCE_WINDOWS_RESULTS.md and RELEVANCE_WINDOWS_R7_REVIEW.json. Next change relevance signal toward issue/code behavior and source dependencies or semantic ranking with predeclared repo-separated validation; stop treating lexical-score increases as coverage evidence. No semantic ranker implemented. R6confirmation excluded; runtime192/128/4096 unchanged.
+
 ## Latest R7: candidate recall93.72%; final-window ranking remains main bottleneck
 
 logs/recall_windows_r7_r2 exit0 on607seen development inputs/366exactmapped/77repos, actualQwen6arms. Saved symbols12baseline306candidate/200visible/128full at256. Append-only symbols24 gives327/202/129. Full-body128word passage/stride64 retrieval with3channelRRF and originaltop3anchors gives343/205/134,mean250.01vs249.73tokens,density6.031vs5.954(+1.30%). Candidate37gained0lost,+10.11pp(repoCI[+6.98,+13.29]);final7gained2lost,+1.37pp(repoCI[-0.23,+2.89])notrobust. Unforced-prefix free24 retains343candidate hits but final186/123at256,198/162at384; reject as joint utility improvement. Keep anchored passage24 as next development retrieval comparator, not runtime promotion.
