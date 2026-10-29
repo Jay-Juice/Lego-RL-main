@@ -1,6 +1,20 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: entity selection and exact construction optimization complete
+
+This bounded experiment achieves an exact construction-cost reduction, but neither new entity-selection rule meets the joint coverage/density/completeness objective. Retain the original1024/8 selection and the new cached1024_8 development implementation; reject entity1024_8 and complement1024_8 as replacements. No runtime promotion or training change.
+
+The cached arm exactly replays all607 complete baseline output dictionaries, including tokens/source maps/windows/semantic hashes. Any-hit remains272/366(74.32%), full-all238/366(65.03%), visible targetlines935/1320, density2.573574targetlines/1000PI tokens, mean998.57tokens. Mean construction time1.643644->1.320374s (-19.67%), median1.699404->1.366917s, P952.683700->2.123874s (-20.86%); median paired time ratio0.8139. Mean unique tokenizer misses remain1443.66 in both arms; the optimized arm averages90.11 backend batches. The combined AST/line/term cache and batch optimization is measured together, not proof that batching alone caused the gain or that fewer source strings were tokenized. No persistent cache or additional retrieval/modelcall.
+
+Whole-unit evidence weighting reaches268any(73.22%)/236full(64.48%),953targetlines,density2.634249 (+2.36%),996.51mean tokens,1.329902s mean. It gains3andloses7any tasks (-1.09pp, exploratory repo95%CI[-2.81,+0.59]pp), gains4andloses6full (-0.55pp,CI[-2.24,+1.21]). Complementary evidence reaches267any(72.95%)/235full(64.21%),951targetlines,density2.627239 (+2.09%),996.75tokens,1.328945s mean;3gained8lost any (-1.37pp,CI[-3.16,+0.34]),4gained7lost full (-0.82pp,CI[-2.66,+1.02]). Both are faster than original control because they share the exact performance changes; neither improves task coverage or completeness. Intervals crossing0 are not evidence of equivalence/noninferiority.
+
+The loss diagnosis rejects the intended selection improvement: no-target-entity-selected45->55/56, while within-selected-entity wrong-region misses26->20; candidateabsence23unchanged. More aggregate targetlines and slightly higher density do not compensate for fewer covered tasks. Candidate-own lexical/identifier evidence with the fixed bounded multiplier is insufficient in this form; this experiment does not establish that all entity-level signals are useless. Preserve the useful rank prior and original choices rather than deploy these weights.
+
+Keep budget1024 and original quality; use the proven exact cached/batched constructor as the next W0 development control. Any future selection research needs a more discriminating issue-to-code relevance signal evaluated on repository-separated development and fresh independent evidence; no learned model or additional parameter sweep was started. All607cases are reused development (366mapped/77repos); no independent generalization, semantic completeness or RL claim. Timing excludes initial retrieval/I/O/init/Critic; the20% constructor improvement is not a20% training speedup. FrozenR6 runtime192/128/4096 and disabled training entry remain unchanged.
+
+Four arms607seen/366mapped/77repos,candidate343fixed;8local8Linuxcontracts,607exactcontrols+cachedreplays,17Landlockdenials/shard,29inputSHA,freeze-before-score/diagnosticexit0. No newretrieval/GPU/runtime/training/activejobs. SeeR7_ENTITY_EVIDENCE_RESULTS.md;aggregateSHA e3cb8c71350dd73b83cec005082889e889d370fe0f40a82d56957df61c55b8da.
+
 ## Latest R7: historical V2 budget ablation complete
 
 Historical V2 is2048tokens per repair state: code1920 plus execution128, versus current development W0cap1024. The actual repair serializer has these independent limits, so generic/reproduction-shell1024 values are not the effective V2repair cap. This is a budget-only study of currentcodewindows, not a replay of V2information content or its training performance.
