@@ -8,7 +8,7 @@ Current stage: dynamic source repair and actual Harbor acceptance passed;
 native eight-GPU disposable probe PASSED exit0 at runs/gpu-r6-8e1a734cf17b8d5e.
 The inherited gpu-r6 protocol prefix is retained for the reviewed lease/receipt
 implementation; the run root, PI implementation and outputs are R8-specific.
-No formal training is admitted. start_full97.sh exits78.
+Formal training has not started. start_full97.sh is gated pending completed coverage recheck.
 
 ## Method
 
@@ -109,3 +109,18 @@ summary is FULL_CONFIG_R8_SUMMARY.json.
 User explicitly chose original checkpoint retention. Do not delete old/new
 checkpoints. Keep the original save-space wait gate; notify a real wait with
 actual shortage. No retention parameter change.
+
+## Initial-status budget failure 2026-10-29
+
+The first frozen existing-cohort generator failed before scoring: initial status
+facts routed a 1024-token budget into the inherited serializer capped at192.
+Original logs/private outputs remain at recheck_r8; no scores were used.
+A minimal R8-only fallback fix preserves legacy explicit-status formatting and
+cap192 when initial facts exist. Clean initial1024 and dynamic128 are unchanged.
+Synthetic regression and a fresh frozen recheck_r8_r2 are required before launch.
+Checkpoint retention remains original; wait on insufficient save space.
+
+Synthetic initial-status regression PASS with actual Qwen tokenizer: clean W0
+exact and four legacy-status cases exact. Recheck R2 now running in
+logs/recheck_r8_r2 with separate private outputs and no scores yet. No full
+training started. Current source SHA bc99e900cf294066a51c29c90a13e1ca411392afc61fb4bf93d6ac3d052a7dc6.

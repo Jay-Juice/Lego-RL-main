@@ -48,9 +48,10 @@ def main():
  if sys.argv[1]=='prepare':
   save(N/'reports/FULL_CONFIG_R8.json',dict(status='PASS_formal_config_and_offline_bindings',config=config,**evidence,training_admitted=False));return
  require(sys.argv[1]=='launch' and run.is_dir(),'formal invocation')
- coverage=read(N/'reports/recheck_r8/AGGREGATE.json');require(coverage['coverage_admission'] is True,'existing cohort recheck failed')
+ coverage=read(N/'reports/recheck_r8_r2/AGGREGATE.json');require(coverage['coverage_admission'] is True,'existing cohort recheck failed')
  require(coverage['status']=='EXISTING_CONFIRMATION_RECHECK_PASS','coverage scope mismatch')
  for relative,digest in coverage['source'].items():require(file_sha(N/relative)==digest,'PI changed after frozen recheck')
+ fallback=read(N/'reports/INITIAL_STATUS_BUDGET_R8.json');require(fallback['status']=='PASS_synthetic_initial_status_fallback' and fallback['source_SHA']==file_sha(N/'src/dynamic_session_r8.py'),'initial status regression pending')
  ready=read(N/'reports/FULL_CONTROLLER_R8.json');require(ready['passed'] is True and ready['runtime_SHA']==file_sha(N/'runtime/ray_trainer.py'),'formal telemetry acceptance stale')
  gpu=read(N/'reports/GPU_SHORT_R8_REVIEW.json');require(gpu['exit_code']==0 and gpu['rank_before_after_pass'] and gpu['own_Ray_cleanup_pass'],'native eight GPU acceptance')
  checkpoint=pathlib.Path(config['trainer']['default_local_dir']);require(not checkpoint.exists(),'freshbase only; namespace already exists')
@@ -63,7 +64,7 @@ def main():
   resources=collect_resources();validate_resources(resources,time.time())
   require(resources['free_bytes']>=evidence['data']['minimum_before_start_bytes'],'full reserve including build contexts')
   network=network_gate()
-  save(run/'FULL_LAUNCH_RECEIPT.json',dict(purpose='R8_freshbase_full97',created_at=time.time(),experiment=EXP,resources=resources,subnet=network,evidence=evidence,coverage_SHA=file_sha(N/'reports/recheck_r8/AGGREGATE.json'),controller_SHA=file_sha(N/'reports/FULL_CONTROLLER_R8.json'),native_GPU_review_SHA=file_sha(N/'reports/GPU_SHORT_R8_REVIEW.json'),budget=[1024,128,4096],reuse_old_checkpoint=False))
+  save(run/'FULL_LAUNCH_RECEIPT.json',dict(purpose='R8_freshbase_full97',created_at=time.time(),experiment=EXP,resources=resources,subnet=network,evidence=evidence,coverage_SHA=file_sha(N/'reports/recheck_r8_r2/AGGREGATE.json'),controller_SHA=file_sha(N/'reports/FULL_CONTROLLER_R8.json'),native_GPU_review_SHA=file_sha(N/'reports/GPU_SHORT_R8_REVIEW.json'),budget=[1024,128,4096],reuse_old_checkpoint=False))
   os.environ['ICPS_CHECKPOINT_ROOT']=str(checkpoint)
   try:formal_main.main.__wrapped__(OmegaConf.create(config))
   finally:

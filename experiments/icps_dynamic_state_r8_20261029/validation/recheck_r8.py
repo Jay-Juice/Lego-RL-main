@@ -2,7 +2,7 @@
 import collections,datetime,gzip,hashlib,json,os,pathlib,sys,time,subprocess
 N=pathlib.Path(__file__).resolve().parents[1];B=N.parents[1]
 P=B/'experiments/icps_dynamic_state_v1_20261028';R=B/'experiments/pi_repair_state_v2_20261015'
-V=P/'.private_confirmation_r6';W=N/'.private_recheck_r8';O=N/'reports/recheck_r8'
+V=P/'.private_confirmation_r6';W=N/'.private_recheck_r8_r2';O=N/'reports/recheck_r8_r2'
 sys.path[:0]=[str(N/'src'),str(N/'core'),str(N/'validation')]
 def read(p):return json.loads(p.read_text())
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
