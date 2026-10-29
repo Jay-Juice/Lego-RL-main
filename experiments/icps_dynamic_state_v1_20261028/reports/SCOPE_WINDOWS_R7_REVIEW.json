@@ -1,0 +1,161 @@
+{
+  "UTC": "2026-10-29T07:46:37.828119+00:00",
+  "status": "COMPLETE_SCOPE_WINDOWS_DEVELOPMENT_NOT_DEPLOYED",
+  "arms": {
+    "control1024_8": {
+      "any_hits": 272,
+      "full_all": 238,
+      "target_lines": 935,
+      "mean_tokens": 998.5716639209226,
+      "density": 2.5735739372653508,
+      "wall_mean": 1.3300300354423398,
+      "wall_median": 1.377552580088377,
+      "wall_p95": 2.148445039615035
+    },
+    "scope1024_8": {
+      "any_hits": 243,
+      "full_all": 221,
+      "target_lines": 898,
+      "mean_tokens": 935.3558484349259,
+      "density": 2.688542259213796,
+      "wall_mean": 1.0706090413439018,
+      "wall_median": 1.0553719848394394,
+      "wall_p95": 1.9881834406405676
+    },
+    "balanced1024_8": {
+      "any_hits": 241,
+      "full_all": 219,
+      "target_lines": 887,
+      "mean_tokens": 933.9275123558484,
+      "density": 2.661130395389374,
+      "wall_mean": 1.0689762195839225,
+      "wall_median": 1.041606169193983,
+      "wall_p95": 1.9662037461996078
+    }
+  },
+  "checks": {
+    "scope1024_8": {
+      "any_improves": false,
+      "full_not_lower": false,
+      "density_improves": true,
+      "mean_within110percent": true,
+      "p95_within115percent": true
+    },
+    "balanced1024_8": {
+      "any_improves": false,
+      "full_not_lower": false,
+      "density_improves": true,
+      "mean_within110percent": true,
+      "p95_within115percent": true
+    }
+  },
+  "interpretation": "Neither scope-local arm meets the joint objective. Retain cached1024/8 original selection; reject scope1024_8 and balanced1024_8 as replacements. No runtime promotion. The class-scope hypothesis was tested rather than assumed: more syntactically localized proposals do not improve relevance selection in this implementation.\n\nBaseline272/366any(74.32%),238full-all(65.03%),935targetlines,998.57mean tokens,density2.573574,meanconstructor1.330030s/P952.148445s. Scope-local243any(66.39%)/221full(60.38%),898targetlines,935.36tokens,density2.688542,mean1.070609s/P951.988183s. It gains8andloses37any (-7.92pp, exploratory repo95%CI[-11.18,-5.00]pp), gains17andloses34full (-4.64pp,CI[-7.95,-1.12]). Balanced241any(65.85%)/219full(59.84%),887targetlines,933.93tokens,density2.661130,mean1.068976s/P951.966204s;7gained38lostany (-8.47pp,CI[-11.60,-5.54]),16gained35lostfull (-5.19pp,CI[-8.62,-1.56]). Both pass timing bounds and raise density by using fewer tokens, but lose absolute targetlines/taskcoverage/completeness. These are rejected tradeoffs, not coverage improvements.\n\nThe new post-freeze diagnostic directly identifies a more specific bottleneck. Of366tasks,343have a target-containing candidate interval;333(90.98%ofalltasks) already have at least one actual target-containing seed window that individually fits1024. Baseline94misses partition into23candidateabsence,7no-target-seed,64feasible-target-seed-not-emitted;0are solely targetseed-overbudget. Thus64/94=68.09%ofbaseline missedtasks already had an individually feasible correct source window. This is stronger evidence about ranking/combination loss than simply quoting candidate recall. It does NOT show that every target can jointly fit1024, establish achievable91%coverage without labels, or explain full-all completeness by itself. Three baseline hits arise through context growth despite no target-containing seed, so333-272 is not the64miss count.\n\nScope-local has330individuallyfeasibletargetseedtasks but only243visible; balanced has335feasibletargetseedtasks (more thanbaseline333) yet241visible. Feasible-seed-not-emitted misses rise64->88/95; no-target-seedmisses7->12/7. Merely increasing proposal breadth or changing ownership boundaries is insufficient.362/366tasks have at leastoneclasscandidate, so the4task no-class stratum is too small for broad subgroup conclusions. These compound policies alter seed signals/cap selection/repetition and expansion boundaries; results do not isolate a single cause. Class-range recall can be broad, but in this cohort most candidate-hit tasks already contain small feasible seeds, so class granularity alone does not account for the gap.\n\nKeep1024budget and existing exactcached constructor. This bounded study is complete; do not sweep its parameters on the same cohort. A stronger issue-to-window relevance model with repository-separated development is a plausible future direction, not a demonstrated improvement or an implemented/approved learned ranker. Offline training and small online scoring could be evaluated for latency, but no extra model/dependency/download/training is introduced here. No near100%claim. All607inputs are reuseddevelopment; R6independentconfirmation untouched. Candidate recall343/366unchanged; frozenR6/runtime192/128/4096 and disabledformaltraining remain unchanged.",
+  "diagnosis": {
+    "control1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 333,
+      "affordable_target_seed_available": 333,
+      "visible": 272,
+      "feasible_target_seed_not_emitted": 64,
+      "no_target_seed": 7,
+      "candidate_absent": 23
+    },
+    "scope1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 330,
+      "affordable_target_seed_available": 330,
+      "visible": 243,
+      "feasible_target_seed_not_emitted": 88,
+      "no_target_seed": 12,
+      "candidate_absent": 23
+    },
+    "balanced1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 335,
+      "affordable_target_seed_available": 335,
+      "visible": 241,
+      "feasible_target_seed_not_emitted": 95,
+      "candidate_absent": 23,
+      "no_target_seed": 7
+    }
+  },
+  "strata": {
+    "control1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 329,
+        "affordable_target_seed_available": 329,
+        "visible": 270,
+        "feasible_target_seed_not_emitted": 62,
+        "no_target_seed": 7,
+        "candidate_absent": 23
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    },
+    "scope1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 326,
+        "affordable_target_seed_available": 326,
+        "visible": 241,
+        "feasible_target_seed_not_emitted": 86,
+        "no_target_seed": 12,
+        "candidate_absent": 23
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    },
+    "balanced1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 331,
+        "affordable_target_seed_available": 331,
+        "visible": 239,
+        "feasible_target_seed_not_emitted": 93,
+        "candidate_absent": 23,
+        "no_target_seed": 7
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    }
+  },
+  "local_contracts": 8,
+  "Linux_contracts": 8,
+  "control_exact": 607,
+  "label_denials": 18,
+  "queue_exit": 0,
+  "source_manifest_count": 35,
+  "independent_confirmation": false,
+  "runtime_changed": false,
+  "training": false,
+  "public_report_SHA": {
+    "AGGREGATE.json": "02f815c93faabb058f0b576ab5b7814bcb8c769a240ac35f4adacf3102e08d60",
+    "FROZEN.json": "8b8c0b9282271e4441a0f384ae790dc6187bb5fc740f05d2dcd04d417af7fa44",
+    "LOSS_DECOMPOSITION.json": "fc485f82c51add0d9c56bfc9c7507d624d53b6739643cce400100caadf8b2db0"
+  }
+}

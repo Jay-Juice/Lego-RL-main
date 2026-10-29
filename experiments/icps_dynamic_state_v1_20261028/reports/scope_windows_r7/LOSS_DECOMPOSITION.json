@@ -1,0 +1,105 @@
+{
+  "status": "POST_FREEZE_ORACLE_AVAILABILITY_NOT_ACHIEVABLE_COVERAGE",
+  "counts": {
+    "control1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 333,
+      "affordable_target_seed_available": 333,
+      "visible": 272,
+      "feasible_target_seed_not_emitted": 64,
+      "no_target_seed": 7,
+      "candidate_absent": 23
+    },
+    "scope1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 330,
+      "affordable_target_seed_available": 330,
+      "visible": 243,
+      "feasible_target_seed_not_emitted": 88,
+      "no_target_seed": 12,
+      "candidate_absent": 23
+    },
+    "balanced1024_8": {
+      "tasks": 366,
+      "candidate_available": 343,
+      "proposal_target_available": 335,
+      "affordable_target_seed_available": 335,
+      "visible": 241,
+      "feasible_target_seed_not_emitted": 95,
+      "candidate_absent": 23,
+      "no_target_seed": 7
+    }
+  },
+  "strata": {
+    "control1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 329,
+        "affordable_target_seed_available": 329,
+        "visible": 270,
+        "feasible_target_seed_not_emitted": 62,
+        "no_target_seed": 7,
+        "candidate_absent": 23
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    },
+    "scope1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 326,
+        "affordable_target_seed_available": 326,
+        "visible": 241,
+        "feasible_target_seed_not_emitted": 86,
+        "no_target_seed": 12,
+        "candidate_absent": 23
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    },
+    "balanced1024_8": {
+      "has_class_candidate": {
+        "tasks": 362,
+        "candidate_available": 339,
+        "proposal_target_available": 331,
+        "affordable_target_seed_available": 331,
+        "visible": 239,
+        "feasible_target_seed_not_emitted": 93,
+        "candidate_absent": 23,
+        "no_target_seed": 7
+      },
+      "no_class_candidate": {
+        "tasks": 4,
+        "candidate_available": 4,
+        "proposal_target_available": 4,
+        "affordable_target_seed_available": 4,
+        "visible": 2,
+        "feasible_target_seed_not_emitted": 2
+      }
+    }
+  },
+  "aggregate_SHA": "02f815c93faabb058f0b576ab5b7814bcb8c769a240ac35f4adacf3102e08d60",
+  "generation_receipt_SHA": "df688e41b63e5da49456c82c7c69f8f38299dbd7ebc725e0bd2918107d767c08",
+  "source_SHA": "859e80788663a1f64076d3d5bb1b1911d388f8ebc982e7be9b225ed38ad0a66f",
+  "limitations": [
+    "Target-informed post-freeze diagnostic, never used by selector.",
+    "Individually affordable seeds need not jointly fit; context growth can reach lines absent from seed union.",
+    "Same reused development, not independent/RL evidence. No per-case exports."
+  ]
+}
