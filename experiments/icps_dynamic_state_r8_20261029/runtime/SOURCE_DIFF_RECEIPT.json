@@ -24,8 +24,9 @@
     "relative": "third_party/verl/verl/trainer/ppo/ray_trainer.py",
     "file": "ray_trainer.py",
     "original_SHA": "3dd582d6fbd136ecfb1fc08e81f6bff1abf6de44226c77d2e119b84a7abd7733",
-    "candidate_SHA": "9331dbb86f82d984c090e5bad561a03f8151df349fe56897d99e8a696c9eb127",
-    "production_unchanged": true
+    "candidate_SHA": "cdf7efd66d2399e81e38990caa9bd7431b1f7dd36987a1f6e89b63365a6abde3",
+    "production_unchanged": true,
+    "R8_change": "Optional MFU only: same three probe-tested replacements; omit absent inference MFU metric in normal fit loop."
   },
   "verl.workers.engine.utils": {
     "relative": "third_party/verl/verl/workers/engine/utils.py",

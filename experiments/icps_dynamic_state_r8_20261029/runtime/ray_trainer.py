@@ -1316,7 +1316,7 @@ class RayPPOTrainer:
         routed_experts = tu.get(output, "routed_experts")
         sum_pi_squared = tu.get(output, "sum_pi_squared") if calculate_sum_pi_squared else None
 
-        old_log_prob_mfu = tu.get(output, "metrics")["mfu"]
+        old_log_prob_mfu = tu.get(output, "metrics").get("mfu")
         # step 4. No padding to padding
         entropy = no_padding_2_padding(entropy, batch_td)
         log_probs = no_padding_2_padding(log_probs, batch_td)
@@ -1372,7 +1372,7 @@ class RayPPOTrainer:
         actor_output = tu.get(actor_output, "metrics")
         actor_output = rename_dict(actor_output, "actor/")
         # modify key name
-        actor_output["perf/mfu/actor"] = actor_output.pop("actor/mfu")
+        if "actor/mfu" in actor_output: actor_output["perf/mfu/actor"] = actor_output.pop("actor/mfu")
         actor_output = DataProto.from_single_dict(data={}, meta_info={"metrics": actor_output})
 
         return actor_output
@@ -1403,7 +1403,7 @@ class RayPPOTrainer:
         output = tu.get(output, "metrics")
         output = rename_dict(output, "critic/")
         # modify key name
-        output["perf/mfu/critic"] = output.pop("critic/mfu")
+        if "critic/mfu" in output: output["perf/mfu/critic"] = output.pop("critic/mfu")
         critic_output = DataProto.from_single_dict(data={}, meta_info={"metrics": output})
         return critic_output
 
@@ -1575,9 +1575,9 @@ class RayPPOTrainer:
                         reward_tensor, reward_extra_infos_dict = extract_reward(batch)
 
                     # Operating Mode Selection:
-                    # - Bypass mode: Sets old_log_probs = rollout_log_probs (2 policies: π_rollout, π_θ)
-                    # - Decoupled mode: Recomputes old_log_probs as proximal anchor (3 policies: π_rollout, π_old, π_θ)
-                    #   Note: π_old computed once per data batch, serves as stable reference during mini-batch updates
+                    # - Bypass mode: Sets old_log_probs = rollout_log_probs (2 policies: 蟺_rollout, 蟺_胃)
+                    # - Decoupled mode: Recomputes old_log_probs as proximal anchor (3 policies: 蟺_rollout, 蟺_old, 蟺_胃)
+                    #   Note: 蟺_old computed once per data batch, serves as stable reference during mini-batch updates
                     rollout_corr_config = self.config.algorithm.get("rollout_correction", None)
                     bypass_recomputing_logprobs = rollout_corr_config and rollout_corr_config.get("bypass_mode", False)
                     if bypass_recomputing_logprobs:  # Use `rollout_log_probs`
@@ -1604,6 +1604,8 @@ class RayPPOTrainer:
                                 "actor/entropy": entropy_agg.detach().item(),
                                 "perf/mfu/actor_infer": old_log_prob_mfu,
                             }
+                            if old_log_prob_mfu is None:
+                                old_log_prob_metrics.pop("perf/mfu/actor_infer")
                             metrics.update(old_log_prob_metrics)
                             old_log_prob.batch.pop("entropys")
                             if "routed_experts" in batch.batch and "routed_experts" in old_log_prob.batch:
@@ -1668,8 +1670,8 @@ class RayPPOTrainer:
                         metrics.update(traj_filter_metrics)
 
                         # Compute rollout correction: IS weights, rejection sampling, and metrics
-                        # Only runs in decoupled mode (computes once per batch using stable π_old)
-                        # In bypass mode, this is skipped - actor computes metrics from evolving π_θ vs π_rollout
+                        # Only runs in decoupled mode (computes once per batch using stable 蟺_old)
+                        # In bypass mode, this is skipped - actor computes metrics from evolving 蟺_胃 vs 蟺_rollout
                         if (
                             rollout_corr_config is not None
                             and "rollout_log_probs" in batch.batch

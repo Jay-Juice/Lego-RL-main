@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "scope": "CPU native imports and exact telemetry-only transformation of previously GPU-tested runtime",
+  "runtime_SHA": "cdf7efd66d2399e81e38990caa9bd7431b1f7dd36987a1f6e89b63365a6abde3",
+  "original_native_GPU_runtime_SHA": "9331dbb86f82d984c090e5bad561a03f8151df349fe56897d99e8a696c9eb127",
+  "all_nontelemetry_AST_unchanged": true,
+  "lease_namespace_only_change": true,
+  "native_fit_not_replaced": true,
+  "actual_GPU_test_repeated": false,
+  "optimizer_steps": 0
+}

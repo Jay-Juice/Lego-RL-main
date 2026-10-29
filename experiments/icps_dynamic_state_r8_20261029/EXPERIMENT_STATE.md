@@ -79,3 +79,33 @@ processes remaining0; all eight GPUs14MiB/util0/no compute process after exit.
 Synthetic fixture native model updates, not a new Actor task rollout or RL benefit.
 Formal optional-MFU telemetry compatibility remains probe-scoped; full training
 stays disabled pending the separate conditions in ADMISSION_R8.md.
+
+## Formal preparation 2026-10-29
+
+User authorized completing prerequisites and starting eight-GPU full training.
+Accepted one frozen R8 recheck of the existing R6 confirmation cohort; this is
+not a fresh blind set and no retuning is permitted. CPU generation is running
+in logs/recheck_r8. Coverage gate remains pending until outputs freeze and score.
+
+Full6248 metadata and dataset match historical identity.5121prepared images
+are cached;1127 have offline native-build parents. Full formal configuration
+parity passes with original batch64,97horizon,warmup20,LR1e-6/5e-6,epochs1/2,
+save10,test0,seed42 and historical packing. New experiment is
+sao-qwen35-9b-b64-pi-r8-1024-full97-20261029; freshbase only.
+
+Independent runtime controller now carries the same three optional-MFU guards
+used by the accepted native probe, plus omission of an absent inference-MFU
+logging field. CPU acceptance proves every other AST node unchanged relative
+to the native-tested runtime. Private lease changes namespace only. Old files
+remain exact. FULL_R8.sha256 is the current formal source manifest; R8_GPU.sha256
+is historical after these formal telemetry-only edits.
+
+start_full97.sh now dispatches the gated ops/full_r8.sh launch path. It cannot
+launch before existing-cohort acceptance, exact frozen PI hashes, full data,
+controller acceptance, native GPU evidence and fresh resources all pass.
+No formal launch yet. Full recipe/asset binding report remains remote; public
+summary is FULL_CONFIG_R8_SUMMARY.json.
+
+User explicitly chose original checkpoint retention. Do not delete old/new
+checkpoints. Keep the original save-space wait gate; notify a real wait with
+actual shortage. No retention parameter change.

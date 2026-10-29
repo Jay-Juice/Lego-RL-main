@@ -1,25 +1,20 @@
-# R8 acceptance and training boundary
+# R8 full training admission
 
-This is an independent copy requested by the user. Parent files remain unchanged.
-Initial PI: cached1024_8/passage24; updates: changed-unit R8, 128 tokens,
-three windows; episode4096. No extra retrieval or model calls in dynamic selection.
+Direct user authorization: finish prerequisites then launch eight-GPU full97
+freshbase training with original SAO recipe as far as possible. User accepted
+a frozen recheck on the previously used R6 confirmation cohort; report its
+reuse and192-vs1024budget difference, never claim a fresh blind or same-budget
+causal comparison. No design changes after recheck freeze.
 
-Accepted before GPU: four reproduced omissions repaired, fifteen CPU contracts,
-actual cached Harbor ten captures and provider/proxy/builder Actor isolation.
-Harbor generation is scripted, not a new model-generated task rollout.
+Engineering accepted: dynamic15contracts, cached Harbor10captures, native
+eight-GPU SP8/DP1 updates20/21, finite values/loss/gradients and Actor isolation.
+Formal controller telemetry-only compatibility, full6248data/offline image
+identity, original two-phase Hydra/recipe and model/tokenizer identities pass.
 
-Native SP8/DP1 short probe runs at runs/gpu-r6-8e1a734cf17b8d5e. Its numerical/rank/Actor isolation and cleanup acceptance passed exit0; see
-reports/GPU_SHORT_R8_REVIEW.json. Test weights are never saved
-or reused. Historical packing phases20/21 and native SAO optimizer/head/freeze
-are preserved. The probe's optional-MFU compatibility is scoped to its process.
+Remaining now: finish frozen recheck and require its declared coverage gate;
+then fresh eight-idle-GPU/noRay/ports/subnet/disk checks immediately under the
+private launch lease. Unique formal checkpoint namespace must not exist.
 
-Formal training is disabled. Remaining separate conditions are:
-- Fresh independent coverage evidence for the selected initial design; the
-  607-task developmental results and frozen R6 confirmation do not transfer.
-- Full prepared-data/image identity checks and a separately reviewed freshbase
-  full-training entry, preserving full checkpoint/save reserves.
-- Resolve the formal controller's optional-MFU compatibility in this copy and
-  validate that actual full-training code path before launch.
-
-Do not run inherited preparation, resume old checkpoints, reduce reserves, or
-label scripted Harbor / synthetic GPU fixtures as model-generated task rollouts.
+Launch only start_full97.sh in this independent copy. Never inherited old
+prepare/launch, old checkpoint resume, resource-threshold reduction, or partial
+checkpoint. User chose unchanged retention; wait on insufficient save space.
