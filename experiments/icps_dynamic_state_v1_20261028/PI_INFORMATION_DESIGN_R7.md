@@ -130,3 +130,29 @@ Sevenarms607seen/366exactmapped/77repos,candidate343fixed;7local+7Linuxcontracts
 ### Exact local memoization follow-up
 
 fast768_8 and fast1024_12 each replay all607frozen outputs exactly;4local+4Linuxcontracts,14Landlockdenials/shard,queueexit0. Fixed64metadata-sorted inputs provide paired timings with separate caches/alternating order; see R7_FAST_MEMO_RESULTS.md. No new quality evidence and no silent transfer of these timings to recommended1024/8 (not a memo replay arm). No runtime/GPU/training change. AggregateSHA 5eba17b8a9a459504551601144741e7ef997dd4e89bbb6ebeb37f632a58175ae.
+
+## Latest R7: fixed1024 joint context experiment complete
+
+No new arm meets the joint coverage+density+completeness objective; keep control1024/8. Control replays272/366any (74.32%),238/366full-all (65.03%),935/1320targetlines,density2.573574,mean998.57tokens. Centered windows yield269any/234full,953targetlines,density2.630562 (+2.21%),mean994.77tokens;3gained6lost any (repo95%CI[-2.55,+0.73]pp),4gained8lost full. More aggregate target lines are not more covered tasks; no promotion.
+
+Joint allocation reduces mean tokens998.57->776.66 (-22.22%) and constructor1.643->0.568s (-65.43%), density+23.43%, butany272->257 (3gained18lost) andfull238->195 (14gained57lost). Combined centered+joint reaches259any/194full,880targetlines,density3.326139 (+29.24%),mean758.24tokens (-24.07%) and0.700s mean (-57.36%). Its any6gained19lost CI[-6.27,-1.20]pp andfull16gained60lost CI[-16.03,-8.14]pp reject it as a replacement. Density improvement partly reflects removing tokens while absolute target-line evidence falls; not a joint improvement.
+
+Cost constraint is not the failure: centered mean+4.56%/P95+6.16%, joint andcombined far faster; all three meet the stated aggregate timing bounds. Entity misses45->45/43 for joint/combined, while wrong-region misses26->41both. The loss concentrates within selected entities. This experiment changes growth policy/granularity/scoring together; it does not prove a single feature causes each loss. Stopping at zero heuristic signal can remove context useful to true targets, so a larger context is not demonstrated waste merely because it lacks query terms.
+
+Bounded follow-up declared from these aggregate findings: preserve joint-selected spans and restore original continuous context growth within the SAME1024cap, compare freshly computed outputs/time. No percase score inspection/tuning, no additional retrieval/model, no runtime promotion. See R7_CONTEXT_REFILL_PLAN.md and eventual R7_CONTEXT_REFILL_RESULTS.md. Both studies remain adaptive reused development, not independent or RL evidence.
+
+Fourarms607seen/366mapped/77repos,candidate343fixed;7local7Linuxcontracts,607exactcontrolreplays,14Landlockdenials/shard,29inputSHA,freeze-before-score/diagnosticr2exit0. Originalmissing-memo-score-path guardexit1beforegeneration retained; method unchanged by repair. No newretrieval/GPU/runtime/training/activejobs. SeeR7_JOINT_CONTEXT_RESULTS.md;aggregateSHA e2f683c93b382a11da7b89fbd0d604c1e98b3c83739dc81dbd4d7d993014a447.
+
+## Latest R7: fixed1024 context-refill follow-up complete
+
+Neither follow-up meets the predeclared joint objective. Keep the original fast1024/8 baseline:272/366any (74.32%),238/366full-all (65.03%),935targetlines,density2.573574,mean998.57tokens. The fixed1024budget is not increased and no runtime method is replaced.
+
+Joint+refill reaches267any/229full,931targetlines,density2.555298 (-0.71%),mean1002.02tokens and1.029s mean versus1.643s control (-37.36%). Any3gained8lost CI[-3.54,+0.27]pp;full14gained23lost CI[-5.88,+0.38]pp. It is faster but does not improve coverage or density.
+
+Centered+joint+refill is the better depth/speed comparator:268any/237full,953targetlines,density2.625055 (+2.00%),mean997.33tokens and1.146s mean (-30.22%),median1.034vs1.695,P952.110vs2.665. Any6gained10lost (-1.09pp,repo95%CI[-2.99,+0.86]pp);full17gained18lost (-0.27pp,CI[-3.49,+3.61]pp). More aggregate target lines and density do not satisfy taskcoverage improvement; non-significant negative change is not proof of equivalence/noninferiority. Reject as replacement, retain only developmental cost/depth comparison.
+
+Refill preserves all previously selected joint source intervals and recovers10any/34full from joint257/195, or9any/43full from centeredjoint259/194, without changing candidates/seeds. Thus some context omitted by the zero-positive-signal stopping rule carries true target evidence; low query-match score is not proof of irrelevance. Full restoration does not eliminate remaining placement differences: entitymisses45/43 unchanged and wrongregion41->31/32, compared with control26. Candidateabsence23unchanged. This is evidence about these concrete constructors, not proof that every low-score line is necessary or a universal budget lowerbound.
+
+Across both experiments, no arm raises finaltaskcoverage+density while preservingfulltargets. Stop this bounded allocator study and retain1024/8. No independent/generalization/RL claim, no runtime promotion. Further research would need a more informative issue-to-code relevance signal calibrated separately from this reused cohort, rather than further budget increases, zero-score pruning or blanket window-count changes. No learned ranker was implemented or started this round; no extra online retrieval or neural calls.
+
+Threearms607seen/366mapped/77repos,candidate343fixed;4local4Linuxcontracts,607exactcontrols,607jointspanpreservationeach,15Landlockdenials/shard,35inputSHA,freeze-before-score/diagnosticexit0. Firststage4arms/r2exit0 and originalmissingpathguardexit1 preserved. No newretrieval/GPU/runtime/training/activejobs. SeeR7_CONTEXT_REFILL_RESULTS.md;aggregateSHA baa6b469e9777ea548e040797f7e78e0212610e7a54f9fdcb1101155ad43cbf0.

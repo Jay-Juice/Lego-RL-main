@@ -1,0 +1,99 @@
+{
+  "UTC": "2026-10-29T05:28:02.369778+00:00",
+  "status": "COMPLETE_DEVELOPMENT_NOT_DEPLOYED",
+  "tasks": 607,
+  "exact_mapped": 366,
+  "repositories": 77,
+  "arms": {
+    "control1024_8": {
+      "any_hits": 272,
+      "full_all": 238,
+      "target_lines": 935,
+      "tokens": 998.5716639209226,
+      "density": 2.5735739372653508,
+      "wall_mean": 1.6426189509043976,
+      "wall_median": 1.6730001084506512,
+      "wall_p95": 2.68561586253345,
+      "cpu_mean": 1.6425447582619457
+    },
+    "centered1024_8": {
+      "any_hits": 269,
+      "full_all": 234,
+      "target_lines": 953,
+      "tokens": 994.7660626029653,
+      "density": 2.6305619962459974,
+      "wall_mean": 1.7175170674281812,
+      "wall_median": 1.720581542700529,
+      "wall_p95": 2.851137666776775,
+      "cpu_mean": 1.7174414947874803
+    },
+    "joint1024_8": {
+      "any_hits": 257,
+      "full_all": 195,
+      "target_lines": 859,
+      "tokens": 776.6573311367381,
+      "density": 3.1765284500833886,
+      "wall_mean": 0.567862439428071,
+      "wall_median": 0.5110312588512897,
+      "wall_p95": 1.1164020296186201,
+      "cpu_mean": 0.5678379284349251
+    },
+    "joint_centered1024_8": {
+      "any_hits": 259,
+      "full_all": 194,
+      "target_lines": 880,
+      "tokens": 758.2421746293245,
+      "density": 3.3261392972018853,
+      "wall_mean": 0.7004913834078602,
+      "wall_median": 0.6326719969511032,
+      "wall_p95": 1.3987794019281856,
+      "cpu_mean": 0.7004652605601306
+    }
+  },
+  "acceptance_checks": {
+    "centered1024_8": {
+      "any_improves": false,
+      "density_improves": true,
+      "full_not_lower": false,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true,
+      "all_preregistered_practical_checks": false
+    },
+    "joint1024_8": {
+      "any_improves": false,
+      "density_improves": true,
+      "full_not_lower": false,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true,
+      "all_preregistered_practical_checks": false
+    },
+    "joint_centered1024_8": {
+      "any_improves": false,
+      "density_improves": true,
+      "full_not_lower": false,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true,
+      "all_preregistered_practical_checks": false
+    }
+  },
+  "interpretation": "No new arm meets the joint coverage+density+completeness objective; keep control1024/8. Control replays272/366any (74.32%),238/366full-all (65.03%),935/1320targetlines,density2.573574,mean998.57tokens. Centered windows yield269any/234full,953targetlines,density2.630562 (+2.21%),mean994.77tokens;3gained6lost any (repo95%CI[-2.55,+0.73]pp),4gained8lost full. More aggregate target lines are not more covered tasks; no promotion.\n\nJoint allocation reduces mean tokens998.57->776.66 (-22.22%) and constructor1.643->0.568s (-65.43%), density+23.43%, butany272->257 (3gained18lost) andfull238->195 (14gained57lost). Combined centered+joint reaches259any/194full,880targetlines,density3.326139 (+29.24%),mean758.24tokens (-24.07%) and0.700s mean (-57.36%). Its any6gained19lost CI[-6.27,-1.20]pp andfull16gained60lost CI[-16.03,-8.14]pp reject it as a replacement. Density improvement partly reflects removing tokens while absolute target-line evidence falls; not a joint improvement.\n\nCost constraint is not the failure: centered mean+4.56%/P95+6.16%, joint andcombined far faster; all three meet the stated aggregate timing bounds. Entity misses45->45/43 for joint/combined, while wrong-region misses26->41both. The loss concentrates within selected entities. This experiment changes growth policy/granularity/scoring together; it does not prove a single feature causes each loss. Stopping at zero heuristic signal can remove context useful to true targets, so a larger context is not demonstrated waste merely because it lacks query terms.\n\nBounded follow-up declared from these aggregate findings: preserve joint-selected spans and restore original continuous context growth within the SAME1024cap, compare freshly computed outputs/time. No percase score inspection/tuning, no additional retrieval/model, no runtime promotion. See R7_CONTEXT_REFILL_PLAN.md and eventual R7_CONTEXT_REFILL_RESULTS.md. Both studies remain adaptive reused development, not independent or RL evidence.",
+  "local_contracts": 7,
+  "Linux_contracts": 7,
+  "control_exact_replays": 607,
+  "label_denials_per_shard": 14,
+  "queue_exit": 0,
+  "original_queue_exit": 1,
+  "failure": "Nonexistent memo score path before generation; archived and removed only that guard",
+  "frozen_method_changed": false,
+  "runtime_changed": false,
+  "new_retrieval": false,
+  "neural_calls": false,
+  "GPU_model_optimizer_training": false,
+  "independent_confirmation": false,
+  "public_report_SHA": {
+    "AGGREGATE.json": "e2f683c93b382a11da7b89fbd0d604c1e98b3c83739dc81dbd4d7d993014a447",
+    "FROZEN.json": "ed1b3e5f5c4054277d92fa51433e7f562e1db671169113fc52c1b7a7be800849",
+    "LOSS_DECOMPOSITION.json": "456105ec397f695f252f984e56ba87667d7e1f9706864a29907f35199605fea1"
+  },
+  "report": "R7_JOINT_CONTEXT_RESULTS.md"
+}

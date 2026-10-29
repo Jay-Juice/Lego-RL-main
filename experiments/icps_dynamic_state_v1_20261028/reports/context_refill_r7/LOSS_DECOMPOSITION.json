@@ -1,0 +1,87 @@
+{
+  "status": "SCORER_ONLY_AGGREGATE_LOSS_DECOMPOSITION",
+  "UTC": "2026-10-29T05:30:19.257395+00:00",
+  "counts": {
+    "control1024_8": {
+      "tasks": 366,
+      "visible": 272,
+      "no_target_entity_chosen": 45,
+      "target_entity_chosen_but_wrong_region": 26,
+      "candidate_absent": 23
+    },
+    "joint_refill1024_8": {
+      "tasks": 366,
+      "visible": 267,
+      "no_target_entity_chosen": 45,
+      "target_entity_chosen_but_wrong_region": 31,
+      "candidate_absent": 23
+    },
+    "joint_centered_refill1024_8": {
+      "tasks": 366,
+      "visible": 268,
+      "no_target_entity_chosen": 43,
+      "target_entity_chosen_but_wrong_region": 32,
+      "candidate_absent": 23
+    }
+  },
+  "missed_first_target_entity_rank": {
+    "control1024_8": {
+      "1-3": 21,
+      "7-12": 16,
+      "13-24": 23,
+      "4-6": 11
+    },
+    "joint_refill1024_8": {
+      "1-3": 26,
+      "7-12": 17,
+      "13-24": 22,
+      "4-6": 11
+    },
+    "joint_centered_refill1024_8": {
+      "1-3": 25,
+      "7-12": 16,
+      "13-24": 24,
+      "4-6": 10
+    }
+  },
+  "final_distinct_candidate_rank_task_counts": {
+    "control1024_8": {
+      "1-3": 986,
+      "4-6": 709,
+      "7-12": 705,
+      "13-24": 271
+    },
+    "joint_refill1024_8": {
+      "1-3": 982,
+      "4-6": 713,
+      "7-12": 734,
+      "13-24": 298
+    },
+    "joint_centered_refill1024_8": {
+      "1-3": 988,
+      "4-6": 723,
+      "7-12": 729,
+      "13-24": 303
+    }
+  },
+  "first_target_entity_rank": {
+    "1-3": 242,
+    "4-6": 40,
+    "7-12": 32,
+    "13-24": 29
+  },
+  "smallest_target_entity_source_lines": {
+    "11-30": 105,
+    "1-10": 159,
+    "101+": 24,
+    "31-100": 55
+  },
+  "aggregate_SHA": "baa6b469e9777ea548e040797f7e78e0212610e7a54f9fdcb1101155ad43cbf0",
+  "generation_receipt_SHA": "4ef05ea6c2836f3b160df91a9b3800fb665213bed6b393fe77b4d7cf2d83e805",
+  "source_SHA": "18013b9899f0e53577e627ae6d6f8cd3741c54913fc52d31e9c8501b95d36295",
+  "limitations": [
+    "Post-freeze label-informed diagnosis, not deployable selection.",
+    "Target-overlapping entity may be a large enclosing class; rank bands are descriptive, not causal.",
+    "No private per-case outputs exported. Reused development; no independent/RL claim."
+  ]
+}
