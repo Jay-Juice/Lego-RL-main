@@ -1,0 +1,337 @@
+{
+  "status": "NATIVE_SOURCE_INVENTORY_REVIEW_PENDING",
+  "head_mapping_is_native": true,
+  "head_class_origins": [
+    {
+      "class_name": "Qwen3_5ForTokenClassification",
+      "module": "verl_patch.models.qwen3_5_token_classification",
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/models/qwen3_5_token_classification.py",
+      "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+    },
+    {
+      "class_name": "Qwen3_5Model",
+      "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+      "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+    },
+    {
+      "class_name": "Qwen3_5PreTrainedModel",
+      "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+      "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+      "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+    }
+  ],
+  "shared_OpSlot_identity": true,
+  "OpSlot_names": [
+    "veomni_causal_conv1d",
+    "veomni_causal_lm_loss",
+    "veomni_chunk_gated_delta_rule",
+    "veomni_rms_norm",
+    "veomni_rms_norm_gated"
+  ],
+  "source_trees": [
+    {
+      "root": "src",
+      "inherited_files": 64,
+      "SAO_files": 51,
+      "equal_files": 48,
+      "differences": [
+        {
+          "relative": "harbor_patch/environments/remote_docker.py",
+          "inherited_SHA": "1466f38f2d45261be1f79dc809a8815e1df72aca0b8c8dd111c5ce107582bb44",
+          "SAO_SHA": "01916a0aa25c7031dc0ef10412d5527a88efedcc8f375dd22765c99a25c54120"
+        },
+        {
+          "relative": "harbor_patch/privileged_state/__init__.py",
+          "inherited_SHA": "2066ccb5f7d19423485cadbc0a11f1a9bccdcacb3e6920ea1007719d85ed9a1c",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "harbor_patch/privileged_state/container_capture.py",
+          "inherited_SHA": "1fbd1e8109e699d845833d7f5701b86c1457bda0367464ea034f47548ccd1596",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "harbor_patch/privileged_state/registry.py",
+          "inherited_SHA": "df4d3205c737255c1e385c3d73dee1f53c32b87b4da3ddef166644749e53266b",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "harbor_patch/privileged_state/repair_state.py",
+          "inherited_SHA": "4cf433f9baa893795ebe1787a89c5498137f298637eab40a05f454630dbd38dd",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "harbor_patch/privileged_state/structural_lift.py",
+          "inherited_SHA": "c4d93e3d5766aa37860e6d10399cc56b3aa9ae06b70aa25b9922039011f0d3d2",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/agent_loop/builtin_swe_agent_loop.py",
+          "inherited_SHA": "cc8b362d3fe33e7cb839ea8b1a9046b8a69aece9a27785d174ceb70edc08a0ab",
+          "SAO_SHA": "e8d81f5a1737a8d1655ed38c5051737ca579819586e8898ffeca9d42b9d13594"
+        },
+        {
+          "relative": "verl_patch/agent_loop/pi_archive.py",
+          "inherited_SHA": "632bedaf55d2365f2348a64c10ed25bd38b6e4cb76a0bdd961a372fa62128064",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/agent_loop/pi_checkpoint.py",
+          "inherited_SHA": "633aa32c46c70b3172b010cf74ed1717d7368f336b417474871b1f2da68d9a6a",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/agent_loop/pi_disk_guard.py",
+          "inherited_SHA": "869e8b9d28b03ef4723db1b60016f3840f93a4efc72bd47e0df55d6e3c57b035",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/agent_loop/privileged_critic_builder.py",
+          "inherited_SHA": "acb064a2ff3d28924f67c3e9eedb5bfa3fdf228869f9d41e0d15f04b54b58a51",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/agent_loop/vllm_chat_completion_proxy.py",
+          "inherited_SHA": "1cd0ac2f8c0e28c275ea31244fc7692e00178e8eeed841e4db97d3069e2a3cda",
+          "SAO_SHA": "dd32112bf4c06156c74b9fed1fba26f3caf0a8fd9db21b83e8f549a550f32c29"
+        },
+        {
+          "relative": "verl_patch/pi_gpu_smoke.py",
+          "inherited_SHA": "837b7edfbe8f5d020cdd19865eb9937b7fde2646667cd084fa9c234bdc2f51e2",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/pi_v2_acceptance.py",
+          "inherited_SHA": "2122ddecab54d0add32e8763e9dfff3613da6504fe284303985a66cdc199dd3c",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/pi_v2_resume_diagnostic.py",
+          "inherited_SHA": "2e75b18b0cbc10f59adfe20cdc915efdfc8cfa7fc037cea72b72c062c7b3b85a",
+          "SAO_SHA": null
+        },
+        {
+          "relative": "verl_patch/pi_v2_training_acceptance.py",
+          "inherited_SHA": "dd9e2f1093ad8f96ade5ab3127b234e869e083c0f86e0eb323de25062acdaac3",
+          "SAO_SHA": null
+        }
+      ],
+      "inherited_tree_SHA": "8a849c7ff22da150d5cfdef0bbb066090c304806acb68a075fa361dd6e6a5e15",
+      "SAO_tree_SHA": "73e5247b9b02df08ae25fee67b92befadde96f64c16b0d1363646118d2138368"
+    },
+    {
+      "root": "third_party/verl/verl",
+      "inherited_files": 378,
+      "SAO_files": 378,
+      "equal_files": 376,
+      "differences": [
+        {
+          "relative": "trainer/ppo/ray_trainer.py",
+          "inherited_SHA": "3dd582d6fbd136ecfb1fc08e81f6bff1abf6de44226c77d2e119b84a7abd7733",
+          "SAO_SHA": "6d526f661bd14e778c787eaedc27b99c3bdeb4c177872892905dca9ed37a507d"
+        },
+        {
+          "relative": "workers/utils/padding.py",
+          "inherited_SHA": "ad7f1d9f8940305ca9eaa897eb3daf5c277c17d26a4e851c9aaed2876ca681da",
+          "SAO_SHA": "f3cc823e6ef2099075406f6fe1244498f15a775f0fac90010c0babf1c82cbe7b"
+        }
+      ],
+      "inherited_tree_SHA": "fbe8dcba679da33d1b09793dc578aeeb0ff516e880f155d1bed15c9160870210",
+      "SAO_tree_SHA": "ec497285549f426daf60e3d2f0eff384a4af061d43178cc774aa9330096bcc3a"
+    },
+    {
+      "root": "third_party/harbor/src",
+      "inherited_files": 191,
+      "SAO_files": 191,
+      "equal_files": 190,
+      "differences": [
+        {
+          "relative": "harbor/trial/trial.py",
+          "inherited_SHA": "d8f1aef75af9dc1f2e763a86f4df30b521306cc8a4ff51d4b9e5c882cd000d16",
+          "SAO_SHA": "75b7b707d6160e9aab06543646958610477b7105d7048ea71859a055c1bbdbec"
+        }
+      ],
+      "inherited_tree_SHA": "95d3af271babc4dc6b47e297df6b5e7587eaee4aeb369cd0c7a4c7003bda74f3",
+      "SAO_tree_SHA": "a6d9fa3a7e413bf15e8c531cb40b14a354636b2671db99a0a85877ecf913ba3c"
+    }
+  ],
+  "overlay_origins": [
+    {
+      "module": "harbor_patch.environments.remote_docker",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/remote_docker.py",
+      "SHA": "532ea76e4df3f2b70b30df0138cb80ca05a95ed546f89cf9c1e060271864ac03",
+      "observed_import": false
+    },
+    {
+      "module": "verl_patch.agent_loop.vllm_chat_completion_proxy",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/vllm_chat_completion_proxy.py",
+      "SHA": "940841d41a1d4151c0af5409a55c174bdab480aabf56a2d77ff9267d4d02e22c",
+      "observed_import": false
+    },
+    {
+      "module": "verl_patch.agent_loop.privileged_critic_builder",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/privileged_critic_builder.py",
+      "SHA": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+      "observed_import": false
+    },
+    {
+      "module": "verl.trainer.ppo.ray_trainer",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/ray_trainer.py",
+      "SHA": "9331dbb86f82d984c090e5bad561a03f8151df349fe56897d99e8a696c9eb127",
+      "observed_import": true
+    },
+    {
+      "module": "verl.workers.engine.utils",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/engine_utils.py",
+      "SHA": "b625640524a89142fb500c380e473dc5b77a482d4c47bd055eefcc8b65cb4909",
+      "observed_import": true
+    },
+    {
+      "module": "verl_patch.agent_loop.pi_disk_guard",
+      "path": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/formal_storage.py",
+      "SHA": "76d7420578946a72e627d4c556526c420a190bbae95dc2fd116231bf25f6f8cb",
+      "observed_import": false
+    }
+  ],
+  "native_source_manifest_SHA": "b0b8466d834e16ba9bb76a33b4659bbc8db693236b9a70ebb5ce6fe9c2f558b9",
+  "loaded_modules_SHA": "7ad72287d00bb64e5a9aaf91f9f3027b6a16d41fe98ceb6966d3a85ac45af829",
+  "loaded_module_count": 5027,
+  "observed_shared_top_level": [
+    "81d243bd2c585b0f4821__mypyc.cpython-312-x86_64-linux-gnu.so",
+    "Cython",
+    "PIL",
+    "__editable___vllm_0_19_1_dev0_g2a69949bd_d20260920_cu124_finder.py",
+    "_cuda_bindings_redirector.py",
+    "_distutils_hack",
+    "_multiprocess",
+    "_virtualenv.py",
+    "accelerate",
+    "aiohappyeyeballs",
+    "aiohttp",
+    "aiosignal",
+    "annotated_doc",
+    "annotated_types",
+    "antlr4",
+    "anyio",
+    "attr",
+    "attrs",
+    "cachetools",
+    "certifi",
+    "charset_normalizer",
+    "click",
+    "cloudpickle",
+    "codetiming",
+    "colorful",
+    "cuda",
+    "cupy",
+    "cupy_backends",
+    "cupyx",
+    "cython.py",
+    "datasets",
+    "dateutil",
+    "dill",
+    "email_validator",
+    "fastapi",
+    "filelock",
+    "flash_attn",
+    "flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "frozenlist",
+    "fsspec",
+    "functorch",
+    "google",
+    "h11",
+    "h2",
+    "hpack",
+    "httpcore",
+    "httpx",
+    "huggingface_hub",
+    "hydra",
+    "hyperframe",
+    "idna",
+    "importlib_metadata",
+    "jinja2",
+    "jmespath",
+    "jsonschema",
+    "jsonschema_specifications",
+    "markupsafe",
+    "ml_dtypes",
+    "mpmath",
+    "msgpack",
+    "multidict",
+    "multiprocess",
+    "numpy",
+    "omegaconf",
+    "opentelemetry",
+    "orjson",
+    "packaging",
+    "pandas",
+    "peft",
+    "prometheus_client",
+    "propcache",
+    "pyarrow",
+    "pydantic",
+    "pydantic_core",
+    "pygments",
+    "pynvml.py",
+    "python_multipart",
+    "pyvers",
+    "ray",
+    "referencing",
+    "regex",
+    "requests",
+    "rich",
+    "rpds",
+    "safetensors",
+    "sentencepiece",
+    "six.py",
+    "sniffio",
+    "starlette",
+    "sympy",
+    "tensordict",
+    "tokenizers",
+    "torch",
+    "torchdata",
+    "torchgen",
+    "torchvision",
+    "tqdm",
+    "transformers",
+    "triton",
+    "typing_extensions.py",
+    "typing_inspection",
+    "urllib3",
+    "uvicorn",
+    "uvloop",
+    "veomni",
+    "watchfiles",
+    "xxhash",
+    "yaml",
+    "yarl",
+    "zipp",
+    "zmq",
+    "zstandard"
+  ],
+  "shared_site_packages": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages",
+  "Python_executable": "/home/ubuntu/.local/share/uv/python/cpython-3.12.3-linux-x86_64-gnu/bin/python3.12",
+  "CPU_import_only": true,
+  "model_constructed": false,
+  "CUDA_initialized": false,
+  "Ray_initialized": false,
+  "optimizer_steps": 0,
+  "source_review_complete": false,
+  "production_receipt_created": false,
+  "training_admitted": false,
+  "frozen_sources_exact": 7,
+  "old_sources_exact": 35,
+  "source_SHA": {
+    "validation/gpu_native_inventory_r6.py": "fb048b04e91d61b9d4b1f281bda08640151608f7dcb36cb3f184d93323714270",
+    "ops/gpu_native_inventory_r6.sh": "b24ad6be583d26ca341e724f377b98b754392c5b247e748227952beb3decb40a"
+  },
+  "limitations": [
+    "Imports and exact tree comparison do not approve unexplained changes.",
+    "CPU import closure is a lower bound: lazy/native runtime dependencies still need manifest coverage.",
+    "Native head registration/class origins/OpSlot identity inspected without model construction.",
+    "Installed shared dependencies are read-only and used by both recipes; historical binary identity not inferred.",
+    "No source-review approval, launch receipt, Ray instance, GPU or optimizer update."
+  ]
+}

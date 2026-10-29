@@ -1,0 +1,81 @@
+# R8 independent dynamic PI copy
+
+Parent: icps_dynamic_state_v1_20261028. Windows is authoritative. User requested
+an independent copy before any training-code change, fixing dynamic omissions,
+and training only after acceptance. Parent experiments remain unchanged.
+
+Current stage: dynamic source repair and actual Harbor acceptance passed;
+native eight-GPU disposable probe PASSED exit0 at runs/gpu-r6-8e1a734cf17b8d5e.
+The inherited gpu-r6 protocol prefix is retained for the reviewed lease/receipt
+implementation; the run root, PI implementation and outputs are R8-specific.
+No formal training is admitted. start_full97.sh exits78.
+
+## Method
+
+Initial PI remains cached1024_8 with passage24. Dynamic updates retain128tokens,
+max3windows, and episode4096. changed_units_r8 enumerates the smallest owning
+definition/module statement for every changed source interval. Decorators are
+part of the definition. Different changed owners get one seed before context
+expansion. Exact full-payload tokenizer cost is authoritative. Pure whitespace
+does not consume a candidate/window. Partial observation is disclosed. Only
+changed files are parsed for updates; no new retrieval/model/label calls.
+
+The R8 bridge imports R8DynamicSession only within this independent source copy.
+Actor/reward/loss/GAE/optimizer/head/freeze and inherited training files are not
+changed. COPY_RECEIPT.json records the initial61Python/JSON copied files; the
+Compose YAML was subsequently copied unchanged from the parent.
+
+## Evidence
+
+Four original constructed failures now pass: function edit1/1, added functions2/2,
+module constant1/1, decorator1/1. Updated tests contain15checks including nested
+methods,async,multiline decorators,combined three units,rollback,retry,noop,
+limited/missing,parse recovery,rename and natural episode exhaustion.
+
+Real cached Harbor trial dynamic-r8-harbor-78f65fe7642a passed10pre-generation
+captures. Tokens:1024,0,41,66,52,41,41,59,39,30. The three-unit addition and
+constant/decorator changes reach final PI. Actual provider/proxy/direct-session
+outputs agree; Actor token/mask/logprob/routing and generation prompt IDs agree
+with PI-off; actual builder PI removal and pretoken gather pass. Private cache,
+provider weakref and own teardown pass. Scripted generation, not model rollout.
+No verifier/pull/build. Wall37.795s includes container lifecycle and all events.
+
+R8 native GPU preparation recomposes both historical SAO packing phases exactly
+apart from approved namespace/resume/private-Ray differences. The CPU fixture
+uses R8 actual code windows39initial/56update tokens on64independent rows; Actor
+and gather/prefix checks pass. The native GPU run now passed both packing phases20/21. Native source/rank/lease evidence is reused with exact identities;
+R8 Harbor/dynamic reports are separately hash-bound by the producer. Sources
+under the parent experiment are excluded from active PI module manifests;
+shared native dependencies remain read-only.
+
+## Retained failures
+
+- First quality queue: CRLF SHA manifest failure, before test execution.
+- First Harbor queue: missing copied Compose YAML, before PI execution; no own
+  container/network residuals observed.
+- Second Harbor queue: whitespace became an unowned candidate and evicted a
+  real function. Fixed by excluding pure whitespace; combined regression added.
+- quality_r8_r3 and harbor_dynamic_r8_r3 exit0. Prior queues/backups retained.
+- validation/R8_PROBE.sha256 is historical after GPU launcher adaptations;
+  validation/R8_GPU.sha256 binds the current deployed source. Do not rerun old
+  queues against changed files.
+
+## Remaining admission
+
+Native numerical/rank/Actor-boundary acceptance and own cleanup now PASS. R7 W0 developmental74.32%/65.03% and R6 independent confirmation are
+not fresh independent R8 evidence. Formal prepared-data/image/freshbase/complete
+checkpoint gates remain separate. Do not start old preparation/launch scripts,
+resume old checkpoints, lower original resource reserves or fabricate admission.
+
+## Native GPU outcome
+
+See GPU_SHORT_R8_RESULT/REVIEW/LIFECYCLE.json. Exit0, eight ranks per role,
+SP8/DP1, head/freeze/optimizer inventory identical before/after. Critic losses
+7.084940/0.935993; Actor losses0.375610/0.360054. Gradient norms respectively
+467.005447/119.564705 and10.914829/10.610879, finite and positive. Empty PI
+value maxdiff0; Actor PI on/off logprob maxdiff0 for both phases; Actor update
+boundary PI absent and tensors exact. No checkpoint saved or reused. Owned Ray
+processes remaining0; all eight GPUs14MiB/util0/no compute process after exit.
+Synthetic fixture native model updates, not a new Actor task rollout or RL benefit.
+Formal optional-MFU telemetry compatibility remains probe-scoped; full training
+stays disabled pending the separate conditions in ADMISSION_R8.md.

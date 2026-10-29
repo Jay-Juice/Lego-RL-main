@@ -13,3 +13,6 @@ ICPS_*.json -text
 research/icps_frozen_contrast_20261027/** -text
 
 experiments/icps_dynamic_state_v1_20261028/** -text
+
+# Independent R8 copy retains source receipt bytes.
+experiments/icps_dynamic_state_r8_20261029/** -text

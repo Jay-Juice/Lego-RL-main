@@ -1,0 +1,1609 @@
+{
+  "status": "native_updates_and_rank_checks_complete_pending_review",
+  "contracts": {
+    "passed": true,
+    "real_Qwen": true,
+    "GPU": false,
+    "independent_rows": true,
+    "Actor_tensors_equal": true,
+    "pretoken_gather_and_causal_prefix": true,
+    "fixture": {
+      "rows": 64,
+      "actor_tokens": 24,
+      "response_tokens": 17,
+      "PI_tokens": [
+        39,
+        56
+      ],
+      "mode": "real",
+      "source_windows": [
+        2,
+        3
+      ],
+      "PI_ID_SHA": "7cce0d37621e05285e47ed4a7687751b0366312c46708c2993fcbf28bb470f16"
+    }
+  },
+  "rank_before": {
+    "actor": [
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450400,
+        "rank": 0,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450401,
+        "rank": 1,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450403,
+        "rank": 2,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450404,
+        "rank": 3,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450406,
+        "rank": 4,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450407,
+        "rank": 5,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450408,
+        "rank": 6,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "before_updates",
+        "pid": 3450409,
+        "rank": 7,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      }
+    ],
+    "critic": [
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450400,
+        "rank": 0,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450401,
+        "rank": 1,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450403,
+        "rank": 2,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450404,
+        "rank": 3,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450406,
+        "rank": 4,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450407,
+        "rank": 5,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450408,
+        "rank": 6,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "before_updates",
+        "pid": 3450409,
+        "rank": 7,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      }
+    ]
+  },
+  "rank_after": {
+    "actor": [
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450400,
+        "rank": 0,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450401,
+        "rank": 1,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450403,
+        "rank": 2,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450404,
+        "rank": 3,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450406,
+        "rank": 4,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450407,
+        "rank": 5,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450408,
+        "rank": 6,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      },
+      {
+        "parameter_inventory_SHA": "b6289f2ff6dede38b68ce16eb78cd50178b0e0b3ab4cd72c8598fd3d64a8a8a7",
+        "parameter_tensors": 760,
+        "trainable_tensors": 760,
+        "frozen_tensors": 0,
+        "optimizer_tensors": 760,
+        "freeze_patterns": [],
+        "pattern_matches": {},
+        "scalar_heads": [],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "actor",
+        "stage": "after_updates",
+        "pid": 3450409,
+        "rank": 7,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithLMHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForConditionalGeneration",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5ForConditionalGeneration",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "transformers.generation.utils.GenerationMixin",
+          "transformers.generation.continuous_batching.continuous_api.ContinuousMixin",
+          "builtins.object"
+        ],
+        "native_head_source": null
+      }
+    ],
+    "critic": [
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450400,
+        "rank": 0,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450401,
+        "rank": 1,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450403,
+        "rank": 2,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450404,
+        "rank": 3,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450406,
+        "rank": 4,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450407,
+        "rank": 5,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450408,
+        "rank": 6,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      },
+      {
+        "parameter_inventory_SHA": "002f2f4d657a948f14475313147f9f6236d1cbf2da540b3ac345b897202a84c3",
+        "parameter_tensors": 761,
+        "trainable_tensors": 164,
+        "frozen_tensors": 597,
+        "optimizer_tensors": 164,
+        "freeze_patterns": [
+          "self_attn.",
+          "linear_attn.",
+          "visual."
+        ],
+        "pattern_matches": {
+          "self_attn.": 48,
+          "linear_attn.": 216,
+          "visual.": 333
+        },
+        "scalar_heads": [
+          {
+            "name": "score",
+            "in_features": 4096,
+            "out_features": 1
+          }
+        ],
+        "optimizer_class": "torch.optim.adamw.AdamW",
+        "role": "critic",
+        "stage": "after_updates",
+        "pid": 3450409,
+        "rank": 7,
+        "world_size": 8,
+        "SP_size": 8,
+        "DP_size": 1,
+        "DP_rank": 0,
+        "engine_class": "verl.workers.engine.veomni.transformer_impl.VeOmniEngineWithValueHead",
+        "module_MRO": [
+          "torch.distributed.fsdp._fully_shard._fully_shard.FSDPQwen3_5ForTokenClassification",
+          "torch.distributed.fsdp.FSDPModule",
+          "veomni.models.transformers.qwen3_5.token_classification.Qwen3_5ForTokenClassification",
+          "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu.Qwen3_5PreTrainedModel",
+          "transformers.modeling_utils.PreTrainedModel",
+          "torch.nn.modules.module.Module",
+          "transformers.modeling_utils.EmbeddingAccessMixin",
+          "transformers.modeling_utils.ModuleUtilsMixin",
+          "transformers.utils.hub.PushToHubMixin",
+          "transformers.integrations.peft.PeftAdapterMixin",
+          "builtins.object"
+        ],
+        "native_head_source": {
+          "path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/token_classification.py",
+          "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+        }
+      }
+    ]
+  },
+  "probe_controller_optional_MFU": {
+    "_compute_old_log_prob": {
+      "original_source_SHA": "a21b6927ffae97eea5c14a19e3bc25a601e99182db8c8c91800801a8d2f24731",
+      "replacement_before": "old_log_prob_mfu = tu.get(output, \"metrics\")[\"mfu\"]",
+      "replacement_after": "old_log_prob_mfu = tu.get(output, \"metrics\").get(\"mfu\")"
+    },
+    "_update_actor": {
+      "original_source_SHA": "ddb013ae2ddf269883137caf05539999aeebbf89661a9a079575dd6c4c08f42c",
+      "replacement_before": "actor_output[\"perf/mfu/actor\"] = actor_output.pop(\"actor/mfu\")",
+      "replacement_after": "if \"actor/mfu\" in actor_output: actor_output[\"perf/mfu/actor\"] = actor_output.pop(\"actor/mfu\")"
+    },
+    "_update_critic": {
+      "original_source_SHA": "9fd66477cd4d2bd32c735d5266738a3b8e6d1397ceced1f9c49d495c340fe3d8",
+      "replacement_before": "output[\"perf/mfu/critic\"] = output.pop(\"critic/mfu\")",
+      "replacement_after": "if \"critic/mfu\" in output: output[\"perf/mfu/critic\"] = output.pop(\"critic/mfu\")"
+    }
+  },
+  "phases": [
+    {
+      "packing_step": 20,
+      "metrics": {
+        "critic/vf_loss": 7.084940433502197,
+        "critic/vf_clipfrac": 0.3333333432674408,
+        "critic/vpred_mean": 1.9131266623735428,
+        "critic/loss": 7.084940433502197,
+        "critic/grad_norm": 467.0054473876953,
+        "critic/perf/max_memory_allocated_gb": 17.311033248901367,
+        "critic/perf/max_memory_reserved_gb": 21.169921875,
+        "critic/perf/cpu_memory_used_gb": 353.55833625793457,
+        "critic/lr": 5e-06,
+        "perf/mfu/critic": 0.0,
+        "actor/ppo_kl": 0.0,
+        "actor/rollout_corr/rollout_is_mean": 1.0,
+        "actor/rollout_corr/rollout_is_ratio_fraction_high": 0.0,
+        "actor/rollout_corr/rollout_is_ratio_fraction_low": 0.0,
+        "actor/rollout_corr/rollout_is_max": 1.0,
+        "actor/rollout_corr/rollout_is_min": 1.0,
+        "actor/rollout_corr/rollout_is_std": 0.0,
+        "actor/rollout_corr/rollout_is_eff_sample_size": 1.0,
+        "actor/rollout_corr/rollout_is_seq_mean": 1.0,
+        "actor/rollout_corr/rollout_is_seq_std": 0.0,
+        "actor/rollout_corr/rollout_is_seq_max": 1.0,
+        "actor/rollout_corr/rollout_is_seq_min": 1.0,
+        "actor/rollout_corr/rollout_is_seq_max_deviation": 0.0,
+        "actor/rollout_corr/rollout_is_seq_fraction_high": 0.0,
+        "actor/rollout_corr/rollout_is_seq_fraction_low": 0.0,
+        "actor/rollout_corr/rollout_is_oob_ratio": 0.0,
+        "actor/rollout_corr/training_ppl": 42.7811279296875,
+        "actor/rollout_corr/training_log_ppl": 3.7560970783233643,
+        "actor/rollout_corr/kl": 0.0,
+        "actor/rollout_corr/k3_kl": 0.0,
+        "actor/rollout_corr/rollout_ppl": 42.7811279296875,
+        "actor/rollout_corr/rollout_log_ppl": 3.7560970783233643,
+        "actor/rollout_corr/log_ppl_diff": 0.0,
+        "actor/rollout_corr/log_ppl_abs_diff": 0.0,
+        "actor/rollout_corr/log_ppl_diff_max": 0.0,
+        "actor/rollout_corr/log_ppl_diff_min": 0.0,
+        "actor/rollout_corr/ppl_ratio": 1.0,
+        "actor/rollout_corr/chi2_token": 0.0,
+        "actor/rollout_corr/chi2_seq": 0.0,
+        "actor/pg_loss": 0.37560972571372986,
+        "actor/loss": 0.37560972571372986,
+        "actor/grad_norm": 10.91482925415039,
+        "actor/lr": 1e-06,
+        "actor/perf/max_memory_allocated_gb": 21.083695888519287,
+        "actor/perf/max_memory_reserved_gb": 31.052734375,
+        "actor/perf/cpu_memory_used_gb": 410.8007926940918,
+        "perf/mfu/actor": 0.0
+      },
+      "fixture": {
+        "rows": 64,
+        "actor_tokens": 24,
+        "response_tokens": 17,
+        "PI_tokens": [
+          39,
+          56
+        ],
+        "mode": "real",
+        "source_windows": [
+          2,
+          3
+        ],
+        "PI_ID_SHA": "7cce0d37621e05285e47ed4a7687751b0366312c46708c2993fcbf28bb470f16"
+      },
+      "values_shape": [
+        64,
+        17
+      ],
+      "values_min": -1.5625,
+      "values_max": 7.15625,
+      "values_mean": 3.3140509128570557,
+      "Actor_boundary_PI_absent": true,
+      "Actor_boundary_tensors_exact": true,
+      "Actor_PI_on_off_logprob_max_abs_diff": 0.0
+    },
+    {
+      "packing_step": 21,
+      "metrics": {
+        "critic/vf_loss": 0.9359927177429199,
+        "critic/vf_clipfrac": 0.2916666567325592,
+        "critic/vpred_mean": 1.2867024540901184,
+        "critic/loss": 0.9359927177429199,
+        "critic/grad_norm": 119.56470489501953,
+        "critic/perf/max_memory_allocated_gb": 21.083695888519287,
+        "critic/perf/max_memory_reserved_gb": 31.052734375,
+        "critic/perf/cpu_memory_used_gb": 494.780086517334,
+        "critic/lr": 5e-06,
+        "perf/mfu/critic": 0.0,
+        "actor/ppo_kl": 0.0,
+        "actor/rollout_corr/rollout_is_mean": 1.0,
+        "actor/rollout_corr/rollout_is_ratio_fraction_high": 0.0,
+        "actor/rollout_corr/rollout_is_ratio_fraction_low": 0.0,
+        "actor/rollout_corr/rollout_is_max": 1.0,
+        "actor/rollout_corr/rollout_is_min": 1.0,
+        "actor/rollout_corr/rollout_is_std": 0.0,
+        "actor/rollout_corr/rollout_is_eff_sample_size": 1.0,
+        "actor/rollout_corr/rollout_is_seq_mean": 1.0,
+        "actor/rollout_corr/rollout_is_seq_std": 0.0,
+        "actor/rollout_corr/rollout_is_seq_max": 1.0,
+        "actor/rollout_corr/rollout_is_seq_min": 1.0,
+        "actor/rollout_corr/rollout_is_seq_max_deviation": 0.0,
+        "actor/rollout_corr/rollout_is_seq_fraction_high": 0.0,
+        "actor/rollout_corr/rollout_is_seq_fraction_low": 0.0,
+        "actor/rollout_corr/rollout_is_oob_ratio": 0.0,
+        "actor/rollout_corr/training_ppl": 36.61800765991211,
+        "actor/rollout_corr/training_log_ppl": 3.6005401611328125,
+        "actor/rollout_corr/kl": 0.0,
+        "actor/rollout_corr/k3_kl": 0.0,
+        "actor/rollout_corr/rollout_ppl": 36.61800765991211,
+        "actor/rollout_corr/rollout_log_ppl": 3.6005401611328125,
+        "actor/rollout_corr/log_ppl_diff": 0.0,
+        "actor/rollout_corr/log_ppl_abs_diff": 0.0,
+        "actor/rollout_corr/log_ppl_diff_max": 0.0,
+        "actor/rollout_corr/log_ppl_diff_min": 0.0,
+        "actor/rollout_corr/ppl_ratio": 1.0,
+        "actor/rollout_corr/chi2_token": 0.0,
+        "actor/rollout_corr/chi2_seq": 0.0,
+        "actor/pg_loss": 0.36005401611328125,
+        "actor/loss": 0.36005401611328125,
+        "actor/grad_norm": 10.610878944396973,
+        "actor/lr": 1e-06,
+        "actor/perf/max_memory_allocated_gb": 27.339235305786133,
+        "actor/perf/max_memory_reserved_gb": 39.181640625,
+        "actor/perf/cpu_memory_used_gb": 491.6218948364258,
+        "perf/mfu/actor": 0.0
+      },
+      "fixture": {
+        "rows": 64,
+        "actor_tokens": 24,
+        "response_tokens": 17,
+        "PI_tokens": [
+          39,
+          56
+        ],
+        "mode": "real",
+        "source_windows": [
+          2,
+          3
+        ],
+        "PI_ID_SHA": "7cce0d37621e05285e47ed4a7687751b0366312c46708c2993fcbf28bb470f16"
+      },
+      "values_shape": [
+        64,
+        17
+      ],
+      "values_min": -2.015625,
+      "values_max": 3.984375,
+      "values_mean": 1.3660385608673096,
+      "Actor_boundary_PI_absent": true,
+      "Actor_boundary_tensors_exact": true,
+      "Actor_PI_on_off_logprob_max_abs_diff": 0.0
+    }
+  ],
+  "empty_PI_value_max_abs_diff": 0.0,
+  "synthetic_fixture": true,
+  "actual_Actor_rollout": false,
+  "checkpoint_saved": false,
+  "reuse_weights_allowed": false,
+  "training_admission": false
+}

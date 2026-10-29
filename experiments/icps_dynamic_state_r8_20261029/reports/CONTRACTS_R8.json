@@ -1,0 +1,11 @@
+{
+  "passed": 15,
+  "actual_Qwen": true,
+  "model": false,
+  "GPU": false,
+  "budget": [
+    1024,
+    128,
+    4096
+  ]
+}
