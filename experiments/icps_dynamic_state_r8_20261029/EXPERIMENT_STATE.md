@@ -1,3 +1,17 @@
+# Latest formal launch — 2026-10-29
+
+Existing-cohort R8 R2 recheck exit0 / coverage admission PASS. Among2237
+scorable tasks, visible changed-line hit1522/2237=68.04%, full-any1218/2237=54.45%.
+R6 comparator993/2237=44.39% and506/2237=22.62%. Existing cohort reuse,
+R6 cap192 vs R8 cap1024, not fresh blind validation or same-budget attribution.
+
+Formal freshbase full97 launched in screen pi-r8-full97-20261029;
+run full-r8-d61153858d4e99d4. FULL_LAUNCH_RECEIPT.json exists and native
+TaskRunner initialized. No completed formal update claimed yet. New EXP
+sao-qwen35-9b-b64-pi-r8-1024-full97-20261029. Original recipe, retention1000,
+save10 and space wait retained. Resume disabled. PI1024/128/4096.
+Earlier pending/disabled statements below are historical stage records.
+
 # R8 independent dynamic PI copy
 
 Parent: icps_dynamic_state_v1_20261028. Windows is authoritative. User requested
