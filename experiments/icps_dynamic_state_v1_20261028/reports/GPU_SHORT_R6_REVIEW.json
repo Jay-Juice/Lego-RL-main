@@ -1,0 +1,59 @@
+{
+  "status": "PASS_SCOPED_NATIVE_8GPU_SHORT_TEST_NOT_FORMAL_TRAINING",
+  "run": "gpu-r6-c4000612667ac86e",
+  "result_SHA": "5814a3950f14f4325babcfcbc9295af702948250a0ed634397a841455669fa43",
+  "conclusions": {
+    "PI_values": "All finite in both phases; empty PI vs baseline maximum absolute difference0.0",
+    "gradients": "Native Critic and Actor update metrics finite and positive. Reported norms are pre-clipping; configured clip thresholds critic10/actor1.0. Not evidence of long-run stability.",
+    "Actor_isolation": "Both phases native PI-on/off log probabilities exactly equal; actual Actor worker boundary excludes PI/critic fields and retains original tensors exactly.",
+    "native_rank": "Eight actual ranks, world8/SP8/DP1; native scalar head, exact freeze and optimizer membership verified before/after.",
+    "cleanup": "exit0, own Ray shutdown, no remaining owned processes; all eight GPUs14MiB/util0/no compute processes."
+  },
+  "scope": {
+    "input": "64 synthetic Actor rows, actual frozen R6/Qwen PI (25+26 tokens), native Qwen3.5-9B base models",
+    "updates": "native Critic/Actor updates at packing-step20/21; not actual training progress",
+    "native_math_changed": false,
+    "runtime_or_frozen_method_changed": false,
+    "source_review": "existing reviewed native/PI files plus observed shared module identities; bounded by direct human request",
+    "full_transitive_dependency_review": false,
+    "formal_training_admission": false,
+    "actual_task_rollout": false,
+    "RL_benefit_proven": false,
+    "weights_saved_or_reused": false
+  },
+  "launcher_changes": [
+    "Dedicated checked producer and shell environment; fresh original reserve/8GPU/port gate and unique private Ray/TMP/run",
+    "Consumer review flag accurately renamed existing_native_PI_evidence_verified; no false whole-transitive approval",
+    "Probe-instance controller copies alter only3 optional MFU reads/pops; no fabricated statistics; native workers and learning math unchanged",
+    "Short private TMP and bounded wait/retry for own asynchronous shutdown; no signal/global cleanup"
+  ],
+  "preserved_attempts": [
+    {
+      "run": "gpu-r6-ce6e23009b4f8ff9",
+      "exit": 1,
+      "failure": "Canonical asset-manifest digest compared to raw-file digest; corrected canonical comparison before GPU."
+    },
+    {
+      "run": "gpu-r6-ec330611b0bb3cc6",
+      "exit": 1,
+      "failure": "Overstrict CUDA-uninitialized import assertion; native availability probe initializes CUDA without model. Fresh resource gate retained."
+    },
+    {
+      "run": "gpu-r6-ccfcae929ff1d794",
+      "exit": 1,
+      "failure": "Native models loaded, vLLM ZMQ Unix socket exceeded107char limit under long TMP. Fixed private short TMP. Own workers exited naturally after local shutdown."
+    },
+    {
+      "run": "gpu-r6-ec05aca55e09408e",
+      "exit": 1,
+      "failure": "Actual8rank/emptyPI checks passed; native controller required missing MFU telemetry before updates. Probe-only optional telemetry compatibility. Shutdown transient proc permission error; later all workers gone/GPUs idle."
+    }
+  ],
+  "formal_remaining": [
+    "Resolve/validate optional MFU controller compatibility for any formal entry; current adaptation is probe-only",
+    "Formal complete prepared-data/image identities and separately reviewed freshbase experiment entry",
+    "Remaining formal source/admission requirements; short test is not blanket approval"
+  ],
+  "latest_manifest": "validation/GPU_LAUNCH_R6.sha256",
+  "old_probe_manifests": "Historical only; earlier bytes retained in Windows archives. Do not rerun old queues against current probe."
+}

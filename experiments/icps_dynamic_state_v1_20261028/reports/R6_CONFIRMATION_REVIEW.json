@@ -1,0 +1,59 @@
+{
+  "UTC": "2026-10-27T21:51:14.124671+00:00",
+  "status": "INDEPENDENT_W0_COVERAGE_PASS_ONLINE_PENDING",
+  "queue_exit": 0,
+  "aggregate_SHA": "f147c5e0f1a2ec7020f5e0446f58dad72875fb5839bb44f7cc753aacdf43e98d",
+  "nominal": 2826,
+  "generated": 2258,
+  "evaluable": 2237,
+  "unavailable": 568,
+  "unmapped": 21,
+  "old_hits": 770,
+  "new_hits": 993,
+  "paired": {
+    "n": 2237,
+    "families": 93,
+    "delta": 0.09968708091193562,
+    "gained": 318,
+    "lost": 95,
+    "unchanged": 1824,
+    "task_CI95": [
+      0.08225301743406348,
+      0.11668529280286102
+    ],
+    "repo_cluster_CI95": [
+      0.07869545431025217,
+      0.1205094153797668
+    ],
+    "seed": 20261023,
+    "iterations": 4000
+  },
+  "old_full_target": 292,
+  "new_full_target": 506,
+  "prior_payload_semantic_exact": 352,
+  "actual_Landlock": true,
+  "label_paths_denied": 2,
+  "generation_wall_seconds": 5312.369621761143,
+  "density_per_1000_actual_tokens": {
+    "S1": 4.591654295837984,
+    "r6_session": 7.451791978547222
+  },
+  "old_candidate_conversion": 0.5032679738562091,
+  "new_candidate_conversion": 0.6490196078431373,
+  "training_admitted": false,
+  "online_dispatch_enabled": false,
+  "limitations": [
+    "Unseen tasks in seen repositories, not unseen-repository generalization.",
+    "Coverage proxy only; no Critic utilization or RL performance evidence.",
+    "Original R4 confirmation failed; both measurement failures and original outputs preserved.",
+    "Bridge byte8 and Qwen8 tests are isolated synthetic input contracts; not actual proxy/Harbor/GPU.",
+    "Local Windows unittest stalled at first asyncio capture; not counted as passed. Remote full runner exit0."
+  ],
+  "local_stalled_test_cleanup": {
+    "pid": 52480,
+    "own_test_created_this_turn": true,
+    "identity_checked": true,
+    "terminated": true,
+    "remote_processes_stopped": false
+  }
+}

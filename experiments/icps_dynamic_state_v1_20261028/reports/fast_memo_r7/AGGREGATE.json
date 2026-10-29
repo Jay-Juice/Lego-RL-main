@@ -1,0 +1,213 @@
+{
+  "status": "COMPLETE_SOURCE_ONLY_EXACT_REPLAY_NOT_NEW_QUALITY_EVIDENCE",
+  "UTC": "2026-10-28T16:47:38.641688+00:00",
+  "exact_inputs_each_arm": 607,
+  "arms": [
+    "fast768_8",
+    "fast1024_12"
+  ],
+  "benchmark_inputs_each_arm": 64,
+  "benchmark_subset_SHA": "9285ac929cfbbe553c3e84616297da23388942bf9fe93f5efc7d8bf353923a07",
+  "timing": {
+    "fast768_8": {
+      "old": {
+        "wall": {
+          "n": 64,
+          "mean": 1.0621985995676368,
+          "median": 1.0465124901384115,
+          "p95": 1.7136611081659794,
+          "max": 2.2868145257234573
+        },
+        "cpu": {
+          "n": 64,
+          "mean": 1.062132243109375,
+          "median": 1.0464230034999993,
+          "p95": 1.7135812300000026,
+          "max": 2.2864074619999997
+        },
+        "encode_requests": {
+          "n": 64,
+          "mean": 4647.1875,
+          "median": 4887.5,
+          "p95": 6650,
+          "max": 8381
+        },
+        "encode_misses": {
+          "n": 64,
+          "mean": 1182.640625,
+          "median": 1229.0,
+          "p95": 1747,
+          "max": 1790
+        },
+        "encoded_bytes": {
+          "n": 64,
+          "mean": 1338538.609375,
+          "median": 1377048.0,
+          "p95": 2195249,
+          "max": 2398164
+        }
+      },
+      "new": {
+        "wall": {
+          "n": 64,
+          "mean": 0.944106588663999,
+          "median": 0.9368320927023888,
+          "p95": 1.4544034153223038,
+          "max": 2.008923515677452
+        },
+        "cpu": {
+          "n": 64,
+          "mean": 0.9440371982187508,
+          "median": 0.9367148960000016,
+          "p95": 1.4542951939999966,
+          "max": 2.0088743889999954
+        },
+        "encode_requests": {
+          "n": 64,
+          "mean": 3620.515625,
+          "median": 3808.5,
+          "p95": 5359,
+          "max": 7325
+        },
+        "encode_misses": {
+          "n": 64,
+          "mean": 1182.640625,
+          "median": 1229.0,
+          "p95": 1747,
+          "max": 1790
+        },
+        "encoded_bytes": {
+          "n": 64,
+          "mean": 1338538.609375,
+          "median": 1377048.0,
+          "p95": 2195249,
+          "max": 2398164
+        }
+      },
+      "paired_wall_ratio": {
+        "n": 64,
+        "mean": 0.8955365271948218,
+        "median": 0.8851683872755243,
+        "p95": 1.021225951247572,
+        "max": 1.2358620179100805
+      }
+    },
+    "fast1024_12": {
+      "old": {
+        "wall": {
+          "n": 64,
+          "mean": 2.064668928447645,
+          "median": 2.051724059507251,
+          "p95": 3.6822249479591846,
+          "max": 4.041851472109556
+        },
+        "cpu": {
+          "n": 64,
+          "mean": 2.064525162453125,
+          "median": 2.051707813,
+          "p95": 3.681945665999997,
+          "max": 4.0418016859999994
+        },
+        "encode_requests": {
+          "n": 64,
+          "mean": 7334.125,
+          "median": 7807.0,
+          "p95": 11252,
+          "max": 13538
+        },
+        "encode_misses": {
+          "n": 64,
+          "mean": 1708.484375,
+          "median": 1777.5,
+          "p95": 2539,
+          "max": 2853
+        },
+        "encoded_bytes": {
+          "n": 64,
+          "mean": 3202223.390625,
+          "median": 3182019.0,
+          "p95": 5353190,
+          "max": 6107774
+        }
+      },
+      "new": {
+        "wall": {
+          "n": 64,
+          "mean": 1.8306742502609268,
+          "median": 1.830201093107462,
+          "p95": 3.24910868704319,
+          "max": 3.4857718013226986
+        },
+        "cpu": {
+          "n": 64,
+          "mean": 1.830541567140625,
+          "median": 1.8299277635000024,
+          "p95": 3.249042631000002,
+          "max": 3.485708260999999
+        },
+        "encode_requests": {
+          "n": 64,
+          "mean": 5412.5,
+          "median": 5717.5,
+          "p95": 8122,
+          "max": 11199
+        },
+        "encode_misses": {
+          "n": 64,
+          "mean": 1708.484375,
+          "median": 1777.5,
+          "p95": 2539,
+          "max": 2853
+        },
+        "encoded_bytes": {
+          "n": 64,
+          "mean": 3202223.390625,
+          "median": 3182019.0,
+          "p95": 5353190,
+          "max": 6107774
+        }
+      },
+      "paired_wall_ratio": {
+        "n": 64,
+        "mean": 0.8887100964439789,
+        "median": 0.892428120355031,
+        "p95": 0.9658558435451476,
+        "max": 1.0325001597569863
+      }
+    }
+  },
+  "source_SHA": {
+    "src/fast_memo_r7.py": "1f5607e1f9b6fcf27d98571c273f0390ba00dabaf0f799afe98bca459336c7de",
+    "validation/fast_memo_replay_r7.py": "ee84e0ba8f6e909561fd33998495a6ad7668f2863a8ec393f760fe63e29b7cbe",
+    "validation/fast_memo_r7_contracts.py": "a65c3925d604036db210cf83024e1368f95e1b484ec84523ed309673d771fc7e",
+    "R7_FAST_MEMO_PLAN.md": "5074f4f665ca82cddd6b43064b6e8e4e4fc0a63fa701f2cdb22f0b92b0967020"
+  },
+  "baseline_source_SHA": {
+    "src/capacity_allocation_r7.py": "8c70ec27bf0d01bb2cee79ab28d6cc0ae16d5435b78306f9354def8db806025e",
+    "validation/fast_loss_diagnostic_r7.py": "9f57568d478c2485634da1e1623442f729020fc22b0a39302d09cbac646dc78d",
+    "src/fast_allocation_r7.py": "647dd40c90f5b8df7afbea2bcad4aa8baf2b1b1669f3dc4c6c8b27cabd13f84a",
+    "src/joint_windows_r7.py": "e285838b0cf826b1670d9a2552270de03598a8a172db170cd8e5a60f4a299d36",
+    "src/window_research_r7.py": "227b7b6ba1f4acdd110a6fed2b3cf2cfb34f7b18a3eab6cd63b7b4c130a6a6ea",
+    "src/budget_ablation_r7.py": "445f51d704fe390be1413f5e48fa5aed3f8cb4df54bc592cf6002b867a923fb6",
+    "validation/fast_allocation_r7.py": "60850fa95fb9896239f60b63dc1f1537511c85534d56288946859d76a3dca62b",
+    "validation/fast_allocation_r7_contracts.py": "1d5a7232b47a95d739c1eaa1c85b72eb96c3cfc8ceeed7adc8dfbcf90b3fa103",
+    "validation/development.py": "c158079c4de5caeb7b0984db8a41d036a2b3b530d37106fe7c3b94fc5922181f",
+    "validation/landlock.py": "ea63dcb314f8e5795aac9af0e15c91a4437bdbd5d0d472823dc6e7b129df6e2a",
+    "R7_FAST_ALLOCATION_PLAN.md": "15d2c1dacb930322226eae6b6584d593abfc88e7b3d490db8a82e2bf0ec9280e",
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "src/rank_windows_r6.py": "6a9f55845e3dfcf8909fa5d423554fe0a11ed44c0c27f943251962016715954f",
+    "src/dynamic_session_r6_r2.py": "2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93"
+  },
+  "reference_receipt_SHA": "2a49a900bac1f375b1e7add275a6704bdae02a46543c0c33fe8d613ba83f0b64",
+  "label_denials_per_shard": 14,
+  "GPU_model_training": false,
+  "limitations": [
+    "All607full output dictionaries exact; quality inherited, not independently retested.",
+    "Timing only first64metadata-sorted inputs, both implementations interleaved/rotated with fresh caches, four workers.",
+    "P95 uses nearest-rank convention on64samples, not whole607or live training latency."
+  ]
+}

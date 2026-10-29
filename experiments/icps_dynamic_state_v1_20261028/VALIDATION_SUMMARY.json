@@ -1,0 +1,3030 @@
+{
+  "status": "R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED",
+  "conditional_fresh_training_authorized": true,
+  "training_started": false,
+  "online_runtime_integrated": true,
+  "old_source_unchanged": true,
+  "budgets": [
+    192,
+    128,
+    4096
+  ],
+  "r1_hits": [
+    111,
+    106,
+    120
+  ],
+  "r2_and_r3_hits": {
+    "old": 129,
+    "compact": 130,
+    "diverse": 108,
+    "expand": 143
+  },
+  "evaluable": 366,
+  "exact_nominal": 370,
+  "unmapped": 4,
+  "full_target": {
+    "old": 53,
+    "expand": 88
+  },
+  "development_delta": 0.1092896174863388,
+  "development_required_delta": 0.05,
+  "independent_holdout_scored": true,
+  "real_tokenizer_contracts": 16,
+  "byte_tokenizer_contracts": 16,
+  "dynamic_constructed": {
+    "cases": 24,
+    "skipped_source_capacity": 1,
+    "selection": "first24 UID-sorted snapshots with room for added test file; no outcome/labels read",
+    "changed_line_visible": {
+      "old": 0,
+      "new": 24
+    },
+    "unchanged_noop_pass": 24,
+    "retry_exact_once_pass": 24,
+    "rollback_pass": 24,
+    "max_update_tokens": 128,
+    "budget": [
+      192,
+      128,
+      4096
+    ],
+    "wall_seconds": 81.1158210746944,
+    "source_SHA": "cd9438f8684b15f94b68a4c1df12c2971ea41efc9ee213e2fade24efada39a53",
+    "evidence": "24 real W0 snapshots plus synthetic new-file/change/rollback events. No actual Actor trajectory or real bug-coverage improvement is claimed.",
+    "GPU_jobs": 0,
+    "optimizer_steps": 0
+  },
+  "remote_final_queue_exit": 0,
+  "model_or_optimizer_updates": {
+    "actual_disposable_updates": true,
+    "roles": [
+      "critic",
+      "actor"
+    ],
+    "packing_phases": [
+      20,
+      21
+    ],
+    "checkpoint_saved": false,
+    "exact_optimizer_step_counter_instrumented": false
+  },
+  "blockers": [
+    "Resolve/validate optional MFU controller compatibility for any formal entry; current adaptation is probe-only",
+    "Formal complete prepared-data/image identities and separately reviewed freshbase experiment entry",
+    "Remaining formal source/admission requirements; short test is not blanket approval"
+  ],
+  "preserved_failures": [
+    "r1 all3 allocations reduced primary coverage",
+    "r2 byte-token status budget test initially failed before fix",
+    "constructed r1 added file exceeded source capacity; no bound relaxed",
+    "constructed r2 update windows evicted by issue ranking, causing rollback no-op; fixed and all24 r3 passed",
+    "Offline-asset local Windows strict Path.resolve temporary-directory PermissionErrors (8 errors/11 tests, 1 skipped); Linux R1 11 and R2 12 pass. No local full-suite pass."
+  ],
+  "next": [
+    "Report completed eight-GPU numerical/gradient/Actor-isolation evidence to user; do not rerun this completed test.",
+    "Formal training remains separately gated; R6 unchanged."
+  ],
+  "r4_hits": {
+    "S1": 129,
+    "expand": 143,
+    "body_expand": 165,
+    "flow_expand": 169
+  },
+  "r4_full_hits": {
+    "S1": 53,
+    "expand": 88,
+    "body_expand": 99,
+    "flow_expand": 98
+  },
+  "development_gate_passed": true,
+  "r4_contracts": {
+    "local_byte": 21,
+    "remote_real_tokenizer": 37,
+    "dynamic_each_variant": 24,
+    "both_dynamic_passed": true,
+    "R3_control_exact_equal": 607
+  },
+  "selected_variant": "flow_expand",
+  "candidate_freeze": "CANDIDATE_FREEZE_R4.json",
+  "r4_actual_density": {
+    "old_target_lines_per1000_tokens": 4.32069931936474,
+    "flow_target_lines_per1000_tokens": 6.44622529557408,
+    "note": "scorer-only coverage surrogate; not Critic information or performance proof"
+  },
+  "confirmation_r4": {
+    "status": "INDEPENDENT_W0_COVERAGE_NOT_PASSED",
+    "coverage_admission": false,
+    "nominal_tasks": 220,
+    "families": 28,
+    "paired": {
+      "changed_visible_intersect_any": {
+        "n": 176,
+        "families": 26,
+        "delta": 0.045454545454545456,
+        "gained": 17,
+        "lost": 9,
+        "unchanged": 150,
+        "task_CI95": [
+          -0.011363636363636364,
+          0.10227272727272728
+        ],
+        "repo_cluster_CI95": [
+          -0.007199573674393817,
+          0.09032355227361057
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "changed_visible_full_any": {
+        "n": 176,
+        "families": 26,
+        "delta": 0.09659090909090909,
+        "gained": 22,
+        "lost": 5,
+        "unchanged": 149,
+        "task_CI95": [
+          0.03977272727272727,
+          0.1534090909090909
+        ],
+        "repo_cluster_CI95": [
+          0.03164556962025317,
+          0.15921627603427732
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "changed_selected_intersect_any": {
+        "n": 176,
+        "families": 26,
+        "delta": 0.0,
+        "gained": 0,
+        "lost": 0,
+        "unchanged": 176,
+        "task_CI95": [
+          0.0,
+          0.0
+        ],
+        "repo_cluster_CI95": [
+          0.0,
+          0.0
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    "capture_status_counts": {
+      "GENERATED": 177,
+      "PINNED_PREPARED_UNAVAILABLE_NO_BUILD": 43
+    },
+    "mapping_counts": {
+      "repair_diff_old_side_verified_exactly_in_W0": 176,
+      "capture_unavailable": 43,
+      "source_file_not_in_bounded_capture": 1
+    },
+    "density": {
+      "S1": {
+        "target_lines": 205,
+        "actual_tokens": 28679
+      },
+      "flow_expand": {
+        "target_lines": 355,
+        "actual_tokens": 33305
+      }
+    },
+    "manifest_SHA": "a74551529b9d8831351dfe2b3489e3a4517db93e4cef21319db6ec2fc6050855",
+    "scorer_contracts_passed": 3,
+    "capture_exit": 0,
+    "score_exit": 0,
+    "selected_candidate_unchanged": true,
+    "old_source_files_rechecked": 35,
+    "training_admitted": false
+  },
+  "r5_development": {
+    "status": "COMPLETE_NO_CANDIDATE_PROMOTED",
+    "screen": "lego-pi-dynamic-dev-r5-20261028",
+    "variants": [
+      "guard_expand",
+      "anchor_expand"
+    ],
+    "flow_control": "frozen_R4",
+    "byte_contracts_passed": 3,
+    "remote_contracts_passed": 3,
+    "training_started": false,
+    "online_integrated": false,
+    "confirmation_read": false,
+    "exit": 0,
+    "frozen_flow_outputs_exact": 607,
+    "all607_real_tokenizer_budget_source_roundtrip_passed": true,
+    "coverage": {
+      "S1": 129,
+      "flow_expand": 169,
+      "guard_expand": 144,
+      "anchor_expand": 164
+    },
+    "full_target": {
+      "S1": 53,
+      "flow_expand": 98,
+      "guard_expand": 88,
+      "anchor_expand": 93
+    },
+    "paired": {
+      "flow_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.1092896174863388,
+        "gained": 56,
+        "lost": 16,
+        "unchanged": 294,
+        "task_CI95": [
+          0.06557377049180328,
+          0.15300546448087432
+        ],
+        "repo_cluster_CI95": [
+          0.04956200525322911,
+          0.1666777188328913
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "guard_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.040983606557377046,
+        "gained": 15,
+        "lost": 0,
+        "unchanged": 351,
+        "task_CI95": [
+          0.02185792349726776,
+          0.06284153005464481
+        ],
+        "repo_cluster_CI95": [
+          0.019998338870431894,
+          0.05847993940282461
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      },
+      "anchor_expand": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.09562841530054644,
+        "gained": 47,
+        "lost": 12,
+        "unchanged": 307,
+        "task_CI95": [
+          0.05737704918032787,
+          0.1366120218579235
+        ],
+        "repo_cluster_CI95": [
+          0.04100946372239748,
+          0.1511971758927658
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    "r4_frozen_source_unchanged": true
+  },
+  "r6_development": {
+    "status": "COMPLETE_W0_CANDIDATE_FROZEN_NOT_ADMITTED",
+    "queue_exit": 0,
+    "local_contracts": 3,
+    "remote_contracts": 3,
+    "flow_control_exact": 607,
+    "hits": {
+      "S1": 129,
+      "flow_expand": 169,
+      "novelty_expand": 171,
+      "novelty_cost_expand": 171
+    },
+    "full": {
+      "S1": 53,
+      "flow_expand": 98,
+      "novelty_expand": 102,
+      "novelty_cost_expand": 105
+    },
+    "selected_W0_variant": "novelty_cost_expand",
+    "selection_reason": "Primary tie at171; development full target105 vs102. Post-result secondary selection, not independent evidence.",
+    "review": "reports/R6_RESULT_REVIEW.json",
+    "confirmation_read": false,
+    "dynamic_validated": false,
+    "online_integrated": false,
+    "training_started": false
+  },
+  "r6_session": {
+    "status": "INITIAL607_EXACT_DYNAMIC_ASSERTION_FAILED",
+    "local_contracts": 21,
+    "remote_contracts": 21,
+    "screen": "lego-pi-dynamic-session-r6-20261028",
+    "queue": "logs/session_r6",
+    "final_report_available": false,
+    "online_integrated": false,
+    "GPU_jobs": 0,
+    "optimizer_steps": 0,
+    "admission_blocked_by_new_boundary_bug": true,
+    "queue_exit": 1,
+    "initial_exact": 607,
+    "assertion_failure": "limited snapshot legal unobserved omitted by deletion assertion; separate real dedup defect also blocks admission"
+  },
+  "r6_session_r2": {
+    "status": "INITIAL607_EXACT_KNOWN_ASSERTION_FAILURE_SUPERSEDED_BY_DYNAMIC_R3",
+    "local_contracts": 22,
+    "remote_contracts": 22,
+    "boundary_bug": "reports/R6_SESSION_BOUNDARY_FAILURE.json",
+    "fix": "normalize internal clean-W0 dedup key to R4 schema; frozen W0 serialized dictionary unchanged",
+    "screen": "lego-pi-dynamic-session-r6-r2-20261028",
+    "queue": "logs/session_r6_r2",
+    "independent_confirmation_started": false,
+    "training_started": false,
+    "online_integrated": false,
+    "GPU_jobs": 0,
+    "optimizer_steps": 0,
+    "initial_exact_last_observed": 607,
+    "queue_exit": 1,
+    "inherited_assertion_omission": true
+  },
+  "r6_session_dynamic_r3": {
+    "status": "DYNAMIC_CONTRACTS_PASS_AWAIT_INITIAL607",
+    "initial": {
+      "status_path_cases": 0,
+      "candidate_identity_exact": 25,
+      "initial_payload_exact": 25,
+      "cases": 25,
+      "capacity_excluded": 1
+    },
+    "constructed": {
+      "addition": 24,
+      "retry": 24,
+      "noop": 24,
+      "edit_rollback": 24,
+      "deletion": 24,
+      "late_rejected": 24,
+      "retry_change_rejected": 24,
+      "identity_rejected": 24,
+      "initial_update_semantic_boundary_nocharge": 1
+    },
+    "cases": 24,
+    "max_update_tokens": 128,
+    "natural_exhaustion_calls": 151,
+    "spent": 4091,
+    "remaining": 5,
+    "actual_Landlock": true,
+    "label_paths_denied": 2,
+    "budgets": [
+      192,
+      128,
+      4096
+    ],
+    "wall_seconds": 65.27763193845749,
+    "GPU_jobs": 0,
+    "optimizer_steps": 0,
+    "limitations": [
+      "Only capacity-selected24 dynamic cases plus excluded-capacity initial checks; full607 equivalence must come from separate R2 INITIAL_COMPARISON.",
+      "24 subsequent sequences are constructed events, not actual Actor rollout.",
+      "Independent confirmation and online/Harbor/GPU admission remain pending."
+    ],
+    "queue_exit": 0
+  },
+  "r6_composite_gate": {
+    "prepared": true,
+    "local_tests": 4,
+    "remote_tests": 4,
+    "actual_scorer_tests": 3,
+    "receipt_created": true,
+    "confirmation_started": true,
+    "receipt_check_pass": true
+  },
+  "r6_confirmation": {
+    "status": "INDEPENDENT_W0_COVERAGE_PASS",
+    "screen": "lego-pi-confirmation-r6-transport-r3-20261028",
+    "queue": "logs/confirmation_r6_transport_r3",
+    "candidate_freeze_SHA": "5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13",
+    "nominal_tasks": 2826,
+    "independent_pass": true,
+    "training_started": false,
+    "families": 95,
+    "all_tasks_seen_repositories": true,
+    "excluded_additional_exposure": 18,
+    "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730",
+    "capture_complete": 2258,
+    "capture_unavailable": 568,
+    "prior_queue_exit": 1,
+    "transport_r2_exit": 1,
+    "transport_contracts_local": 4,
+    "transport_contracts_remote": 4,
+    "payload_contracts_local": 3,
+    "payload_contracts_remote": 3,
+    "score_started": true,
+    "queue_exit": 0,
+    "score_complete": true,
+    "evaluable": 2237,
+    "unmapped": 21,
+    "old_hits": 770,
+    "new_hits": 993,
+    "paired": {
+      "n": 2237,
+      "families": 93,
+      "delta": 0.09968708091193562,
+      "gained": 318,
+      "lost": 95,
+      "unchanged": 1824,
+      "task_CI95": [
+        0.08225301743406348,
+        0.11668529280286102
+      ],
+      "repo_cluster_CI95": [
+        0.07869545431025217,
+        0.1205094153797668
+      ],
+      "seed": 20261023,
+      "iterations": 4000
+    }
+  },
+  "r6_online_bridge": {
+    "status": "ISOLATED_BRIDGE_CONTRACTS_PASS",
+    "tests": {
+      "byte": 8,
+      "actual_Qwen": 8
+    },
+    "source": {
+      "src/dynamic_runtime_r6.py": "eaa010532e54ad44855b47fdd09ef8f826b48941a1491f600e1ed0cb96056022",
+      "tests/test_dynamic_runtime_r6.py": "6c1a5de77e5a8ef05cb84b72c2caed753ef98fd65e6a363cd2b0d45bae603e6d",
+      "validation/online_bridge_r6.py": "072a8be1bcedbf8356e03c466bd8b1d84e880958e9ab081358367788d1a55fa2"
+    },
+    "frozen_generator_unchanged": true,
+    "runtime_dispatch_enabled": false,
+    "actual_proxy_tested": false,
+    "Harbor_tested": false,
+    "GPU_jobs": 0,
+    "training_admitted": false,
+    "limitations": [
+      "Synthetic snapshots and direct bridge calls only.",
+      "Actual proxy, metadata cleanup wiring, Docker/Harbor and builder remain pending."
+    ]
+  },
+  "online_runtime_admitted": false,
+  "training_admitted": false,
+  "r6_runtime_wiring": {
+    "UTC": "2026-10-27T22:17:15.343571+00:00",
+    "status": "R6_RUNTIME_WIRED_PROXY_CPU_PASS_HARBOR_GPU_PENDING",
+    "proxy_queue_exit": 0,
+    "builder_queue_exit": 0,
+    "proxy_report_sha256": "b220c655b182ce7f98d37f2956f6a3b0a1058075f5edf1a5540dc4660fc6165a",
+    "builder_report_sha256": "cc1d7d5b160e7fd5f9bf662278546751fe6ceced27ebe7fa3d9257d31ece7532",
+    "frozen_generator_sources_unchanged": 7,
+    "old_source_files_unchanged": 35,
+    "source_changes": [
+      "new-format provider/image dispatch",
+      "new-format proxy bridge with private snapshot allowlist",
+      "cache scrub before fallible pop_session audit",
+      "new-format atomic window omission"
+    ],
+    "actual_proxy_calls_per_arm": 9,
+    "old_regression_tests": 34,
+    "training_started": false,
+    "training_admitted": false,
+    "gpu_update": false,
+    "pending": [
+      "actual Harbor provider/reader and dynamic actions",
+      "additional actual proxy retry/cross-session/concurrency/exhaustion lifecycle coverage",
+      "eight-GPU native SP8 finite short update",
+      "complete SAO source/Hydra parity and resource gates"
+    ],
+    "limitations": [
+      "Synthetic bounded workspace; scripted generation and routing fixture, not model rollout.",
+      "Closed410 traceback is an intentionally asserted negative test; both queues exited0.",
+      "Tiny CPU value-model/gradient regression is not eight-GPU acceptance.",
+      "Preserved bridge8+8 contracts and earlier24 dynamic tests are separate evidence scopes."
+    ]
+  },
+  "r6_actual_proxy": {
+    "status": "passed",
+    "actual_proxy": true,
+    "actual_qwen_tokenizer": true,
+    "synthetic_workspace": true,
+    "scripted_generation": true,
+    "actual_actor_rollout": false,
+    "harbor": false,
+    "gpu": false,
+    "optimizer": false,
+    "calls": 9,
+    "captures": 9,
+    "direct_frozen_outputs_exact": true,
+    "actor_invariance": [
+      "traj_acc_ids",
+      "initial_prompt_token_len",
+      "traj_response_mask",
+      "traj_response_logprobs",
+      "traj_response_routing",
+      "manager_prompt_ids"
+    ],
+    "closed_410_no_generation": true,
+    "private_metadata_cleanup": true,
+    "cleanup_before_failed_audit": true,
+    "causal_pretoken_gather": true,
+    "new_format_no_partial_window": true,
+    "empty_row_and_missing_action_checked": true,
+    "source_sha256": {
+      "runtime/vllm_chat_completion_proxy.py": "940841d41a1d4151c0af5409a55c174bdab480aabf56a2d77ff9267d4d02e22c",
+      "runtime/remote_docker.py": "532ea76e4df3f2b70b30df0138cb80ca05a95ed546f89cf9c1e060271864ac03",
+      "runtime/privileged_critic_builder.py": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+      "validation/online_proxy_r6.py": "b3255b605b39a869ffc3ae7146d2fc3664e8bb2bd88a5f90241617caa1e75486"
+    }
+  },
+  "r6_builder_regression": {
+    "status": "passed",
+    "counts": {
+      "test_pi_split_alias.py": 10,
+      "test_pi_sdk_proven_alias.py": 12,
+      "test_structural_pi_v1.py": 12
+    },
+    "total": 34,
+    "actual_overlay_builder": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/privileged_critic_builder.py",
+    "builder_sha256": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+    "preserved_test_source_sha256": {
+      "test_pi_split_alias.py": "b5cf3656ff6711e320fbf45bf581cefdc15a3fc46a22df1836a2cf65fd276f0c",
+      "test_pi_sdk_proven_alias.py": "b7d42bde9be2648b6b29bf9c2963b837bc0da4b3e866060cfa745ee8ac4b29af",
+      "test_structural_pi_v1.py": "85d68233889aef857984f7f7c4f6e0884702c85684a99bd6ba36dc161d17aa69"
+    },
+    "gpu": false,
+    "optimizer": false
+  },
+  "r6_harbor": {
+    "status": "passed",
+    "trial": "dynamic-r6-harbor-525b553c002a",
+    "actual_Harbor": true,
+    "actual_provider": true,
+    "actual_proxy": true,
+    "actual_Qwen": true,
+    "scripted_generation": true,
+    "actual_Actor_rollout": false,
+    "verifier_calls": 0,
+    "GPU": false,
+    "optimizer": false,
+    "exact_direct_outputs": true,
+    "actor_input_and_masks_logprobs_routing_unchanged": true,
+    "causal_gather": true,
+    "private_cache_removed": true,
+    "provider_weakref_released": true,
+    "teardown_closed410": true,
+    "events": [
+      {
+        "event": "initial",
+        "tokens": 190,
+        "windows": 3,
+        "bounded_files": 192,
+        "limited": false
+      },
+      {
+        "event": "read-only noop",
+        "tokens": 0,
+        "windows": 0,
+        "bounded_files": 192,
+        "limited": false
+      },
+      {
+        "event": "add new source file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "edit new source file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "rollback source",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "rename probe file",
+        "tokens": 128,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "parse failure in probe file",
+        "tokens": 126,
+        "windows": 3,
+        "bounded_files": 193,
+        "limited": false
+      },
+      {
+        "event": "delete only probe-created file",
+        "tokens": 125,
+        "windows": 3,
+        "bounded_files": 192,
+        "limited": false
+      }
+    ],
+    "task_SHA": "92989bc20ed4e9748816d3ea2ce34b5018818e4d2be9ddc64745b6f8a9440ce3",
+    "pinned_image_id": "sha256:3c085acdb04b111311d27865f98957a4f03884c7b9a67c901ff699a616435176",
+    "no_pull_or_build": true,
+    "subnet_pool": "172.16.0.0/20",
+    "wall_seconds": 29.625905230641365,
+    "CPU_seconds": 8.282743986999998,
+    "process_peak_RSS_KiB": 1156088,
+    "source_SHA": "a73a29b0962be4ef9201d36755290cb9aa4bc8e30581af316989aefe03462b60"
+  },
+  "r6_proxy_lifecycle": {
+    "same_logical_retry_exact_once": true,
+    "changed_retry_transactional_rejection": true,
+    "wrong_identity_and_late_before_generation": true,
+    "concurrent_sessions_isolated": true,
+    "natural_exhaustion": {
+      "calls_before_empty": 157,
+      "spent": 4096,
+      "remaining": 0,
+      "max_update": 27,
+      "subsequent_empty_unknown": true
+    },
+    "status": "passed",
+    "actual_proxy": true,
+    "actual_Qwen": true,
+    "scripted_generation": true,
+    "synthetic_workspace": true,
+    "actual_Actor_rollout": false,
+    "GPU": false,
+    "optimizer": false,
+    "wall_seconds": 2.9360611960291862,
+    "expected_errors": 5,
+    "source_SHA": "10512fdb85e12f6d992ba1f80d96dad7506602a4c3ff3a10bfa511e762b83a37"
+  },
+  "r6_harbor_lifecycle_review": {
+    "UTC": "2026-10-27T22:38:08.779553+00:00",
+    "status": "HARBOR_AND_PROXY_LIFECYCLE_PASS_GPU_PARITY_PENDING",
+    "harbor_queue_exit": 0,
+    "lifecycle_queue_exit": 0,
+    "frozen_sources_unchanged": 7,
+    "old_source_unchanged": 35,
+    "runtime_method_changes_this_round": 0,
+    "training_admitted": false,
+    "training_started": false,
+    "GPU_probe_started": false,
+    "own_probe_network_absent": true,
+    "own_running_container_absent": true,
+    "evidence_sha256": {
+      "HARBOR_DYNAMIC_R6.json": "dcb7d780cd917988682c17f8a316858b01fa93c69f86b2b28f55dd3c4b320a2e",
+      "PROXY_LIFECYCLE_R6.json": "b09d47e0fcc8e55deac5a204fbce66f7d2b21a5e85442924c3efca622175cc37"
+    },
+    "preserved_preflight_issues": [
+      "First read-only IPAM inventory failed on null Config; corrected read-only handling.",
+      "First prospective172.18.224.0/20 overlaps existing172.18/16; no probe launched there and no old network changed.172.16.0/20 passed."
+    ],
+    "limitations": [
+      "Harbor uses scripted generation, no actual Actor rollout/verifier/model forward.",
+      "Harbor fixture routing is absent; nonempty routing invariance belongs to prior CPU9call fixture.",
+      "Process peak RSS1.1GiB includes imported torch/tokenizer/runtime, not incremental PI cache RSS.",
+      "Natural exhaustion157calls4096spent is a synthetic actual-proxy path, not a measured production episode.",
+      "Five expected lifecycle exceptions are asserted negative tests, not queue failures."
+    ],
+    "next": "Implement isolated R6 native8GPU short probe and fullSAO source/Hydra parity per GPU_ADMISSION_R6_PLAN.md; training stays disabled."
+  },
+  "r6_GPU_preparation_review": {
+    "UTC": "2026-10-27T22:56:56.099640+00:00",
+    "status": "HYDRA_PARITY_AND_CPU_FIXTURE_PASS_GPU_LAUNCH_NOT_READY_DISK_GATE_FAILED",
+    "GPU_launched": false,
+    "training_started": false,
+    "training_admitted": false,
+    "hydra_complete_both_phases_pass": true,
+    "unexpected_config_differences": [],
+    "selected_native_source_files_exact": 5,
+    "inherited_training_files_exact": 5,
+    "full_source_review_complete": false,
+    "CPU_fixture": {
+      "passed": true,
+      "real_Qwen": true,
+      "GPU": false,
+      "independent_rows": true,
+      "Actor_tensors_equal": true,
+      "pretoken_gather_and_causal_prefix": true,
+      "fixture": {
+        "rows": 64,
+        "actor_tokens": 24,
+        "response_tokens": 17,
+        "PI_tokens": [
+          25,
+          26
+        ],
+        "mode": "real",
+        "source_windows": [
+          1,
+          1
+        ],
+        "PI_ID_SHA": "794dd259bf4d7b2d644910e650a6646e3df9ca82802750f83339ab5fd296f54f"
+      }
+    },
+    "resources": {
+      "free_bytes": 354672193536,
+      "original_start_required_bytes": 458392574347,
+      "deficit_bytes": 103720380811,
+      "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+      "save_required_bytes": 415172253607,
+      "all8GPUs_idle": true,
+      "gpu_memory_MiB": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "ports_available": {
+        "6407": true,
+        "8307": true,
+        "8265": true
+      },
+      "Ray_absent": true,
+      "disk_gate_pass": false
+    },
+    "queues": {
+      "gpu_preparation_r6": 1,
+      "gpu_preparation_r6_r2": 0,
+      "gpu_preparation_r6_r3": 0
+    },
+    "preserved_issues": [
+      "First CPU fixture test iterated TensorDict rows instead of keys; TypeError, no GPU launch. Backup and original log retained.",
+      "R2 CPU test passed but W0 fixture contained only an unknown marker. R3 strengthened explicit source/path query and requires real return-code windows at both captures. R2 result retained; no selector change.",
+      "R2 report field complete_source_parity_pass referred only to five listed files, not full source review. R3 uses selected_native_source_parity_pass; full source gate remains pending.",
+      "Local WSL default sandbox denied access; reviewed escalation succeeded. No remote source edited."
+    ],
+    "evidence_SHA": {
+      "GPU_PROBE_R6_HYDRA_PARITY.json": "42d0c0e14303b644e74eef1603da798be63f71c56c928a9739b2fa6b44928208",
+      "GPU_PREPARATION_R6.json": "5b8f0bc27d600b725b60264a5937eb2704cd9f966f06468e397e768f84224617",
+      "GPU_PREPARATION_R6_R3.json": "f48238a0b375eea737a2c7bcff5ccb56c7c135dc4ec5c4efea5b61ab09db57f8"
+    },
+    "next": [
+      "Implement fresh resource/source launch receipt, isolated Ray ownership/lifecycle and post-run rank audit before launching GPU probe.",
+      "Extend native source audit beyond five files, especially worker/loss/reward/filter interfaces; inspect actual per-rank head/freeze during GPU probe.",
+      "Preserve original start reserve458392574347bytes; do not use capture200GiB as launch approval. User space action notified once.",
+      "Once source/launch readiness and disk/all8GPU/ports/offline assets gates pass, run disposable20/21 packing updates; no checkpoint or reuse.",
+      "Full formal data/pinned-image availability and unique fresh training entry remain separate required gates."
+    ]
+  },
+  "r6_GPU_launch_gate_review": {
+    "UTC": "2026-10-28T03:55:15.620709+00:00",
+    "status": "CPU_RECEIPT_CONSUMER_CONTRACTS_PASS_LAUNCHER_PENDING",
+    "remote_exit": 0,
+    "local_tests": 11,
+    "remote_tests": 11,
+    "old_sources_exact": 35,
+    "frozen_sources_exact": 7,
+    "source_SHA": {
+      "src/gpu_launch_gate_r6.py": "a50e8a4cc06f31e6b8e1ad3f88cf61abe89d2b07b2100c26218e5ad7eea59804",
+      "src/gpu_probe_r6.py": "ee816ba7c90877860c1a81db30b61b206cc3f5a78bd4cbd6678bea3f7741e68f",
+      "tests/test_gpu_launch_gate_r6.py": "47c077c0fd31cf59da4894b6d28a7750114775ca3e1e78d841f544ee02c91351",
+      "validation/gpu_launch_gate_r6_contracts.py": "ed4607fe078ceb00ec2a8dc79e2b5097ba48f84fd8f7285a25fac3bee3b442a6",
+      "ops/gpu_launch_gate_r6_contracts.sh": "fff821becb747c64a28f9b35663adef54bae43a33332d1d607f84fdccea62cdb"
+    },
+    "report_SHA": "2b3e9510fcfed5d09f7afa558ab8281275ed24aa7239c767a4ae9f29266d1acf",
+    "GPU_launched": false,
+    "training_admitted": false,
+    "launch_readiness": false,
+    "implemented": [
+      "Receipt/config/source/offline-asset hash binding consumer",
+      "120-second receipt and resource freshness; boot/run/GPU identity binding",
+      "Original start/save reserve constants; current GPUs/processes/ports checked again after hashing",
+      "Exclusive one-use attempt claim, missing approval or incomplete review fail closed",
+      "Probe main replaced old boolean receipt placeholder with this consumer"
+    ],
+    "pending": [
+      "Reviewed receipt producer and complete native-source/asset manifest policy",
+      "Private short Ray/TMP ownership, startup race control and teardown",
+      "Actual per-rank native head/freeze/optimizer and SP8 audit implementation",
+      "Full source review beyond selected five files",
+      "Disk original reserve and native eight-GPU update",
+      "Formal full prepared data/image and freshbase launch gates"
+    ],
+    "preserved_local_issue": "First Windows temporary-file test hit sandbox TEMP PermissionError; rerun in workspace temporary directory passed all11. No async/GPU execution.",
+    "limitations": [
+      "Pure receipt/resource validation and exclusive claim contracts only.",
+      "No reviewed producer/launcher, private Ray lifecycle, or eight-rank audit yet.",
+      "Review flags require a subsequently reviewed producer; this is not an authentication boundary.",
+      "Source manifest coverage for native dependencies and full offline data identities remains to be reviewed.",
+      "Read-only port bind checks do not reserve ports; launcher must control startup race.",
+      "No model import, model forward, optimizer update, or test checkpoint in this validator."
+    ]
+  },
+  "r6_GPU_rank_audit": {
+    "status": "CPU_RANK_AUDIT_CONTRACTS_PASS_ACTUAL_EIGHT_RANKS_PENDING",
+    "tests": 9,
+    "CPU_tiny_modules": true,
+    "synthetic_rank_rows": true,
+    "native_worker_subclasses_imported": true,
+    "native_update_init_methods_inherited": true,
+    "ONE_TO_ALL_blocking_registration_checked": true,
+    "real_distributed_workers_started": false,
+    "CUDA_initialized": false,
+    "GPU_launched": false,
+    "optimizer_steps": 0,
+    "actual_rank_audit_pass": false,
+    "training_admitted": false,
+    "native_source_inventory": [
+      {
+        "path": "src/verl_patch/models/qwen3_5_token_classification.py",
+        "SAO_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+        "inherited_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/trainer/main_ppo.py",
+        "SAO_SHA": "e3fe6e73b18d63367402a2570c5ba054a2b05443ac40a168524dbf545b1da392",
+        "inherited_SHA": "e3fe6e73b18d63367402a2570c5ba054a2b05443ac40a168524dbf545b1da392",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/trainer/ppo/core_algos.py",
+        "SAO_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+        "inherited_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/trainer/ppo/reward.py",
+        "SAO_SHA": "10d99d93f2525148a74ca5260c51b8d945eda20f656219f02f112a0f75882e85",
+        "inherited_SHA": "10d99d93f2525148a74ca5260c51b8d945eda20f656219f02f112a0f75882e85",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/trainer/ppo/trajectory_filter.py",
+        "SAO_SHA": "2f99944b09d84e24d9d52aa2d8509daaafa2294b6d460d53e8891daa9fa63f93",
+        "inherited_SHA": "2f99944b09d84e24d9d52aa2d8509daaafa2294b6d460d53e8891daa9fa63f93",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/engine_workers.py",
+        "SAO_SHA": "e7bef8f34b16f8f0cdacbc58a6ef8f041d06c2a5e3c2d6e9649b84fc337c0bad",
+        "inherited_SHA": "e7bef8f34b16f8f0cdacbc58a6ef8f041d06c2a5e3c2d6e9649b84fc337c0bad",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/engine/utils.py",
+        "SAO_SHA": "ecab1eff63a7e62b5f580e11514d186adcaec97be24bc1614f4f706072d304c7",
+        "inherited_SHA": "ecab1eff63a7e62b5f580e11514d186adcaec97be24bc1614f4f706072d304c7",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/engine/veomni/transformer_impl.py",
+        "SAO_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+        "inherited_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/utils/losses.py",
+        "SAO_SHA": "4f4bb75acf38c7ea84872db0b493c7c03c474df1be690dfc585111c6d5f885b5",
+        "inherited_SHA": "4f4bb75acf38c7ea84872db0b493c7c03c474df1be690dfc585111c6d5f885b5",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/reward_manager/naive.py",
+        "SAO_SHA": "f936d5fb1589cd8b1a0a1c31b58bea092886ec4e00493fb40483a9af4ac685a6",
+        "inherited_SHA": "f936d5fb1589cd8b1a0a1c31b58bea092886ec4e00493fb40483a9af4ac685a6",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/config/critic.py",
+        "SAO_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+        "inherited_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/config/actor.py",
+        "SAO_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+        "inherited_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+        "equal": true
+      },
+      {
+        "path": "third_party/verl/verl/single_controller/base/decorator.py",
+        "SAO_SHA": "718876c4c59e9f3cdb0339185be156aeb7b6d8eb42a2a6f919a3163961634ace",
+        "inherited_SHA": "718876c4c59e9f3cdb0339185be156aeb7b6d8eb42a2a6f919a3163961634ace",
+        "equal": true
+      }
+    ],
+    "selected_native_files": 13,
+    "selected_native_source_parity_pass": true,
+    "complete_source_review": false,
+    "inherited_files_exact": [
+      "runtime/ray_trainer.py",
+      "runtime/engine_utils.py",
+      "src/formal_packing.py",
+      "src/formal_storage.py",
+      "src/formal_checkpoint.py"
+    ],
+    "frozen_generator_exact": 7,
+    "old_source_exact": 35,
+    "source_SHA": {
+      "src/gpu_rank_audit_r6.py": "ba22fd35f55025fa135d131a35c570173f2ab35b6cfee85d4a6b4bc68eb7f7cb",
+      "src/gpu_probe_workers_r6.py": "739124476c796c148d42d943a7255de47750742ff11e4253cade4303eb3bc7ca",
+      "src/gpu_probe_r6.py": "7b2c7307b879962f9224e01afe4e38751c322bdc089cb202882d661e2be7e31f",
+      "tests/test_gpu_rank_audit_r6.py": "161cccbdc3e62e9ede52fabd1b8bf0c4eb04ea076bf68a3f5c54a181424c474d",
+      "validation/gpu_rank_audit_r6_contracts.py": "e9523299d145f22c38f1a15c25f1cff63b0f6bf18fbd76e2563c077420a2495f",
+      "ops/gpu_rank_audit_r6_contracts.sh": "ae5487e9a58db1139d2b7bb67f7b9205a2ea667758a8376092207463df0fda46"
+    },
+    "limitations": [
+      "Synthetic rows test missing/duplicate rank rejection, not real eight-rank execution.",
+      "Tiny CPU modules test freeze/head/optimizer assertions, not native Qwen parameter acceptance.",
+      "Native class registration/inherited-method identity inspected without constructing a worker.",
+      "Thirteen selected files cover worker/loss/reward/filter interfaces; transitive dependency review remains pending.",
+      "Native head source is recorded per rank for subsequent review; no whole-source acceptance inferred.",
+      "No launch producer/private Ray lifecycle and no GPU launch in this stage."
+    ]
+  },
+  "gpu_private_ray_r6": {
+    "status": "PRIVATE_RAY_LEASE_CPU_CONTRACTS_PASS_REAL_RAY_PENDING",
+    "tests": 8,
+    "prior_attempt": "logs/gpu_private_ray_r6_contracts exit1: unrelated older proc environ permission; preserved",
+    "process_start_cutoff_tested": true,
+    "newer_unreadable_process_fails_closed": true,
+    "Linux_flock_tested": true,
+    "private_marker_tested": true,
+    "actual_owned_CPU_child_tested": true,
+    "child_exited_by_stdin_EOF": true,
+    "process_signals_sent": 0,
+    "global_cleanup": false,
+    "Ray_initialized": false,
+    "GPU_launched": false,
+    "live_approval_created": false,
+    "training_admitted": false,
+    "frozen_sources_exact": 7,
+    "old_sources_exact": 35,
+    "installed_ray": {
+      "version": "2.54.1",
+      "source_path": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/ray/_private/client_mode_hook.py",
+      "init_source_SHA": "a7c6276d8d5c3827ae07cf915ed3249df06dd97cf688371eff5e26c2d41a4ad6",
+      "shutdown_source_SHA": "05395a18d62208192baae8b1014ec8ad507640a919120063d7f001aa9a0c05b3"
+    },
+    "source_SHA": {
+      "src/gpu_private_ray_r6.py": "f40553c67de9c0d790f621b253edc9706c6a6a2850ffbf7fd2ee88f101f13602",
+      "src/gpu_probe_r6.py": "66b470124e4139010d1d6b587efe31690e369b0637740b5ac0259d73b0fae1b0",
+      "tests/test_gpu_private_ray_r6.py": "0b7eb89bd7524fcb2c95a55ab5f11b84c23ac24729a6a58ffc20004a05094181",
+      "validation/gpu_private_ray_r6_contracts.py": "cd8ba70e81e682106712bf391168fc1b336749349e2562c9fe0dff28bd9052fd",
+      "ops/gpu_private_ray_r6_contracts.sh": "e014c8af6446132c4bd3d139a6a652bddd864239e97f9b5c05486b1e25d5d30d"
+    },
+    "limitations": [
+      "No actual Ray startup/shutdown was exercised; only installed API source was inspected.",
+      "The CPU child is an owned Python stdin reader, not a Ray worker.",
+      "Shared flock coordinates cooperating native launchers; it cannot prevent unrelated programs from taking GPUs or ports.",
+      "Resource gate executes under this lock immediately before Ray; private local Ray startup failures remain failures.",
+      "No reviewed producer, complete native/offline manifests or current private-Ray config parity receipt exists.",
+      "The probe now requires explicit address=local/namespace/private_temp/num_gpus8/dashboardfalse; old config alone will fail closed.",
+      "Private directories/logs are retained; no global kill or filesystem cleanup is implemented."
+    ]
+  },
+  "gpu_private_config_r6": {
+    "status": "PRIVATE_CONFIG_PARITY_PASS_NOT_LAUNCH_APPROVAL",
+    "reference_SHA": "42d0c0e14303b644e74eef1603da798be63f71c56c928a9739b2fa6b44928208",
+    "config_SHA": "791f7f69ec4d125b4b77fe58f38e4485653ab11406f620b699aa7e61d930bbb9",
+    "phase2_config_SHA": "3d5d73b5efc0db303ccbe6f2bf19d2190c288391411d6df41cbe8aec4531f803",
+    "private_changes": [
+      {
+        "key": "ray_kwargs.ray_init._temp_dir",
+        "actual": "/tmp/r6g-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.address",
+        "actual": "local",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.include_dashboard",
+        "actual": false,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.namespace",
+        "actual": "gpu-r6-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.num_gpus",
+        "actual": 8,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "trainer.default_local_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/NEVER_SAVE_CHECKPOINT",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/checkpoints/NEVER_SAVE_GPU_PROBE_R6",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.episode_log_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/episode_logs",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu_probe_r6_preparation_only/episode_logs",
+        "actual_present": true,
+        "expected_present": true
+      }
+    ],
+    "phase1_historical_differences": [
+      {
+        "key": "actor_rollout_ref.rollout.agent.agent_loop_config_path",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "actor_rollout_ref.rollout.trace.experiment_name",
+        "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "ray_kwargs.ray_init._temp_dir",
+        "actual": "/tmp/r6g-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.address",
+        "actual": "local",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.include_dashboard",
+        "actual": false,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.namespace",
+        "actual": "gpu-r6-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.num_gpus",
+        "actual": 8,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "trainer.default_local_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/NEVER_SAVE_CHECKPOINT",
+        "expected": "checkpoints/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.episode_log_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/episode_logs",
+        "expected": "logs/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.experiment_name",
+        "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.resume_mode",
+        "actual": "disable",
+        "expected": "auto",
+        "actual_present": true,
+        "expected_present": true
+      }
+    ],
+    "phase2_historical_differences": [
+      {
+        "key": "actor_rollout_ref.rollout.agent.agent_loop_config_path",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "actor_rollout_ref.rollout.trace.experiment_name",
+        "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "ray_kwargs.ray_init._temp_dir",
+        "actual": "/tmp/r6g-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.address",
+        "actual": "local",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.include_dashboard",
+        "actual": false,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.namespace",
+        "actual": "gpu-r6-1122334455667788",
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "ray_kwargs.ray_init.num_gpus",
+        "actual": 8,
+        "expected": null,
+        "actual_present": true,
+        "expected_present": false
+      },
+      {
+        "key": "trainer.default_local_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/NEVER_SAVE_CHECKPOINT",
+        "expected": "checkpoints/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.episode_log_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu-r6-1122334455667788/episode_logs",
+        "expected": "logs/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.experiment_name",
+        "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.resume_mode",
+        "actual": "disable",
+        "expected": "auto",
+        "actual_present": true,
+        "expected_present": true
+      }
+    ],
+    "agent_YAML_SHA": "2aa73dd5ef0a04f2e1b05631d4e2043a1a1afd250943d3774b1e595e392780f0",
+    "training_admission": false,
+    "production_receipt_created": false,
+    "Ray_initialized": false,
+    "GPU_launched": false,
+    "limitations": [
+      "Config preparation only; shell environment and dependency/asset manifest review remain separate.",
+      "Phase2 is a config comparison witness; actual probe uses native per-batch packing overrides.",
+      "No Ray, model or optimizer execution; no source review or resource approval inferred."
+    ],
+    "tests": 5,
+    "prior_attempt": "logs/gpu_private_config_r6_contracts exit1: overstrict no-Ray-import assertion after native Hydra composition; retained",
+    "Ray_imported": true,
+    "CUDA_initialized": false,
+    "current_config_trees_SHA": "c5cb33b959dc1bd0f8378184cba18ea4ebb409df30e9192bc3626b8ecf49af81",
+    "current_config_files": {
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_cc.yaml": "d050aaf74be43a6fda00a0a77d38afca688f78221204b09e5796eedfb772e1e0",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_cc_docker.yaml": "193b6e865feddfc6e236be6e4eea5c0917915dfd5a1238c011535b01b9e27c8f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_mixed.yaml": "be388e014b40d2b3997c4c1eb1051ac6fc28dc50f0778cebc569991dd3756c98",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oc.yaml": "b20812741271386f2fdcf0ff668e2c0adf35aa72edc8d31721c17acf4f99837d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh.yaml": "b79163b5779652a1dcf3c591411299b9bedd00185d396260d4dc087cf4dbad8b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker.yaml": "bdd93915a7d4da50d58bbc3f173e50ffaeb1dc7649b3ddc5cbb946b177fe36aa",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml": "2aa73dd5ef0a04f2e1b05631d4e2043a1a1afd250943d3774b1e595e392780f0",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_t2.yaml": "8ec8b9cd35e82e3d82f903048c44531ce6988fc0dd2fdafacbdb41921cc60065",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/lego_rl_fully_async_fsdp.yaml": "57582bf0165f21ec11cfbd4aec1ad6b606ee5f0e50fcc82a7124a9041dce56f4",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/lego_rl_fully_async_megatron.yaml": "087252a7bdcc6dea7a96f8630dfe309cbd67dbe207ea6e6d902b0b045e6a2455",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/lego_rl_sync.yaml": "da82fc3ff1ddccbe1b3aa55577305cc289c42adbfc5b5473dc2ca2fcca1004ee",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/swe_lego_rl_fully_async_fsdp.yaml": "6058e31cd94f5df98e0766d5c4bde62842711226009fe7416739d073e8c50388",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/swe_lego_rl_fully_async_megatron.yaml": "5040d1c4227caa5765cf322e2640b10641207352b4a3cb43bb2bd15f19253c4c",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/swe_lego_rl_sync.yaml": "d9cc5210898864706483573340d5d27d4c175cd50ce3011723dfd75007dbfbd2",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/_generated_ppo_megatron_trainer.yaml": "7eda9e6c5a2c0c47de29c5da96b05e67eb9417861b12c6b9914c0845b5761f07",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/_generated_ppo_torchtitan_trainer.yaml": "2434c51709a9013ee98d9b9f2efff849ac3d55ac60ae2d3275889ac4d16dde48",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/_generated_ppo_trainer.yaml": "d4e070f53352ca6e4b9bf391f1530b862c9aec9efde42494ddce4859880032da",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/_generated_ppo_veomni_trainer.yaml": "3bac87569bb605ebe9f3897cb76f899519593c9726e8ce90b16e2a5a81a4eaa9",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/actor.yaml": "e38ea1830b4b709b838adc2ebc0cddbb494a4a0b59ab8e7e77c3bce211355f25",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/dp_actor.yaml": "ce30a3094fb161bd29c9b8b092cc8f151158870307274ed9281a916b2db72b5b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/megatron_actor.yaml": "8fe0b41a1b07f16153c9dbc94d4baf07a16042327531ec7bdd66f5227c7ba5e7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/mindspeed_actor.yaml": "7fa191fca8e419020e59bae5b6a64eb4b8a17e1c9a47df7e7e652f8b823037b5",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/torchtitan_actor.yaml": "590054064fc74f09171b96b12fda734dbdfe6134b0249ee52f6b111027556d96",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/actor/veomni_actor.yaml": "36ddd2ed42b74fb861fc306f9aa17b718a027e05db19bc24e7172e497db518eb",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/algorithm/rollout_correction.yaml": "dcb2226152249a65d0b827b1ca920dc70329a2fd67f8478ea59cacfae82f3720",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/algorithm/trajectory_filter.yaml": "18b2ce60ea55c37d5e16d40cd8724a96d6a277b096033299adf3cfdbf10e3539",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/critic.yaml": "fac7babe651d2a434668d691d8fe4cd09c65017869a32d72d009d0c691c4551f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/dp_critic.yaml": "bdd697565041c42604b1c9916b8a2ebb3831039a29acc8a2d74ad4711e5ec973",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/megatron_critic.yaml": "e029b3f052dcdfe3fa96b119afad8e109622b3b0254496a7f0fdc1fd3f173d77",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/mindspeed_critic.yaml": "0f68be6914dea34294e816f05c5239b2103c20f5f73c5665f0acb4d9727c23a7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/torchtitan_critic.yaml": "318f8e1cfba8debcdb0c273ab05bed404f83b282aecf2e4d64b6bdd2b00889cf",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/critic/veomni_critic.yaml": "7cc956562ca3796b8bb74517801ab78f1efab6e5e92e7e27cf06876fe3f8e71b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/data/legacy_data.yaml": "ced555a320168e08f4edc84ea39b6793b62baf4b6c1f5fdf333facb91b6ab894",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/distillation/distillation.yaml": "706b380d3cc9a0baa961a935d073ec3c93d0176158d75dae700ac7e3af4cdf1b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/automodel.yaml": "1351c0ac8b75c66efde3987fbcb91cae97d5871cfcbc294b002e00959a0a9dea",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/fsdp.yaml": "b14c53347138681b83caf3e2440e081dd22a46c74477131e9b1c987aa02b472b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/megatron.yaml": "56a2f3e17ad7ff4c4ecaee427e73e8a122efdcc486bb3990f6ae9de3b381e2e9",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/mindspeed.yaml": "0972d50d2244779cd991dceed3cac1aeb9163015bb6d53aad18d412a8a08b0d7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/torchtitan.yaml": "0029b0ea3f0a457beaafff1eccc02803290f518df8cc6174f89b57a689545e57",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/engine/veomni.yaml": "64dd70291f642e0e8b49debdbf513a171c5c2daa3f932526a3c7181f34fa0d13",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/evaluation.yaml": "2fd0dfd7cd4ce3eb9017f3c2985ca2a560b9a479837531816fb59d93e32c8cd1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/legacy_reward_impl.yaml": "be1fc9e281de1fc52c5b3f0d714d6fd5ffb829d7d9092e4d16b84c5b816efc7d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model/hf_model.yaml": "0dc5f388ab74cbb3b5dcf5a7fc85ec8a292c35eb1b4c47ee3722b3afd1618e66",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model_engine/dp.yaml": "34951d97bb4d0bb39b92bb9dc853bc36677f86ba58d82d0b3b93186b19170370",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model_engine/megatron.yaml": "f4f74e2e79c65061c372eaf4bd1b80ac7f95b608c64e9827054937522a2ae876",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model_engine/mindspeed.yaml": "e1c88fa8c11424245f151fae6f621a00741c64202bf933d3b9197a0b86eda444",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model_engine/torchtitan.yaml": "cf2ca215001a84e8431261bb17a85e3fd44a4f1c7947396af96bffa780ef110f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/model_engine/veomni.yaml": "68a87faa9845e9d2ecf560df8def550c6a50e9f2175bc31df8da6434dd96a4a8",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/npu_profile/npu_profile.yaml": "47d1d6b18d626975f652b7b24c05cbf8a48fae629f984bc6039232cfbe4d6f18",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/optim/automodel.yaml": "c91a36c9066dfaff9daf971674cb29930e3fe2f399f6b752efc61beb05b3abe1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/optim/fsdp.yaml": "a6f1dd55acd5f34a723ce664c74e53d497beba51c9dc65e4f6d5c445f571f7b4",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/optim/megatron.yaml": "7e2e8cbed63557fb4b505fb0de6fac5470093289e3978009ebb0a1afa3d3bd9d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/optim/torchtitan.yaml": "6b2c64ab2136f577f1844b8ef2f954da78674aa6f117e79af22d2228666fae4b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/optim/veomni.yaml": "4a7971f354174685133e5e31014f5a24cd63c39e2ee26715029781569e4348b1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ppo_megatron_trainer.yaml": "dbf4dae545ba216e6e36747280e96aef0d82b915c1f8919877a7746d6d527d0e",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ppo_trainer.yaml": "f791d804f4acbbfa21f58dc57f18a7652ed28d5ab73a6a8ef4cde7edab3290ce",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/profiler/profiler.yaml": "b45f44867c311cfcf9b529f27f0bc32560fc85c3f9958e91f62d3f13c5ba1705",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/dp_ref.yaml": "195d1b6974a58f9bfa6a09ce0f00a4c2ce10140f557738caf3a06d3cdeb784f3",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/megatron_ref.yaml": "865488f7084f5105099c3ebd87b3ca78d7ac739845430996e511081e4d1c953c",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/mindspeed_ref.yaml": "83adc22a52052e915b5756af7a93af0f47a565949894a95412f96ac5dda8d02f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/ref.yaml": "d87f3963b1124c1fa658c6e0218117f011394cddf92380f38b0e62684acfac85",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/torchtitan_ref.yaml": "1ebdd225f8d9933f8dce5d4effebc74456fb19ce0d6b4a6536bfed342cf72ca8",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/ref/veomni_ref.yaml": "5c95fead8b61046b1b7fe8042bcde97a872bdb90a0e472ca338993ad5840304a",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/reward/reward.yaml": "b2b8e8637786d4047c8f9000d0dedf75d709c597c5661f723e989e7c7946b61a",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/rollout/rollout.yaml": "bb29a7a2c3d0d15bab49b0be4fe20da40d80565ef3444fa7b05c4dc249cfd499",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/third_party/verl/verl/trainer/config/sft_trainer_engine.yaml": "76d51b843dc73c88ffa7ab436598ba39e3bc99705a920f7433d44978362a02e4",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_cc.yaml": "d050aaf74be43a6fda00a0a77d38afca688f78221204b09e5796eedfb772e1e0",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_cc_docker.yaml": "193b6e865feddfc6e236be6e4eea5c0917915dfd5a1238c011535b01b9e27c8f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_mixed.yaml": "be388e014b40d2b3997c4c1eb1051ac6fc28dc50f0778cebc569991dd3756c98",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oc.yaml": "b20812741271386f2fdcf0ff668e2c0adf35aa72edc8d31721c17acf4f99837d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh.yaml": "b79163b5779652a1dcf3c591411299b9bedd00185d396260d4dc087cf4dbad8b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker.yaml": "bdd93915a7d4da50d58bbc3f173e50ffaeb1dc7649b3ddc5cbb946b177fe36aa",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml": "2aa73dd5ef0a04f2e1b05631d4e2043a1a1afd250943d3774b1e595e392780f0",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_t2.yaml": "8ec8b9cd35e82e3d82f903048c44531ce6988fc0dd2fdafacbdb41921cc60065",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/lego_rl_fully_async_fsdp.yaml": "57582bf0165f21ec11cfbd4aec1ad6b606ee5f0e50fcc82a7124a9041dce56f4",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/lego_rl_fully_async_megatron.yaml": "087252a7bdcc6dea7a96f8630dfe309cbd67dbe207ea6e6d902b0b045e6a2455",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/lego_rl_sync.yaml": "da82fc3ff1ddccbe1b3aa55577305cc289c42adbfc5b5473dc2ca2fcca1004ee",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/swe_lego_rl_fully_async_fsdp.yaml": "6058e31cd94f5df98e0766d5c4bde62842711226009fe7416739d073e8c50388",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/swe_lego_rl_fully_async_megatron.yaml": "5040d1c4227caa5765cf322e2640b10641207352b4a3cb43bb2bd15f19253c4c",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/swe_lego_rl_sync.yaml": "d9cc5210898864706483573340d5d27d4c175cd50ce3011723dfd75007dbfbd2",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/_generated_ppo_megatron_trainer.yaml": "7eda9e6c5a2c0c47de29c5da96b05e67eb9417861b12c6b9914c0845b5761f07",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/_generated_ppo_torchtitan_trainer.yaml": "2434c51709a9013ee98d9b9f2efff849ac3d55ac60ae2d3275889ac4d16dde48",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/_generated_ppo_trainer.yaml": "d4e070f53352ca6e4b9bf391f1530b862c9aec9efde42494ddce4859880032da",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/_generated_ppo_veomni_trainer.yaml": "3bac87569bb605ebe9f3897cb76f899519593c9726e8ce90b16e2a5a81a4eaa9",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/actor.yaml": "e38ea1830b4b709b838adc2ebc0cddbb494a4a0b59ab8e7e77c3bce211355f25",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/dp_actor.yaml": "ce30a3094fb161bd29c9b8b092cc8f151158870307274ed9281a916b2db72b5b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/megatron_actor.yaml": "8fe0b41a1b07f16153c9dbc94d4baf07a16042327531ec7bdd66f5227c7ba5e7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/mindspeed_actor.yaml": "7fa191fca8e419020e59bae5b6a64eb4b8a17e1c9a47df7e7e652f8b823037b5",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/torchtitan_actor.yaml": "590054064fc74f09171b96b12fda734dbdfe6134b0249ee52f6b111027556d96",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/actor/veomni_actor.yaml": "36ddd2ed42b74fb861fc306f9aa17b718a027e05db19bc24e7172e497db518eb",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/algorithm/rollout_correction.yaml": "dcb2226152249a65d0b827b1ca920dc70329a2fd67f8478ea59cacfae82f3720",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/algorithm/trajectory_filter.yaml": "18b2ce60ea55c37d5e16d40cd8724a96d6a277b096033299adf3cfdbf10e3539",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/critic.yaml": "fac7babe651d2a434668d691d8fe4cd09c65017869a32d72d009d0c691c4551f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/dp_critic.yaml": "bdd697565041c42604b1c9916b8a2ebb3831039a29acc8a2d74ad4711e5ec973",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/megatron_critic.yaml": "e029b3f052dcdfe3fa96b119afad8e109622b3b0254496a7f0fdc1fd3f173d77",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/mindspeed_critic.yaml": "0f68be6914dea34294e816f05c5239b2103c20f5f73c5665f0acb4d9727c23a7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/torchtitan_critic.yaml": "318f8e1cfba8debcdb0c273ab05bed404f83b282aecf2e4d64b6bdd2b00889cf",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/critic/veomni_critic.yaml": "7cc956562ca3796b8bb74517801ab78f1efab6e5e92e7e27cf06876fe3f8e71b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/data/legacy_data.yaml": "ced555a320168e08f4edc84ea39b6793b62baf4b6c1f5fdf333facb91b6ab894",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/distillation/distillation.yaml": "706b380d3cc9a0baa961a935d073ec3c93d0176158d75dae700ac7e3af4cdf1b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/automodel.yaml": "1351c0ac8b75c66efde3987fbcb91cae97d5871cfcbc294b002e00959a0a9dea",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/fsdp.yaml": "b14c53347138681b83caf3e2440e081dd22a46c74477131e9b1c987aa02b472b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/megatron.yaml": "56a2f3e17ad7ff4c4ecaee427e73e8a122efdcc486bb3990f6ae9de3b381e2e9",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/mindspeed.yaml": "0972d50d2244779cd991dceed3cac1aeb9163015bb6d53aad18d412a8a08b0d7",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/torchtitan.yaml": "0029b0ea3f0a457beaafff1eccc02803290f518df8cc6174f89b57a689545e57",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/engine/veomni.yaml": "64dd70291f642e0e8b49debdbf513a171c5c2daa3f932526a3c7181f34fa0d13",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/evaluation.yaml": "2fd0dfd7cd4ce3eb9017f3c2985ca2a560b9a479837531816fb59d93e32c8cd1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/legacy_reward_impl.yaml": "be1fc9e281de1fc52c5b3f0d714d6fd5ffb829d7d9092e4d16b84c5b816efc7d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model/hf_model.yaml": "0dc5f388ab74cbb3b5dcf5a7fc85ec8a292c35eb1b4c47ee3722b3afd1618e66",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model_engine/dp.yaml": "34951d97bb4d0bb39b92bb9dc853bc36677f86ba58d82d0b3b93186b19170370",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model_engine/megatron.yaml": "f4f74e2e79c65061c372eaf4bd1b80ac7f95b608c64e9827054937522a2ae876",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model_engine/mindspeed.yaml": "e1c88fa8c11424245f151fae6f621a00741c64202bf933d3b9197a0b86eda444",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model_engine/torchtitan.yaml": "cf2ca215001a84e8431261bb17a85e3fd44a4f1c7947396af96bffa780ef110f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/model_engine/veomni.yaml": "68a87faa9845e9d2ecf560df8def550c6a50e9f2175bc31df8da6434dd96a4a8",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/npu_profile/npu_profile.yaml": "47d1d6b18d626975f652b7b24c05cbf8a48fae629f984bc6039232cfbe4d6f18",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/optim/automodel.yaml": "c91a36c9066dfaff9daf971674cb29930e3fe2f399f6b752efc61beb05b3abe1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/optim/fsdp.yaml": "a6f1dd55acd5f34a723ce664c74e53d497beba51c9dc65e4f6d5c445f571f7b4",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/optim/megatron.yaml": "7e2e8cbed63557fb4b505fb0de6fac5470093289e3978009ebb0a1afa3d3bd9d",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/optim/torchtitan.yaml": "6b2c64ab2136f577f1844b8ef2f954da78674aa6f117e79af22d2228666fae4b",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/optim/veomni.yaml": "4a7971f354174685133e5e31014f5a24cd63c39e2ee26715029781569e4348b1",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ppo_megatron_trainer.yaml": "dbf4dae545ba216e6e36747280e96aef0d82b915c1f8919877a7746d6d527d0e",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ppo_trainer.yaml": "f791d804f4acbbfa21f58dc57f18a7652ed28d5ab73a6a8ef4cde7edab3290ce",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/profiler/profiler.yaml": "b45f44867c311cfcf9b529f27f0bc32560fc85c3f9958e91f62d3f13c5ba1705",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/dp_ref.yaml": "195d1b6974a58f9bfa6a09ce0f00a4c2ce10140f557738caf3a06d3cdeb784f3",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/megatron_ref.yaml": "865488f7084f5105099c3ebd87b3ca78d7ac739845430996e511081e4d1c953c",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/mindspeed_ref.yaml": "83adc22a52052e915b5756af7a93af0f47a565949894a95412f96ac5dda8d02f",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/ref.yaml": "d87f3963b1124c1fa658c6e0218117f011394cddf92380f38b0e62684acfac85",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/torchtitan_ref.yaml": "1ebdd225f8d9933f8dce5d4effebc74456fb19ce0d6b4a6536bfed342cf72ca8",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/ref/veomni_ref.yaml": "5c95fead8b61046b1b7fe8042bcde97a872bdb90a0e472ca338993ad5840304a",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/reward/reward.yaml": "b2b8e8637786d4047c8f9000d0dedf75d709c597c5661f723e989e7c7946b61a",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/rollout/rollout.yaml": "bb29a7a2c3d0d15bab49b0be4fe20da40d80565ef3444fa7b05c4dc249cfd499",
+      "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/verl/verl/trainer/config/sft_trainer_engine.yaml": "76d51b843dc73c88ffa7ab436598ba39e3bc99705a920f7433d44978362a02e4"
+    },
+    "frozen_sources_exact": 7,
+    "old_sources_exact": 35,
+    "run_directory_created": false,
+    "full_horizon_preserved": 97,
+    "source_SHA": {
+      "src/gpu_launch_config_r6.py": "9ac915e86f89335dbed6c9c07bf60066e0678c39852d993f2e6fd847f58eb5e7",
+      "tests/test_gpu_launch_config_r6.py": "2743ce4fa440b1661e6a3fc8c46302cd9ccec1d2bf813e1ffc0e8630be7d7299",
+      "validation/gpu_launch_config_r6_contracts.py": "7a960d90f770031ce05dc7664d70e98df0249af359814145ca4458ea1ed3a437",
+      "ops/gpu_launch_config_r6_contracts.sh": "b431ae4a444ea3c959614927c8a8fd50e8390f91cfbe01a74c81af6c84d69dca"
+    }
+  },
+  "gpu_native_source_r6_review": {
+    "UTC": "2026-10-28T04:49:54.497118+00:00",
+    "status": "NATIVE_TREE_DIFFERENCES_CLASSIFIED_MANIFEST_POLICY_PENDING",
+    "remote_exit": 0,
+    "inventory_report_SHA": "aa92010a05ebfa656e30932bd44d732fa61ac80ebc52d2456f09bf1ab379836c",
+    "inherited_python_yaml_files": 633,
+    "equal_python_yaml_files": 614,
+    "modified_existing_files": 6,
+    "added_helper_or_diagnostic_files": 13,
+    "classified_differences": [
+      {
+        "path": "src/harbor_patch/environments/remote_docker.py",
+        "inherited_SHA": "1466f38f2d45261be1f79dc809a8815e1df72aca0b8c8dd111c5ce107582bb44",
+        "SAO_SHA": "01916a0aa25c7031dc0ef10412d5527a88efedcc8f375dd22765c99a25c54120",
+        "review": "Inherited PI provider registration/capture/teardown; effective module is N runtime overlay, tested by prior cached Harbor captures.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/__init__.py",
+        "inherited_SHA": "2066ccb5f7d19423485cadbc0a11f1a9bccdcacb3e6920ea1007719d85ed9a1c",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/container_capture.py",
+        "inherited_SHA": "1fbd1e8109e699d845833d7f5701b86c1457bda0367464ea034f47548ccd1596",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/registry.py",
+        "inherited_SHA": "df4d3205c737255c1e385c3d73dee1f53c32b87b4da3ddef166644749e53266b",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/repair_state.py",
+        "inherited_SHA": "4cf433f9baa893795ebe1787a89c5498137f298637eab40a05f454630dbd38dd",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/harbor_patch/privileged_state/structural_lift.py",
+        "inherited_SHA": "c4d93e3d5766aa37860e6d10399cc56b3aa9ae06b70aa25b9922039011f0d3d2",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/builtin_swe_agent_loop.py",
+        "inherited_SHA": "cc8b362d3fe33e7cb839ea8b1a9046b8a69aece9a27785d174ceb70edc08a0ab",
+        "SAO_SHA": "e8d81f5a1737a8d1655ed38c5051737ca579819586e8898ffeca9d42b9d13594",
+        "review": "Propagate PI capture/alignment errors and pass pi_call_records through extra_fields when PI enabled; no reward/filter change in this diff.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_archive.py",
+        "inherited_SHA": "632bedaf55d2365f2348a64c10ed25bd38b6e4cb76a0bdd961a372fa62128064",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_checkpoint.py",
+        "inherited_SHA": "633aa32c46c70b3172b010cf74ed1717d7368f336b417474871b1f2da68d9a6a",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/pi_disk_guard.py",
+        "inherited_SHA": "869e8b9d28b03ef4723db1b60016f3840f93a4efc72bd47e0df55d6e3c57b035",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/privileged_critic_builder.py",
+        "inherited_SHA": "acb064a2ff3d28924f67c3e9eedb5bfa3fdf228869f9d41e0d15f04b54b58a51",
+        "SAO_SHA": null,
+        "review": "Inherited PI helper addition. Hash inventoried; active effective path is constrained by R6 format/overlay. Full dependency-policy review remains required.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py",
+        "inherited_SHA": "1cd0ac2f8c0e28c275ea31244fc7692e00178e8eeed841e4db97d3069e2a3cda",
+        "SAO_SHA": "dd32112bf4c06156c74b9fed1fba26f3caf0a8fd9db21b83e8f549a550f32c29",
+        "review": "Inherited pre-action PI capture, records/audit and remap; effective N runtime overlay reviewed/tested in prior proxy stage.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "src/verl_patch/pi_gpu_smoke.py",
+        "inherited_SHA": "837b7edfbe8f5d020cdd19865eb9937b7fde2646667cd084fa9c234bdc2f51e2",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_acceptance.py",
+        "inherited_SHA": "2122ddecab54d0add32e8763e9dfff3613da6504fe284303985a66cdc199dd3c",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_resume_diagnostic.py",
+        "inherited_SHA": "2e75b18b0cbc10f59adfe20cdc915efdfc8cfa7fc037cea72b72c062c7b3b85a",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "src/verl_patch/pi_v2_training_acceptance.py",
+        "inherited_SHA": "dd9e2f1093ad8f96ade5ab3127b234e869e083c0f86e0eb323de25062acdaac3",
+        "SAO_SHA": null,
+        "review": "Historical diagnostic entry, not called by R6; keep read-only and never execute.",
+        "modified_diff_read": false
+      },
+      {
+        "path": "third_party/verl/verl/trainer/ppo/ray_trainer.py",
+        "inherited_SHA": "3dd582d6fbd136ecfb1fc08e81f6bff1abf6de44226c77d2e119b84a7abd7733",
+        "SAO_SHA": "6d526f661bd14e778c787eaedc27b99c3bdeb4c177872892905dca9ed37a507d",
+        "review": "Inherited Critic view preparation and Actor/ref PI metadata removal, PI metrics/archive and strict complete checkpoint persistence. No loss/GAE/optimizer/reward/filter formula changes in the inspected diff. N overlay further preserves historical packing and full saves.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "third_party/verl/verl/workers/utils/padding.py",
+        "inherited_SHA": "ad7f1d9f8940305ca9eaa897eb3daf5c277c17d26a4e851c9aaed2876ca681da",
+        "SAO_SHA": "f3cc823e6ef2099075406f6fe1244498f15a775f0fac90010c0babf1c82cbe7b",
+        "review": "Three-line PI-only response extraction dispatch to gather_critic_values when critic_value_gather_indices is present; original path retained otherwise.",
+        "modified_diff_read": true
+      },
+      {
+        "path": "third_party/harbor/src/harbor/trial/trial.py",
+        "inherited_SHA": "d8f1aef75af9dc1f2e763a86f4df30b521306cc8a4ff51d4b9e5c882cd000d16",
+        "SAO_SHA": "75b7b707d6160e9aab06543646958610477b7105d7048ea71859a055c1bbdbec",
+        "review": "Three-line optional initialize_privileged_state callback after agent/baseline setup; no verifier/reward change.",
+        "modified_diff_read": true
+      }
+    ],
+    "native_head_origin_verified_without_construction": true,
+    "head_origins": [
+      {
+        "class_name": "Qwen3_5ForTokenClassification",
+        "module": "verl_patch.models.qwen3_5_token_classification",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/models/qwen3_5_token_classification.py",
+        "SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9"
+      },
+      {
+        "class_name": "Qwen3_5Model",
+        "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+        "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+      },
+      {
+        "class_name": "Qwen3_5PreTrainedModel",
+        "module": "veomni.models.transformers.qwen3_5.generated.patched_modeling_qwen3_5_gpu",
+        "source": "/media/ubuntu/D1/zsj/Lego-RL-main/.venv/lib/python3.12/site-packages/veomni/models/transformers/qwen3_5/generated/patched_modeling_qwen3_5_gpu.py",
+        "SHA": "d4cd5a69d3998139a39bf751b6359e668d6a99e2c01d13b786504aae752f028c"
+      }
+    ],
+    "shared_OpSlot_identity": true,
+    "loaded_modules": 5027,
+    "import_closure_is_lower_bound": true,
+    "complete_transitive_dependency_policy": false,
+    "whole_source_launch_approval": false,
+    "production_receipt_created": false,
+    "Ray_initialized": false,
+    "CUDA_initialized": false,
+    "training_admitted": false,
+    "warnings": "Installed VeOmni emits existing cache_position docstring [ERROR] diagnostics on import; inventory exits0 and source/identity assertions pass. No shared package modifications.",
+    "next": [
+      "Build closed manifest coverage for lazy shared native packages and offline model/tokenizer/data identities; observed imports alone are insufficient.",
+      "Extend consumer allowed roots only with reviewed exact dependency policy and missing/extra/path/symlink negatives.",
+      "Finish producer environment/evidence binding and actual private Ray lifecycle acceptance before any GPU admission."
+    ]
+  },
+  "gpu_offline_assets_r6_review": {
+    "UTC": "2026-10-28T05:10:10.614563+00:00",
+    "status": "OFFLINE_ASSETS_REVIEWED_COMPONENT_NOT_LAUNCH_ADMISSION",
+    "remote_exit": 0,
+    "remote_queue": "logs/gpu_offline_assets_r6_contracts_r2",
+    "report_SHA": "b09693d5837f2ecec61a74f8a3eb0bd1fe864b1326a134dba86c6d80af62716f",
+    "CPU_contracts": 12,
+    "actual_assets": {
+      "file_count": 18,
+      "shard_count": 4,
+      "tensor_count": 775,
+      "tensor_bytes": 19306216416,
+      "parquet_envelope_only": true,
+      "training_admitted": false
+    },
+    "asset_manifest_SHA": "850361941c94b02d7854e989684b4c1e299c8c69e1b3ef0fcdefa3970d24a3c9",
+    "policy": {
+      "model_top_level_exact_files": 16,
+      "dataset_exact_files": 2,
+      "cache_excluded": ".cache (canonical real directory only; no loader executes)",
+      "config_paths": "Exact actor/critic base path and original train/validation parquet paths from pinned complete Hydra reference",
+      "headers": "Bounded duplicate-key-rejecting JSON; exact index/shard/tensor mapping; dtype/shape/byte offsets; contiguous layout and full size; index total_size",
+      "hashing": "SHA256 of all 18 files; metadata bytes and entire inspection/hash pass identity checked; missing/extra/symlink/hash/mid-pass mutation rejected",
+      "scope": "Current offline identity, not historical package identity, model inference or full formal task/image admission"
+    },
+    "preserved_attempts": {
+      "remote_R1": "11 Linux contracts and actual assets passed; source archived before snapshot strengthening. Its manifest binds the archived earlier source.",
+      "local_Windows": "exit1: 8 PermissionErrors from strict Path.resolve on workspace temp subdirectories, 2 tests passed and 1 Linux symlink test skipped; not a local suite pass. No permission changes.",
+      "transfer": "One rsync executable path typo failed before transfer (0 bytes); corrected and SHA verified."
+    },
+    "lazy_vllm_origin": {
+      "observed_finder": "__editable___vllm_0_19_1_dev0_g2a69949bd_d20260920_cu124_finder.py",
+      "mapping": "/media/ubuntu/D1/zsj/Lego-RL-main/third_party/vllm/vllm",
+      "method": "Read installed finder source without executing vLLM; whole lazy/native dependency coverage still pending"
+    },
+    "unchanged": [
+      "frozen seven generators",
+      "runtime overlay",
+      "probe",
+      "receipt consumer",
+      "private Ray lease",
+      "private config component",
+      "old 35 sources"
+    ],
+    "consumer_integrated": false,
+    "production_receipt_created": false,
+    "Ray_started": false,
+    "GPU_started": false,
+    "model_or_optimizer_updates": 0,
+    "training_admitted": false,
+    "next": [
+      "Close exact native/shared-package/lazy-vLLM/Python/native-library source policy using observed origins and whole critical trees.",
+      "Integrate reviewed source and asset policies with producer/consumer, binding real evidence and the checked private config/environment; never fabricate review booleans.",
+      "Validate actual private Ray startup/teardown under required gates, then disposable eight-rank updates only after fresh original resources.",
+      "Formal prepared-data/image and unique freshbase entry remain separate gates."
+    ]
+  },
+  "resource_refresh_20261028": {
+    "status": "RESOURCE_SNAPSHOT_PASS_NOT_LAUNCH_RECEIPT",
+    "observed_at": 1793164892.9219766,
+    "free_bytes": 544357101568,
+    "free_GiB": 506.9720573425293,
+    "original_start_required_bytes": 458392574347,
+    "start_required_GiB": 426.9113525254652,
+    "margin_GiB": 80.0607048170641,
+    "save_required_bytes": 415172253607,
+    "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+    "gpu_count": 8,
+    "all_gpu_utilization_zero": true,
+    "each_gpu_memory_MiB": 14,
+    "compute_processes": [],
+    "ray_processes": [],
+    "ports_available": [
+      6407,
+      8265,
+      8307
+    ],
+    "existing_validate_resources_passed": true,
+    "GPU_launched": false,
+    "training_admitted": false,
+    "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
+  },
+  "current_priority": "Scope-local development experiment complete. See latest review for outcome and next research direction. No runtime promotion or active job; frozenR6 and formal training gates unchanged.",
+  "actual_private_Ray_lifecycle": {
+    "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
+    "UTC": "2026-10-28T05:42:25.294751+00:00",
+    "remote_exit": 0,
+    "queue": "logs/gpu_private_ray_r6_live_r2",
+    "actual_run": "gpu-r6-862f01ff018c3654",
+    "actual_Ray_init_task_shutdown": true,
+    "owned_processes_remaining": [],
+    "private_parent_mode": "0700",
+    "Ray_temp_child": "ray",
+    "tests_Linux_CPU": 14,
+    "whole_two_phase_Hydra_parity": true,
+    "source_changes": [
+      "src/gpu_private_ray_r6.py: require Ray child under private parent",
+      "src/gpu_launch_config_r6.py: only Ray _temp_dir points at child"
+    ],
+    "first_failure": {
+      "queue": "logs/gpu_private_ray_r6_live",
+      "exit": 1,
+      "run": "gpu-r6-7381ff649f7eb298",
+      "cause": "Installed Ray try_to_create_directory chmods supplied root0777; outer0700 ownership check correctly failed",
+      "shutdown_finally_called": true,
+      "subsequent_global_Ray_process_scan_empty": true,
+      "full_owner_scan_after_failure": "inconclusive: unrelated newer proc environment PermissionError; no cleanup/signals"
+    },
+    "backup": "archive/r6_live_ray_directory_mode_failure",
+    "source_SHA": {
+      "src/gpu_private_ray_r6.py": "ed3ad89515c390953d46c64ca6419d49eac6dbea1518b59c2147fd993ec72b7f",
+      "src/gpu_launch_config_r6.py": "a480f11d023969b7dd6a6611e925506d5508eebccf7cda47de4df6dd7fba80da",
+      "src/gpu_probe_r6.py": "66b470124e4139010d1d6b587efe31690e369b0637740b5ac0259d73b0fae1b0"
+    },
+    "evidence_SHA": {
+      "reports/GPU_PRIVATE_RAY_R6_LIVE_R2.json": "4488452c96c7f91e04655b60369937d36c77a5a67e4e73a358ac5782c60b0a0d",
+      "reports/GPU_NESTED_RAY_CONFIG_R6_CONTRACTS.json": "f86b3b880c4d230bde421e8b60e3b2e29357feab1462a007cbc113613e6bde8c"
+    },
+    "frozen_method_changed": false,
+    "runtime_changed": false,
+    "GPU_started": false,
+    "model_constructed": false,
+    "optimizer_steps": 0,
+    "production_receipt_created": false,
+    "training_admitted": false,
+    "next": "Finish bounded existing producer/source-assets evidence binding and shell environment, then fresh resources and actual native8GPU probe; do not expand generic audit framework."
+  },
+  "native_gpu_probe_current": {
+    "run": "gpu-r6-c4000612667ac86e",
+    "status": "passed",
+    "exit": 0,
+    "actual_native_GPU": true,
+    "result": "reports/GPU_SHORT_R6_RESULT.json",
+    "review": "reports/GPU_SHORT_R6_REVIEW.json",
+    "training_admission": false,
+    "full_transitive_review": false
+  },
+  "r7_budget_ablation": {
+    "status": "DEVELOPMENT_ABLATION_COMPLETE_R6_UNCHANGED",
+    "report": "reports/BUDGET_ABLATION_R7_REVIEW.json",
+    "aggregate_SHA": "5d98ac88cf20a983108d586187d49a57b989c22d75a1a3b1d3109514467814d5",
+    "inputs": 607,
+    "evaluable": 366,
+    "candidate_hits": {
+      "3": 242,
+      "6": 282
+    },
+    "visible_hits": {
+      "3": [
+        171,
+        179,
+        189
+      ],
+      "6": [
+        166,
+        170,
+        183
+      ]
+    },
+    "caps": [
+      192,
+      256,
+      384
+    ],
+    "provisional_comparator": "pool3 cap256; development only",
+    "runtime_promoted": false,
+    "confirmation_used": false,
+    "original_isolation_not_accepted": true,
+    "R2_denial_paths": 3,
+    "exit": 0
+  },
+  "r7_window_research": {
+    "status": "DEVELOPMENT_SIGNAL_NOT_ADMITTED",
+    "queue": "logs/window_research_r7",
+    "exit": 0,
+    "report": "reports/WINDOW_RESEARCH_R7_REVIEW.json",
+    "aggregate_SHA": "1d93b77ada88a000056948a36b8bd757cddd1b56f63633f82734049481dc6951",
+    "budget": 256,
+    "controls": [
+      "base3",
+      "base6"
+    ],
+    "visible_hits": {
+      "base3": 179,
+      "base6": 170,
+      "rank6": 188,
+      "diverse6": 197,
+      "atomic3": 166,
+      "atomic_rank6": 176,
+      "compact3": 126
+    },
+    "full_hits": {
+      "base3": 128,
+      "base6": 112,
+      "rank6": 137,
+      "diverse6": 130,
+      "atomic3": 125,
+      "atomic_rank6": 139,
+      "compact3": 41
+    },
+    "coverage_candidate": "diverse6",
+    "density_comparator": "rank6",
+    "runtime_changed": false,
+    "confirmation_used": false
+  },
+  "r7_candidate_research": {
+    "status": "DEVELOPMENT_RECALL_GAIN_WITHOUT_ROBUST_VISIBLE_GAIN_NOT_ADMITTED",
+    "report": "reports/CANDIDATE_RESEARCH_R7_REVIEW.json",
+    "aggregate_SHA": "8291253def7bad0c44aa79726491a9946595e1e9c8c097e8bc1e80a59c4f6d6c",
+    "rows": [
+      {
+        "mode": "base6",
+        "candidate_hits": 282,
+        "visible_hits": 197,
+        "full_hits": 130,
+        "mean_tokens": 249.76441515650743
+      },
+      {
+        "mode": "pool12",
+        "candidate_hits": 308,
+        "visible_hits": 195,
+        "full_hits": 129,
+        "mean_tokens": 250.48105436573312
+      },
+      {
+        "mode": "files12",
+        "candidate_hits": 283,
+        "visible_hits": 186,
+        "full_hits": 123,
+        "mean_tokens": 250.81878088962108
+      },
+      {
+        "mode": "symbols12",
+        "candidate_hits": 306,
+        "visible_hits": 200,
+        "full_hits": 128,
+        "mean_tokens": 249.7331136738056
+      },
+      {
+        "mode": "links12",
+        "candidate_hits": 301,
+        "visible_hits": 194,
+        "full_hits": 126,
+        "mean_tokens": 250.5337726523888
+      }
+    ],
+    "scope": {
+      "tasks": 366,
+      "target_lines": 1320,
+      "captured_target_lines": 1320,
+      "represented_target_lines": 1314,
+      "capture_any": 366,
+      "entity_any": 363,
+      "capture_full_any": 366,
+      "entity_full_any": 362,
+      "capture_missing_all": 0,
+      "representation_missing_all_given_capture": 3,
+      "has_outside_entity_target": 4,
+      "limited_capture": 35
+    },
+    "runtime_promoted": false
+  },
+  "r7_joint_allocation": {
+    "status": "DEVELOPMENT_COMPLETE_NO_ROBUST_PROMOTION",
+    "inputs": 607,
+    "evaluable": 366,
+    "repositories": 77,
+    "joint_review": "reports/JOINT_WINDOWS_R7_REVIEW.json",
+    "lookahead_review": "reports/LOOKAHEAD_WINDOWS_R7_REVIEW.json",
+    "joint_aggregate_SHA": "81c61e4cf938936d2c1788f8cd4ed5a6ceb8a1a17cba94943c4055c6f63db09d",
+    "lookahead_aggregate_SHA": "f72d59bd7a64d36a4b42cd19dde48e3e99d4d7cffe644dc789ba281344ce4a7c",
+    "objective_diagnostic_SHA": "eca83516254a31e15c1b02753736193fcddb37b23abdbe3567e7d3a7726848b8",
+    "best_observed_visible": 209,
+    "best_observed_cap": 384,
+    "matching_control_visible": 208,
+    "matching_control_full": 170,
+    "best_observed_full": 173,
+    "candidate_ceiling": 306,
+    "runtime_promoted": false,
+    "independent_validation": false,
+    "all_joint_new_arms_rejected": true,
+    "frozen7_exact": true
+  },
+  "r7_recall_windows": {
+    "status": "DEVELOPMENT_RECALL_GAIN_FINAL_COVERAGE_UNCERTAIN",
+    "inputs": 607,
+    "evaluable": 366,
+    "candidate": 343,
+    "candidate_previous": 306,
+    "visible": 205,
+    "visible_previous": 200,
+    "full": 134,
+    "full_previous": 128,
+    "W0_cap": 256,
+    "density_gain_percent": 1.2968543436942204,
+    "actual_or_single_window_witness": 334,
+    "witness_not_deployable": true,
+    "window_buckets": {
+      "tasks": 366,
+      "already_visible": 205,
+      "actual_or_single_seed_attainability_witness": 334,
+      "fitting_hitting_seed_exists_but_not_selected": 129,
+      "candidate_present_but_no_seed_proposal_hits": 9,
+      "candidate_missing": 23
+    },
+    "aggregate_SHA": "c9b4320767e9dfda12e17e53573c0f7f92d155c86f6fd73903e7f508c73b63b6",
+    "diagnostic_SHA": "5575bcd833162f8d667e6c965e3b4c22c58e4a569be93b0d00fba9d665926096",
+    "runtime_promoted": false,
+    "independent": false
+  },
+  "r7_relevance_windows": {
+    "status": "COMPLETE_DEVELOPMENT_ONLY_NEW_FUSION_REJECTED",
+    "exit": 0,
+    "inputs": 607,
+    "evaluable": 366,
+    "repositories": 77,
+    "nominal_exact": 370,
+    "unmapped": 4,
+    "local_contracts": 5,
+    "linux_contracts": 5,
+    "baseline_payload_replay": 607,
+    "label_denials_per_shard": 8,
+    "all_outputs_frozen_before_score": true,
+    "source_unchanged_frozen7": true,
+    "runtime_promoted": false,
+    "new_model_updates": 0,
+    "active_jobs": 0,
+    "aggregate_SHA": "ad286593f0752faeab8c0cd2fa33d7101b4348fa25f43502a017c5999ccf2eb6",
+    "freeze_SHA": "b6919b18a4584a343162b68b33ae7e5b41339848eeab7ebcde0a7145a784302f",
+    "results": {
+      "base256": {
+        "visible": 205,
+        "full_all": 134,
+        "mean_tokens": 250.01153212520592,
+        "density": 6.031363088057901
+      },
+      "base384": {
+        "visible": 213,
+        "full_all": 174,
+        "mean_tokens": 366.77429983525536,
+        "density": 5.106030982102572
+      },
+      "fused256": {
+        "visible": 190,
+        "full_all": 127,
+        "mean_tokens": 250.35420098846788,
+        "density": 5.833397296022983
+      },
+      "fused384": {
+        "visible": 196,
+        "full_all": 163,
+        "mean_tokens": 365.9209225700165,
+        "density": 4.945283804763528
+      },
+      "anchored256": {
+        "visible": 196,
+        "full_all": 132,
+        "mean_tokens": 250.25535420098848,
+        "density": 5.950747137163623
+      },
+      "anchored384": {
+        "visible": 202,
+        "full_all": 170,
+        "mean_tokens": 365.7479406919275,
+        "density": 5.10087725966582
+      }
+    },
+    "decision": "Retain original256 density comparator and original384 depth comparator; no fusion promotion.",
+    "limitations": [
+      "W0 only; no runtime/dynamic/episode integration.",
+      "Reused development, unadjusted exploratory comparisons, no independent confirmation.",
+      "Density measures target location evidence, not semantic or RL benefit.",
+      "Fixed passage24 candidates; heuristic window-level relevance fusion; no semantic model or learned ranking.",
+      "Adaptive development after prior aggregate results; no per-case tuning or independent confirmation."
+    ]
+  },
+  "r7_behavior_windows": {
+    "status": "COMPLETE_DEVELOPMENT_ONLY_NO_COVERAGE_GAIN",
+    "exit": 0,
+    "inputs": 607,
+    "evaluable": 366,
+    "repos": 77,
+    "local_contracts": 10,
+    "linux_contracts": 10,
+    "baseline_exact": 607,
+    "label_denials_per_shard": 9,
+    "source_only_mechanism_task_counts": {
+      "any_prior": 552,
+      "any_line_cue": 501,
+      "enclosing_guard": 206,
+      "explicit_call": 469,
+      "linked_return": 300,
+      "nearest_store": 356,
+      "one_hop_callee": 274,
+      "literal_message": 94
+    },
+    "results": {
+      "base256": {
+        "candidate": 343,
+        "visible": 205,
+        "full_all": 134,
+        "mean_tokens": 250.01153212520592,
+        "density": 6.031363088057901
+      },
+      "base384": {
+        "candidate": 343,
+        "visible": 213,
+        "full_all": 174,
+        "mean_tokens": 366.77429983525536,
+        "density": 5.106030982102572
+      },
+      "rank256": {
+        "candidate": 343,
+        "visible": 200,
+        "full_all": 129,
+        "mean_tokens": 249.65733113673807,
+        "density": 5.891793259612637
+      },
+      "rank384": {
+        "candidate": 343,
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 363.6227347611203,
+        "density": 5.269218157832529
+      },
+      "extend256": {
+        "candidate": 343,
+        "visible": 200,
+        "full_all": 129,
+        "mean_tokens": 249.65897858319605,
+        "density": 5.891793259612637
+      },
+      "extend384": {
+        "candidate": 343,
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 363.6227347611203,
+        "density": 5.269218157832529
+      }
+    },
+    "decision": "Reject unrestricted structural ranking/extension as final coverage improvement. Separate protected follow-up complete; see PROTECTED_BEHAVIOR_R7_REVIEW.json.",
+    "aggregate_SHA": "8430ceb24e3bed952ae2358cec2ec8328b89be7bb1a1997dd19b9dae208eb9c5",
+    "frozen_SHA": "a9a90e4ff52b87b0922ad5024509577522cdf8de03379ae5b072eda651e97d15",
+    "runtime_promoted": false,
+    "frozen7_unchanged": true,
+    "new_GPU_or_model_updates": false,
+    "limitations": [
+      "Static name/AST heuristics, not semantic dataflow or sound alias/call resolution.",
+      "Current input graph can resolve unique names across files; no import-resolution proof.",
+      "Mechanism counts cover607inputs, not just366evaluable tasks; they are not successful-target counts.",
+      "Extension has identical aggregate target counts; this does not prove all payloads or all seeds are identical.",
+      "Repeated adaptive development, no independent admission.",
+      "First local extra-seed fixture failed because old bank already covered its cues; repaired synthetic fixture before any data run, failure preserved."
+    ]
+  },
+  "r7_protected_behavior": {
+    "status": "COMPLETE_DEVELOPMENT_DENSITY_COMPARATOR_NO_NET_TASK_COVERAGE_GAIN",
+    "exit": 0,
+    "inputs": 607,
+    "evaluable": 366,
+    "repos": 77,
+    "local_contracts": 4,
+    "linux_contracts": 4,
+    "baseline_exact_each_budget": 607,
+    "label_denials_per_shard": 10,
+    "results": {
+      "base256": {
+        "visible": 205,
+        "full_all": 134,
+        "mean_tokens": 250.01153212520592,
+        "density": 6.031363088057901
+      },
+      "base384": {
+        "visible": 213,
+        "full_all": 174,
+        "mean_tokens": 366.77429983525536,
+        "density": 5.106030982102572
+      },
+      "protect1_256": {
+        "visible": 200,
+        "full_all": 132,
+        "mean_tokens": 249.67051070840196,
+        "density": 5.815103880400132
+      },
+      "protect1_384": {
+        "visible": 211,
+        "full_all": 175,
+        "mean_tokens": 364.2405271828666,
+        "density": 5.211622298135229
+      },
+      "protect2_256": {
+        "visible": 201,
+        "full_all": 129,
+        "mean_tokens": 249.52388797364085,
+        "density": 5.951726110585492
+      },
+      "protect2_384": {
+        "visible": 213,
+        "full_all": 176,
+        "mean_tokens": 363.89456342668865,
+        "density": 5.37920749893481
+      }
+    },
+    "best_depth_density_arm": "protect2_384",
+    "any_task_gained": 7,
+    "any_task_lost": 7,
+    "full_all_gained": 10,
+    "full_all_lost": 8,
+    "full_all_repo_CI95_pp": [
+      -1.898820170610897,
+      3.315377532228363
+    ],
+    "target_lines_before": 679,
+    "target_lines_after": 707,
+    "target_lines_total": 1320,
+    "density_gain_percent": 5.350075582967739,
+    "mean_tokens_change_percent": -0.7851521793812211,
+    "aggregate_SHA": "176aa0cc1b0730cc27e161e239cb66bdf604d2283f388fff96d90aedff964514",
+    "freeze_SHA": "cfeeea376d48acd3ec18bcd8087265543359c54883e7644f63d8865225d286a2",
+    "runtime_promoted": false,
+    "frozen7_unchanged": true,
+    "new_GPU_or_model_updates": false,
+    "active_jobs": 0,
+    "decision": "Keep protected2_384 only as exploratory depth/density comparator. No net any-task gain, no independent or robust completeness gain; no runtime promotion.",
+    "limitations": [
+      "First seed protection does not preserve final expansion or task identities.",
+      "Same213any-hit count includes7gained/7lost, not an identical task set.",
+      "All607previously seen;366exactmapped in77repos,370nominal exact includes4unmapped.",
+      "Adaptive follow-up using aggregate results, no per-case scores/confirmation tuning.",
+      "Density is target-location evidence pertoken, not semantic information or RL benefit."
+    ]
+  },
+  "r7_capacity_allocation": {
+    "UTC": "2026-10-28T15:00:46.408385+00:00",
+    "status": "COMPLETE_DEVELOPMENT_COVERAGE_GAIN_WITH_DENSITY_COST_NOT_PROMOTED",
+    "input_tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": 9,
+    "candidate_hits": 343,
+    "best_any_hits": 251,
+    "best_any_rate": 0.6857923497267759,
+    "best_full_all": 212,
+    "best_mean_tokens": 744.8583196046128,
+    "no_target_entity_chosen_3_slots": 98,
+    "no_target_entity_chosen_6_slots": 66,
+    "wrong_region_384_3": 32,
+    "wrong_region_768_6": 26,
+    "density_relative_original384": -0.37732948205846006,
+    "mean_token_relative_original384": 1.0308356390815336,
+    "original_queue_exit": 1,
+    "original_failure": "Scorer-only eligibility KeyError; all607x9outputs frozen",
+    "corrected_score_and_diagnostic_exit": 0,
+    "generation_repeated": false,
+    "source_contracts_local": 6,
+    "source_contracts_Linux": 6,
+    "repair_contracts_local": 4,
+    "repair_contracts_Linux": 4,
+    "label_denials_per_shard": 11,
+    "baseline_payload_replay_each_budget": 607,
+    "baseline_budgets": [
+      256,
+      384
+    ],
+    "frozen_runtime_changed": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "68a20273c6b2ef287663382201382b60ad242467b32a1bb607586c06857dbeee",
+      "FROZEN.json": "4484def3169a9696831e8fee3988cb2a99eb0037b26a76bd61385bdc03f96244",
+      "LOSS_DECOMPOSITION.json": "31956cdc342c0f49518a7f1478f32c2eff9528e9e7330c28eccdde3fbf4edcce",
+      "SCORING_REPAIR.json": "1fd56e0ce6d05d67df5dcc370aa395fbb071f8756b44c142ad7137c5037eabc0"
+    },
+    "report": "R7_CAPACITY_ALLOCATION_RESULTS.md",
+    "next": "Fixed offline relevance and repo-separated evaluation at controlled cost; not implemented",
+    "limitations": [
+      "Repeated development; no selected-winner independent evidence.",
+      "Same token cap has different actual usage;768is diagnostic,notdefault.",
+      "Higher coverage costs density; no semantic/RL benefit proven.",
+      "Append retention is relative to256baseline only."
+    ]
+  },
+  "r7_entity_allocation": {
+    "UTC": "2026-10-28T15:57:12.869762+00:00",
+    "status": "COMPLETE_DEVELOPMENT_NOT_PROMOTED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control512": {
+        "any_hits": 237,
+        "full_all": 171,
+        "tokens": 506.00329489291596,
+        "entities": 5.532125205930807,
+        "density": 3.848232623500162,
+        "target_lines": 712
+      },
+      "flat512": {
+        "any_hits": 182,
+        "full_all": 139,
+        "tokens": 503.8484349258649,
+        "entities": 5.988467874794069,
+        "density": 2.9424746211563924,
+        "target_lines": 540
+      },
+      "unique512": {
+        "any_hits": 235,
+        "full_all": 164,
+        "tokens": 506.58978583196046,
+        "entities": 6.0,
+        "density": 3.752173021066157,
+        "target_lines": 695
+      },
+      "unique_flat512": {
+        "any_hits": 182,
+        "full_all": 139,
+        "tokens": 503.8517298187809,
+        "entities": 6.0,
+        "density": 2.942378422558235,
+        "target_lines": 540
+      },
+      "anchor2_flat512": {
+        "any_hits": 208,
+        "full_all": 150,
+        "tokens": 505.3525535420099,
+        "entities": 5.973640856672158,
+        "density": 3.287189724006249,
+        "target_lines": 606
+      }
+    },
+    "losses": {
+      "control512": {
+        "tasks": 366,
+        "visible": 237,
+        "no_target_entity_chosen": 66,
+        "target_entity_chosen_but_wrong_region": 40,
+        "candidate_absent": 23
+      },
+      "flat512": {
+        "tasks": 366,
+        "no_target_entity_chosen": 137,
+        "visible": 182,
+        "target_entity_chosen_but_wrong_region": 24,
+        "candidate_absent": 23
+      },
+      "unique512": {
+        "tasks": 366,
+        "visible": 235,
+        "no_target_entity_chosen": 60,
+        "target_entity_chosen_but_wrong_region": 48,
+        "candidate_absent": 23
+      },
+      "unique_flat512": {
+        "tasks": 366,
+        "no_target_entity_chosen": 137,
+        "visible": 182,
+        "target_entity_chosen_but_wrong_region": 24,
+        "candidate_absent": 23
+      },
+      "anchor2_flat512": {
+        "tasks": 366,
+        "visible": 208,
+        "no_target_entity_chosen": 92,
+        "target_entity_chosen_but_wrong_region": 43,
+        "candidate_absent": 23
+      }
+    },
+    "interpretations": "No new arm improves final coverage, completeness or density. Reject all four interventions as replacements; retain the exact512/6control (237/366=64.75%any,171/366=46.72%full-all). The previous768/6historical result251/366=68.58% remains the best observed breadth point at higher cost, not a same-budget comparison or new result.\n\nRemoving the seed-selection candidate-rank penalty reduces237→182any and171→139full-all,14gained69lost,any delta-15.03pp with exploratory repo95%CI[-19.61,-9.82]pp. Mean tokens506.00→503.85 are nearly unchanged; density3.848→2.942. Combining removal with hard diversity gives the same target counts. The candidate rank prior carries useful information under this scorer; removing it makes no-target-entity misses66→137. This intervention does not prove the prior is optimally calibrated, or isolate which remaining content-score term is weak.\n\nHard entity diversity raises mean distinct entities5.532→6.000 and lowers no-target-entity misses66→60, but wrong-region misses40→48. Finalany237→235(3gained5lost;repoCI[-2.46,+1.51]pp),full171→164(4gained11lost),density3.848→3.752. Selecting additional entities alone does not ensure the correct lines survive within their windows. Aggregate categories are descriptive; they do not establish that every displaced context caused a particular miss.\n\nKeeping original rank scoring for the first2seeds before flattening later selections reaches208any/150full,13gained42lost,anyCI[-12.83,-2.92]pp; it also fails. This protects seed choices only, not the final context or hits after shared-budget expansion. Do not promote any of these variants or widen the budget to disguise the loss.\n\nTogether with the previous budget/slot experiment, the evidence points to a relevance and allocation problem as well as a budget tradeoff: extra budget improves depth, extra slots improve breadth, but indiscriminate diversity or rank flattening hurts. The next distinct research axis is issue-conditioned semantic/behavioral relevance for entity AND within-entity region, retaining the useful retrieval prior and exact source rendering. It should be predeclared and evaluated on repository-separated development before fresh independent confirmation. No semantic reranker is implemented here, and no claim of approaching100% or semantic/RL benefit is supported.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "queue_exit": 0,
+    "actual_Landlock": true,
+    "label_denials_per_shard": 12,
+    "exact_control_replays": 607,
+    "GPU_model_optimizer_training": false,
+    "frozen_runtime_changed": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "888113e3970289245208dbdb5c74a93f0929f9b4124332e86ee91b440b9c6e39",
+      "FROZEN.json": "c31e58197857c33b5c758dafd3b4baf4b9ced27cefa6ad5632de677914ac832a",
+      "LOSS_DECOMPOSITION.json": "a83e83463e360453cf16b97b4f5b3579272819a12565cfe9b861d7e5963c7c0b"
+    },
+    "report": "R7_ENTITY_ALLOCATION_RESULTS.md"
+  },
+  "r7_fast_allocation": {
+    "UTC": "2026-10-28T16:45:02.543650+00:00",
+    "status": "COMPLETE_DEVELOPMENT_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control512_6": {
+        "any_hits": 237,
+        "full_all": 171,
+        "tokens": 506.00329489291596,
+        "density": 3.848232623500162,
+        "wall_mean": 1.3232380714776881,
+        "wall_median": 1.2894900925457478,
+        "wall_p95": 2.2329192675650114,
+        "cpu_mean": 1.32314332683196
+      },
+      "control768_6": {
+        "any_hits": 251,
+        "full_all": 212,
+        "tokens": 744.8583196046128,
+        "density": 3.1793749562513587,
+        "wall_mean": 1.601592168752012,
+        "wall_median": 1.5753618143498898,
+        "wall_p95": 2.7056650258600703,
+        "cpu_mean": 1.6014711932965413
+      },
+      "fast512_6": {
+        "any_hits": 237,
+        "full_all": 171,
+        "tokens": 506.00329489291596,
+        "density": 3.848232623500162,
+        "wall_mean": 0.675306795186423,
+        "wall_median": 0.6385226398706436,
+        "wall_p95": 1.2074439596384758,
+        "cpu_mean": 0.6752642650098862
+      },
+      "fast768_6": {
+        "any_hits": 251,
+        "full_all": 212,
+        "tokens": 744.8583196046128,
+        "density": 3.1793749562513587,
+        "wall_mean": 0.9573422424262006,
+        "wall_median": 0.9438253119587898,
+        "wall_p95": 1.6127245157957075,
+        "cpu_mean": 0.9572764960082372
+      },
+      "fast768_8": {
+        "any_hits": 261,
+        "full_all": 208,
+        "tokens": 758.0461285008237,
+        "density": 3.0315293505517458,
+        "wall_mean": 1.179071983129179,
+        "wall_median": 1.1706124693155289,
+        "wall_p95": 1.8875956710428,
+        "cpu_mean": 1.1789843474810555
+      },
+      "fast1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.6448764217007887,
+        "wall_median": 1.6721939407289028,
+        "wall_p95": 2.6694826476275915,
+        "cpu_mean": 1.6447540236754514
+      },
+      "fast1024_12": {
+        "any_hits": 272,
+        "full_all": 214,
+        "tokens": 1016.3574958813839,
+        "density": 2.3684437171647574,
+        "wall_mean": 2.31708684688836,
+        "wall_median": 2.3795169107615948,
+        "wall_p95": 3.617346883937716,
+        "cpu_mean": 2.316924136291591
+      }
+    },
+    "interpretation": "The best practical coverage/depth point in this study is fast1024_8:272/366=74.32%any and238/366=65.03%full-all, versus prior768/6control251/366=68.58% and212/366=57.92%. It gains22any tasks and loses1 (+5.74pp, exploratory repo95%CI[+3.09,+8.43]pp), and gains29full tasks/loses3 (+7.10pp,CI[+4.09,+9.73]pp). Mean construction time1.602→1.645s (+2.70%), median1.575→1.672s (+6.15%), P952.706→2.669s. The paired per-task median time ratio is1.029. This is a coverage improvement with a small mean constructor-time increase relative to the previous768/6development baseline, not proof of equal production training cost.\n\nThe tradeoff remains substantial in tokens/density: mean744.86→998.57tokens (+34.06%), visible target lines863→935, but density3.179→2.574target lines/1000PI tokens (-19.05%). Candidate recall stays343/366=93.72%; candidate-to-final conversion reaches272/343=79.30%. Thus more code improves final coverage/depth without a large mean construction penalty, but it is not a joint information-density improvement, near100% result or a deployed1024budget.\n\nAt unchanged budgets/window counts, fast512_6 and fast768_6 preserve all measured any/full per-task hit decisions and aggregate target-line/token counts. Mean construction time falls1.323→0.675s (512) and1.602→0.957s (768); medians1.289→0.639s and1.575→0.944s. Mean tokenizer misses2322→880 and2508→1066. The approximate shortlist is empirically adequate on this development cohort; no universal BPE/output-equivalence guarantee follows from equal coverage metrics.\n\nfast768_8 reaches261any/208full with1.179s mean, but versus768/6the any gain10has repoCI[-0.32,+5.69]pp crossing0; full declines4 and density3.179→3.032. Keep only a lower-construction-cost breadth comparator. fast1024_12 also has272any but only214full, density2.368 and2.317s mean. It is worse than1024/8 on aggregate completeness, density and time despite the same any count, so reject12slots as the practical choice. Equal any counts do not imply equal hit sets (27gained6lost vs768control for12slots,22gained1lost for8slots).\n\nLoss diagnosis explains the breadth/depth balance:768/6leaves66no-target-entity and26wrong-region misses;1024/8leaves45and26;1024/12leaves34and37. More slots reach additional entities but spread context thinner.23tasks remain outside the fixed candidate pool in every arm. Retain retrieval prior, moderate breadth and adequate context together; do not keep increasing slots blindly. Source-line integrity is preserved, while semantic completeness remains unproven.\n\nRecommendation is a separate development candidate: fast1024/8for coverage/depth with near-baseline mean constructor time; fast768/6when preserving the prior token/density point and reducing constructor cost is more important. Both require fresh independent confirmation, dynamic/episode integration and actual Critic/training-cost measurement before deployment. Runtime192/128/4096, frozenR6 and training entry stay unchanged. No additional repository search or neural reranker is introduced; initial retrieval cost is excluded rather than claimed free.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "queue_exit": 0,
+    "control_replays_each": 607,
+    "label_denials_per_shard": 13,
+    "fresh_cache_per_arm": true,
+    "rotated_order": true,
+    "no_new_retrieval": true,
+    "live_training_latency_measured": false,
+    "GPU_model_optimizer_training": false,
+    "frozen_runtime_changed": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "8454998af70b1666c9f975c4e78a8c2ee88e20b8de53f10547338bc402e4b71f",
+      "FROZEN.json": "88641985551f5f05c68cca51c0b3a1160c719512c84c8bea0583da7ccf4bf42e",
+      "LOSS_DECOMPOSITION.json": "a72df8b2bd6750999bcb6d6a8b3f327e02984a1651102875e0e28ef7d99d5baf"
+    },
+    "report": "R7_FAST_ALLOCATION_RESULTS.md"
+  },
+  "r7_fast_memo": {
+    "report": "R7_FAST_MEMO_RESULTS.md",
+    "aggregate_SHA": "5eba17b8a9a459504551601144741e7ef997dd4e89bbb6ebeb37f632a58175ae",
+    "exact_each": 607,
+    "benchmark_each": 64,
+    "source_only": true,
+    "contracts_local": 4,
+    "contracts_Linux": 4,
+    "queue_exit": 0,
+    "timing": {
+      "fast768_8": {
+        "old": {
+          "wall": {
+            "n": 64,
+            "mean": 1.0621985995676368,
+            "median": 1.0465124901384115,
+            "p95": 1.7136611081659794,
+            "max": 2.2868145257234573
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 1.062132243109375,
+            "median": 1.0464230034999993,
+            "p95": 1.7135812300000026,
+            "max": 2.2864074619999997
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 4647.1875,
+            "median": 4887.5,
+            "p95": 6650,
+            "max": 8381
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1182.640625,
+            "median": 1229.0,
+            "p95": 1747,
+            "max": 1790
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 1338538.609375,
+            "median": 1377048.0,
+            "p95": 2195249,
+            "max": 2398164
+          }
+        },
+        "new": {
+          "wall": {
+            "n": 64,
+            "mean": 0.944106588663999,
+            "median": 0.9368320927023888,
+            "p95": 1.4544034153223038,
+            "max": 2.008923515677452
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 0.9440371982187508,
+            "median": 0.9367148960000016,
+            "p95": 1.4542951939999966,
+            "max": 2.0088743889999954
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 3620.515625,
+            "median": 3808.5,
+            "p95": 5359,
+            "max": 7325
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1182.640625,
+            "median": 1229.0,
+            "p95": 1747,
+            "max": 1790
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 1338538.609375,
+            "median": 1377048.0,
+            "p95": 2195249,
+            "max": 2398164
+          }
+        },
+        "paired_wall_ratio": {
+          "n": 64,
+          "mean": 0.8955365271948218,
+          "median": 0.8851683872755243,
+          "p95": 1.021225951247572,
+          "max": 1.2358620179100805
+        }
+      },
+      "fast1024_12": {
+        "old": {
+          "wall": {
+            "n": 64,
+            "mean": 2.064668928447645,
+            "median": 2.051724059507251,
+            "p95": 3.6822249479591846,
+            "max": 4.041851472109556
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 2.064525162453125,
+            "median": 2.051707813,
+            "p95": 3.681945665999997,
+            "max": 4.0418016859999994
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 7334.125,
+            "median": 7807.0,
+            "p95": 11252,
+            "max": 13538
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1708.484375,
+            "median": 1777.5,
+            "p95": 2539,
+            "max": 2853
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 3202223.390625,
+            "median": 3182019.0,
+            "p95": 5353190,
+            "max": 6107774
+          }
+        },
+        "new": {
+          "wall": {
+            "n": 64,
+            "mean": 1.8306742502609268,
+            "median": 1.830201093107462,
+            "p95": 3.24910868704319,
+            "max": 3.4857718013226986
+          },
+          "cpu": {
+            "n": 64,
+            "mean": 1.830541567140625,
+            "median": 1.8299277635000024,
+            "p95": 3.249042631000002,
+            "max": 3.485708260999999
+          },
+          "encode_requests": {
+            "n": 64,
+            "mean": 5412.5,
+            "median": 5717.5,
+            "p95": 8122,
+            "max": 11199
+          },
+          "encode_misses": {
+            "n": 64,
+            "mean": 1708.484375,
+            "median": 1777.5,
+            "p95": 2539,
+            "max": 2853
+          },
+          "encoded_bytes": {
+            "n": 64,
+            "mean": 3202223.390625,
+            "median": 3182019.0,
+            "p95": 5353190,
+            "max": 6107774
+          }
+        },
+        "paired_wall_ratio": {
+          "n": 64,
+          "mean": 0.8887100964439789,
+          "median": 0.892428120355031,
+          "p95": 0.9658558435451476,
+          "max": 1.0325001597569863
+        }
+      }
+    }
+  },
+  "r7_joint_context": {
+    "UTC": "2026-10-29T05:28:02.369778+00:00",
+    "status": "COMPLETE_DEVELOPMENT_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.6426189509043976,
+        "wall_median": 1.6730001084506512,
+        "wall_p95": 2.68561586253345,
+        "cpu_mean": 1.6425447582619457
+      },
+      "centered1024_8": {
+        "any_hits": 269,
+        "full_all": 234,
+        "target_lines": 953,
+        "tokens": 994.7660626029653,
+        "density": 2.6305619962459974,
+        "wall_mean": 1.7175170674281812,
+        "wall_median": 1.720581542700529,
+        "wall_p95": 2.851137666776775,
+        "cpu_mean": 1.7174414947874803
+      },
+      "joint1024_8": {
+        "any_hits": 257,
+        "full_all": 195,
+        "target_lines": 859,
+        "tokens": 776.6573311367381,
+        "density": 3.1765284500833886,
+        "wall_mean": 0.567862439428071,
+        "wall_median": 0.5110312588512897,
+        "wall_p95": 1.1164020296186201,
+        "cpu_mean": 0.5678379284349251
+      },
+      "joint_centered1024_8": {
+        "any_hits": 259,
+        "full_all": 194,
+        "target_lines": 880,
+        "tokens": 758.2421746293245,
+        "density": 3.3261392972018853,
+        "wall_mean": 0.7004913834078602,
+        "wall_median": 0.6326719969511032,
+        "wall_p95": 1.3987794019281856,
+        "cpu_mean": 0.7004652605601306
+      }
+    },
+    "acceptance_checks": {
+      "centered1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true,
+        "all_preregistered_practical_checks": false
+      },
+      "joint1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true,
+        "all_preregistered_practical_checks": false
+      },
+      "joint_centered1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true,
+        "all_preregistered_practical_checks": false
+      }
+    },
+    "interpretation": "No new arm meets the joint coverage+density+completeness objective; keep control1024/8. Control replays272/366any (74.32%),238/366full-all (65.03%),935/1320targetlines,density2.573574,mean998.57tokens. Centered windows yield269any/234full,953targetlines,density2.630562 (+2.21%),mean994.77tokens;3gained6lost any (repo95%CI[-2.55,+0.73]pp),4gained8lost full. More aggregate target lines are not more covered tasks; no promotion.\n\nJoint allocation reduces mean tokens998.57->776.66 (-22.22%) and constructor1.643->0.568s (-65.43%), density+23.43%, butany272->257 (3gained18lost) andfull238->195 (14gained57lost). Combined centered+joint reaches259any/194full,880targetlines,density3.326139 (+29.24%),mean758.24tokens (-24.07%) and0.700s mean (-57.36%). Its any6gained19lost CI[-6.27,-1.20]pp andfull16gained60lost CI[-16.03,-8.14]pp reject it as a replacement. Density improvement partly reflects removing tokens while absolute target-line evidence falls; not a joint improvement.\n\nCost constraint is not the failure: centered mean+4.56%/P95+6.16%, joint andcombined far faster; all three meet the stated aggregate timing bounds. Entity misses45->45/43 for joint/combined, while wrong-region misses26->41both. The loss concentrates within selected entities. This experiment changes growth policy/granularity/scoring together; it does not prove a single feature causes each loss. Stopping at zero heuristic signal can remove context useful to true targets, so a larger context is not demonstrated waste merely because it lacks query terms.\n\nBounded follow-up declared from these aggregate findings: preserve joint-selected spans and restore original continuous context growth within the SAME1024cap, compare freshly computed outputs/time. No percase score inspection/tuning, no additional retrieval/model, no runtime promotion. See R7_CONTEXT_REFILL_PLAN.md and eventual R7_CONTEXT_REFILL_RESULTS.md. Both studies remain adaptive reused development, not independent or RL evidence.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "control_exact_replays": 607,
+    "label_denials_per_shard": 14,
+    "queue_exit": 0,
+    "original_queue_exit": 1,
+    "failure": "Nonexistent memo score path before generation; archived and removed only that guard",
+    "frozen_method_changed": false,
+    "runtime_changed": false,
+    "new_retrieval": false,
+    "neural_calls": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "e2f683c93b382a11da7b89fbd0d604c1e98b3c83739dc81dbd4d7d993014a447",
+      "FROZEN.json": "ed1b3e5f5c4054277d92fa51433e7f562e1db671169113fc52c1b7a7be800849",
+      "LOSS_DECOMPOSITION.json": "456105ec397f695f252f984e56ba87667d7e1f9706864a29907f35199605fea1"
+    },
+    "report": "R7_JOINT_CONTEXT_RESULTS.md"
+  },
+  "r7_context_refill": {
+    "UTC": "2026-10-29T05:28:02.547704+00:00",
+    "status": "COMPLETE_ADAPTIVE_DEVELOPMENT_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.6426050246829746,
+        "wall_median": 1.6952599063515663,
+        "wall_p95": 2.664502000808716,
+        "cpu_mean": 1.6425125168467871
+      },
+      "joint_refill1024_8": {
+        "any_hits": 267,
+        "full_all": 229,
+        "target_lines": 931,
+        "tokens": 1002.0214168039539,
+        "density": 2.555298470389004,
+        "wall_mean": 1.0289042641085002,
+        "wall_median": 0.92795205488801,
+        "wall_p95": 1.8753588929772373,
+        "cpu_mean": 1.0288463632421752
+      },
+      "joint_centered_refill1024_8": {
+        "any_hits": 268,
+        "full_all": 237,
+        "target_lines": 953,
+        "tokens": 997.326194398682,
+        "density": 2.625055090348171,
+        "wall_mean": 1.1462249672761466,
+        "wall_median": 1.0342682413756847,
+        "wall_p95": 2.1096914883702986,
+        "cpu_mean": 1.1461642799555196
+      }
+    },
+    "acceptance_checks": {
+      "joint_refill1024_8": {
+        "any_improves": false,
+        "density_improves": false,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true,
+        "all_preregistered_practical_checks": false
+      },
+      "joint_centered_refill1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true,
+        "all_preregistered_practical_checks": false
+      }
+    },
+    "interpretation": "Neither follow-up meets the predeclared joint objective. Keep the original fast1024/8 baseline:272/366any (74.32%),238/366full-all (65.03%),935targetlines,density2.573574,mean998.57tokens. The fixed1024budget is not increased and no runtime method is replaced.\n\nJoint+refill reaches267any/229full,931targetlines,density2.555298 (-0.71%),mean1002.02tokens and1.029s mean versus1.643s control (-37.36%). Any3gained8lost CI[-3.54,+0.27]pp;full14gained23lost CI[-5.88,+0.38]pp. It is faster but does not improve coverage or density.\n\nCentered+joint+refill is the better depth/speed comparator:268any/237full,953targetlines,density2.625055 (+2.00%),mean997.33tokens and1.146s mean (-30.22%),median1.034vs1.695,P952.110vs2.665. Any6gained10lost (-1.09pp,repo95%CI[-2.99,+0.86]pp);full17gained18lost (-0.27pp,CI[-3.49,+3.61]pp). More aggregate target lines and density do not satisfy taskcoverage improvement; non-significant negative change is not proof of equivalence/noninferiority. Reject as replacement, retain only developmental cost/depth comparison.\n\nRefill preserves all previously selected joint source intervals and recovers10any/34full from joint257/195, or9any/43full from centeredjoint259/194, without changing candidates/seeds. Thus some context omitted by the zero-positive-signal stopping rule carries true target evidence; low query-match score is not proof of irrelevance. Full restoration does not eliminate remaining placement differences: entitymisses45/43 unchanged and wrongregion41->31/32, compared with control26. Candidateabsence23unchanged. This is evidence about these concrete constructors, not proof that every low-score line is necessary or a universal budget lowerbound.\n\nAcross both experiments, no arm raises finaltaskcoverage+density while preservingfulltargets. Stop this bounded allocator study and retain1024/8. No independent/generalization/RL claim, no runtime promotion. Further research would need a more informative issue-to-code relevance signal calibrated separately from this reused cohort, rather than further budget increases, zero-score pruning or blanket window-count changes. No learned ranker was implemented or started this round; no extra online retrieval or neural calls.",
+    "local_contracts": 4,
+    "Linux_contracts": 4,
+    "control_exact_replays": 607,
+    "joint_span_preservation_each_new_arm": 607,
+    "label_denials_per_shard": 15,
+    "queue_exit": 0,
+    "frozen_method_changed": false,
+    "runtime_changed": false,
+    "new_retrieval": false,
+    "neural_calls": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "baa6b469e9777ea548e040797f7e78e0212610e7a54f9fdcb1101155ad43cbf0",
+      "FROZEN.json": "37b3816412f7396a4df11006acdce5e86727e6dad184dcb289f1ffd4188f9400",
+      "LOSS_DECOMPOSITION.json": "4f2ec3aa52e89607f67a287ab34bd749db21916cc1f6dd3ae1eac8a9020f0d9f"
+    },
+    "report": "R7_CONTEXT_REFILL_RESULTS.md"
+  },
+  "r7_v2_budget": {
+    "UTC": "2026-10-29T06:14:31.321035+00:00",
+    "status": "COMPLETE_DEVELOPMENT_BUDGET_ABLATION_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.652046018870796,
+        "wall_median": 1.6890447102487087,
+        "wall_p95": 2.677749739959836,
+        "cpu_mean": 1.6519030911894546
+      },
+      "fast1920_8": {
+        "any_hits": 284,
+        "full_all": 266,
+        "target_lines": 1053,
+        "tokens": 1741.3064250411862,
+        "density": 1.683030798025116,
+        "wall_mean": 3.2464015790655645,
+        "wall_median": 3.0967568047344685,
+        "wall_p95": 6.232521051168439,
+        "cpu_mean": 3.246168921438218
+      },
+      "fast2048_8": {
+        "any_hits": 284,
+        "full_all": 270,
+        "target_lines": 1063,
+        "tokens": 1829.830313014827,
+        "density": 1.6193998927509383,
+        "wall_mean": 3.4451169177668883,
+        "wall_median": 3.2748359739780426,
+        "wall_p95": 6.830214306712151,
+        "cpu_mean": 3.4448445511878094
+      }
+    },
+    "checks": {
+      "fast1920_8": {
+        "any_improves": true,
+        "density_improves": false,
+        "full_not_lower": true,
+        "mean_within_110percent": false,
+        "p95_within_115percent": false
+      },
+      "fast2048_8": {
+        "any_improves": true,
+        "density_improves": false,
+        "full_not_lower": true,
+        "mean_within_110percent": false,
+        "p95_within_115percent": false
+      }
+    },
+    "interpretation": "Historical V2 is2048tokens per repair state: code1920 plus execution128, versus current development W0cap1024. The actual repair serializer has these independent limits, so generic/reproduction-shell1024 values are not the effective V2repair cap. This is a budget-only study of currentcodewindows, not a replay of V2information content or its training performance.\n\nIncreasing the current fixed8window allocator to1920/2048 improves development coverage without observed any/full regressions. Any272/366(74.32%)->284/366(77.60%) for BOTH larger caps,12gained0lost,+3.28pp, exploratory repo95%CI[+1.53,+5.11]pp. Full-all238/366(65.03%)->266(72.68%) at1920 or270(73.77%) at2048:28/32gained0lost, respectively+7.65ppCI[+4.94,+10.82] and+8.74ppCI[+6.00,+11.78]. Targetlines935->1053/1063. The extra128tokens from1920to2048 add4full tasks in aggregate and10targetlines, with no aggregate any-hit count increase.\n\nCost fails the predeclared low-construction-overhead criterion. Mean offlineconstructor1.652->3.246/3.445s (+96.51%/+108.54%), median1.689->3.097/3.275, P952.678->6.233/6.830. Meanactualtokens998.57->1741.31/1829.83 (+74.38%/+83.24%). Targetline density2.573574->1.683031/1.619400 (-34.60%/-37.08%). Current1024already uses97.52%of cap onaverage;2048uses89.35%onaverage andmedian2039tokens. Largerbudget improves absolute target evidence and completeness, but not informationdensity or cheapconstruction. No extra retrieval/modelcalls were added; more repeated exacttokenization/contextgrowth increases constructorwork. ProductionCritic/trainingcost remains unmeasured.\n\nLoss categories show why the gain saturates: candidateabsence23and no-target-entity-selected45 unchanged; selected-entity/wrong-region26->14 at bothlargercaps. Thus additionalcontext resolves12of26within-entity misses, while68misses remain in candidate/selection stages. Candidate343/366=93.72%unchanged. This directly supports a budget contribution and a separate entity-selection bottleneck; it does not prove a universal cap or an achievable100% result.\n\nKeep1024/8as current practical baseline under the user's lowlatency/density preference. Retain1920/2048only as higher-completeness development comparators; do not deploy automatically. Any future largerbudget use first needs cheaper equivalent construction and better entity/windowrelevance, followed by freshindependent/dynamic/episode/Criticcost validation. This study is607reuseddevelopment inputs/366mapped/77repos, not independentgeneralization orRLbenefit. RuntimeR6 remains192/128/4096 and trainingdisabled.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "control_exact_replays": 607,
+    "label_denials_per_shard": 16,
+    "queue_exit": 0,
+    "runtime_changed": false,
+    "new_retrieval": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "3a01ffe435736374dc849940bb724be05a7a74193f28e1a9c971bc5bd3defcea",
+      "FROZEN.json": "cbb8c4b32c5b5870aa9be7121a4eca88b71c46b80fc8532b94d39f1080b9c9a3",
+      "LOSS_DECOMPOSITION.json": "5700c5a47a68ef3cebae48bd2385cbd7b981e283448b18d938ea14666c2bfc78"
+    }
+  },
+  "r7_entity_evidence": {
+    "UTC": "2026-10-29T06:53:08.104211+00:00",
+    "status": "COMPLETE_DEVELOPMENT_ENTITY_EVIDENCE_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.643643955465351,
+        "wall_median": 1.6994037367403507,
+        "wall_p95": 2.683699529618024,
+        "cpu_mean": 1.6435420035502473
+      },
+      "cached1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.3203740410040297,
+        "wall_median": 1.3669165670871735,
+        "wall_p95": 2.1238744575530286,
+        "cpu_mean": 1.3202945240560136
+      },
+      "entity1024_8": {
+        "any_hits": 268,
+        "full_all": 236,
+        "target_lines": 953,
+        "tokens": 996.509060955519,
+        "density": 2.634248548122718,
+        "wall_mean": 1.329902337130644,
+        "wall_median": 1.3765899986028671,
+        "wall_p95": 2.186180249601602,
+        "cpu_mean": 1.3298195046935746
+      },
+      "complement1024_8": {
+        "any_hits": 267,
+        "full_all": 235,
+        "target_lines": 951,
+        "tokens": 996.7495881383855,
+        "density": 2.627238747213221,
+        "wall_mean": 1.3289447993261025,
+        "wall_median": 1.3509760424494743,
+        "wall_p95": 2.194015507400035,
+        "cpu_mean": 1.3288642598154872
+      }
+    },
+    "checks": {
+      "cached1024_8": {
+        "any_improves": false,
+        "density_improves": false,
+        "full_not_lower": true,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true
+      },
+      "entity1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true
+      },
+      "complement1024_8": {
+        "any_improves": false,
+        "density_improves": true,
+        "full_not_lower": false,
+        "mean_within_110percent": true,
+        "p95_within_115percent": true
+      }
+    },
+    "cached_performance_eligible": true,
+    "interpretation": "This bounded experiment achieves an exact construction-cost reduction, but neither new entity-selection rule meets the joint coverage/density/completeness objective. Retain the original1024/8 selection and the new cached1024_8 development implementation; reject entity1024_8 and complement1024_8 as replacements. No runtime promotion or training change.\n\nThe cached arm exactly replays all607 complete baseline output dictionaries, including tokens/source maps/windows/semantic hashes. Any-hit remains272/366(74.32%), full-all238/366(65.03%), visible targetlines935/1320, density2.573574targetlines/1000PI tokens, mean998.57tokens. Mean construction time1.643644->1.320374s (-19.67%), median1.699404->1.366917s, P952.683700->2.123874s (-20.86%); median paired time ratio0.8139. Mean unique tokenizer misses remain1443.66 in both arms; the optimized arm averages90.11 backend batches. The combined AST/line/term cache and batch optimization is measured together, not proof that batching alone caused the gain or that fewer source strings were tokenized. No persistent cache or additional retrieval/modelcall.\n\nWhole-unit evidence weighting reaches268any(73.22%)/236full(64.48%),953targetlines,density2.634249 (+2.36%),996.51mean tokens,1.329902s mean. It gains3andloses7any tasks (-1.09pp, exploratory repo95%CI[-2.81,+0.59]pp), gains4andloses6full (-0.55pp,CI[-2.24,+1.21]). Complementary evidence reaches267any(72.95%)/235full(64.21%),951targetlines,density2.627239 (+2.09%),996.75tokens,1.328945s mean;3gained8lost any (-1.37pp,CI[-3.16,+0.34]),4gained7lost full (-0.82pp,CI[-2.66,+1.02]). Both are faster than original control because they share the exact performance changes; neither improves task coverage or completeness. Intervals crossing0 are not evidence of equivalence/noninferiority.\n\nThe loss diagnosis rejects the intended selection improvement: no-target-entity-selected45->55/56, while within-selected-entity wrong-region misses26->20; candidateabsence23unchanged. More aggregate targetlines and slightly higher density do not compensate for fewer covered tasks. Candidate-own lexical/identifier evidence with the fixed bounded multiplier is insufficient in this form; this experiment does not establish that all entity-level signals are useless. Preserve the useful rank prior and original choices rather than deploy these weights.\n\nKeep budget1024 and original quality; use the proven exact cached/batched constructor as the next W0 development control. Any future selection research needs a more discriminating issue-to-code relevance signal evaluated on repository-separated development and fresh independent evidence; no learned model or additional parameter sweep was started. All607cases are reused development (366mapped/77repos); no independent generalization, semantic completeness or RL claim. Timing excludes initial retrieval/I/O/init/Critic; the20% constructor improvement is not a20% training speedup. FrozenR6 runtime192/128/4096 and disabled training entry remain unchanged.",
+    "local_contracts": 8,
+    "Linux_contracts": 8,
+    "control_exact_replays": 607,
+    "cached_exact_replays": 607,
+    "label_denials_per_shard": 17,
+    "queue_exit": 0,
+    "runtime_changed": false,
+    "new_retrieval": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "e3cb8c71350dd73b83cec005082889e889d370fe0f40a82d56957df61c55b8da",
+      "FROZEN.json": "06f83735e153863c26956fec159c3eefd029c4e4e58f92d4630b745de3a060a3",
+      "LOSS_DECOMPOSITION.json": "af5660b3b12b405b095c7a42a4e75d63fb19b2ecfb7bf4988783bdaff1d283d1"
+    }
+  },
+  "r7_scope_windows": {
+    "UTC": "2026-10-29T07:46:37.828119+00:00",
+    "status": "COMPLETE_SCOPE_WINDOWS_DEVELOPMENT_NOT_DEPLOYED",
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "mean_tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.3300300354423398,
+        "wall_median": 1.377552580088377,
+        "wall_p95": 2.148445039615035
+      },
+      "scope1024_8": {
+        "any_hits": 243,
+        "full_all": 221,
+        "target_lines": 898,
+        "mean_tokens": 935.3558484349259,
+        "density": 2.688542259213796,
+        "wall_mean": 1.0706090413439018,
+        "wall_median": 1.0553719848394394,
+        "wall_p95": 1.9881834406405676
+      },
+      "balanced1024_8": {
+        "any_hits": 241,
+        "full_all": 219,
+        "target_lines": 887,
+        "mean_tokens": 933.9275123558484,
+        "density": 2.661130395389374,
+        "wall_mean": 1.0689762195839225,
+        "wall_median": 1.041606169193983,
+        "wall_p95": 1.9662037461996078
+      }
+    },
+    "checks": {
+      "scope1024_8": {
+        "any_improves": false,
+        "full_not_lower": false,
+        "density_improves": true,
+        "mean_within110percent": true,
+        "p95_within115percent": true
+      },
+      "balanced1024_8": {
+        "any_improves": false,
+        "full_not_lower": false,
+        "density_improves": true,
+        "mean_within110percent": true,
+        "p95_within115percent": true
+      }
+    },
+    "interpretation": "Neither scope-local arm meets the joint objective. Retain cached1024/8 original selection; reject scope1024_8 and balanced1024_8 as replacements. No runtime promotion. The class-scope hypothesis was tested rather than assumed: more syntactically localized proposals do not improve relevance selection in this implementation.\n\nBaseline272/366any(74.32%),238full-all(65.03%),935targetlines,998.57mean tokens,density2.573574,meanconstructor1.330030s/P952.148445s. Scope-local243any(66.39%)/221full(60.38%),898targetlines,935.36tokens,density2.688542,mean1.070609s/P951.988183s. It gains8andloses37any (-7.92pp, exploratory repo95%CI[-11.18,-5.00]pp), gains17andloses34full (-4.64pp,CI[-7.95,-1.12]). Balanced241any(65.85%)/219full(59.84%),887targetlines,933.93tokens,density2.661130,mean1.068976s/P951.966204s;7gained38lostany (-8.47pp,CI[-11.60,-5.54]),16gained35lostfull (-5.19pp,CI[-8.62,-1.56]). Both pass timing bounds and raise density by using fewer tokens, but lose absolute targetlines/taskcoverage/completeness. These are rejected tradeoffs, not coverage improvements.\n\nThe new post-freeze diagnostic directly identifies a more specific bottleneck. Of366tasks,343have a target-containing candidate interval;333(90.98%ofalltasks) already have at least one actual target-containing seed window that individually fits1024. Baseline94misses partition into23candidateabsence,7no-target-seed,64feasible-target-seed-not-emitted;0are solely targetseed-overbudget. Thus64/94=68.09%ofbaseline missedtasks already had an individually feasible correct source window. This is stronger evidence about ranking/combination loss than simply quoting candidate recall. It does NOT show that every target can jointly fit1024, establish achievable91%coverage without labels, or explain full-all completeness by itself. Three baseline hits arise through context growth despite no target-containing seed, so333-272 is not the64miss count.\n\nScope-local has330individuallyfeasibletargetseedtasks but only243visible; balanced has335feasibletargetseedtasks (more thanbaseline333) yet241visible. Feasible-seed-not-emitted misses rise64->88/95; no-target-seedmisses7->12/7. Merely increasing proposal breadth or changing ownership boundaries is insufficient.362/366tasks have at leastoneclasscandidate, so the4task no-class stratum is too small for broad subgroup conclusions. These compound policies alter seed signals/cap selection/repetition and expansion boundaries; results do not isolate a single cause. Class-range recall can be broad, but in this cohort most candidate-hit tasks already contain small feasible seeds, so class granularity alone does not account for the gap.\n\nKeep1024budget and existing exactcached constructor. This bounded study is complete; do not sweep its parameters on the same cohort. A stronger issue-to-window relevance model with repository-separated development is a plausible future direction, not a demonstrated improvement or an implemented/approved learned ranker. Offline training and small online scoring could be evaluated for latency, but no extra model/dependency/download/training is introduced here. No near100%claim. All607inputs are reuseddevelopment; R6independentconfirmation untouched. Candidate recall343/366unchanged; frozenR6/runtime192/128/4096 and disabledformaltraining remain unchanged.",
+    "diagnosis": {
+      "control1024_8": {
+        "tasks": 366,
+        "candidate_available": 343,
+        "proposal_target_available": 333,
+        "affordable_target_seed_available": 333,
+        "visible": 272,
+        "feasible_target_seed_not_emitted": 64,
+        "no_target_seed": 7,
+        "candidate_absent": 23
+      },
+      "scope1024_8": {
+        "tasks": 366,
+        "candidate_available": 343,
+        "proposal_target_available": 330,
+        "affordable_target_seed_available": 330,
+        "visible": 243,
+        "feasible_target_seed_not_emitted": 88,
+        "no_target_seed": 12,
+        "candidate_absent": 23
+      },
+      "balanced1024_8": {
+        "tasks": 366,
+        "candidate_available": 343,
+        "proposal_target_available": 335,
+        "affordable_target_seed_available": 335,
+        "visible": 241,
+        "feasible_target_seed_not_emitted": 95,
+        "candidate_absent": 23,
+        "no_target_seed": 7
+      }
+    },
+    "strata": {
+      "control1024_8": {
+        "has_class_candidate": {
+          "tasks": 362,
+          "candidate_available": 339,
+          "proposal_target_available": 329,
+          "affordable_target_seed_available": 329,
+          "visible": 270,
+          "feasible_target_seed_not_emitted": 62,
+          "no_target_seed": 7,
+          "candidate_absent": 23
+        },
+        "no_class_candidate": {
+          "tasks": 4,
+          "candidate_available": 4,
+          "proposal_target_available": 4,
+          "affordable_target_seed_available": 4,
+          "visible": 2,
+          "feasible_target_seed_not_emitted": 2
+        }
+      },
+      "scope1024_8": {
+        "has_class_candidate": {
+          "tasks": 362,
+          "candidate_available": 339,
+          "proposal_target_available": 326,
+          "affordable_target_seed_available": 326,
+          "visible": 241,
+          "feasible_target_seed_not_emitted": 86,
+          "no_target_seed": 12,
+          "candidate_absent": 23
+        },
+        "no_class_candidate": {
+          "tasks": 4,
+          "candidate_available": 4,
+          "proposal_target_available": 4,
+          "affordable_target_seed_available": 4,
+          "visible": 2,
+          "feasible_target_seed_not_emitted": 2
+        }
+      },
+      "balanced1024_8": {
+        "has_class_candidate": {
+          "tasks": 362,
+          "candidate_available": 339,
+          "proposal_target_available": 331,
+          "affordable_target_seed_available": 331,
+          "visible": 239,
+          "feasible_target_seed_not_emitted": 93,
+          "candidate_absent": 23,
+          "no_target_seed": 7
+        },
+        "no_class_candidate": {
+          "tasks": 4,
+          "candidate_available": 4,
+          "proposal_target_available": 4,
+          "affordable_target_seed_available": 4,
+          "visible": 2,
+          "feasible_target_seed_not_emitted": 2
+        }
+      }
+    },
+    "local_contracts": 8,
+    "Linux_contracts": 8,
+    "control_exact": 607,
+    "label_denials": 18,
+    "queue_exit": 0,
+    "source_manifest_count": 35,
+    "independent_confirmation": false,
+    "runtime_changed": false,
+    "training": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "02f815c93faabb058f0b576ab5b7814bcb8c769a240ac35f4adacf3102e08d60",
+      "FROZEN.json": "8b8c0b9282271e4441a0f384ae790dc6187bb5fc740f05d2dcd04d417af7fa44",
+      "LOSS_DECOMPOSITION.json": "fc485f82c51add0d9c56bfc9c7507d624d53b6739643cce400100caadf8b2db0"
+    }
+  },
+  "r7_real_trajectory_replay": {
+    "report": "reports/TRAJECTORY_REPLAY_R7_R2.json",
+    "tasks": 607,
+    "passed": 607,
+    "real_historical_batches": 30,
+    "first_call_only": true,
+    "pi_tokens_exact": 606133,
+    "actor_isolated": true,
+    "neural_gradient_test": false,
+    "dynamic_coverage_measured": false,
+    "source_workspace_identity_proven": false,
+    "training_admission": false
+  },
+  "r7_dynamic_quality": {
+    "status": "dynamic_visibility_gap",
+    "report": "reports/DYNAMIC_QUALITY_R7.json",
+    "budgets": [
+      1024,
+      128,
+      4096
+    ],
+    "synthetic_events": 4,
+    "all_changed_units_visible_events": 1,
+    "real_Actor_rollout": false,
+    "training_admission": false,
+    "runtime_promoted": false
+  }
+}

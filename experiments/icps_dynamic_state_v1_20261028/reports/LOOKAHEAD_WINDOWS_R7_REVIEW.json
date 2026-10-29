@@ -1,0 +1,267 @@
+{
+  "UTC": "2026-10-28T11:53:45.963475+00:00",
+  "status": "NO_ROBUST_COVERAGE_GAIN_NO_PROMOTION",
+  "queue": "logs/lookahead_windows_r7",
+  "exit": 0,
+  "inputs": 607,
+  "evaluable": 366,
+  "repositories": 77,
+  "rows": [
+    {
+      "mode": "base6_256",
+      "pool": "base6",
+      "cap": 256,
+      "candidate": 282,
+      "visible": 197,
+      "full": 130,
+      "mean_tokens": 249.76441515650743,
+      "density": 5.867293683319965,
+      "matching_control": null,
+      "paired": null
+    },
+    {
+      "mode": "base12_256",
+      "pool": "symbols12",
+      "cap": 256,
+      "candidate": 306,
+      "visible": 200,
+      "full": 128,
+      "mean_tokens": 249.7331136738056,
+      "density": 5.954146480791835,
+      "matching_control": null,
+      "paired": null
+    },
+    {
+      "mode": "base12_384",
+      "pool": "symbols12",
+      "cap": 384,
+      "candidate": 306,
+      "visible": 208,
+      "full": 170,
+      "mean_tokens": 365.6342668863262,
+      "density": 5.088674302194774,
+      "matching_control": null,
+      "paired": null
+    },
+    {
+      "mode": "lookahead6_256",
+      "pool": "base6",
+      "cap": 256,
+      "candidate": 282,
+      "visible": 195,
+      "full": 125,
+      "mean_tokens": 249.78912685337727,
+      "density": 5.924118526334301,
+      "matching_control": "base6_256",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 0,
+          "lost": 0,
+          "unchanged": 366,
+          "task_CI95": [
+            0.0,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.0
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.00546448087431694,
+          "gained": 3,
+          "lost": 5,
+          "unchanged": 358,
+          "task_CI95": [
+            -0.02185792349726776,
+            0.00819672131147541
+          ],
+          "repo_cluster_CI95": [
+            -0.023649148408763795,
+            0.010871050130672374
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": -0.01366120218579235,
+          "gained": 2,
+          "lost": 7,
+          "unchanged": 357,
+          "task_CI95": [
+            -0.030054644808743168,
+            0.00273224043715847
+          ],
+          "repo_cluster_CI95": [
+            -0.0286632991662097,
+            0.003246753246753247
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "lookahead12_256",
+      "pool": "symbols12",
+      "cap": 256,
+      "candidate": 306,
+      "visible": 200,
+      "full": 128,
+      "mean_tokens": 249.44810543657331,
+      "density": 6.030792256814905,
+      "matching_control": "base12_256",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 0,
+          "lost": 0,
+          "unchanged": 366,
+          "task_CI95": [
+            0.0,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.0
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 1,
+          "lost": 1,
+          "unchanged": 364,
+          "task_CI95": [
+            -0.00819672131147541,
+            0.00819672131147541
+          ],
+          "repo_cluster_CI95": [
+            -0.009287925696594427,
+            0.006276809887134772
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 1,
+          "lost": 1,
+          "unchanged": 364,
+          "task_CI95": [
+            -0.00819672131147541,
+            0.00819672131147541
+          ],
+          "repo_cluster_CI95": [
+            -0.006666666666666667,
+            0.008671148529781354
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    },
+    {
+      "mode": "lookahead12_384",
+      "pool": "symbols12",
+      "cap": 384,
+      "candidate": 306,
+      "visible": 209,
+      "full": 173,
+      "mean_tokens": 365.0164744645799,
+      "density": 5.2875232605637,
+      "matching_control": "base12_384",
+      "paired": {
+        "changed_selected_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.0,
+          "gained": 0,
+          "lost": 0,
+          "unchanged": 366,
+          "task_CI95": [
+            0.0,
+            0.0
+          ],
+          "repo_cluster_CI95": [
+            0.0,
+            0.0
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_intersect_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.00273224043715847,
+          "gained": 3,
+          "lost": 2,
+          "unchanged": 361,
+          "task_CI95": [
+            -0.00819672131147541,
+            0.013729508196721559
+          ],
+          "repo_cluster_CI95": [
+            -0.010311061962686833,
+            0.013405726599210127
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        },
+        "changed_visible_full_any": {
+          "n": 366,
+          "families": 77,
+          "delta": 0.00819672131147541,
+          "gained": 4,
+          "lost": 1,
+          "unchanged": 361,
+          "task_CI95": [
+            -0.00273224043715847,
+            0.02185792349726776
+          ],
+          "repo_cluster_CI95": [
+            -0.0029413933715078952,
+            0.021201681122175825
+          ],
+          "seed": 20261023,
+          "iterations": 4000
+        }
+      }
+    }
+  ],
+  "aggregate_SHA": "f72d59bd7a64d36a4b42cd19dde48e3e99d4d7cffe644dc789ba281344ce4a7c",
+  "frozen_SHA": "8e0c74de7b2950229ef47b2c6843ae78d9a814d5859a57a63cd21de85ea3baaf",
+  "local_new_contracts": 4,
+  "remote_new_contracts": 4,
+  "baseline_exact": 607,
+  "Landlock_denied_per_shard": 7,
+  "runtime_changed": false,
+  "training_started": false,
+  "interpretation": [
+    "Same-score search-only change loses 2 visible/5full at base6/256; symbols12/256 leaves hits/full unchanged with density+1.29%.",
+    "Symbols12/384 gains1visible/3full; density+3.91%, but visible/full paired repo intervals both include0. No robust coverage promotion.",
+    "Follow-up is adaptive development after aggregate failure of the joint objective; no independent significance or RL claim.",
+    "All actual rendered caps, source-coordinate checks and freeze-before-score pass. Frozen R6 generator and runtime unchanged."
+  ],
+  "limitations": [
+    "Completeness is exact target-coordinate full coverage, not a proof of semantic sufficiency.",
+    "Density is target source lines per1000PI tokens, not mutual information or critic value.",
+    "Means use607tasks; coverage/full/density use366exactmapped;77repository clusters."
+  ]
+}

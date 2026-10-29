@@ -1,0 +1,35 @@
+{
+  "status": "OFFLINE_ASSET_COMPONENT_PASS_NOT_LAUNCH_ADMISSION",
+  "tests_run": 11,
+  "tests_skipped": 0,
+  "actual_cached_assets": {
+    "file_count": 18,
+    "shard_count": 4,
+    "tensor_count": 775,
+    "tensor_bytes": 19306216416,
+    "parquet_envelope_only": true,
+    "training_admitted": false
+  },
+  "asset_manifest_SHA": "850361941c94b02d7854e989684b4c1e299c8c69e1b3ef0fcdefa3970d24a3c9",
+  "frozen_sources_exact": 7,
+  "old_sources_exact": 35,
+  "source_SHA": {
+    "src/gpu_offline_assets_r6.py": "c61e5df12f50a5249d6df2d4146f9bc686a0d1d4bda541f75290d2722a370472",
+    "validation/gpu_offline_assets_r6_contracts.py": "53fe1d0872d24766d754f298c07b42c89c209b6fdfcc6c826715a821dbbd1d93",
+    "ops/gpu_offline_assets_r6_contracts.sh": "af6aa0e5c9986d11d969d3acee85335984816616a8069db3382d94aff59deeae"
+  },
+  "CUDA_initialized": false,
+  "Ray_initialized": false,
+  "model_constructed": false,
+  "optimizer_steps": 0,
+  "production_receipt_created": false,
+  "consumer_integrated": false,
+  "training_admitted": false,
+  "limitations": [
+    "Current asset identity, not historical binary identity or formal dataset/image admission.",
+    "Parquet envelope/hash only: no rows, task IDs, labels or scores read.",
+    "Only safetensors metadata and file hashes read; no model tensors constructed.",
+    "The download cache is excluded; this component executes no loader.",
+    "Shared dependency policy, reviewed producer and actual Ray/GPU acceptance remain pending."
+  ]
+}

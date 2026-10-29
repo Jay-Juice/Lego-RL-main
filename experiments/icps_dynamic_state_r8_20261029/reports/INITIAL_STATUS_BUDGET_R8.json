@@ -1,0 +1,32 @@
+{
+  "source_SHA": "bc99e900cf294066a51c29c90a13e1ca411392afc61fb4bf93d6ac3d052a7dc6",
+  "status": "PASS_synthetic_initial_status_fallback",
+  "clean_initial_1024_exact": true,
+  "fallback_cap": 192,
+  "update_cap": 128,
+  "episode_cap": 4096,
+  "cases": [
+    {
+      "limited": false,
+      "tokens": 36,
+      "legacy_exact": true
+    },
+    {
+      "limited": true,
+      "tokens": 37,
+      "legacy_exact": true
+    },
+    {
+      "limited": false,
+      "tokens": 35,
+      "legacy_exact": true
+    },
+    {
+      "limited": true,
+      "tokens": 36,
+      "legacy_exact": true
+    }
+  ],
+  "confirmation_scores_used": false,
+  "GPU": false
+}

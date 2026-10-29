@@ -1,0 +1,22 @@
+{
+  "status": "LOCAL_SYNTHETIC_CONTRACTS_PASS_NOT_COVERAGE",
+  "tests": 7,
+  "failures": 0,
+  "source_SHA": {
+    "src/candidate_research_r7.py": "5d4b54a111193482d444ff2987d08e515d483517764ff4d10c4870074ca48f98",
+    "validation/candidate_research_r7_contracts.py": "778b9170d39f2c4ccce716b4425ad6ed92d4343879d62b4c18178b3da61c1d1e"
+  },
+  "scopes": [
+    "Original top6 equality",
+    "Source and byte-tokenizer exact payloads with cap256",
+    "Unique relative/absolute imported calls, same-module and self members",
+    "Ambiguous module and shadowed bare-call rejection",
+    "12-candidate bound and deterministic original top3 anchors",
+    "Unstable/forbidden source rejection",
+    "Explicit parse-unavailable fallback"
+  ],
+  "limitations": [
+    "Syntactic graph does not prove runtime dispatch; alias reassignment/dynamic imports are not modeled.",
+    "Local synthetic checks are not actual Qwen coverage or runtime deployment."
+  ]
+}

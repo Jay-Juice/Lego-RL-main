@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "counts": {
+    "test_pi_split_alias.py": 10,
+    "test_pi_sdk_proven_alias.py": 12,
+    "test_structural_pi_v1.py": 12
+  },
+  "total": 34,
+  "actual_overlay_builder": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runtime/privileged_critic_builder.py",
+  "builder_sha256": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+  "preserved_test_source_sha256": {
+    "test_pi_split_alias.py": "b5cf3656ff6711e320fbf45bf581cefdc15a3fc46a22df1836a2cf65fd276f0c",
+    "test_pi_sdk_proven_alias.py": "b7d42bde9be2648b6b29bf9c2963b837bc0da4b3e866060cfa745ee8ac4b29af",
+    "test_structural_pi_v1.py": "85d68233889aef857984f7f7c4f6e0884702c85684a99bd6ba36dc161d17aa69"
+  },
+  "gpu": false,
+  "optimizer": false
+}

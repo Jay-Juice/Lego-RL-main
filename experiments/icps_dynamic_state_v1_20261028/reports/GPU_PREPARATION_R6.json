@@ -1,0 +1,107 @@
+{
+  "status": "cpu_preparation_complete_not_GPU_acceptance",
+  "GPU_launched": false,
+  "contracts": {
+    "passed": true,
+    "real_Qwen": true,
+    "GPU": false,
+    "independent_rows": true,
+    "Actor_tensors_equal": true,
+    "pretoken_gather_and_causal_prefix": true,
+    "fixture": {
+      "rows": 64,
+      "actor_tokens": 23,
+      "response_tokens": 16,
+      "PI_tokens": [
+        11,
+        25
+      ],
+      "mode": "real",
+      "PI_ID_SHA": "16ae63e56dca89bd43975085df354451ece1cee3ec6b919c1be9d0dea3ddc9be"
+    }
+  },
+  "frozen_sources_exact": 7,
+  "old_sources_exact": 35,
+  "inherited_training_logic_exact": [
+    "runtime/ray_trainer.py",
+    "runtime/engine_utils.py",
+    "src/formal_packing.py",
+    "src/formal_storage.py",
+    "src/formal_checkpoint.py"
+  ],
+  "historical_native_source_inventory": [
+    {
+      "path": "src/verl_patch/models/qwen3_5_token_classification.py",
+      "baseline_exists": true,
+      "runtime_exists": true,
+      "baseline_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+      "runtime_SHA": "a5dd2d78d94bd324a67912a6a349efd92c47c5227f3bf0d4f8281c3844ff28d9",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/trainer/ppo/core_algos.py",
+      "baseline_exists": true,
+      "runtime_exists": true,
+      "baseline_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+      "runtime_SHA": "c4579f45fad65058bf82295a760a8b3e326ea82373d803986bc7ed0b166533f5",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/engine/veomni/transformer_impl.py",
+      "baseline_exists": true,
+      "runtime_exists": true,
+      "baseline_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+      "runtime_SHA": "90c3d961cddf76475162043fd2c6c9bbfa11a57a8619da01c82005f791d63497",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/config/critic.py",
+      "baseline_exists": true,
+      "runtime_exists": true,
+      "baseline_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+      "runtime_SHA": "8ac41a1fc0e82007eed1c0b9744765205484c27b1a07f79df4e3f4b8034fcbab",
+      "equal": true
+    },
+    {
+      "path": "third_party/verl/verl/workers/config/actor.py",
+      "baseline_exists": true,
+      "runtime_exists": true,
+      "baseline_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+      "runtime_SHA": "42440e8b08a0fd04d24e96da67feb7014eb2d6ff1fa82ccad6b66b012094685a",
+      "equal": true
+    }
+  ],
+  "complete_source_parity_pass": true,
+  "resources": {
+    "free_bytes": 354672226304,
+    "original_start_required_bytes": 458392574347,
+    "deficit_bytes": 103720348043,
+    "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+    "save_required_bytes": 415172253607,
+    "all8GPUs_idle": true,
+    "gpu_memory_MiB": [
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17,
+      17
+    ],
+    "ports_available": {
+      "6407": true,
+      "8307": true,
+      "8265": true
+    },
+    "Ray_absent": true,
+    "disk_gate_pass": false
+  },
+  "training_admission": false,
+  "launch_receipt_created": false,
+  "limitations": [
+    "CPU batch contract is not GPU evidence.",
+    "Source inventory only covers listed native files; unresolved differences require review.",
+    "Pinned full dataset/images and actual eight-rank head/freeze still require fresh launch audit."
+  ]
+}

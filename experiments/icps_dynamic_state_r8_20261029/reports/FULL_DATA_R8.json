@@ -1,0 +1,15 @@
+{
+  "status": "PASS_data_identity_and_offline_assets",
+  "rows": 6248,
+  "cached_prepared": 5121,
+  "native_local_build": 1127,
+  "minimum_before_start_bytes": 458392574347,
+  "minimum_before_save_bytes": 415172253607,
+  "dataset_SHA": "4794e761c4597fdf2d178bc340df0b970aa42013b6cf7092f0ac0a722d9c1829",
+  "prepared_manifest_SHA": "31242030582445969a0c0ee3d3aaf55cdf9998411fce7de4e65e44d8706285fa",
+  "identity_manifest_SHA": "9bda98480954a60665cb509c41fb8c6846fcbe08e9a573cf64d3c139ee590705",
+  "historical_dataset_identity_exact": true,
+  "task_metadata_all_exact": true,
+  "no_build_or_pull_executed": true,
+  "training_admission": false
+}

@@ -1,0 +1,99 @@
+{
+  "status": "passed",
+  "trial": "dynamic-r8-harbor-78f65fe7642a",
+  "actual_Harbor": true,
+  "actual_provider": true,
+  "actual_proxy": true,
+  "actual_Qwen": true,
+  "scripted_generation": true,
+  "actual_Actor_rollout": false,
+  "verifier_calls": 0,
+  "GPU": false,
+  "optimizer": false,
+  "exact_direct_outputs": true,
+  "actor_input_and_masks_logprobs_routing_unchanged": true,
+  "causal_gather": true,
+  "private_cache_removed": true,
+  "provider_weakref_released": true,
+  "teardown_closed410": true,
+  "events": [
+    {
+      "event": "initial",
+      "tokens": 1024,
+      "windows": 8,
+      "bounded_files": 192,
+      "limited": false
+    },
+    {
+      "event": "read-only noop",
+      "tokens": 0,
+      "windows": 0,
+      "bounded_files": 192,
+      "limited": false
+    },
+    {
+      "event": "add new source file",
+      "tokens": 41,
+      "windows": 1,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "two functions and module constant",
+      "tokens": 66,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "constant and decorator edit",
+      "tokens": 52,
+      "windows": 2,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "edit new source file",
+      "tokens": 41,
+      "windows": 1,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "rollback source",
+      "tokens": 41,
+      "windows": 1,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "rename probe file",
+      "tokens": 59,
+      "windows": 1,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "parse failure in probe file",
+      "tokens": 39,
+      "windows": 1,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "delete only probe-created file",
+      "tokens": 30,
+      "windows": 0,
+      "bounded_files": 192,
+      "limited": false
+    }
+  ],
+  "task_SHA": "92989bc20ed4e9748816d3ea2ce34b5018818e4d2be9ddc64745b6f8a9440ce3",
+  "pinned_image_id": "sha256:3c085acdb04b111311d27865f98957a4f03884c7b9a67c901ff699a616435176",
+  "no_pull_or_build": true,
+  "subnet_pool": "172.16.0.0/20",
+  "wall_seconds": 37.79461123794317,
+  "CPU_seconds": 15.231109241,
+  "process_peak_RSS_KiB": 1170208,
+  "source_SHA": "f4676bb96814f72b094d0c49b85e13304e6d10084eedebb6111ce6f8b312eeed"
+}

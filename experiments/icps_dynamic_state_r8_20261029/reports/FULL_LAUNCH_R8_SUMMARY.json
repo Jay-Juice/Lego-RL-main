@@ -1,0 +1,112 @@
+{
+  "run": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/full-r8-d61153858d4e99d4",
+  "purpose": "R8_freshbase_full97",
+  "created_at": 1793273964.6234374,
+  "experiment": "sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+  "budget": [
+    1024,
+    128,
+    4096
+  ],
+  "reuse_old_checkpoint": false,
+  "coverage_SHA": "9e239e74647ed94128c390f3e872b7597e971fd670a58a695062692b7f5b7c76",
+  "controller_SHA": "9bdaffcc931fe9236bf29d1becfce3c2d95a15d515c5c0e174fe8699c782be7c",
+  "native_GPU_review_SHA": "0bbd17befa66a6320b85423271a4746b960d3ff5754aee7aac8ed3f22c65ae6c",
+  "resources": {
+    "observed_at": 1793273963.7718642,
+    "original_start_required_bytes": 458392574347,
+    "save_required_bytes": 415172253607,
+    "original_resource_receipt_SHA": "7ce0d305cb9e53e39f21f2424afc53100b7297fc6f8ce80eb712fd67b02a40aa",
+    "free_bytes": 535212539904,
+    "gpus": [
+      {
+        "index": 0,
+        "uuid": "GPU-8646b7b3-c017-2c22-fd84-d0fe5c63923c",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 1,
+        "uuid": "GPU-c3d4eac9-29a6-6fed-83b3-08de9b84b044",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 2,
+        "uuid": "GPU-e6f28467-6a27-691b-c2b7-5a89b80c3a1c",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 3,
+        "uuid": "GPU-ee68ce74-4f78-c8d1-f403-f85ef72ffcf2",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 4,
+        "uuid": "GPU-1084651e-4587-705e-3a1c-324de6ea9540",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 5,
+        "uuid": "GPU-51971f60-370d-1c16-5851-346ba8515a53",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 6,
+        "uuid": "GPU-47516d49-6b13-df8c-07c4-6464e60203e5",
+        "memory_MiB": 17,
+        "utilization": 0
+      },
+      {
+        "index": 7,
+        "uuid": "GPU-1b1a4b5e-cf5e-735e-b43e-6e97e663433b",
+        "memory_MiB": 17,
+        "utilization": 0
+      }
+    ],
+    "compute_processes": [],
+    "ray_processes": [],
+    "ports_available": {
+      "6407": true,
+      "8265": true,
+      "8307": true
+    }
+  },
+  "trainer": {
+    "balance_batch": true,
+    "total_epochs": 1,
+    "total_training_steps": null,
+    "project_name": "sao-qwen35-9b-swesmith",
+    "experiment_name": "sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+    "logger": [
+      "console"
+    ],
+    "log_val_generations": 0,
+    "rollout_data_dir": null,
+    "validation_data_dir": null,
+    "nnodes": 1,
+    "n_gpus_per_node": 8,
+    "save_freq": 10,
+    "esi_redundant_time": 0,
+    "resume_mode": "disable",
+    "resume_from_path": null,
+    "val_before_train": false,
+    "val_only": false,
+    "test_freq": 0,
+    "critic_warmup": 20,
+    "default_hdfs_dir": null,
+    "del_local_ckpt_after_load": false,
+    "default_local_dir": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/checkpoints/sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+    "max_actor_ckpt_to_keep": 1000,
+    "max_critic_ckpt_to_keep": 1000,
+    "ray_wait_register_center_timeout": 300,
+    "device": "cuda",
+    "log_episodes": false,
+    "episode_log_dir": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/full-r8-d61153858d4e99d4/episode_logs"
+  },
+  "exit_present": false
+}

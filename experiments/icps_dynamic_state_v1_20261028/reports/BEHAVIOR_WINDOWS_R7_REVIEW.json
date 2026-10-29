@@ -1,0 +1,79 @@
+{
+  "status": "COMPLETE_DEVELOPMENT_ONLY_NO_COVERAGE_GAIN",
+  "exit": 0,
+  "inputs": 607,
+  "evaluable": 366,
+  "repos": 77,
+  "local_contracts": 10,
+  "linux_contracts": 10,
+  "baseline_exact": 607,
+  "label_denials_per_shard": 9,
+  "source_only_mechanism_task_counts": {
+    "any_prior": 552,
+    "any_line_cue": 501,
+    "enclosing_guard": 206,
+    "explicit_call": 469,
+    "linked_return": 300,
+    "nearest_store": 356,
+    "one_hop_callee": 274,
+    "literal_message": 94
+  },
+  "results": {
+    "base256": {
+      "candidate": 343,
+      "visible": 205,
+      "full_all": 134,
+      "mean_tokens": 250.01153212520592,
+      "density": 6.031363088057901
+    },
+    "base384": {
+      "candidate": 343,
+      "visible": 213,
+      "full_all": 174,
+      "mean_tokens": 366.77429983525536,
+      "density": 5.106030982102572
+    },
+    "rank256": {
+      "candidate": 343,
+      "visible": 200,
+      "full_all": 129,
+      "mean_tokens": 249.65733113673807,
+      "density": 5.891793259612637
+    },
+    "rank384": {
+      "candidate": 343,
+      "visible": 211,
+      "full_all": 175,
+      "mean_tokens": 363.6227347611203,
+      "density": 5.269218157832529
+    },
+    "extend256": {
+      "candidate": 343,
+      "visible": 200,
+      "full_all": 129,
+      "mean_tokens": 249.65897858319605,
+      "density": 5.891793259612637
+    },
+    "extend384": {
+      "candidate": 343,
+      "visible": 211,
+      "full_all": 175,
+      "mean_tokens": 363.6227347611203,
+      "density": 5.269218157832529
+    }
+  },
+  "decision": "Reject unrestricted structural ranking/extension as final coverage improvement. Separate protected follow-up complete; see PROTECTED_BEHAVIOR_R7_REVIEW.json.",
+  "aggregate_SHA": "8430ceb24e3bed952ae2358cec2ec8328b89be7bb1a1997dd19b9dae208eb9c5",
+  "frozen_SHA": "a9a90e4ff52b87b0922ad5024509577522cdf8de03379ae5b072eda651e97d15",
+  "runtime_promoted": false,
+  "frozen7_unchanged": true,
+  "new_GPU_or_model_updates": false,
+  "limitations": [
+    "Static name/AST heuristics, not semantic dataflow or sound alias/call resolution.",
+    "Current input graph can resolve unique names across files; no import-resolution proof.",
+    "Mechanism counts cover607inputs, not just366evaluable tasks; they are not successful-target counts.",
+    "Extension has identical aggregate target counts; this does not prove all payloads or all seeds are identical.",
+    "Repeated adaptive development, no independent admission.",
+    "First local extra-seed fixture failed because old bank already covered its cues; repaired synthetic fixture before any data run, failure preserved."
+  ]
+}

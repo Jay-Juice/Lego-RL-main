@@ -1,0 +1,44 @@
+{
+  "UTC": "2026-10-28T03:55:15.620709+00:00",
+  "status": "CPU_RECEIPT_CONSUMER_CONTRACTS_PASS_LAUNCHER_PENDING",
+  "remote_exit": 0,
+  "local_tests": 11,
+  "remote_tests": 11,
+  "old_sources_exact": 35,
+  "frozen_sources_exact": 7,
+  "source_SHA": {
+    "src/gpu_launch_gate_r6.py": "a50e8a4cc06f31e6b8e1ad3f88cf61abe89d2b07b2100c26218e5ad7eea59804",
+    "src/gpu_probe_r6.py": "ee816ba7c90877860c1a81db30b61b206cc3f5a78bd4cbd6678bea3f7741e68f",
+    "tests/test_gpu_launch_gate_r6.py": "47c077c0fd31cf59da4894b6d28a7750114775ca3e1e78d841f544ee02c91351",
+    "validation/gpu_launch_gate_r6_contracts.py": "ed4607fe078ceb00ec2a8dc79e2b5097ba48f84fd8f7285a25fac3bee3b442a6",
+    "ops/gpu_launch_gate_r6_contracts.sh": "fff821becb747c64a28f9b35663adef54bae43a33332d1d607f84fdccea62cdb"
+  },
+  "report_SHA": "2b3e9510fcfed5d09f7afa558ab8281275ed24aa7239c767a4ae9f29266d1acf",
+  "GPU_launched": false,
+  "training_admitted": false,
+  "launch_readiness": false,
+  "implemented": [
+    "Receipt/config/source/offline-asset hash binding consumer",
+    "120-second receipt and resource freshness; boot/run/GPU identity binding",
+    "Original start/save reserve constants; current GPUs/processes/ports checked again after hashing",
+    "Exclusive one-use attempt claim, missing approval or incomplete review fail closed",
+    "Probe main replaced old boolean receipt placeholder with this consumer"
+  ],
+  "pending": [
+    "Reviewed receipt producer and complete native-source/asset manifest policy",
+    "Private short Ray/TMP ownership, startup race control and teardown",
+    "Actual per-rank native head/freeze/optimizer and SP8 audit implementation",
+    "Full source review beyond selected five files",
+    "Disk original reserve and native eight-GPU update",
+    "Formal full prepared data/image and freshbase launch gates"
+  ],
+  "preserved_local_issue": "First Windows temporary-file test hit sandbox TEMP PermissionError; rerun in workspace temporary directory passed all11. No async/GPU execution.",
+  "limitations": [
+    "Pure receipt/resource validation and exclusive claim contracts only.",
+    "No reviewed producer/launcher, private Ray lifecycle, or eight-rank audit yet.",
+    "Review flags require a subsequently reviewed producer; this is not an authentication boundary.",
+    "Source manifest coverage for native dependencies and full offline data identities remains to be reviewed.",
+    "Read-only port bind checks do not reserve ports; launcher must control startup race.",
+    "No model import, model forward, optimizer update, or test checkpoint in this validator."
+  ]
+}

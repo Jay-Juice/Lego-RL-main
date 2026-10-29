@@ -1,0 +1,70 @@
+{
+  "status": "dynamic_visibility_gap",
+  "budgets": [
+    1024,
+    128,
+    4096
+  ],
+  "synthetic_source_events": true,
+  "actual_Qwen_tokenizer": true,
+  "model_rollout": false,
+  "training_admission": false,
+  "events": [
+    {
+      "event": "function_edit",
+      "initial_tokens": 25,
+      "update_tokens": 26,
+      "changed_units": 1,
+      "visible_changed_units": 1,
+      "all_changed_units_visible": true,
+      "update_seconds": 0.0016256533563137054,
+      "rollback_tokens": 26,
+      "rollback_unknown": false,
+      "remaining": 4019,
+      "current_source_exact": true,
+      "retry_exact": true
+    },
+    {
+      "event": "added_two_functions",
+      "initial_tokens": 25,
+      "update_tokens": 42,
+      "changed_units": 2,
+      "visible_changed_units": 1,
+      "all_changed_units_visible": false,
+      "update_seconds": 0.002266194671392441,
+      "rollback_tokens": 31,
+      "rollback_unknown": true,
+      "remaining": 3998,
+      "current_source_exact": true,
+      "retry_exact": true
+    },
+    {
+      "event": "module_constant",
+      "initial_tokens": 25,
+      "update_tokens": 0,
+      "changed_units": 1,
+      "visible_changed_units": 0,
+      "all_changed_units_visible": false,
+      "update_seconds": 0.001307666301727295,
+      "rollback_tokens": 0,
+      "rollback_unknown": false,
+      "remaining": 4071,
+      "current_source_exact": true,
+      "retry_exact": true
+    },
+    {
+      "event": "decorator",
+      "initial_tokens": 25,
+      "update_tokens": 0,
+      "changed_units": 1,
+      "visible_changed_units": 0,
+      "all_changed_units_visible": false,
+      "update_seconds": 0.001286722719669342,
+      "rollback_tokens": 0,
+      "rollback_unknown": false,
+      "remaining": 4071,
+      "current_source_exact": true,
+      "retry_exact": true
+    }
+  ]
+}

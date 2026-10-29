@@ -1,0 +1,16 @@
+{
+  "owner": {
+    "run": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-8e1a734cf17b8d5e",
+    "temporary_root": "/tmp/r6g-8e1a734cf17b8d5e",
+    "uid": 1000,
+    "pid": 3445824,
+    "start_ticks": 2430002733,
+    "boot_id": "c4d693d7-2819-4260-a604-7538c2c875b0",
+    "created_at": 1793266230.7585392
+  },
+  "ended_at": 1793267267.438141,
+  "body_failed": false,
+  "owned_processes_remaining": [],
+  "global_cleanup": false,
+  "directories_retained": true
+}

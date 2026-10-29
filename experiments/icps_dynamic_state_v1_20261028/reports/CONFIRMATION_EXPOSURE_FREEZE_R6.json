@@ -1,0 +1,433 @@
+{
+  "created": "2026-10-27T19:48:51.695130+00:00",
+  "inventory_candidates": 2844,
+  "excluded_prior_diagnostic_identity": 18,
+  "frozen_tasks": 2826,
+  "frozen_families": 95,
+  "tasks_in_previously_seen_families": 2826,
+  "tasks_in_unseen_families": 0,
+  "excluded_entire_R4_cohort": 220,
+  "manifest_SHA": "3b55b245ca7b2cf41732b443094e85943c8fca1d95183555fbed844c3116c730",
+  "candidate_freeze_SHA": "5bb9b9e500a537a68af09ba38ff0e4e867fee04028d12c7f546bbbe93979ac13",
+  "plan_SHA": "b961a5c4bb163e4335362dca50cb502bc9fc1dda5ef01ac579eb0f71657edbda",
+  "audited_metadata": [
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/identity_debug.json",
+      "SHA": "b159938dc35cb8a13185acf9fa8105cd07bec9e5d93d05f4098a5f35767056ff",
+      "bytes": 1787,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/image_inventory_r2.json",
+      "SHA": "5a255a7627a9a357073d09a6000850784db8d5851034fe24715528186a92d82a",
+      "bytes": 31542,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/image_inventory_r3.json",
+      "SHA": "b9de4a982911be01e968a8a8a416d033f3079b919f92e6c36dc02ad9e2d56a6c",
+      "bytes": 37590,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/preflight_r2.json",
+      "SHA": "3d446658796008250cddb02c67aaedb51c4f5737d18ee6a5e0a7c96c3b9ef4e8",
+      "bytes": 1553,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/preflight_r3.json",
+      "SHA": "893ec03f6a9484f92c7916930cf29316c36ad03f78450dfd4afa7786a8557119",
+      "bytes": 2119,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/preflight_r4.json",
+      "SHA": "58b4b9854f3aff66e99584b88492e74b839cbd332f3915bb0fe4ba53161bb313",
+      "bytes": 560,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_fces_pilot_20261022/selection.json",
+      "SHA": "468a5ab204f8cd33a7dc74a1c30161f06ec534554ebe67c633c4669b6838994a",
+      "bytes": 13049,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_icps_bug_coverage_20261023/PRIVATE_COORDINATE_AND_SOURCE_AUDIT.json",
+      "SHA": "32593852da454fa045773185c185f52b36386806eae4e45df1f155b1608d7595",
+      "bytes": 4990117,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_icps_bug_coverage_20261023/RETRIEVAL_INPUTS.json",
+      "SHA": "9411ed1e3b027ffe325081bd244d9877644900c51b21931b3c9c0a231c019d43",
+      "bytes": 146657,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_icps_pi_20261023/P2_SELECTION.json",
+      "SHA": "0e3869545bfa9a8b554803e0b54e45dae15edcbede21f69c517ceba9dbc25b23",
+      "bytes": 9772,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_icps_pi_20261023/PROPOSED_128_SELECTION.json",
+      "SHA": "dd85dab953889a16152cc03d894bfd9de1d5e3a23dc69063ef428c1d40ad1103",
+      "bytes": 51465,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_icps_v11_window_20261023/ISSUE_ONLY_INPUTS.json",
+      "SHA": "98097627c24b76148c5d42fe9b785d5d02285840334f2bb905faf5c2c6e12da6",
+      "bytes": 813611,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_location_pi_control_20261022/live_approved_20261022/g2/frozen_execution.json",
+      "SHA": "1f395c0df3a96f6d5428dbd9e7db73e24f43d71136f3db96255f974b2784d6d0",
+      "bytes": 1469,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_location_pi_control_20261022/manifests/G1_TRAIN_SELECTION_PROPOSAL.json",
+      "SHA": "07205ba20012e2f25ec56cdb40500d145e59a35e58838088dc66f83bbd3c8d04",
+      "bytes": 29304,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_location_pi_control_20261022/manifests/P0_FROZEN_607_MANIFEST.json",
+      "SHA": "f395a1df6a13f80e4169ced46e10f920ed60542962e7f0586377307c7f3ae3ce",
+      "bytes": 2380538,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_location_pi_control_20261022/manifests/P2_PACKING_INDICES.json",
+      "SHA": "57771052b0d1c2ffc0c0533ee3ec00e885707fde4f6d0a28dd226cba5ae055bc",
+      "bytes": 423139,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_location_pi_control_20261022/manifests/P2_VIEW_MANIFEST.json",
+      "SHA": "2216e04a8dbd99865cb4872833f36f8bc3f63a22980a3b0d11435453cbca84f3",
+      "bytes": 10764971,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022/BUILD_PREFLIGHT_REQUEST.json",
+      "SHA": "9bc1f836e41a4585125e60a72fa3cf7a12aa7e7a6e63c944cc0b1dd2ad9a08a8",
+      "bytes": 4477,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022/CONTROL_VALIDATION_REQUEST.json",
+      "SHA": "9993c6d89e1a90fff9f581a2ca6db35b5b19e7b9a7555756f18e3f52c58db53b",
+      "bytes": 50946,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022/CRITIC_VIEWS_INVARIANT_ROWS.json",
+      "SHA": "0f0c1a111a57e3e2fb851e2914fd5f312dd8cdc9ddcc877e3a0b38dcb0b6d903",
+      "bytes": 1984934,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022/FROZEN_ORACLE_SPLITS.json",
+      "SHA": "0103863624a6407e43d7ba334244fe00adc90c9bf7e592f71bc8bdea7ca0f935",
+      "bytes": 184541,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022/FROZEN_ORACLE_SPLITS_STRICT.json",
+      "SHA": "6ba5029bb9f528e2421982713ee60e5192e6418331dd7d6e3a0c37cc440b50f6",
+      "bytes": 19598,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022_probe/ORACLE_DATA_MANIFEST.json",
+      "SHA": "bea33b9c46d02764a77af3bca021599dcc70c83b2ee76bf7aa1fb220152a3a94",
+      "bytes": 939,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022_probe_r2/ORACLE_DATA_MANIFEST.json",
+      "SHA": "4114711b4447bc563d7836c73eab5776d1932cd743acc9c260a2b0d724e7cee5",
+      "bytes": 4114,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_20261022_probe_r3_nolog/ORACLE_DATA_MANIFEST.json",
+      "SHA": "233f874de66ccc53efadccac9542e6facc91a44d9de1882976f7283efa4b63a2",
+      "bytes": 4120,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_admission_followup_20261022_r2/CPU_VIEW_ROWS_V2.json",
+      "SHA": "a65864011cc795fd99d7db2e179639f38bb53e7ebe23d05684faad87b3f61165",
+      "bytes": 1476350,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/.private_oracle_pi_admission_followup_20261022_r2/FOUR_IMAGE_PREFLIGHT_PRIVATE.json",
+      "SHA": "26a5e6a533db850c8adb031069927aa29225488397f91a8e2fe368e7e2ac33ce",
+      "bytes": 6498,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/critic_fourway_smoke_20261021/dataset_manifest.json",
+      "SHA": "19573fc6306c18a77af379881d770faf810e1c843ee97af0bd180caad166d06e",
+      "bytes": 146986,
+      "candidate_identity_matches": 18
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/eval_icps_supp_20261027/step20.selection.json",
+      "SHA": "f90e0666584c06422e543d9a1faeedc5e52a1b5a162a651e3535013d0675e15b",
+      "bytes": 19371,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/eval_icps_supp_20261027/step30.selection.json",
+      "SHA": "6856fb7b6c611487aabca452952baaca8d555c2a8cf215b7cc18431052790183",
+      "bytes": 48883,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/eval_icps_supp_20261027/step40.selection.json",
+      "SHA": "ed75ef5f26152eeb623efcb8f8dabdef5af0c28dd7d2c1f6978f88098c91f588",
+      "bytes": 37463,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_cpu/FORWARD_CASE_MANIFEST.json",
+      "SHA": "ac277b6774bc846d8946f6f328277ce66e7789bdfc91b5dadac46d84873797a0",
+      "bytes": 9082,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank0.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank1.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank2.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank3.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank4.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank5.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank6.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_f4_r1/backend_inventory_rank7.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank0.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank1.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank2.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank3.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank4.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank5.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank6.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_P1_side_20261021_r1/backend_inventory_rank7.json",
+      "SHA": "ca6a471241b93f11edd87e1d2627925d0b2009af11557478efd09638920706cd",
+      "bytes": 6018,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_p0_side_20261021_r1/FORWARD_CASE_MANIFEST.json",
+      "SHA": "bad51a949a5194ff489743cfbe1787197b83b2a5469526999808a0af525f31e6",
+      "bytes": 27372,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_backward_p0_side_20261021_r2/FORWARD_CASE_MANIFEST.json",
+      "SHA": "bad51a949a5194ff489743cfbe1787197b83b2a5469526999808a0af525f31e6",
+      "bytes": 27372,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank0.json",
+      "SHA": "77922bd464eec664264728b71c6356519bfb020cd8ae302126bffccb668c9a05",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank1.json",
+      "SHA": "77922bd464eec664264728b71c6356519bfb020cd8ae302126bffccb668c9a05",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank2.json",
+      "SHA": "796bbeab4e5f426fb02f33710290ffefd8580077b14df414e515844e7eec0ba8",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank3.json",
+      "SHA": "332bf4138d23d6bf19da93875dd7c4a28ce64fa5c8804e22024d59c3217cabeb",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank4.json",
+      "SHA": "332bf4138d23d6bf19da93875dd7c4a28ce64fa5c8804e22024d59c3217cabeb",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank5.json",
+      "SHA": "796bbeab4e5f426fb02f33710290ffefd8580077b14df414e515844e7eec0ba8",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank6.json",
+      "SHA": "52857b4fdcecd6debbedf745ee3ac85a19a2ce992c0f4b967939c87d5a20ac25",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/logs/packing_complete_20261022_reference_targeted_r1/TARGET_SELECTION_rank7.json",
+      "SHA": "09405652096a129ffcf2dc5a584f0afbfc9c6f5c7536d75a930ca6e3954e4dbc",
+      "bytes": 287,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/controlled_critic_gpu_precheck_20261021/C1_FROZEN_SPLIT_MANIFEST.json",
+      "SHA": "57efe2367f9e55045d3b21e5322b6d4918af074dd74d5f2c88309674efce1656",
+      "bytes": 2113627,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/controlled_critic_numerics_20261021/C1_FROZEN_SPLIT_MANIFEST.json",
+      "SHA": "57efe2367f9e55045d3b21e5322b6d4918af074dd74d5f2c88309674efce1656",
+      "bytes": 2113627,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/controlled_critic_numerics_r2_20261021/C1_FROZEN_SPLIT_MANIFEST.json",
+      "SHA": "57efe2367f9e55045d3b21e5322b6d4918af074dd74d5f2c88309674efce1656",
+      "bytes": 2113627,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/controlled_critic_phase_c_20261021/C0_INPUT_MANIFEST.json",
+      "SHA": "bb0392b5c0dda7100d3ac06b7d50b5957e4aa8dee3a0918257df4b6021d4ef4e",
+      "bytes": 27610,
+      "candidate_identity_matches": 18
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/controlled_critic_phase_c_20261021/C1_FROZEN_SPLIT_MANIFEST.json",
+      "SHA": "57efe2367f9e55045d3b21e5322b6d4918af074dd74d5f2c88309674efce1656",
+      "bytes": 2113627,
+      "candidate_identity_matches": 0
+    },
+    {
+      "path": "experiments/pi_repair_state_v2_20261015/ops/critic_fourway_smoke_20261021/selection.json",
+      "SHA": "85303d77737a11e0d6c855f73aaf603b561e6f775bb4a8d85f97c6d16f720811",
+      "bytes": 35504,
+      "candidate_identity_matches": 18
+    }
+  ],
+  "catalogs_not_counted_as_exposure": [
+    {
+      "path": ".private_oracle_pi_20261022/ORACLE_DATA_MANIFEST.json",
+      "SHA": "53bef67668dee937ff59db3db8304885abdfb2493b395d3b97b59846bad9436a",
+      "reason": "full dataset provenance/label inventory, not PI-generated sample selection"
+    },
+    {
+      "path": ".private_oracle_pi_20261022/ORACLE_DATA_MANIFEST_STRICT.json",
+      "SHA": "3cc1a18235ccbf8bb95934fde27983aa03539c3e4dffb7a919b3f85532193b04",
+      "reason": "full dataset provenance/label inventory, not PI-generated sample selection"
+    },
+    {
+      "path": ".private_oracle_pi_admission_followup_20261022/GOLD_EVIDENCE_SOURCE_V2.json",
+      "SHA": "7ffe873852d2209ba11f2d5394981632aae5ba36921799f2d240403a10ebb1fb",
+      "reason": "full dataset provenance/label inventory, not PI-generated sample selection"
+    },
+    {
+      "path": ".private_oracle_pi_admission_followup_20261022_r2/GOLD_EVIDENCE_SOURCE_V2.json",
+      "SHA": "7ffe873852d2209ba11f2d5394981632aae5ba36921799f2d240403a10ebb1fb",
+      "reason": "full dataset provenance/label inventory, not PI-generated sample selection"
+    },
+    {
+      "path": ".private_oracle_pi_admission_followup_20261022_r2/LOCATION_SOURCE_V2.json",
+      "SHA": "dd958c2372fb0f8e652d2af2452e333ae3e849aa8e5d173eb5b9cdcd0d159471",
+      "reason": "full dataset provenance/label inventory, not PI-generated sample selection"
+    }
+  ],
+  "selector": "r6_session",
+  "holdout_scored": false,
+  "limitations": [
+    "Task-level independent from audited PI examples, largely seen repositories; not unseen-repository or pretraining independence.",
+    "All tasks belong to the existing training dataset; metadata provenance catalogs were previously built.",
+    "Exposure exclusion is conservative identity matching across recorded manifests; unrecorded external use is not provably absent."
+  ]
+}

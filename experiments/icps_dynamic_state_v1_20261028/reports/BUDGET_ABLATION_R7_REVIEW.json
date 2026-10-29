@@ -1,0 +1,247 @@
+{
+  "UTC": "2026-10-28T08:38:33.938656+00:00",
+  "status": "DEVELOPMENT_ABLATION_COMPLETE_R6_UNCHANGED",
+  "queue": "logs/budget_ablation_r7_r2",
+  "exit": 0,
+  "aggregate_SHA": "5d98ac88cf20a983108d586187d49a57b989c22d75a1a3b1d3109514467814d5",
+  "frozen_SHA": "a13077c88b3b1d4f228d07fcac96786936e4e5b78564f8fc9cdcc6bfc993293c",
+  "generation_inputs": 607,
+  "primary_evaluable": 366,
+  "primary_nominal": 370,
+  "unmapped": 4,
+  "development_repositories": 77,
+  "rows": [
+    {
+      "candidate_pool": 3,
+      "initial_cap": 192,
+      "candidate_hits": 242,
+      "candidate_rate": 0.6612021857923497,
+      "visible_hits": 171,
+      "visible_rate": 0.4672131147540984,
+      "full_hits": 105,
+      "full_rate": 0.28688524590163933,
+      "conversion": 0.7066115702479339,
+      "mean_tokens": 187.5683690280066,
+      "mean_source_lines": 17.906095551894563,
+      "mean_metadata_tokens": 34.047775947281714,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.0,
+        "gained": 0,
+        "lost": 0,
+        "unchanged": 366,
+        "task_CI95": [
+          0.0,
+          0.0
+        ],
+        "repo_cluster_CI95": [
+          0.0,
+          0.0
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    {
+      "candidate_pool": 3,
+      "initial_cap": 256,
+      "candidate_hits": 242,
+      "candidate_rate": 0.6612021857923497,
+      "visible_hits": 179,
+      "visible_rate": 0.4890710382513661,
+      "full_hits": 128,
+      "full_rate": 0.34972677595628415,
+      "conversion": 0.7396694214876033,
+      "mean_tokens": 246.90609555189457,
+      "mean_source_lines": 24.792421746293247,
+      "mean_metadata_tokens": 34.072487644151565,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.02185792349726776,
+        "gained": 9,
+        "lost": 1,
+        "unchanged": 356,
+        "task_CI95": [
+          0.00546448087431694,
+          0.03825136612021858
+        ],
+        "repo_cluster_CI95": [
+          0.006871679391998875,
+          0.0359120157475105
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    {
+      "candidate_pool": 3,
+      "initial_cap": 384,
+      "candidate_hits": 242,
+      "candidate_rate": 0.6612021857923497,
+      "visible_hits": 189,
+      "visible_rate": 0.5163934426229508,
+      "full_hits": 159,
+      "full_rate": 0.4344262295081967,
+      "conversion": 0.78099173553719,
+      "mean_tokens": 359.3640856672158,
+      "mean_source_lines": 37.58154859967051,
+      "mean_metadata_tokens": 34.039538714991764,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.04918032786885246,
+        "gained": 18,
+        "lost": 0,
+        "unchanged": 348,
+        "task_CI95": [
+          0.0273224043715847,
+          0.07377049180327869
+        ],
+        "repo_cluster_CI95": [
+          0.031139183868273475,
+          0.06606606606606606
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    {
+      "candidate_pool": 6,
+      "initial_cap": 192,
+      "candidate_hits": 282,
+      "candidate_rate": 0.7704918032786885,
+      "visible_hits": 166,
+      "visible_rate": 0.453551912568306,
+      "full_hits": 92,
+      "full_rate": 0.25136612021857924,
+      "conversion": 0.5886524822695035,
+      "mean_tokens": 188.28665568369027,
+      "mean_source_lines": 17.55354200988468,
+      "mean_metadata_tokens": 35.378912685337724,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": -0.01366120218579235,
+        "gained": 20,
+        "lost": 25,
+        "unchanged": 321,
+        "task_CI95": [
+          -0.04918032786885246,
+          0.02185792349726776
+        ],
+        "repo_cluster_CI95": [
+          -0.04377880184331797,
+          0.021919313563149186
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    {
+      "candidate_pool": 6,
+      "initial_cap": 256,
+      "candidate_hits": 282,
+      "candidate_rate": 0.7704918032786885,
+      "visible_hits": 170,
+      "visible_rate": 0.4644808743169399,
+      "full_hits": 112,
+      "full_rate": 0.30601092896174864,
+      "conversion": 0.6028368794326241,
+      "mean_tokens": 248.88467874794068,
+      "mean_source_lines": 24.533772652388798,
+      "mean_metadata_tokens": 35.370675453047774,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": -0.00273224043715847,
+        "gained": 24,
+        "lost": 25,
+        "unchanged": 317,
+        "task_CI95": [
+          -0.040983606557377046,
+          0.03551912568306011
+        ],
+        "repo_cluster_CI95": [
+          -0.03380361114052737,
+          0.031547327676855585
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    },
+    {
+      "candidate_pool": 6,
+      "initial_cap": 384,
+      "candidate_hits": 282,
+      "candidate_rate": 0.7704918032786885,
+      "visible_hits": 183,
+      "visible_rate": 0.5,
+      "full_hits": 152,
+      "full_rate": 0.41530054644808745,
+      "conversion": 0.648936170212766,
+      "mean_tokens": 363.00823723228996,
+      "mean_source_lines": 37.593080724876444,
+      "mean_metadata_tokens": 35.34761120263592,
+      "paired_vs_baseline": {
+        "n": 366,
+        "families": 77,
+        "delta": 0.03278688524590164,
+        "gained": 35,
+        "lost": 23,
+        "unchanged": 308,
+        "task_CI95": [
+          -0.00819672131147541,
+          0.07377049180327869
+        ],
+        "repo_cluster_CI95": [
+          0.0,
+          0.06951935777581143
+        ],
+        "seed": 20261023,
+        "iterations": 4000
+      }
+    }
+  ],
+  "conclusions": [
+    "Budget192->256 at pool3 improves visible hits171->179 (+2.19pp) and full-target105->128 (+6.28pp).",
+    "Budget192->384 at pool3 improves visible171->189 (+4.92pp), full105->159 (+14.75pp); average tokens187.57->359.36.",
+    "Pool3->6 improves candidate hits242->282 (66.12%->77.05%), but visible coverage is lower at every tested budget. Point estimates do not prove universal harm; baseline paired CIs for pool6/192 and pool6/256 cross zero.",
+    "Candidate-to-window selection and competition are a concrete bottleneck; a larger pool alone is not promoted.",
+    "256 is a next-development candidate, not a deployed or independently confirmed setting. No claim of80-90% coverage or RL improvement."
+  ],
+  "next": "Keep pool3/256 as a development comparator; improve retrieval-prior-aware window selection and separately changed-unit candidate omissions before a new freeze and independent confirmation.",
+  "isolation": {
+    "actual_Landlock": true,
+    "denied_paths_per_shard": 3,
+    "shards": 4,
+    "baseline_output_exact": 607,
+    "candidate_prefix_exact": 607,
+    "original_attempt": "Original generator never reads scored rows in inspected source, but BASE directory grant permits the old scored file. Original queue/source preserved and not accepted as full label-isolation evidence. R2 grants only specific baseline files, then separately scores all frozen outputs."
+  },
+  "scope": {
+    "W0_only": true,
+    "cost_denominator": 607,
+    "coverage_denominator": 366,
+    "coverage_definition": "Task-level intersection with at least one verified changed-source target; not fraction of all source lines and not repair success.",
+    "full_definition": "All changed lines of at least one target visible; not model correctness.",
+    "token_cost_note": "Metadata standalone token count is not an exact additive split because tokenizer boundaries can merge.",
+    "confirmation_used": false,
+    "runtime_modified": false,
+    "update_budget": 128,
+    "episode_budget": 4096,
+    "GPU_runs": 0,
+    "optimizer_updates": 0,
+    "training_admitted": false
+  },
+  "replay_check": {
+    "original_queue_exit": 0,
+    "accepted_queue_exit": 0,
+    "inputs": 607,
+    "serialized_payloads_exact": 3642,
+    "timing_fields_excluded": true,
+    "private_rows_exported": false,
+    "note": "Original queue finished naturally. Original sandbox scope remains unaccepted; all six per-case serialized outputs equal strict R2."
+  }
+}

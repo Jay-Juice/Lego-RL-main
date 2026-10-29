@@ -1,0 +1,32 @@
+{
+  "status": "ACTUAL_PRIVATE_RAY_LIFECYCLE_PASS_ZERO_GPU",
+  "run_name": "gpu-r6-862f01ff018c3654",
+  "actual_Ray_started": true,
+  "actual_remote_task": true,
+  "tagged_task_owned": true,
+  "namespace_exact": true,
+  "zero_GPU_resources": true,
+  "Ray_shutdown_completed": true,
+  "private_parent_mode": "0700",
+  "Ray_workdir": "private_parent/ray",
+  "prior_failure": "gpu_private_ray_r6_live exit1: Ray chmod of direct temp root; retained",
+  "owned_processes_remaining": [],
+  "wall_seconds": 8.829044330865145,
+  "original_resource_gate_pass": true,
+  "source_SHA": {
+    "validation/gpu_private_ray_r6_live.py": "b727c859a46b696bdbc6560c88b822cd84d775141d73ef52b2d7c684c5580d5d",
+    "ops/gpu_private_ray_r6_live.sh": "c038b14b79b0fbdae1cf7fda28ae6fad6c7e5c67d892fd41f4b6a35d4a753db8",
+    "src/gpu_private_ray_r6.py": "ed3ad89515c390953d46c64ca6419d49eac6dbea1518b59c2147fd993ec72b7f",
+    "src/gpu_launch_gate_r6.py": "a50e8a4cc06f31e6b8e1ad3f88cf61abe89d2b07b2100c26218e5ad7eea59804"
+  },
+  "GPU_started": false,
+  "model_constructed": false,
+  "optimizer_steps": 0,
+  "production_receipt_created": false,
+  "training_admitted": false,
+  "limitations": [
+    "One actual CPU-only local Ray init/task/shutdown; not eight-GPU worker acceptance.",
+    "Native model initialization and optimizer updates remain untested.",
+    "Run/temp directories and logs retained; no global cleanup or external signals."
+  ]
+}

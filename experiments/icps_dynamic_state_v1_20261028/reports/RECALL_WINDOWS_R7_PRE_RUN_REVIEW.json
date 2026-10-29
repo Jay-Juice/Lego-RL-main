@@ -1,0 +1,35 @@
+{
+  "UTC": "2026-10-28T12:16:36.561955+00:00",
+  "status": "REVIEWED_RESEARCH_ONLY_RUNNING_NOT_ADMITTED",
+  "experiment": "recall_windows_r7",
+  "declared_arms": 6,
+  "local_contracts_passed": 6,
+  "Linux_contracts_passed": 6,
+  "source_SHA": {
+    "src/recall_windows_r7.py": "2766c401977898376875acb4dab78055c6f68277f0cbdff116b2ff1f671faaf4",
+    "validation/recall_windows_r7.py": "41b218fec816e18bad9f60900e688946d5cbcde3dbbb0a84b9540d626bc9132f",
+    "validation/recall_windows_r7_contracts.py": "dcd1745f5688a6081dab1397ab213b6b426c832be13ddb702bb785455a0958a2",
+    "ops/recall_windows_r7.sh": "63d1b766e03b457bb5fb549b5011b1498ea392a5db2325be6ce52282b4d4a8ec",
+    "R7_RECALL_WINDOWS_PLAN.md": "5201d065ab24c353eeaee1d4ee8fa4a15b49723aaada112abb0060592e9ecbc5",
+    "validation/RECALL_WINDOWS_R7.sha256": "de6fe40ad32557d116291e025d09b377fe4500d9b6158d3c160ffb3b3a819d8f",
+    "validation/recall_window_bottlenecks_r7.py": "73243d2352609132bb8787336ad512c3ca61bb970718ec1ddf8ffe6aed490ac9",
+    "R7_RECALL_BOTTLENECK_PLAN.md": "4f9263132645007b0b4c48ed5e937982234636290d17e2690f34f5da22ca904b",
+    "validation/RECALL_BOTTLENECK_R7.sha256": "891a001f4a2b1f5a266ed2112037f5d05738abd6229016edf997323bf51b746e"
+  },
+  "construction_inputs": [
+    "Issue text",
+    "Existing bounded allowlisted current-source capture"
+  ],
+  "excluded_inputs": [
+    "Development labels and prior private scores during generation",
+    "R6 confirmation",
+    "Verifier/test/reward/model output"
+  ],
+  "source_changes": "Separate research modules only; frozen method/runtime unchanged. No shared dependency changes.",
+  "diagnostic": "Scorer-only fixed source proposals and actual token cost, after generation and scoring complete; no selector adaptation.",
+  "pending": [
+    "607x6 generation and scoring",
+    "Aggregate bottleneck diagnostic",
+    "No method selected or deployed"
+  ]
+}

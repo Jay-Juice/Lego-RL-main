@@ -1,0 +1,8 @@
+{
+  "in_memory_equal": false,
+  "json_roundtrip_equal": false,
+  "type_mismatch_counts": {},
+  "labels_read": false,
+  "scored_outputs_read": false,
+  "selector_changed": false
+}

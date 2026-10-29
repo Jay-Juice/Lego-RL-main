@@ -1,0 +1,15 @@
+{
+  "status": "FOUR_LOCAL_AND_FOUR_LINUX_SYNTHETIC_CONTRACTS_PASS",
+  "tests": 4,
+  "scopes": [
+    "Original-utility greedy trap",
+    "Source equality, cap and deterministic rendering",
+    "Original shared helper identities and residual expansion body retained",
+    "Empty proposals and overlapping source rejection"
+  ],
+  "source_SHA": {
+    "src/lookahead_windows_r7.py": "f89737cccdfb5169867ff593caf31596efec080ce77a964b92282ce30c4772f8",
+    "validation/lookahead_windows_r7_contracts.py": "dcafdba506e0f563b572cf4bdac8a44f4715e3434fe91d30202d63fd4abf2c6f"
+  },
+  "limits": "Synthetic byte tokenizer; actualQwen607generation is separate. No GPU or training evidence."
+}

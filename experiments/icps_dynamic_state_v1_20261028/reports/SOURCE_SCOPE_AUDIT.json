@@ -1,0 +1,16 @@
+{
+  "old_source_unchanged": true,
+  "inherited_source_checked": 35,
+  "new_inherited_changes": [
+    "env.sh",
+    "start_full97.sh"
+  ],
+  "runtime_unchanged": true,
+  "training_recipe_unchanged": true,
+  "new_selector_not_integrated_online": true,
+  "budgets": [
+    192,
+    128,
+    4096
+  ]
+}

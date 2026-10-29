@@ -1,0 +1,24 @@
+{
+  "same_logical_retry_exact_once": true,
+  "changed_retry_transactional_rejection": true,
+  "wrong_identity_and_late_before_generation": true,
+  "concurrent_sessions_isolated": true,
+  "natural_exhaustion": {
+    "calls_before_empty": 157,
+    "spent": 4096,
+    "remaining": 0,
+    "max_update": 27,
+    "subsequent_empty_unknown": true
+  },
+  "status": "passed",
+  "actual_proxy": true,
+  "actual_Qwen": true,
+  "scripted_generation": true,
+  "synthetic_workspace": true,
+  "actual_Actor_rollout": false,
+  "GPU": false,
+  "optimizer": false,
+  "wall_seconds": 2.9360611960291862,
+  "expected_errors": 5,
+  "source_SHA": "10512fdb85e12f6d992ba1f80d96dad7506602a4c3ff3a10bfa511e762b83a37"
+}

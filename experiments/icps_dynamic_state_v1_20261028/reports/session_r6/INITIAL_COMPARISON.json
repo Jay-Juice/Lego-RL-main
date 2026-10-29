@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "status_path_cases": 0,
+    "candidate_identity_exact": 607,
+    "initial_payload_exact": 607,
+    "cases": 607,
+    "capacity_excluded": 1
+  },
+  "label_paths_denied": 2,
+  "actual_Landlock": true,
+  "seconds": 856.0249286442995
+}

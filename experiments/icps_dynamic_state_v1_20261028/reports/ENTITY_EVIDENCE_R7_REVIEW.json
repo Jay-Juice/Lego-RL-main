@@ -1,0 +1,93 @@
+{
+  "UTC": "2026-10-29T06:53:08.104211+00:00",
+  "status": "COMPLETE_DEVELOPMENT_ENTITY_EVIDENCE_NOT_DEPLOYED",
+  "tasks": 607,
+  "exact_mapped": 366,
+  "repositories": 77,
+  "arms": {
+    "control1024_8": {
+      "any_hits": 272,
+      "full_all": 238,
+      "target_lines": 935,
+      "tokens": 998.5716639209226,
+      "density": 2.5735739372653508,
+      "wall_mean": 1.643643955465351,
+      "wall_median": 1.6994037367403507,
+      "wall_p95": 2.683699529618024,
+      "cpu_mean": 1.6435420035502473
+    },
+    "cached1024_8": {
+      "any_hits": 272,
+      "full_all": 238,
+      "target_lines": 935,
+      "tokens": 998.5716639209226,
+      "density": 2.5735739372653508,
+      "wall_mean": 1.3203740410040297,
+      "wall_median": 1.3669165670871735,
+      "wall_p95": 2.1238744575530286,
+      "cpu_mean": 1.3202945240560136
+    },
+    "entity1024_8": {
+      "any_hits": 268,
+      "full_all": 236,
+      "target_lines": 953,
+      "tokens": 996.509060955519,
+      "density": 2.634248548122718,
+      "wall_mean": 1.329902337130644,
+      "wall_median": 1.3765899986028671,
+      "wall_p95": 2.186180249601602,
+      "cpu_mean": 1.3298195046935746
+    },
+    "complement1024_8": {
+      "any_hits": 267,
+      "full_all": 235,
+      "target_lines": 951,
+      "tokens": 996.7495881383855,
+      "density": 2.627238747213221,
+      "wall_mean": 1.3289447993261025,
+      "wall_median": 1.3509760424494743,
+      "wall_p95": 2.194015507400035,
+      "cpu_mean": 1.3288642598154872
+    }
+  },
+  "checks": {
+    "cached1024_8": {
+      "any_improves": false,
+      "density_improves": false,
+      "full_not_lower": true,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true
+    },
+    "entity1024_8": {
+      "any_improves": false,
+      "density_improves": true,
+      "full_not_lower": false,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true
+    },
+    "complement1024_8": {
+      "any_improves": false,
+      "density_improves": true,
+      "full_not_lower": false,
+      "mean_within_110percent": true,
+      "p95_within_115percent": true
+    }
+  },
+  "cached_performance_eligible": true,
+  "interpretation": "This bounded experiment achieves an exact construction-cost reduction, but neither new entity-selection rule meets the joint coverage/density/completeness objective. Retain the original1024/8 selection and the new cached1024_8 development implementation; reject entity1024_8 and complement1024_8 as replacements. No runtime promotion or training change.\n\nThe cached arm exactly replays all607 complete baseline output dictionaries, including tokens/source maps/windows/semantic hashes. Any-hit remains272/366(74.32%), full-all238/366(65.03%), visible targetlines935/1320, density2.573574targetlines/1000PI tokens, mean998.57tokens. Mean construction time1.643644->1.320374s (-19.67%), median1.699404->1.366917s, P952.683700->2.123874s (-20.86%); median paired time ratio0.8139. Mean unique tokenizer misses remain1443.66 in both arms; the optimized arm averages90.11 backend batches. The combined AST/line/term cache and batch optimization is measured together, not proof that batching alone caused the gain or that fewer source strings were tokenized. No persistent cache or additional retrieval/modelcall.\n\nWhole-unit evidence weighting reaches268any(73.22%)/236full(64.48%),953targetlines,density2.634249 (+2.36%),996.51mean tokens,1.329902s mean. It gains3andloses7any tasks (-1.09pp, exploratory repo95%CI[-2.81,+0.59]pp), gains4andloses6full (-0.55pp,CI[-2.24,+1.21]). Complementary evidence reaches267any(72.95%)/235full(64.21%),951targetlines,density2.627239 (+2.09%),996.75tokens,1.328945s mean;3gained8lost any (-1.37pp,CI[-3.16,+0.34]),4gained7lost full (-0.82pp,CI[-2.66,+1.02]). Both are faster than original control because they share the exact performance changes; neither improves task coverage or completeness. Intervals crossing0 are not evidence of equivalence/noninferiority.\n\nThe loss diagnosis rejects the intended selection improvement: no-target-entity-selected45->55/56, while within-selected-entity wrong-region misses26->20; candidateabsence23unchanged. More aggregate targetlines and slightly higher density do not compensate for fewer covered tasks. Candidate-own lexical/identifier evidence with the fixed bounded multiplier is insufficient in this form; this experiment does not establish that all entity-level signals are useless. Preserve the useful rank prior and original choices rather than deploy these weights.\n\nKeep budget1024 and original quality; use the proven exact cached/batched constructor as the next W0 development control. Any future selection research needs a more discriminating issue-to-code relevance signal evaluated on repository-separated development and fresh independent evidence; no learned model or additional parameter sweep was started. All607cases are reused development (366mapped/77repos); no independent generalization, semantic completeness or RL claim. Timing excludes initial retrieval/I/O/init/Critic; the20% constructor improvement is not a20% training speedup. FrozenR6 runtime192/128/4096 and disabled training entry remain unchanged.",
+  "local_contracts": 8,
+  "Linux_contracts": 8,
+  "control_exact_replays": 607,
+  "cached_exact_replays": 607,
+  "label_denials_per_shard": 17,
+  "queue_exit": 0,
+  "runtime_changed": false,
+  "new_retrieval": false,
+  "GPU_model_optimizer_training": false,
+  "independent_confirmation": false,
+  "public_report_SHA": {
+    "AGGREGATE.json": "e3cb8c71350dd73b83cec005082889e889d370fe0f40a82d56957df61c55b8da",
+    "FROZEN.json": "06f83735e153863c26956fec159c3eefd029c4e4e58f92d4630b745de3a060a3",
+    "LOSS_DECOMPOSITION.json": "af5660b3b12b405b095c7a42a4e75d63fb19b2ecfb7bf4988783bdaff1d283d1"
+  }
+}

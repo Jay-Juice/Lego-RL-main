@@ -1,0 +1,41 @@
+{
+  "status": "DYNAMIC_CONTRACTS_PASS_AWAIT_INITIAL607",
+  "initial": {
+    "status_path_cases": 0,
+    "candidate_identity_exact": 25,
+    "initial_payload_exact": 25,
+    "cases": 25,
+    "capacity_excluded": 1
+  },
+  "constructed": {
+    "addition": 24,
+    "retry": 24,
+    "noop": 24,
+    "edit_rollback": 24,
+    "deletion": 24,
+    "late_rejected": 24,
+    "retry_change_rejected": 24,
+    "identity_rejected": 24,
+    "initial_update_semantic_boundary_nocharge": 1
+  },
+  "cases": 24,
+  "max_update_tokens": 128,
+  "natural_exhaustion_calls": 151,
+  "spent": 4091,
+  "remaining": 5,
+  "actual_Landlock": true,
+  "label_paths_denied": 2,
+  "budgets": [
+    192,
+    128,
+    4096
+  ],
+  "wall_seconds": 65.27763193845749,
+  "GPU_jobs": 0,
+  "optimizer_steps": 0,
+  "limitations": [
+    "Only capacity-selected24 dynamic cases plus excluded-capacity initial checks; full607 equivalence must come from separate R2 INITIAL_COMPARISON.",
+    "24 subsequent sequences are constructed events, not actual Actor rollout.",
+    "Independent confirmation and online/Harbor/GPU admission remain pending."
+  ]
+}

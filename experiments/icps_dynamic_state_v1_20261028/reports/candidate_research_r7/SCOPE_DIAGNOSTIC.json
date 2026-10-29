@@ -1,0 +1,27 @@
+{
+  "UTC": "2026-10-28T11:07:46.704117+00:00",
+  "status": "SCORER_ONLY_DEVELOPMENT_AVAILABILITY_NOT_DEPLOYABLE",
+  "aggregate": {
+    "tasks": 366,
+    "target_lines": 1320,
+    "captured_target_lines": 1320,
+    "represented_target_lines": 1314,
+    "capture_any": 366,
+    "entity_any": 363,
+    "capture_full_any": 366,
+    "entity_full_any": 362,
+    "capture_missing_all": 0,
+    "representation_missing_all_given_capture": 3,
+    "has_outside_entity_target": 4,
+    "limited_capture": 35
+  },
+  "repository_count": 77,
+  "source_SHA": "0d65caa75e8ccd8b5f85a237bc043179051eed80a3af65b85c37b3a4029dc294",
+  "generation_receipt_SHA": "d1e7a091bc1450ef8eb1528dd81d840aeb252d33622345345ae8c6c03adacdac",
+  "limitations": [
+    "Labels used only to measure aggregate availability, not candidate generation.",
+    "All allowed captured source lines is an oracle availability ceiling, not a feasible token-limited selector.",
+    "Entity ceiling includes enclosing classes and parse fallbacks; does not prove every line is proposed or fits.",
+    "No per-case output and no independent confirmation used."
+  ]
+}

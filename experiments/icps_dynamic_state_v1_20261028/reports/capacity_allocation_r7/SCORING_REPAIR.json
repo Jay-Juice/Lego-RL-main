@@ -1,0 +1,11 @@
+{
+  "status": "SCORING_ONLY_ELIGIBILITY_FIX",
+  "UTC": "2026-10-28T14:59:33.327869+00:00",
+  "prior_queue_exit": 1,
+  "prior_error": "KeyError on changed_visible_intersect_any for rows without mapped exact targets",
+  "generation_unchanged": true,
+  "scorer_wrapper_SHA": "2775106c4166595c04ea0f1e9dcc4580380abe91b9fdf840c5b630f82d796be3",
+  "original_scorer_SHA": "19680b358829478e14b60adb04b43e83f9ac931a7f2345a31754e9113b8a5b3a",
+  "frozen_generation_receipt_SHA": "8c68b28a022461670e3e2e573524ebe890a901b49daa6c8804ac39c56c8fb229",
+  "aggregate_SHA": "68a20273c6b2ef287663382201382b60ad242467b32a1bb607586c06857dbeee"
+}

@@ -1,0 +1,66 @@
+{
+  "status": "COMPLETE_DEVELOPMENT_ONLY_NEW_FUSION_REJECTED",
+  "exit": 0,
+  "inputs": 607,
+  "evaluable": 366,
+  "repositories": 77,
+  "nominal_exact": 370,
+  "unmapped": 4,
+  "local_contracts": 5,
+  "linux_contracts": 5,
+  "baseline_payload_replay": 607,
+  "label_denials_per_shard": 8,
+  "all_outputs_frozen_before_score": true,
+  "source_unchanged_frozen7": true,
+  "runtime_promoted": false,
+  "new_model_updates": 0,
+  "active_jobs": 0,
+  "aggregate_SHA": "ad286593f0752faeab8c0cd2fa33d7101b4348fa25f43502a017c5999ccf2eb6",
+  "freeze_SHA": "b6919b18a4584a343162b68b33ae7e5b41339848eeab7ebcde0a7145a784302f",
+  "results": {
+    "base256": {
+      "visible": 205,
+      "full_all": 134,
+      "mean_tokens": 250.01153212520592,
+      "density": 6.031363088057901
+    },
+    "base384": {
+      "visible": 213,
+      "full_all": 174,
+      "mean_tokens": 366.77429983525536,
+      "density": 5.106030982102572
+    },
+    "fused256": {
+      "visible": 190,
+      "full_all": 127,
+      "mean_tokens": 250.35420098846788,
+      "density": 5.833397296022983
+    },
+    "fused384": {
+      "visible": 196,
+      "full_all": 163,
+      "mean_tokens": 365.9209225700165,
+      "density": 4.945283804763528
+    },
+    "anchored256": {
+      "visible": 196,
+      "full_all": 132,
+      "mean_tokens": 250.25535420098848,
+      "density": 5.950747137163623
+    },
+    "anchored384": {
+      "visible": 202,
+      "full_all": 170,
+      "mean_tokens": 365.7479406919275,
+      "density": 5.10087725966582
+    }
+  },
+  "decision": "Retain original256 density comparator and original384 depth comparator; no fusion promotion.",
+  "limitations": [
+    "W0 only; no runtime/dynamic/episode integration.",
+    "Reused development, unadjusted exploratory comparisons, no independent confirmation.",
+    "Density measures target location evidence, not semantic or RL benefit.",
+    "Fixed passage24 candidates; heuristic window-level relevance fusion; no semantic model or learned ranking.",
+    "Adaptive development after prior aggregate results; no per-case tuning or independent confirmation."
+  ]
+}

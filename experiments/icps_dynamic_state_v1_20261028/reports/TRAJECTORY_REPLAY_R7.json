@@ -1,0 +1,28 @@
+{
+  "status": "pass",
+  "counts": {
+    "passed": 607
+  },
+  "source_batches": 30,
+  "budget": 1024,
+  "windows": 8,
+  "frozen_PI_receipt_SHA": "027859ba7067347a70015a57f3d21ebabe84a2c71245b477d13c1f7c166c36eb",
+  "builder_SHA": "d493c7e26a3be8215cccd11d56cd89de7c29a9dd2ce3cf025ee9802b7cfc1a64",
+  "script_SHA": "4b9d3452fbacb4353e83b0d246b715472d27c055d973488e36f25c71c5d7417f",
+  "actor_tokens_max": 73106,
+  "critic_tokens_max": 74121,
+  "PI_tokens_total": 606133,
+  "calls_total": 27660,
+  "mean_view_seconds": 0.09567170082000767,
+  "wall_seconds": 84.81450126320124,
+  "actual_historical_actor_tensors": true,
+  "actual_runtime_builder": true,
+  "new_model_rollout": false,
+  "neural_value_gradient_test": false,
+  "positional_gather_gradient_test": true,
+  "source_snapshot_identity_proven": false,
+  "later_dynamic_states_tested": false,
+  "independent_confirmation": false,
+  "training_admission": false,
+  "cuda_initialized": false
+}

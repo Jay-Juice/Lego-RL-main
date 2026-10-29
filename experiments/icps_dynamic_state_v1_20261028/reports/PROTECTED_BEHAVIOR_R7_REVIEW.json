@@ -1,0 +1,77 @@
+{
+  "status": "COMPLETE_DEVELOPMENT_DENSITY_COMPARATOR_NO_NET_TASK_COVERAGE_GAIN",
+  "exit": 0,
+  "inputs": 607,
+  "evaluable": 366,
+  "repos": 77,
+  "local_contracts": 4,
+  "linux_contracts": 4,
+  "baseline_exact_each_budget": 607,
+  "label_denials_per_shard": 10,
+  "results": {
+    "base256": {
+      "visible": 205,
+      "full_all": 134,
+      "mean_tokens": 250.01153212520592,
+      "density": 6.031363088057901
+    },
+    "base384": {
+      "visible": 213,
+      "full_all": 174,
+      "mean_tokens": 366.77429983525536,
+      "density": 5.106030982102572
+    },
+    "protect1_256": {
+      "visible": 200,
+      "full_all": 132,
+      "mean_tokens": 249.67051070840196,
+      "density": 5.815103880400132
+    },
+    "protect1_384": {
+      "visible": 211,
+      "full_all": 175,
+      "mean_tokens": 364.2405271828666,
+      "density": 5.211622298135229
+    },
+    "protect2_256": {
+      "visible": 201,
+      "full_all": 129,
+      "mean_tokens": 249.52388797364085,
+      "density": 5.951726110585492
+    },
+    "protect2_384": {
+      "visible": 213,
+      "full_all": 176,
+      "mean_tokens": 363.89456342668865,
+      "density": 5.37920749893481
+    }
+  },
+  "best_depth_density_arm": "protect2_384",
+  "any_task_gained": 7,
+  "any_task_lost": 7,
+  "full_all_gained": 10,
+  "full_all_lost": 8,
+  "full_all_repo_CI95_pp": [
+    -1.898820170610897,
+    3.315377532228363
+  ],
+  "target_lines_before": 679,
+  "target_lines_after": 707,
+  "target_lines_total": 1320,
+  "density_gain_percent": 5.350075582967739,
+  "mean_tokens_change_percent": -0.7851521793812211,
+  "aggregate_SHA": "176aa0cc1b0730cc27e161e239cb66bdf604d2283f388fff96d90aedff964514",
+  "freeze_SHA": "cfeeea376d48acd3ec18bcd8087265543359c54883e7644f63d8865225d286a2",
+  "runtime_promoted": false,
+  "frozen7_unchanged": true,
+  "new_GPU_or_model_updates": false,
+  "active_jobs": 0,
+  "decision": "Keep protected2_384 only as exploratory depth/density comparator. No net any-task gain, no independent or robust completeness gain; no runtime promotion.",
+  "limitations": [
+    "First seed protection does not preserve final expansion or task identities.",
+    "Same213any-hit count includes7gained/7lost, not an identical task set.",
+    "All607previously seen;366exactmapped in77repos,370nominal exact includes4unmapped.",
+    "Adaptive follow-up using aggregate results, no per-case scores/confirmation tuning.",
+    "Density is target-location evidence pertoken, not semantic information or RL benefit."
+  ]
+}

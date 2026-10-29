@@ -1,0 +1,308 @@
+{
+  "status": "PASS_formal_config_and_offline_bindings",
+  "source_files": 5523,
+  "asset_files": 18,
+  "config_SHA": "fe10fc13b7d10fe5db897a4d2386b288cacfdaf5a2b988e3a8b0d1622964a913",
+  "parity": {
+    "inherited_two_phase_parity": {
+      "status": "PRIVATE_CONFIG_PARITY_PASS_NOT_LAUNCH_APPROVAL",
+      "reference_SHA": "42d0c0e14303b644e74eef1603da798be63f71c56c928a9739b2fa6b44928208",
+      "config_SHA": "e0b6c19393f4802b2a1ce0429710edd19ab135d39d8b2bfd15f14969e6a3a734",
+      "phase2_config_SHA": "6df7c168f7157e33ea038a22ef3d15f344ebec43c264e70ebbae369bc334359c",
+      "private_changes": [
+        {
+          "key": "ray_kwargs.ray_init._temp_dir",
+          "actual": "/tmp/r6g-f8e16cd819ef26b4/ray",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.address",
+          "actual": "local",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.include_dashboard",
+          "actual": false,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.namespace",
+          "actual": "gpu-r6-f8e16cd819ef26b4",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.num_gpus",
+          "actual": 8,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "trainer.default_local_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/NEVER_SAVE_CHECKPOINT",
+          "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/checkpoints/NEVER_SAVE_GPU_PROBE_R6",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.episode_log_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/episode_logs",
+          "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_v1_20261028/runs/gpu_probe_r6_preparation_only/episode_logs",
+          "actual_present": true,
+          "expected_present": true
+        }
+      ],
+      "phase1_historical_differences": [
+        {
+          "key": "actor_rollout_ref.rollout.agent.agent_loop_config_path",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+          "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "actor_rollout_ref.rollout.trace.experiment_name",
+          "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+          "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "ray_kwargs.ray_init._temp_dir",
+          "actual": "/tmp/r6g-f8e16cd819ef26b4/ray",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.address",
+          "actual": "local",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.include_dashboard",
+          "actual": false,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.namespace",
+          "actual": "gpu-r6-f8e16cd819ef26b4",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.num_gpus",
+          "actual": 8,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "trainer.default_local_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/NEVER_SAVE_CHECKPOINT",
+          "expected": "checkpoints/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.episode_log_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/episode_logs",
+          "expected": "logs/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.experiment_name",
+          "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+          "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.resume_mode",
+          "actual": "disable",
+          "expected": "auto",
+          "actual_present": true,
+          "expected_present": true
+        }
+      ],
+      "phase2_historical_differences": [
+        {
+          "key": "actor_rollout_ref.rollout.agent.agent_loop_config_path",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/pi_repair_state_v2_20261015/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+          "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/src/verl_patch/config/agent_loop_config_oh_docker_b64_v6.yaml",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "actor_rollout_ref.rollout.trace.experiment_name",
+          "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+          "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "ray_kwargs.ray_init._temp_dir",
+          "actual": "/tmp/r6g-f8e16cd819ef26b4/ray",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.address",
+          "actual": "local",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.include_dashboard",
+          "actual": false,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.namespace",
+          "actual": "gpu-r6-f8e16cd819ef26b4",
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "ray_kwargs.ray_init.num_gpus",
+          "actual": 8,
+          "expected": null,
+          "actual_present": true,
+          "expected_present": false
+        },
+        {
+          "key": "trainer.default_local_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/NEVER_SAVE_CHECKPOINT",
+          "expected": "checkpoints/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.episode_log_dir",
+          "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/episode_logs",
+          "expected": "logs/sao-qwen35-9b-swesmith/sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.experiment_name",
+          "actual": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+          "expected": "sao-qwen35-9b-swesmith-b64-w32-v6d-20260930",
+          "actual_present": true,
+          "expected_present": true
+        },
+        {
+          "key": "trainer.resume_mode",
+          "actual": "disable",
+          "expected": "auto",
+          "actual_present": true,
+          "expected_present": true
+        }
+      ],
+      "agent_YAML_SHA": "2aa73dd5ef0a04f2e1b05631d4e2043a1a1afd250943d3774b1e595e392780f0",
+      "training_admission": false,
+      "production_receipt_created": false,
+      "Ray_initialized": false,
+      "GPU_launched": false,
+      "limitations": [
+        "Config preparation only; shell environment and dependency/asset manifest review remain separate.",
+        "Phase2 is a config comparison witness; actual probe uses native per-batch packing overrides.",
+        "No Ray, model or optimizer execution; no source review or resource approval inferred."
+      ]
+    },
+    "formal_namespace_changes": [
+      {
+        "key": "actor_rollout_ref.rollout.trace.experiment_name",
+        "actual": "sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+        "expected": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "ray_kwargs.ray_init._temp_dir",
+        "actual": "/tmp/r8f-f8e16cd819ef26b4/ray",
+        "expected": "/tmp/r6g-f8e16cd819ef26b4/ray",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "ray_kwargs.ray_init.namespace",
+        "actual": "full-r8-f8e16cd819ef26b4",
+        "expected": "gpu-r6-f8e16cd819ef26b4",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.default_local_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/checkpoints/sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/NEVER_SAVE_CHECKPOINT",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.episode_log_dir",
+        "actual": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/full-r8-f8e16cd819ef26b4/episode_logs",
+        "expected": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/runs/gpu-r6-f8e16cd819ef26b4/episode_logs",
+        "actual_present": true,
+        "expected_present": true
+      },
+      {
+        "key": "trainer.experiment_name",
+        "actual": "sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+        "expected": "sao-qwen35-9b-b64-dynamic-r6-gpu-probe-20261028",
+        "actual_present": true,
+        "expected_present": true
+      }
+    ],
+    "recipe_unchanged": true
+  },
+  "environment": {
+    "PI_ENABLE": "1",
+    "PI_FORMAT": "icps_dynamic_v1",
+    "PI_MAX_TOKENS_PER_STATE": "1024",
+    "ICPS_EPISODE_PI_BUDGET": "4096",
+    "PI_TOTAL_BUDGET_ENABLE": "1",
+    "PI_CRITIC_MAX_SEQ_TOKENS": "245760",
+    "PI_ACTOR_RESERVED_TOKENS": "73728",
+    "PI_CHECKPOINT_STRICT": "1",
+    "PI_MIN_CHECKPOINT_FREE_GIB": "200",
+    "ICPS_V11_ROOT": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029",
+    "ICPS_V11_OVERLAY": "1",
+    "ICPS_V11_CACHED_IMAGES": "/media/ubuntu/D1/zsj/Lego-RL-main/experiments/icps_dynamic_state_r8_20261029/preflight/FULL6248_PREPARED_IMAGES.json",
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1"
+  },
+  "recipe": {
+    "batch": 64,
+    "epochs": 1,
+    "warmup": 20,
+    "save": 10,
+    "test": 0,
+    "resume": "disable",
+    "experiment": "sao-qwen35-9b-b64-pi-r8-1024-full97-20261029",
+    "actor_LR": 1e-06,
+    "critic_LR": 5e-06,
+    "actor_epochs": 1,
+    "critic_epochs": 2,
+    "seed": 42
+  }
+}

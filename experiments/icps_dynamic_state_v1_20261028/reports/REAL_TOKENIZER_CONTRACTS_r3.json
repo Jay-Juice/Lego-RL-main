@@ -1,0 +1,9 @@
+{
+  "tests": 16,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "tokenizer": "local Qwen3.5-9B",
+  "GPU_jobs": 0,
+  "optimizer_steps": 0
+}

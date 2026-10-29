@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "trial": "dynamic-r6-harbor-525b553c002a",
+  "actual_Harbor": true,
+  "actual_provider": true,
+  "actual_proxy": true,
+  "actual_Qwen": true,
+  "scripted_generation": true,
+  "actual_Actor_rollout": false,
+  "verifier_calls": 0,
+  "GPU": false,
+  "optimizer": false,
+  "exact_direct_outputs": true,
+  "actor_input_and_masks_logprobs_routing_unchanged": true,
+  "causal_gather": true,
+  "private_cache_removed": true,
+  "provider_weakref_released": true,
+  "teardown_closed410": true,
+  "events": [
+    {
+      "event": "initial",
+      "tokens": 190,
+      "windows": 3,
+      "bounded_files": 192,
+      "limited": false
+    },
+    {
+      "event": "read-only noop",
+      "tokens": 0,
+      "windows": 0,
+      "bounded_files": 192,
+      "limited": false
+    },
+    {
+      "event": "add new source file",
+      "tokens": 128,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "edit new source file",
+      "tokens": 128,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "rollback source",
+      "tokens": 128,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "rename probe file",
+      "tokens": 128,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "parse failure in probe file",
+      "tokens": 126,
+      "windows": 3,
+      "bounded_files": 193,
+      "limited": false
+    },
+    {
+      "event": "delete only probe-created file",
+      "tokens": 125,
+      "windows": 3,
+      "bounded_files": 192,
+      "limited": false
+    }
+  ],
+  "task_SHA": "92989bc20ed4e9748816d3ea2ce34b5018818e4d2be9ddc64745b6f8a9440ce3",
+  "pinned_image_id": "sha256:3c085acdb04b111311d27865f98957a4f03884c7b9a67c901ff699a616435176",
+  "no_pull_or_build": true,
+  "subnet_pool": "172.16.0.0/20",
+  "wall_seconds": 29.625905230641365,
+  "CPU_seconds": 8.282743986999998,
+  "process_peak_RSS_KiB": 1156088,
+  "source_SHA": "a73a29b0962be4ef9201d36755290cb9aa4bc8e30581af316989aefe03462b60"
+}

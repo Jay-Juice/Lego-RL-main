@@ -1,0 +1,26 @@
+{
+  "status": "LOCAL_AND_LINUX_SYNTHETIC_CONTRACTS_PASS_NOT_COVERAGE",
+  "local_tests": 8,
+  "remote_tests": 8,
+  "final_failures": 0,
+  "initial_local_failure": "Full small-entity proposal discarded during bounded pruning; source/test/plan retained in archive/r7_joint_full_entity_pruning_failure.",
+  "fix": "Reserve one full entity option <=16source lines in coherent bank; at most7options/entity. Fixed before any development generation or scores.",
+  "scopes": [
+    "Actual rendered budget/source/Unicode roundtrip",
+    "Joint search escapes expensive-first greedy trap",
+    "Source overlap rejected across different entity identities",
+    "Short multiline statement closure and giant-block bound",
+    "Complete small-entity option retained",
+    "Exact original allocator at256 and guard-only384 control",
+    "Determinism and immutable inputs",
+    "Parse-failure/empty-state/unstable-source/invalid-budget behavior"
+  ],
+  "source_SHA": {
+    "src/joint_windows_r7.py": "e285838b0cf826b1670d9a2552270de03598a8a172db170cd8e5a60f4a299d36",
+    "validation/joint_windows_r7_contracts.py": "7dc338b8fb6311ace7436a2315f3adf5faaba276f3b2f8221cbbf335654d89b1"
+  },
+  "limitations": [
+    "Byte tokenizer synthetic tests do not measure actual Qwen coverage.",
+    "Beam search is bounded and approximate; lexical objective is not semantic correctness."
+  ]
+}
