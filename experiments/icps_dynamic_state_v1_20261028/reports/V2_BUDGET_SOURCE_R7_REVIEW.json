@@ -1,0 +1,36 @@
+{
+  "status": "HISTORICAL_V2_BUDGET_SOURCE_REVIEW",
+  "historical_experiment": "experiments\\pi_repair_state_v2_20261015",
+  "source_SHA": {
+    "scripts/train/configs/sao_b64_pi_repair_state_v2_20261015.env": "f1b6cd3000f28d682bfe0e2786110c27c0c9fc33ea11a0d14eee45eb9f2c17fd",
+    "src/harbor_patch/privileged_state/repair_state.py": "4cf433f9baa893795ebe1787a89c5498137f298637eab40a05f454630dbd38dd",
+    "src/verl_patch/agent_loop/vllm_chat_completion_proxy.py": "1cd0ac2f8c0e28c275ea31244fc7692e00178e8eeed841e4db97d3069e2a3cda",
+    "src/verl_patch/agent_loop/privileged_critic_builder.py": "acb064a2ff3d28924f67c3e9eedb5bfa3fdf228869f9d41e0d15f04b54b58a51"
+  },
+  "env_and_serializer_remote_SHA_match": true,
+  "formal_per_state_cap": 2048,
+  "code_capsule_cap": 1920,
+  "diff_cap": 1408,
+  "AST_context_cap": 384,
+  "code_header_footer_cap": 128,
+  "execution_status_cap": 128,
+  "critic_sequence_limit": 245760,
+  "actor_reserve": 73728,
+  "sequence_PI_allowance": 172032,
+  "sequence_allowance_not_actual_consumption": true,
+  "unchanged_code_capsule_deduplicated": true,
+  "execution_status_still_inserted": true,
+  "generic_env_not_used_by_repair_serializer": true,
+  "current_development_W0_cap": 1024,
+  "frozen_R6_runtime": {
+    "initial": 192,
+    "update": 128,
+    "episode": 4096
+  },
+  "experiment_caps": [
+    1024,
+    1920,
+    2048
+  ],
+  "scope": "Budget-only ablation on current code-window method. No V2 execution/test content; no historical V2 quality reproduction; no training change."
+}

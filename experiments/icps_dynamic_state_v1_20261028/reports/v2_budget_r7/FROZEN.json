@@ -1,0 +1,46 @@
+{
+  "UTC": "2026-10-29T05:51:04.136625+00:00",
+  "arms": {
+    "control1024_8": [
+      "passage24",
+      1024
+    ],
+    "fast1920_8": [
+      "passage24",
+      1920
+    ],
+    "fast2048_8": [
+      "passage24",
+      2048
+    ]
+  },
+  "matching_controls": {
+    "control1024_8": "control1024_8",
+    "fast1920_8": "control1024_8",
+    "fast2048_8": "control1024_8"
+  },
+  "source_SHA": {
+    "src/fast_allocation_r7.py": "647dd40c90f5b8df7afbea2bcad4aa8baf2b1b1669f3dc4c6c8b27cabd13f84a",
+    "src/executable_windows.py": "0d7143fb96f685a0410ee4f2b8e1523218e04767d28eecfc281690f0e933531e",
+    "src/capacity_allocation_r7.py": "8c70ec27bf0d01bb2cee79ab28d6cc0ae16d5435b78306f9354def8db806025e",
+    "validation/v2_budget_diagnostic_r7.py": "dd9e0c48712083a798cdd15dfc780b94fe6eff7b48c11d68d85212204820d948",
+    "src/v2_budget_r7.py": "e96d731f028f389b49b0c53233d4c5698d2e93ae3d2797f357850d69c12780b2",
+    "src/joint_windows_r7.py": "e285838b0cf826b1670d9a2552270de03598a8a172db170cd8e5a60f4a299d36",
+    "src/window_research_r7.py": "227b7b6ba1f4acdd110a6fed2b3cf2cfb34f7b18a3eab6cd63b7b4c130a6a6ea",
+    "src/budget_ablation_r7.py": "445f51d704fe390be1413f5e48fa5aed3f8cb4df54bc592cf6002b867a923fb6",
+    "validation/v2_budget_r7.py": "2f50cbe4fdef64c01384ed816cf436b59a8a91fc5eb6c585adaa570d0befc9b3",
+    "validation/v2_budget_r7_contracts.py": "3c51c3a14eee121c3640ee01e102e796c7731d88c71c40dca41142476ef17ab9",
+    "validation/development.py": "c158079c4de5caeb7b0984db8a41d036a2b3b530d37106fe7c3b94fc5922181f",
+    "validation/landlock.py": "ea63dcb314f8e5795aac9af0e15c91a4437bdbd5d0d472823dc6e7b129df6e2a",
+    "R7_V2_BUDGET_PLAN.md": "8dfdc832d7473a15e54d6b86900cae4503a221a0f09651750e3bba8bcd22a49f",
+    "src/dense_state.py": "e4e71750cd69312b47cb896568a2a0fe53a5bb0fd493c35978839b6c5a615314",
+    "src/window_serializer.py": "95c2833d14580567ef491c8399833abe6079c768e32966f4b892f92a5fd52f39",
+    "core/issue_program_state.py": "4773d8aaefe99ad7ee37265fce05328d2d5f1c806ad012064fd5da5b0997493b",
+    "core/workspace_read.py": "db5d7b636d52103bc51c1a27e7a4a36f1425c4e158631a6a549b6d6f31950b9e",
+    "src/rank_windows_r6.py": "6a9f55845e3dfcf8909fa5d423554fe0a11ed44c0c27f943251962016715954f",
+    "src/dynamic_session_r6_r2.py": "2fc155b3be81e0311f274040a08582fa9b182688e313eb36c73dae30ded62d93"
+  },
+  "input_SHA": "98097627c24b76148c5d42fe9b785d5d02285840334f2bb905faf5c2c6e12da6",
+  "baseline_receipt_SHA": "2a49a900bac1f375b1e7add275a6704bdae02a46543c0c33fe8d613ba83f0b64",
+  "confirmation_used": false
+}

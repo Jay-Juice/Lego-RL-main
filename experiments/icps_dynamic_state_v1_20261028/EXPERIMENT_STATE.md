@@ -1,6 +1,20 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: historical V2 budget ablation complete
+
+Historical V2 is2048tokens per repair state: code1920 plus execution128, versus current development W0cap1024. The actual repair serializer has these independent limits, so generic/reproduction-shell1024 values are not the effective V2repair cap. This is a budget-only study of currentcodewindows, not a replay of V2information content or its training performance.
+
+Increasing the current fixed8window allocator to1920/2048 improves development coverage without observed any/full regressions. Any272/366(74.32%)->284/366(77.60%) for BOTH larger caps,12gained0lost,+3.28pp, exploratory repo95%CI[+1.53,+5.11]pp. Full-all238/366(65.03%)->266(72.68%) at1920 or270(73.77%) at2048:28/32gained0lost, respectively+7.65ppCI[+4.94,+10.82] and+8.74ppCI[+6.00,+11.78]. Targetlines935->1053/1063. The extra128tokens from1920to2048 add4full tasks in aggregate and10targetlines, with no aggregate any-hit count increase.
+
+Cost fails the predeclared low-construction-overhead criterion. Mean offlineconstructor1.652->3.246/3.445s (+96.51%/+108.54%), median1.689->3.097/3.275, P952.678->6.233/6.830. Meanactualtokens998.57->1741.31/1829.83 (+74.38%/+83.24%). Targetline density2.573574->1.683031/1.619400 (-34.60%/-37.08%). Current1024already uses97.52%of cap onaverage;2048uses89.35%onaverage andmedian2039tokens. Largerbudget improves absolute target evidence and completeness, but not informationdensity or cheapconstruction. No extra retrieval/modelcalls were added; more repeated exacttokenization/contextgrowth increases constructorwork. ProductionCritic/trainingcost remains unmeasured.
+
+Loss categories show why the gain saturates: candidateabsence23and no-target-entity-selected45 unchanged; selected-entity/wrong-region26->14 at bothlargercaps. Thus additionalcontext resolves12of26within-entity misses, while68misses remain in candidate/selection stages. Candidate343/366=93.72%unchanged. This directly supports a budget contribution and a separate entity-selection bottleneck; it does not prove a universal cap or an achievable100% result.
+
+Keep1024/8as current practical baseline under the user's lowlatency/density preference. Retain1920/2048only as higher-completeness development comparators; do not deploy automatically. Any future largerbudget use first needs cheaper equivalent construction and better entity/windowrelevance, followed by freshindependent/dynamic/episode/Criticcost validation. This study is607reuseddevelopment inputs/366mapped/77repos, not independentgeneralization orRLbenefit. RuntimeR6 remains192/128/4096 and trainingdisabled.
+
+Three arms607seen/366mapped/77repos,candidate343fixed;7local7Linuxcontracts,607exactcontrols,16Landlockdenials/shard,29inputSHA,freeze-before-score/diagnosticexit0. No newretrieval/GPU/runtime/training/activejobs. SeeR7_V2_BUDGET_RESULTS.md;aggregateSHA 3a01ffe435736374dc849940bb724be05a7a74193f28e1a9c971bc5bd3defcea.
+
 ## Latest R7: fixed1024 context-refill follow-up complete
 
 Neither follow-up meets the predeclared joint objective. Keep the original fast1024/8 baseline:272/366any (74.32%),238/366full-all (65.03%),935targetlines,density2.573574,mean998.57tokens. The fixed1024budget is not increased and no runtime method is replaced.

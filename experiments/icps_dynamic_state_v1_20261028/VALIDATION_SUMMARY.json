@@ -1617,7 +1617,7 @@
     "training_admitted": false,
     "limitation": "Historical resource observation only. Must recollect immediately before actual launch; not a production receipt or bypass of pending launch implementation."
   },
-  "current_priority": "Fixed1024joint-context and refill experiments completed; see latest review. No active jobs or deployed changes. Preserve frozenbaseline; no RLbenefit or independent admission claim.",
+  "current_priority": "V2budget ablation completed; see latestreview. No activejob or runtime promotion; preserve1024baseline pending practicalcost tradeoff review.",
   "actual_private_Ray_lifecycle": {
     "status": "ACTUAL_PRIVATE_RAY_ZERO_GPU_PASS_NATIVE_8GPU_PENDING",
     "UTC": "2026-10-28T05:42:25.294751+00:00",
@@ -2672,5 +2672,78 @@
       "LOSS_DECOMPOSITION.json": "4f2ec3aa52e89607f67a287ab34bd749db21916cc1f6dd3ae1eac8a9020f0d9f"
     },
     "report": "R7_CONTEXT_REFILL_RESULTS.md"
+  },
+  "r7_v2_budget": {
+    "UTC": "2026-10-29T06:14:31.321035+00:00",
+    "status": "COMPLETE_DEVELOPMENT_BUDGET_ABLATION_NOT_DEPLOYED",
+    "tasks": 607,
+    "exact_mapped": 366,
+    "repositories": 77,
+    "arms": {
+      "control1024_8": {
+        "any_hits": 272,
+        "full_all": 238,
+        "target_lines": 935,
+        "tokens": 998.5716639209226,
+        "density": 2.5735739372653508,
+        "wall_mean": 1.652046018870796,
+        "wall_median": 1.6890447102487087,
+        "wall_p95": 2.677749739959836,
+        "cpu_mean": 1.6519030911894546
+      },
+      "fast1920_8": {
+        "any_hits": 284,
+        "full_all": 266,
+        "target_lines": 1053,
+        "tokens": 1741.3064250411862,
+        "density": 1.683030798025116,
+        "wall_mean": 3.2464015790655645,
+        "wall_median": 3.0967568047344685,
+        "wall_p95": 6.232521051168439,
+        "cpu_mean": 3.246168921438218
+      },
+      "fast2048_8": {
+        "any_hits": 284,
+        "full_all": 270,
+        "target_lines": 1063,
+        "tokens": 1829.830313014827,
+        "density": 1.6193998927509383,
+        "wall_mean": 3.4451169177668883,
+        "wall_median": 3.2748359739780426,
+        "wall_p95": 6.830214306712151,
+        "cpu_mean": 3.4448445511878094
+      }
+    },
+    "checks": {
+      "fast1920_8": {
+        "any_improves": true,
+        "density_improves": false,
+        "full_not_lower": true,
+        "mean_within_110percent": false,
+        "p95_within_115percent": false
+      },
+      "fast2048_8": {
+        "any_improves": true,
+        "density_improves": false,
+        "full_not_lower": true,
+        "mean_within_110percent": false,
+        "p95_within_115percent": false
+      }
+    },
+    "interpretation": "Historical V2 is2048tokens per repair state: code1920 plus execution128, versus current development W0cap1024. The actual repair serializer has these independent limits, so generic/reproduction-shell1024 values are not the effective V2repair cap. This is a budget-only study of currentcodewindows, not a replay of V2information content or its training performance.\n\nIncreasing the current fixed8window allocator to1920/2048 improves development coverage without observed any/full regressions. Any272/366(74.32%)->284/366(77.60%) for BOTH larger caps,12gained0lost,+3.28pp, exploratory repo95%CI[+1.53,+5.11]pp. Full-all238/366(65.03%)->266(72.68%) at1920 or270(73.77%) at2048:28/32gained0lost, respectively+7.65ppCI[+4.94,+10.82] and+8.74ppCI[+6.00,+11.78]. Targetlines935->1053/1063. The extra128tokens from1920to2048 add4full tasks in aggregate and10targetlines, with no aggregate any-hit count increase.\n\nCost fails the predeclared low-construction-overhead criterion. Mean offlineconstructor1.652->3.246/3.445s (+96.51%/+108.54%), median1.689->3.097/3.275, P952.678->6.233/6.830. Meanactualtokens998.57->1741.31/1829.83 (+74.38%/+83.24%). Targetline density2.573574->1.683031/1.619400 (-34.60%/-37.08%). Current1024already uses97.52%of cap onaverage;2048uses89.35%onaverage andmedian2039tokens. Largerbudget improves absolute target evidence and completeness, but not informationdensity or cheapconstruction. No extra retrieval/modelcalls were added; more repeated exacttokenization/contextgrowth increases constructorwork. ProductionCritic/trainingcost remains unmeasured.\n\nLoss categories show why the gain saturates: candidateabsence23and no-target-entity-selected45 unchanged; selected-entity/wrong-region26->14 at bothlargercaps. Thus additionalcontext resolves12of26within-entity misses, while68misses remain in candidate/selection stages. Candidate343/366=93.72%unchanged. This directly supports a budget contribution and a separate entity-selection bottleneck; it does not prove a universal cap or an achievable100% result.\n\nKeep1024/8as current practical baseline under the user's lowlatency/density preference. Retain1920/2048only as higher-completeness development comparators; do not deploy automatically. Any future largerbudget use first needs cheaper equivalent construction and better entity/windowrelevance, followed by freshindependent/dynamic/episode/Criticcost validation. This study is607reuseddevelopment inputs/366mapped/77repos, not independentgeneralization orRLbenefit. RuntimeR6 remains192/128/4096 and trainingdisabled.",
+    "local_contracts": 7,
+    "Linux_contracts": 7,
+    "control_exact_replays": 607,
+    "label_denials_per_shard": 16,
+    "queue_exit": 0,
+    "runtime_changed": false,
+    "new_retrieval": false,
+    "GPU_model_optimizer_training": false,
+    "independent_confirmation": false,
+    "public_report_SHA": {
+      "AGGREGATE.json": "3a01ffe435736374dc849940bb724be05a7a74193f28e1a9c971bc5bd3defcea",
+      "FROZEN.json": "cbb8c4b32c5b5870aa9be7121a4eca88b71c46b80fc8532b94d39f1080b9c9a3",
+      "LOSS_DECOMPOSITION.json": "5700c5a47a68ef3cebae48bd2385cbd7b981e283448b18d938ea14666c2bfc78"
+    }
   }
 }
