@@ -2999,5 +2999,18 @@
       "FROZEN.json": "8b8c0b9282271e4441a0f384ae790dc6187bb5fc740f05d2dcd04d417af7fa44",
       "LOSS_DECOMPOSITION.json": "fc485f82c51add0d9c56bfc9c7507d624d53b6739643cce400100caadf8b2db0"
     }
+  },
+  "r7_real_trajectory_replay": {
+    "report": "reports/TRAJECTORY_REPLAY_R7_R2.json",
+    "tasks": 607,
+    "passed": 607,
+    "real_historical_batches": 30,
+    "first_call_only": true,
+    "pi_tokens_exact": 606133,
+    "actor_isolated": true,
+    "neural_gradient_test": false,
+    "dynamic_coverage_measured": false,
+    "source_workspace_identity_proven": false,
+    "training_admission": false
   }
 }

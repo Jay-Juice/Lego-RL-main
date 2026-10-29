@@ -1,6 +1,12 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: real historical trajectory transport passed
+
+Actual runtime Critic builder replay passed607/607 real archived Actor trajectories from30 original batches,27660call boundaries,606133W0 PI tokens preserved exactly. R2 checks original batch SHA/task-row identity/frozen PI SHA, independent Actor copies and loss masks. Actual pretoken packed gather and positional backward gradient exact; empty PI equivalence/prefix causality pass. Max Actor73106/Critic74121, mean view-check0.097661s, elapsed104.496s, exit0. No CUDA/model/optimizer/new Actor rollout. No dynamic-state coverage or neural-gradient claim. Reports TRAJECTORY_REPLAY_R7_R2.json and R7_TRAJECTORY_REPLAY_RESULTS.md.
+
+All607development tasks are in current6248training parquet; historical516/36/55are internal research splits, not independent evaluation after repeated research. W0 capture HEAD=null607/607; declared base image matches607/607, but full prepared-workspace identity remains unproven. Replay injects first-call W0 only, later PI empty. Exact payload preservation preserves the existing annotation scores through packing, NOT a fresh online74.32%/65.03% measurement. FrozenR6/runtime unchanged; formaltraining remains disabled pending fresh onlineR7trajectory and current-method native numerical acceptance. Initial replay and source retained, R2 strengthens identity/isolation. No active job remains.
+
 ## Latest R7: scope-local window experiment complete
 
 Neither scope-local arm meets the joint objective. Retain cached1024/8 original selection; reject scope1024_8 and balanced1024_8 as replacements. No runtime promotion. The class-scope hypothesis was tested rather than assumed: more syntactically localized proposals do not improve relevance selection in this implementation.
