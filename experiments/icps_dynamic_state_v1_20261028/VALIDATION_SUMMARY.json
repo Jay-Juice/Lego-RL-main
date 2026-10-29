@@ -3012,5 +3012,19 @@
     "dynamic_coverage_measured": false,
     "source_workspace_identity_proven": false,
     "training_admission": false
+  },
+  "r7_dynamic_quality": {
+    "status": "dynamic_visibility_gap",
+    "report": "reports/DYNAMIC_QUALITY_R7.json",
+    "budgets": [
+      1024,
+      128,
+      4096
+    ],
+    "synthetic_events": 4,
+    "all_changed_units_visible_events": 1,
+    "real_Actor_rollout": false,
+    "training_admission": false,
+    "runtime_promoted": false
   }
 }

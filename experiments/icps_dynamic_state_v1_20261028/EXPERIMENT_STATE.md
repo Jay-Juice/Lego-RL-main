@@ -1,6 +1,10 @@
 # 2026年10月28日 独立动态 PI 研发
 
 状态：R6_NATIVE_8GPU_SHORT_PROBE_PASS_TRAINING_DISABLED，训练未启动。用户授权独立副本、原PI预算与SAO配方不变，验证动态候选/变化窗口/去重，合理收敛后可直接开启新freshbase实验训练；可以按阶段调整本线程监控间隔。旧ICPS v1.1与所有旧实验保持只读，不能恢复旧训练。
+## Latest R7: dynamic compatibility quality gate failed
+
+Probe-only cached1024_8 initial + existing128update/4096episode shows dynamic visibility omissions with actual Qwen tokenizer. Synthetic function edit1/1visible26tokens; added two-function file1/2visible42tokens; module constant0/1 and decorator0/1 both0tokens. These are mechanism tests, NOT representative dynamic coverage or model rollout. Root causes: one smallest entity per changed interval collapses whole-file additions; module/decorator lines fall outside current entity boundaries; unchanged visible windows then suppress updates via semantic dedup. Unused128budget means merely raising cap does not repair absent candidates. Source slices/retries exact. No frozen/runtime edits, GPU/model/optimizer or training. Full training not admitted. Next targeted work: changed-unit enumeration and explicit module/decorator units, followed by real online acceptance. See R7_DYNAMIC_QUALITY_RESULTS.md and reports/DYNAMIC_QUALITY_R7.json. Initial import-shadowing failure retained; corrected queue exit0 with quality status dynamic_visibility_gap. No active job.
+
 ## Latest R7: real historical trajectory transport passed
 
 Actual runtime Critic builder replay passed607/607 real archived Actor trajectories from30 original batches,27660call boundaries,606133W0 PI tokens preserved exactly. R2 checks original batch SHA/task-row identity/frozen PI SHA, independent Actor copies and loss masks. Actual pretoken packed gather and positional backward gradient exact; empty PI equivalence/prefix causality pass. Max Actor73106/Critic74121, mean view-check0.097661s, elapsed104.496s, exit0. No CUDA/model/optimizer/new Actor rollout. No dynamic-state coverage or neural-gradient claim. Reports TRAJECTORY_REPLAY_R7_R2.json and R7_TRAJECTORY_REPLAY_RESULTS.md.
